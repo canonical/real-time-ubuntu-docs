@@ -1,0 +1,9 @@
+/*env*/
+docs/.sphinx/venv/
+docs/.sphinx/warnings.txt
+docs/.sphinx/.wordlist.dic
+docs/.sphinx/.doctrees/
+docs/_build
+docs/.DS_Store
+docs/__pycache__
+docs/.idea/
