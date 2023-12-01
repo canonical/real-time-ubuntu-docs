@@ -1,8 +1,31 @@
 Real-time Ubuntu
 ================
 
-Real-time Ubuntu ensures high-priority processes are executed first, with
-deterministic response times.
+.. TODO: The product docs' home-page must be based on a template. The template
+   requires the four-par intro below, which must be drawn from the Alignment
+   doc's *Common understanding* column. That column is arrived at by consensus
+   among several stakeholders. Until that content's available, the intro's been
+   drawn from the PM's contribution alone. It should be updated once a *Common
+   understanding* has been reached.
+
+Real-time Ubuntu is a Jammy Jellyfish 22.04 LTS kernel with the PREEMPT_RT
+patches applied.
+
+It changes Linux's default scheduler to a priority-based one, increasing
+predictability by modifying the existing kernel code. Real-time Ubuntu is more
+pre-emptive than mainline, delivering determinism and lower latency.
+
+Stringent applications have mission-critical latency requirements and must
+ensure high-priority processes are executed first, with deterministic response
+times. Real-time Ubuntu provides an upper bound on execution time, to the most
+demanding workloads in industrial, telco, automotive, and robotics
+applications.
+
+.. TODO: Clarify and tighten next par.
+
+From assembly lines processing and delivering data in real-time to ensure
+system integrity to critical telco infrastructure operating at low latency for
+continuous production, the most exacting applications run on Real-time Ubuntu.
 
 ---------
 
@@ -43,6 +66,13 @@ In this documentation
 
 Project and community
 ---------------------
+
+.. TODO: RTU and other kernel projects are unusual in storing their docs
+   separately from their code. At this stage there's no public RTU code repo
+   for a community to contribute to — there's only the docs repo. For now,
+   therefore, all references to contributing are aimed at the RTU docs repo.
+   They should be updated when community contributions to the RTU code can be
+   accepted.
 
 The Real-time Ubuntu project welcomes community contributions, suggestions,
 fixes and constructive feedback. If you wish to contribute to Real-time Ubuntu,
