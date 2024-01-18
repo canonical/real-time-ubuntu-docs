@@ -147,7 +147,9 @@ custom_linkcheck_anchors_ignore_for_url = [
 ## Use them to extend the default functionality.
 
 # Add extensions
-custom_extensions = []
+custom_extensions = [
+    'sphinx.ext.todo',
+]
 
 # Add MyST extensions
 custom_myst_extensions = []
@@ -158,7 +160,7 @@ custom_excludes = [
 ]
 
 # Add CSS files (located in .sphinx/_static/)
-custom_html_css_files = []
+custom_html_css_files = ['custom.css']
 
 # Add JavaScript files (located in .sphinx/_static/)
 custom_html_js_files = []

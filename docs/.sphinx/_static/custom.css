@@ -8,8 +8,12 @@ div.page, h1, h2, h3, h4, h5, h6, .sidebar-tree .current-page>.reference, button
     font-weight: 400;
 }
 
-/** Table styling **/
+/** Remove absurd bullets from numbered toctree entries **/
+.toctree-wrapper ul li {
+    list-style-type: none;
+}
 
+/** Table styling **/
 th.head {
     text-transform: uppercase;
     font-size: var(--font-size--small);
@@ -21,14 +25,14 @@ table.docutils {
     width:100%;
 }
 
+table.docutils td {
+    text-align: left;
+    vertical-align: top;
+}
+
 table.docutils td, table.docutils th, table.docutils td:last-child, table.docutils th:last-child, table.docutils td:first-child, table.docutils th:first-child {
     border-right: none;
     border-left: none;
-}
-
-/* Allow to centre text horizontally in table data cells */
-table.align-center {
-    text-align: center !important;
 }
 
 /** No rounded corners **/
@@ -186,10 +190,4 @@ details summary {
 .rst-versions .rst-current-version {
     color: var(--color-version-popup);
     font-weight: bolder;
-}
-
-/* Code-block copybutton invisible by default
-   (overriding Furo config to achieve default copybutton setting). */
-.highlight button.copybtn {
-   opacity: 0;
 }
