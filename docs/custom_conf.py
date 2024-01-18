@@ -129,6 +129,11 @@ linkcheck_ignore = [
     # Private repos, inaccessible so misinterpreted as broken
     'https://github.com/canonical/real-time-ubuntu-docs',
     'https://github.com/canonical/real-time-ubuntu-docs/issues',
+    'https://github.com/lblythen/real-time-ubuntu-docs/blob/feature/doc_first-tutorial/docs/tutorial/cfs.c',
+    'https://github.com/lblythen/real-time-ubuntu-docs/blob/feature/doc_first-tutorial/docs/tutorial/fifo.c',
+    'https://github.com/lblythen/real-time-ubuntu-docs/blob/feature/doc_first-tutorial/docs/tutorial/edf.c',
+    'https://github.com/lblythen/real-time-ubuntu-docs/blob/feature/doc_first-tutorial/docs/tutorial/thread-affinity.c',
+    'https://github.com/lblythen/real-time-ubuntu-docs/blob/feature/doc_first-tutorial/docs/tutorial/lock.c',
 
     # Working, accessible, but misinterpreted as broken
 ]
