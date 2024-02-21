@@ -154,6 +154,7 @@ custom_linkcheck_anchors_ignore_for_url = [
 # Add extensions
 custom_extensions = [
     'sphinx.ext.todo',
+    'sphinx.ext.intersphinx',
 ]
 
 # Add MyST extensions
@@ -190,3 +191,6 @@ custom_tags = []
 ############################################################
 
 ## Add any configuration that is not covered by the common conf.py file.
+
+intersphinx_mapping = {'ubuntu-pro': ('https://canonical-ubuntu-pro-client.readthedocs-hosted.com/en/latest/', None),
+}

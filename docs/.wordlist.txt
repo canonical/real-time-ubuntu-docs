@@ -42,6 +42,7 @@ Kubeflow
 Kubernetes
 latencies
 Launchpad
+Livepatch
 LTS
 Makefile
 Mattermost
