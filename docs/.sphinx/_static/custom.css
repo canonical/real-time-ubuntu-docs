@@ -113,9 +113,7 @@ dl:not([class]) dt {
     font-weight: 550;
 }
 
-
 /** Table styling **/
-
 th.head {
     text-transform: uppercase;
     font-size: var(--font-size--small);
@@ -132,14 +130,14 @@ table.docutils {
     width:100%;
 }
 
+table.docutils td {
+    text-align: left;
+    vertical-align: top;
+}
+
 table.docutils td, table.docutils th, table.docutils td:last-child, table.docutils th:last-child, table.docutils td:first-child, table.docutils th:first-child {
     border-right: none;
     border-left: none;
-}
-
-/* Allow to centre text horizontally in table data cells */
-table.align-center {
-    text-align: center !important;
 }
 
 /** No rounded corners **/

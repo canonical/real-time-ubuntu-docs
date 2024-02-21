@@ -129,6 +129,11 @@ linkcheck_ignore = [
     # Private repos, inaccessible so misinterpreted as broken
     'https://github.com/canonical/real-time-ubuntu-docs',
     'https://github.com/canonical/real-time-ubuntu-docs/issues',
+    'https://github.com/lblythen/real-time-ubuntu-docs/blob/feature/doc_first-tutorial/docs/tutorial/cfs.c',
+    'https://github.com/lblythen/real-time-ubuntu-docs/blob/feature/doc_first-tutorial/docs/tutorial/fifo.c',
+    'https://github.com/lblythen/real-time-ubuntu-docs/blob/feature/doc_first-tutorial/docs/tutorial/edf.c',
+    'https://github.com/lblythen/real-time-ubuntu-docs/blob/feature/doc_first-tutorial/docs/tutorial/thread-affinity.c',
+    'https://github.com/lblythen/real-time-ubuntu-docs/blob/feature/doc_first-tutorial/docs/tutorial/lock.c',
 
     # Working, accessible, but misinterpreted as broken
 ]
@@ -147,7 +152,9 @@ custom_linkcheck_anchors_ignore_for_url = [
 ## Use them to extend the default functionality.
 
 # Add extensions
-custom_extensions = ['sphinx.ext.intersphinx',
+custom_extensions = [
+    'sphinx.ext.todo',
+    'sphinx.ext.intersphinx',
 ]
 
 # Add MyST extensions
@@ -159,7 +166,7 @@ custom_excludes = [
 ]
 
 # Add CSS files (located in .sphinx/_static/)
-custom_html_css_files = []
+custom_html_css_files = ['custom.css']
 
 # Add JavaScript files (located in .sphinx/_static/)
 custom_html_js_files = []
