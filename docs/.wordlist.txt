@@ -21,6 +21,7 @@ Juju
 Kubeflow
 Kubernetes
 Launchpad
+Livepatch
 LTS
 Makefile
 Mattermost
