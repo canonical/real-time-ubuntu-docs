@@ -9,6 +9,7 @@ cfs
 CFS's
 Charmhub
 CLI
+cyclictest
 dropdown
 Diátaxis
 EBS
@@ -54,6 +55,7 @@ NodePort
 observability
 OEM
 OLM
+OSAL
 patchset
 patchsets
 PCI
