@@ -35,7 +35,7 @@ group. Get the maximum latency of the system by running:
     T: 2 (11714) P:80 I:200 C:  45647 Min:     12 Act:   52 Avg:   25 Max:      77
     T: 3 (11715) P:80 I:200 C:  45558 Min:     12 Act:   25 Avg:   26 Max:     162
 
-By default the last command runs until receives a SIGINT signal (Ctrl+C), or 
+By default the last command runs until it receives a SIGINT signal (Ctrl+C), or 
 other signal that stops the process. To limit the number of iterations use the 
 ``--loops=`` (or ``-l``) option:
 
