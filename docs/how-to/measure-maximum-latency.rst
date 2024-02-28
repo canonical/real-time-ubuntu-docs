@@ -69,7 +69,7 @@ In order to plot a histogram, the `gnuplot`_ package must be installed:
 
     sudo apt install gnuplot
 
-Then, download the `histogram-plot.sh`_ script, make executable and run it:
+Then, download the `histogram-plot.sh`_ script, make it executable and run it:
 
 .. code-block:: bash
 
