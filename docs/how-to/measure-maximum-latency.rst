@@ -63,7 +63,7 @@ It is also possible to output a histogram of the latencies using the
 ``--histogram`` (or ``-h``) option, which can be plotted later, as described 
 on this `OSAL`_ page.
 
-In order to plot a histogram, the `gnuplot`_ package must be installed:
+Install the `gnuplot`_ package:
 
 .. code-block:: bash
 
