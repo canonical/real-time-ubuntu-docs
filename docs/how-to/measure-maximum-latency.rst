@@ -59,9 +59,9 @@ with the ``--nsecs`` (or ``-N``) option:
 
 The **maximum latency** is indicated by the **Max:** value in the output. 
 
-It is also possible to output a histogram of the latencies using the 
-``--histogram`` (or ``-h``) option, which can be plotted later, as described 
-on this `OSAL`_ page.
+As described on this `OSAL`_ page, `cyclictest`  can also output a 
+a histogram of the latencies using the ``--histogram`` option,
+which we can plot with `gnuplot` after some transformation:
 
 Install the `gnuplot`_ package:
 
