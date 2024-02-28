@@ -45,7 +45,7 @@ other signal that stops the process. To limit the number of iterations use the
 
 This will run the test 100000 times.
 
-The results are in microseconds(us) by standard, but you can change it to nanoseconds 
+The results are in microseconds(us) by default, but you can change it to nanoseconds 
 with the ``--nsecs`` (or ``-N``) option:
 
 .. code-block:: console
