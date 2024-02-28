@@ -73,7 +73,6 @@ Then, download the `histogram-plot.sh`_ script, make it executable and run it:
 
 .. code-block:: bash
 
-    # Run the script
     sudo ./histogram-plot.sh
 
 The result histogram will be saved in the file ``plot.png``.
