@@ -7,9 +7,9 @@
 # 2. Fetch the number of cores from the system 
 
 # 1. Run cyclictest
-loop=100000
-echo "Running cyclictest with $loop iterations"
-cyclictest -l"$loop" -m -Sp90 -i200 -h400 -q >output
+dur=1
+echo "Running cyclictest for $dur minute"
+cyclictest -D"$dur"m -m -Sp90 -i200 -h400 -q >output
 
 # 2. Get maximum latency
 max=`grep "Max Latencies" output | tr " " "\n" | sort -n | tail -1 | sed s/^0*//`

@@ -31,14 +31,55 @@ group. Get the maximum latency of the system by running:
     
     $ sudo cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0
 
-    T: 0 (17826) P:80 I:200 C:  37605 Min:      1 Act:    2 Avg:    1 Max:      14
-    T: 1 (17827) P:80 I:200 C:  37595 Min:      1 Act:    1 Avg:    1 Max:     176
-    T: 2 (17828) P:80 I:200 C:  37583 Min:      1 Act:    2 Avg:    1 Max:      16
-    T: 3 (17829) P:80 I:200 C:  37576 Min:      1 Act:    2 Avg:    1 Max:      10
-    T: 4 (17830) P:80 I:200 C:  37569 Min:      1 Act:    2 Avg:    1 Max:      15
-    T: 5 (17831) P:80 I:200 C:  37549 Min:      1 Act:    2 Avg:    1 Max:       9
-    T: 6 (17832) P:80 I:200 C:  37556 Min:      1 Act:    2 Avg:    1 Max:      29
-    T: 7 (17833) P:80 I:200 C:  37549 Min:      1 Act:    2 Avg:    1 Max:       5
+.. tabs::
+
+    
+    .. tab:: without real-time kernel
+
+        .. code-block:: console
+
+            T: 0 (18738) P:80 I:200 C: 100000 Min:    1 Act:    1 Avg:    1 Max:     564
+            T: 1 (18739) P:80 I:200 C:  99993 Min:    1 Act:    1 Avg:    1 Max:      79
+            T: 2 (18740) P:80 I:200 C:  99986 Min:    1 Act:    2 Avg:    1 Max:     110
+            T: 3 (18741) P:80 I:200 C:  99979 Min:    1 Act:    2 Avg:    1 Max:      18
+            T: 4 (18742) P:80 I:200 C:  99973 Min:    1 Act:    2 Avg:    1 Max:       9
+            T: 5 (18743) P:80 I:200 C:  99966 Min:    1 Act:    2 Avg:    1 Max:       9
+            T: 6 (18744) P:80 I:200 C:  99939 Min:    1 Act:    2 Avg:    1 Max:      39
+            T: 7 (18745) P:80 I:200 C:  99953 Min:    1 Act:    2 Avg:    1 Max:      92
+            T: 8 (18746) P:80 I:200 C:  99945 Min:    1 Act:    2 Avg:    2 Max:     573
+            T: 9 (18747) P:80 I:200 C:  99941 Min:    1 Act:    2 Avg:    1 Max:      48
+            T:10 (18748) P:80 I:200 C:  99935 Min:    1 Act:    2 Avg:    1 Max:       9
+            T:11 (18749) P:80 I:200 C:  99929 Min:    1 Act:    2 Avg:    1 Max:      39
+            T:12 (18750) P:80 I:200 C:  99922 Min:    1 Act:    2 Avg:    1 Max:       9
+            T:13 (18751) P:80 I:200 C:  99916 Min:    1 Act:    2 Avg:    1 Max:       9
+            T:14 (18752) P:80 I:200 C:  99910 Min:    1 Act:    2 Avg:    1 Max:       9
+            T:15 (18753) P:80 I:200 C:  99902 Min:    1 Act:    2 Avg:    1 Max:       9
+
+    .. tab:: with real-time kernel
+
+        .. code-block:: console
+
+            T: 0 ( 1469) P:80 I:200 C: 100000 Min:    2 Act:    2 Avg:    2 Max:      10
+            T: 1 ( 1470) P:80 I:200 C: 100000 Min:    1 Act:    2 Avg:    2 Max:      10
+            T: 2 ( 1471) P:80 I:200 C: 100000 Min:    2 Act:    2 Avg:    2 Max:      10
+            T: 3 ( 1472) P:80 I:200 C: 100000 Min:    2 Act:    2 Avg:    2 Max:       9
+            T: 4 ( 1473) P:80 I:200 C: 100000 Min:    1 Act:    2 Avg:    2 Max:       9
+            T: 5 ( 1474) P:80 I:200 C:  99994 Min:    2 Act:    2 Avg:    2 Max:      10
+            T: 6 ( 1475) P:80 I:200 C:  99983 Min:    2 Act:    2 Avg:    2 Max:      10
+            T: 7 ( 1476) P:80 I:200 C:  99971 Min:    2 Act:    2 Avg:    2 Max:      10
+            T: 8 ( 1477) P:80 I:200 C:  99960 Min:    2 Act:    2 Avg:    2 Max:       9
+            T: 9 ( 1478) P:80 I:200 C:  99949 Min:    1 Act:    2 Avg:    2 Max:       9
+            T:10 ( 1479) P:80 I:200 C:  99938 Min:    2 Act:    2 Avg:    2 Max:      10
+            T:11 ( 1480) P:80 I:200 C:  99926 Min:    2 Act:    2 Avg:    2 Max:      10
+            T:12 ( 1481) P:80 I:200 C:  99915 Min:    1 Act:    2 Avg:    2 Max:       9
+            T:13 ( 1482) P:80 I:200 C:  99904 Min:    2 Act:    2 Avg:    2 Max:      10
+            T:14 ( 1483) P:80 I:200 C:  99892 Min:    2 Act:    2 Avg:    2 Max:      10
+            T:15 ( 1484) P:80 I:200 C:  99881 Min:    2 Act:    2 Avg:    2 Max:      10
+
+.. NOTE: Using outputs of the test: https://warthogs.atlassian.net/browse/IENG-907?focusedCommentId=365824
+.. To be changed latter to have consistent results and histogram plot
+
+The **maximum latency** is indicated by the **Max:** value in the output. 
 
 By default the last command runs until it receives a SIGINT signal (Ctrl+C), or 
 other signal that stops the process. To limit the number of iterations use the 
@@ -50,23 +91,22 @@ other signal that stops the process. To limit the number of iterations use the
 
 This will run the test 100000 times.
 
+Sometimes to have a comparison between different runs, it is useful to use the
+``--duration=`` (or ``-D``) option appending 'm', 'h', or 'd' to specify 
+minutes, hours or days.
+
+.. code-block:: console
+    
+    $ sudo cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0 --duration=10m
+
+This will run the test for 10 minutes.
+
 The results are in microseconds(us) by default, but you can change it to nanoseconds 
 with the ``--nsecs`` (or ``-N``) option:
 
 .. code-block:: console
     
     $ sudo cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0 --nsecs
-
-    T: 0 (17964) P:80 I:200 C:  99988 Min:   1480 Act:    2064 Avg:    2101 Max:   53398
-    T: 1 (17965) P:80 I:200 C: 100000 Min:   1478 Act:    2104 Avg:    2123 Max:  180355
-    T: 2 (17966) P:80 I:200 C: 100000 Min:   1551 Act:    1871 Avg:    1975 Max:  278690
-    T: 3 (17967) P:80 I:200 C: 100000 Min:   1810 Act:    2079 Avg:    2091 Max:   22092
-    T: 4 (17968) P:80 I:200 C: 100000 Min:   1501 Act:    2064 Avg:    2098 Max:  298477
-    T: 5 (17969) P:80 I:200 C: 100000 Min:   1413 Act:    2116 Avg:    2090 Max:   31607
-    T: 6 (17970) P:80 I:200 C:  99994 Min:   1673 Act:    2023 Avg:    2100 Max:   35535
-    T: 7 (17971) P:80 I:200 C:  99988 Min:   1812 Act:    2105 Avg:    2104 Max:   34724
-
-The **maximum latency** is indicated by the **Max:** value in the output. 
 
 As described on this `OSAL`_ page, `cyclictest`  can also output a histogram of 
 the latencies using the ``--histogram`` (or ``-h``) option, which we can plot 
@@ -91,9 +131,34 @@ histogram. The resulted histogram will be saved in the file ``plot.png``.
 The resulting image should look like this:
 
 .. image:: plot_non-rt.png
-   :width: 640px 
-   :height: 480px
+   :width: 80%
+   :align: center
    :alt: latencies histogram plot
+
+.. note:: 
+    To get more accurate results on latency measurements, it is recommended to
+    run the test on a system with the same load as the one it will have in
+    production, or as similar as possible to the RT application which the 
+    system is intended to work.
+    This could be done by using `stress-ng`_, so first, install it:
+
+    .. code-block:: bash
+
+        sudo apt install stress-ng
+
+    Then run it with the desired parameters. For example:
+
+    .. code-block:: bash
+
+        sudo stress-ng --cyclic 1 --cyclic-dist 250 --cyclic-method clock_ns --cyclic-policy rr -t 3600 --log-file cyclic-stress.log --verbose
+    
+    Note that the above command will run the stress-ng for 1 hour, and will log
+    the results in the file ``cyclic-stress.log``. The ``--cyclic-dist`` option
+    specifies the distribution of the sleep times, and the ``--cyclic-method``
+    option specifies the method to use for the cyclic stress. The ``--cyclic-policy``
+    option specifies the scheduling policy to use for the cyclic stress.
+    Note that this options are just an example, and can be changed to fit the
+    specific needs of each system.
 
 .. Links
 .. _real-time: https://ubuntu.com/real-time
@@ -102,9 +167,15 @@ The resulting image should look like this:
 .. _OSAL: https://www.osadl.org/Create-a-latency-plot-from-cyclictest-hi.bash-script-for-latency-plot.0.html
 .. _gnuplot: http://www.gnuplot.vt.edu/
 .. _histogram-plot.sh: histogram-plot.sh
+.. _stress-ng: https://manpages.ubuntu.com/manpages/jammy/man1/stress-ng.1.html
+
+.. The lantency test was performed on the following machine:
+.. queue 202102-28727: 
+.. description:
+.. HP Z2 SFF G8 Workstation - Saturn, Intel i9-11900 CPU, Intel 8086:43f0 WiFi
 
 
-.. All code results are generated by a testflinger machine: 202106-29207
+.. The histogram was generated based on testflinger machine: 202106-29207
 .. queue description: 
 .. HP EliteBook 830 G8 Notebook PC (64 GB) - Corvette13, Core i7-1185G7 CPU, Intel 8086:a0f0 WiFi
 .. Characteristics: 
@@ -112,3 +183,6 @@ The resulting image should look like this:
 ..          RAM: 64GB
 ..          OS: Ubuntu 22.04.4 LTS
 ..          Kernel: 6.5.0-21-generic #21~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Feb  9 13:32:52 UTC 2 x86_64 GNU/Linux
+
+
+.. Latter the results will be unified and tested in only one machine
