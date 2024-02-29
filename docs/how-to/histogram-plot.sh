@@ -8,7 +8,7 @@
 
 # 1. Run cyclictest
 loop=100000
-echo "Running cyclic tests with loop size $loop"
+echo "Running cyclictest with $loop iterations"
 cyclictest -l"$loop" -m -Sp90 -i200 -h400 -q >output
 
 # 2. Get maximum latency
@@ -57,3 +57,4 @@ done
 
 # 8. Execute plot command
 gnuplot -persist <plotcmd
+echo "Histogram plot saved in $PWD/plot.png"
