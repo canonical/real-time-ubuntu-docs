@@ -88,6 +88,13 @@ This script executes the ``cyclictest`` with some specific parameters, like
 ``-h400`` (for the histogram) and ``-l100000``, then uses `gnuplot` to plot the 
 histogram. The resulted histogram will be saved in the file ``plot.png``.
 
+The resulting image should look like this:
+
+.. image:: plot_non-rt.png
+   :width: 640px 
+   :height: 480px
+   :alt: latencies histogram plot
+
 .. Links
 .. _real-time: https://ubuntu.com/real-time
 .. _cyclictest: https://wiki.linuxfoundation.org/realtime/documentation/howto/tools/cyclictest/start
