@@ -79,7 +79,7 @@ group. Get the maximum latency of the system by running:
 .. NOTE: Using outputs of the test: https://warthogs.atlassian.net/browse/IENG-907?focusedCommentId=365824
 .. To be changed later to have consistent results and histogram plot
 
-The **maximum latency** is indicated by the **Max:** value in the output. 
+The **maximum latency** is indicated by the **Max** value in the output, per CPU core. When using the real-time kernel on the same machine, the maximum latencie becomes remarkbly smaller and more deterministic. 
 
 By default the last command runs until it receives a SIGINT signal (Ctrl+C), or 
 other signal that stops the process. To limit the number of iterations use the 
