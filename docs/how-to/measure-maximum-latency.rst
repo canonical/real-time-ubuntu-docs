@@ -77,7 +77,7 @@ group. Get the maximum latency of the system by running:
             T:15 ( 1484) P:80 I:200 C:  99881 Min:    2 Act:    2 Avg:    2 Max:      10
 
 .. NOTE: Using outputs of the test: https://warthogs.atlassian.net/browse/IENG-907?focusedCommentId=365824
-.. To be changed latter to have consistent results and histogram plot
+.. To be changed later to have consistent results and histogram plot
 
 The **maximum latency** is indicated by the **Max:** value in the output. 
 
