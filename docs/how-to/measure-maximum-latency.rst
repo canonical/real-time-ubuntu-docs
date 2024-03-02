@@ -137,9 +137,7 @@ The resulting image should look like this:
 
 .. note:: 
     To get more accurate results on latency measurements, it is recommended to
-    run the test on a system with the same load as the one it will have in
-    production, or as similar as possible to the RT application which the 
-    system is intended to work.
+    run the test on a system with the same or very similar load that is expected in production.
     This could be done by using `stress-ng`_, so first, install it:
 
     .. code-block:: bash
