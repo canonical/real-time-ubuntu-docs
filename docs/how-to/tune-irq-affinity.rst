@@ -49,7 +49,7 @@ You can do this, by setting and running manually:
 
     taskset -c <CPU-NUM[s]> <COMMAND-TO-REAL-TIME-APP>
 
-Or also attach to a already running process:
+Or attaching to an already running process:
 
 .. code-block:: bash
 
