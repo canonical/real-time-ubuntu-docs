@@ -1,3 +1,14 @@
+conf
+CPUAffinity
+CPUs
+cpus
 emptive
+gnuplot
+irq
+irqbalance
+isolcpus
 LTS
+ng
+proc
+systemd
 telco

@@ -36,8 +36,11 @@ installable
 intel
 iotg
 IRQ
+IRQs
+ISRs
 JSON
 Juju
+kthread
 Kubeflow
 Kubernetes
 latencies
@@ -86,4 +89,5 @@ UC
 UI
 UUID
 VM
+visualization
 YAML
