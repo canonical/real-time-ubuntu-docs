@@ -140,8 +140,8 @@ Then, download the :download:`histogram-plot.sh` script, make it executable and 
 
     sudo ./histogram-plot.sh
 
-This script executes the ``cyclictest`` with some specific parameters, like 
-``-h400`` (for the histogram) and ``-l100000``, then uses `gnuplot` to plot the 
+This script executes the ``cyclictest`` with specific parameters, such as 
+``-h400`` (for the histogram) and ``-D1m`` (for the testing duration), then uses `gnuplot` to plot the 
 histogram. The resulted histogram will be saved in the file ``plot.png``.
 
 The resulting image should look like this:
