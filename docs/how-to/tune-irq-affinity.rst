@@ -3,7 +3,7 @@ How to Tune IRQ Affinity
 
 IRQ (Interrupt Request) affinity refers to the assignment of interrupt service
 routines (ISRs) to specific processor cores in a computer system. In a real-time
-system, have IRQ affinity properly setup becomes crucial for improve performance
+system, having IRQ affinity properly set up becomes crucial for improved performance
 and responsiveness. 
 By tuning IRQ affinity, you allocate specific interrupts to particular 
 CPU cores, preventing interruptions from being handled by multiple cores
