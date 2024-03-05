@@ -41,9 +41,9 @@ All the IRQs are listed in the `/proc/interrupts` file.
     $ cat /proc/interrupts
 
 
-You can tune the IRQ affinity by setting which CPUs each realtime application is
-allowed to run on, in other words, in which core you don't want IRQs, 
-you can do this, by setting and running manually:
+You can tune the IRQ affinity by setting which CPUs each real-time application is
+allowed to run on, in other words, in which core you don't want IRQs. 
+You can do this, by setting and running manually:
 
 .. code-block:: bash
 
