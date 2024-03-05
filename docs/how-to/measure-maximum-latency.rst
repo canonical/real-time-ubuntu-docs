@@ -41,26 +41,26 @@ group. Get the maximum latency of the system by running:
             # /dev/cpu_dma_latency set to 0us
             policy: fifo: loadavg: 18.66 12.77 5.80 20/410 17196          
 
-            T: 0 (17176) P:80 I:200 C:1499941 Min:    1 Act:    4 Avg:    3 Max:     129
-            T: 1 (17177) P:80 I:200 C:1499981 Min:    1 Act:    3 Avg:    3 Max:      99
-            T: 2 (17178) P:80 I:200 C:1499981 Min:    1 Act:    3 Avg:    3 Max:      97
-            T: 3 (17179) P:80 I:200 C:1499901 Min:    1 Act:    3 Avg:    3 Max:      67
-            T: 4 (17180) P:80 I:200 C:1499961 Min:    1 Act:    2 Avg:    3 Max:      99
-            T: 5 (17181) P:80 I:200 C:1499941 Min:    1 Act:    3 Avg:    3 Max:     125
-            T: 6 (17182) P:80 I:200 C:1499921 Min:    1 Act:    4 Avg:    3 Max:      92
-            T: 7 (17183) P:80 I:200 C:1499941 Min:    1 Act:    3 Avg:    3 Max:     108
-            T: 8 (17184) P:80 I:200 C:1499861 Min:    1 Act:    6 Avg:    3 Max:      26
-            T: 9 (17185) P:80 I:200 C:1499861 Min:    1 Act:    6 Avg:    3 Max:      79
-            T:10 (17186) P:80 I:200 C:1499801 Min:    1 Act:    2 Avg:    3 Max:     103
-            T:11 (17187) P:80 I:200 C:1499881 Min:    1 Act:    3 Avg:    3 Max:     102
-            T:12 (17188) P:80 I:200 C:1499901 Min:    1 Act:    6 Avg:    3 Max:      87
-            T:13 (17189) P:80 I:200 C:1499882 Min:    1 Act:    3 Avg:    3 Max:      97
-            T:14 (17190) P:80 I:200 C:1499861 Min:    1 Act:    2 Avg:    3 Max:      30
-            T:15 (17191) P:80 I:200 C:1499853 Min:    1 Act:    3 Avg:    3 Max:      38
-            T:16 (17192) P:80 I:200 C:1499782 Min:    1 Act:    3 Avg:    3 Max:      94
-            T:17 (17193) P:80 I:200 C:1499782 Min:    1 Act:    2 Avg:    3 Max:      94
-            T:18 (17194) P:80 I:200 C:1499845 Min:    1 Act:    3 Avg:    3 Max:      26
-            T:19 (17195) P:80 I:200 C:1499842 Min:    1 Act:    4 Avg:    4 Max:     102
+            T: 0 (17176) P:80 I:200 C:1499941 Min:   1 Act:    4 Avg:    3 Max:     129
+            T: 1 (17177) P:80 I:200 C:1499981 Min:   1 Act:    3 Avg:    3 Max:      99
+            T: 2 (17178) P:80 I:200 C:1499981 Min:   1 Act:    3 Avg:    3 Max:      97
+            T: 3 (17179) P:80 I:200 C:1499901 Min:   1 Act:    3 Avg:    3 Max:      67
+            T: 4 (17180) P:80 I:200 C:1499961 Min:   1 Act:    2 Avg:    3 Max:      99
+            T: 5 (17181) P:80 I:200 C:1499941 Min:   1 Act:    3 Avg:    3 Max:     125
+            T: 6 (17182) P:80 I:200 C:1499921 Min:   1 Act:    4 Avg:    3 Max:      92
+            T: 7 (17183) P:80 I:200 C:1499941 Min:   1 Act:    3 Avg:    3 Max:     108
+            T: 8 (17184) P:80 I:200 C:1499861 Min:   1 Act:    6 Avg:    3 Max:      26
+            T: 9 (17185) P:80 I:200 C:1499861 Min:   1 Act:    6 Avg:    3 Max:      79
+            T:10 (17186) P:80 I:200 C:1499801 Min:   1 Act:    2 Avg:    3 Max:     103
+            T:11 (17187) P:80 I:200 C:1499881 Min:   1 Act:    3 Avg:    3 Max:     102
+            T:12 (17188) P:80 I:200 C:1499901 Min:   1 Act:    6 Avg:    3 Max:      87
+            T:13 (17189) P:80 I:200 C:1499882 Min:   1 Act:    3 Avg:    3 Max:      97
+            T:14 (17190) P:80 I:200 C:1499861 Min:   1 Act:    2 Avg:    3 Max:      30
+            T:15 (17191) P:80 I:200 C:1499853 Min:   1 Act:    3 Avg:    3 Max:      38
+            T:16 (17192) P:80 I:200 C:1499782 Min:   1 Act:    3 Avg:    3 Max:      94
+            T:17 (17193) P:80 I:200 C:1499782 Min:   1 Act:    2 Avg:    3 Max:      94
+            T:18 (17194) P:80 I:200 C:1499845 Min:   1 Act:    3 Avg:    3 Max:      26
+            T:19 (17195) P:80 I:200 C:1499842 Min:   1 Act:    4 Avg:    4 Max:     102
 
     .. tab:: Real-time Ubuntu kernel
 
@@ -69,26 +69,26 @@ group. Get the maximum latency of the system by running:
             # /dev/cpu_dma_latency set to 0us
             policy: fifo: loadavg: 28.19 18.83 8.56 21/516 2798          
 
-            T: 0 ( 2720) P:80 I:200 C:1477815 Min:    1 Act:    4 Avg:    3 Max:      22
-            T: 1 ( 2721) P:80 I:200 C:1477816 Min:    1 Act:    3 Avg:    3 Max:      22
-            T: 2 ( 2722) P:80 I:200 C:1477576 Min:    1 Act:    4 Avg:    3 Max:      23
-            T: 3 ( 2723) P:80 I:200 C:1477556 Min:    1 Act:    4 Avg:    3 Max:      23
-            T: 4 ( 2724) P:80 I:200 C:1477556 Min:    1 Act:    4 Avg:    3 Max:      23
-            T: 5 ( 2725) P:80 I:200 C:1477536 Min:    2 Act:    3 Avg:    2 Max:      25
-            T: 6 ( 2726) P:80 I:200 C:1477476 Min:    1 Act:    4 Avg:    2 Max:      24
-            T: 7 ( 2727) P:80 I:200 C:1477536 Min:    1 Act:    3 Avg:    3 Max:      24
-            T: 8 ( 2728) P:80 I:200 C:1477376 Min:    2 Act:    4 Avg:    3 Max:      34
-            T: 9 ( 2729) P:80 I:200 C:1477416 Min:    1 Act:    3 Avg:    3 Max:      32
-            T:10 ( 2730) P:80 I:200 C:1477256 Min:    1 Act:    4 Avg:    3 Max:      22
-            T:11 ( 2731) P:80 I:200 C:1477156 Min:    1 Act:    4 Avg:    3 Max:      24
-            T:12 ( 2732) P:80 I:200 C:1477036 Min:    1 Act:    4 Avg:    3 Max:      24
-            T:13 ( 2733) P:80 I:200 C:1477016 Min:    1 Act:    4 Avg:    3 Max:      23
-            T:14 ( 2734) P:80 I:200 C:1477056 Min:    1 Act:    4 Avg:    3 Max:      26
-            T:15 ( 2735) P:80 I:200 C:1499181 Min:    1 Act:    3 Avg:    3 Max:      25
-            T:16 ( 2736) P:80 I:200 C:1499141 Min:    1 Act:    4 Avg:    3 Max:      39
-            T:17 ( 2737) P:80 I:200 C:1499081 Min:    1 Act:    3 Avg:    3 Max:      30
-            T:18 ( 2738) P:80 I:200 C:1499061 Min:    2 Act:    3 Avg:    2 Max:      24
-            T:19 ( 2739) P:80 I:200 C:1499061 Min:    1 Act:    4 Avg:    3 Max:      27
+            T: 0 ( 2720) P:80 I:200 C:1477815 Min:   1 Act:    4 Avg:    3 Max:      22
+            T: 1 ( 2721) P:80 I:200 C:1477816 Min:   1 Act:    3 Avg:    3 Max:      22
+            T: 2 ( 2722) P:80 I:200 C:1477576 Min:   1 Act:    4 Avg:    3 Max:      23
+            T: 3 ( 2723) P:80 I:200 C:1477556 Min:   1 Act:    4 Avg:    3 Max:      23
+            T: 4 ( 2724) P:80 I:200 C:1477556 Min:   1 Act:    4 Avg:    3 Max:      23
+            T: 5 ( 2725) P:80 I:200 C:1477536 Min:   2 Act:    3 Avg:    2 Max:      25
+            T: 6 ( 2726) P:80 I:200 C:1477476 Min:   1 Act:    4 Avg:    2 Max:      24
+            T: 7 ( 2727) P:80 I:200 C:1477536 Min:   1 Act:    3 Avg:    3 Max:      24
+            T: 8 ( 2728) P:80 I:200 C:1477376 Min:   2 Act:    4 Avg:    3 Max:      34
+            T: 9 ( 2729) P:80 I:200 C:1477416 Min:   1 Act:    3 Avg:    3 Max:      32
+            T:10 ( 2730) P:80 I:200 C:1477256 Min:   1 Act:    4 Avg:    3 Max:      22
+            T:11 ( 2731) P:80 I:200 C:1477156 Min:   1 Act:    4 Avg:    3 Max:      24
+            T:12 ( 2732) P:80 I:200 C:1477036 Min:   1 Act:    4 Avg:    3 Max:      24
+            T:13 ( 2733) P:80 I:200 C:1477016 Min:   1 Act:    4 Avg:    3 Max:      23
+            T:14 ( 2734) P:80 I:200 C:1477056 Min:   1 Act:    4 Avg:    3 Max:      26
+            T:15 ( 2735) P:80 I:200 C:1499181 Min:   1 Act:    3 Avg:    3 Max:      25
+            T:16 ( 2736) P:80 I:200 C:1499141 Min:   1 Act:    4 Avg:    3 Max:      39
+            T:17 ( 2737) P:80 I:200 C:1499081 Min:   1 Act:    3 Avg:    3 Max:      30
+            T:18 ( 2738) P:80 I:200 C:1499061 Min:   2 Act:    3 Avg:    2 Max:      24
+            T:19 ( 2739) P:80 I:200 C:1499061 Min:   1 Act:    4 Avg:    3 Max:      27
 
 .. NOTE: Using outputs of the test: https://warthogs.atlassian.net/browse/IENG-907?focusedCommentId=365824
 .. To be changed later to have consistent results and histogram plot
