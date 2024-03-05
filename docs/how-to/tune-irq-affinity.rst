@@ -9,10 +9,10 @@ By tuning IRQ affinity, you dedicate specific interrupts to particular
 CPU cores, preventing interruptions from being handled by multiple cores
 simultaneously. This enhances efficiency, reduces latency, and ensures more
 predictable and consistent processing times for time-sensitive tasks in 
-real-time systems. Proper IRQ affinity configuration helps in decrease
+real-time systems. Proper IRQ affinity configuration helps in decreasing
 contention, managing resource usage, and ultimately improving the overall
 responsiveness and reliability of the system, especially in scenarios where
-timing precision is critical.
+time precision is critical.
 
 The most common parameters to handle IRQ interrupts are `kthread_cpus`_ which
 defines the CPUs that kernel threads are allowed to run on, `isolcpus`_ and
