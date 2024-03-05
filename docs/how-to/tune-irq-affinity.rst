@@ -24,7 +24,7 @@ First you can list the isolated CPUs:
 
     cat /sys/devices/system/cpu/isolated
 
-If the command returns an empty output means that no core is isolated.
+An empty output means that no core is isolated.
 
 Then you can list all the available CPUs:
 
