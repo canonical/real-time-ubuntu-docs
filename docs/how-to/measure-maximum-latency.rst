@@ -134,7 +134,7 @@ Install the `gnuplot`_ package:
 
     sudo apt install gnuplot
 
-Then, download the `histogram-plot.sh`_ script, make it executable and run it:
+Then, download the :download:`histogram-plot.sh` script, make it executable and run it:
 
 .. code-block:: bash
 
