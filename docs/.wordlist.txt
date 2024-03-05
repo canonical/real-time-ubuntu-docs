@@ -39,6 +39,8 @@ installable
 intel
 iotg
 IRQ
+ISRs
+ISR
 JSON
 Juju
 Kubeflow
@@ -91,4 +93,5 @@ UC
 UI
 UUID
 VM
+visualization
 YAML

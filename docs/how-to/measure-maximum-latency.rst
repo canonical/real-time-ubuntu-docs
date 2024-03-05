@@ -34,52 +34,68 @@ group. Get the maximum latency of the system by running:
 .. tabs::
 
     
-    .. tab:: without real-time kernel
+    .. tab:: Default Ubuntu kernel
 
         .. code-block:: console
 
-            T: 0 (18738) P:80 I:200 C: 100000 Min:    1 Act:    1 Avg:    1 Max:     564
-            T: 1 (18739) P:80 I:200 C:  99993 Min:    1 Act:    1 Avg:    1 Max:      79
-            T: 2 (18740) P:80 I:200 C:  99986 Min:    1 Act:    2 Avg:    1 Max:     110
-            T: 3 (18741) P:80 I:200 C:  99979 Min:    1 Act:    2 Avg:    1 Max:      18
-            T: 4 (18742) P:80 I:200 C:  99973 Min:    1 Act:    2 Avg:    1 Max:       9
-            T: 5 (18743) P:80 I:200 C:  99966 Min:    1 Act:    2 Avg:    1 Max:       9
-            T: 6 (18744) P:80 I:200 C:  99939 Min:    1 Act:    2 Avg:    1 Max:      39
-            T: 7 (18745) P:80 I:200 C:  99953 Min:    1 Act:    2 Avg:    1 Max:      92
-            T: 8 (18746) P:80 I:200 C:  99945 Min:    1 Act:    2 Avg:    2 Max:     573
-            T: 9 (18747) P:80 I:200 C:  99941 Min:    1 Act:    2 Avg:    1 Max:      48
-            T:10 (18748) P:80 I:200 C:  99935 Min:    1 Act:    2 Avg:    1 Max:       9
-            T:11 (18749) P:80 I:200 C:  99929 Min:    1 Act:    2 Avg:    1 Max:      39
-            T:12 (18750) P:80 I:200 C:  99922 Min:    1 Act:    2 Avg:    1 Max:       9
-            T:13 (18751) P:80 I:200 C:  99916 Min:    1 Act:    2 Avg:    1 Max:       9
-            T:14 (18752) P:80 I:200 C:  99910 Min:    1 Act:    2 Avg:    1 Max:       9
-            T:15 (18753) P:80 I:200 C:  99902 Min:    1 Act:    2 Avg:    1 Max:       9
+            # /dev/cpu_dma_latency set to 0us
+            policy: fifo: loadavg: 18.66 12.77 5.80 20/410 17196          
 
-    .. tab:: with real-time kernel
+            T: 0 (17176) P:80 I:200 C:1499941 Min:    1 Act:    4 Avg:    3 Max:     129
+            T: 1 (17177) P:80 I:200 C:1499981 Min:    1 Act:    3 Avg:    3 Max:      99
+            T: 2 (17178) P:80 I:200 C:1499981 Min:    1 Act:    3 Avg:    3 Max:      97
+            T: 3 (17179) P:80 I:200 C:1499901 Min:    1 Act:    3 Avg:    3 Max:      67
+            T: 4 (17180) P:80 I:200 C:1499961 Min:    1 Act:    2 Avg:    3 Max:      99
+            T: 5 (17181) P:80 I:200 C:1499941 Min:    1 Act:    3 Avg:    3 Max:     125
+            T: 6 (17182) P:80 I:200 C:1499921 Min:    1 Act:    4 Avg:    3 Max:      92
+            T: 7 (17183) P:80 I:200 C:1499941 Min:    1 Act:    3 Avg:    3 Max:     108
+            T: 8 (17184) P:80 I:200 C:1499861 Min:    1 Act:    6 Avg:    3 Max:      26
+            T: 9 (17185) P:80 I:200 C:1499861 Min:    1 Act:    6 Avg:    3 Max:      79
+            T:10 (17186) P:80 I:200 C:1499801 Min:    1 Act:    2 Avg:    3 Max:     103
+            T:11 (17187) P:80 I:200 C:1499881 Min:    1 Act:    3 Avg:    3 Max:     102
+            T:12 (17188) P:80 I:200 C:1499901 Min:    1 Act:    6 Avg:    3 Max:      87
+            T:13 (17189) P:80 I:200 C:1499882 Min:    1 Act:    3 Avg:    3 Max:      97
+            T:14 (17190) P:80 I:200 C:1499861 Min:    1 Act:    2 Avg:    3 Max:      30
+            T:15 (17191) P:80 I:200 C:1499853 Min:    1 Act:    3 Avg:    3 Max:      38
+            T:16 (17192) P:80 I:200 C:1499782 Min:    1 Act:    3 Avg:    3 Max:      94
+            T:17 (17193) P:80 I:200 C:1499782 Min:    1 Act:    2 Avg:    3 Max:      94
+            T:18 (17194) P:80 I:200 C:1499845 Min:    1 Act:    3 Avg:    3 Max:      26
+            T:19 (17195) P:80 I:200 C:1499842 Min:    1 Act:    4 Avg:    4 Max:     102
+
+    .. tab:: Real-time Ubuntu kernel
 
         .. code-block:: console
 
-            T: 0 ( 1469) P:80 I:200 C: 100000 Min:    2 Act:    2 Avg:    2 Max:      10
-            T: 1 ( 1470) P:80 I:200 C: 100000 Min:    1 Act:    2 Avg:    2 Max:      10
-            T: 2 ( 1471) P:80 I:200 C: 100000 Min:    2 Act:    2 Avg:    2 Max:      10
-            T: 3 ( 1472) P:80 I:200 C: 100000 Min:    2 Act:    2 Avg:    2 Max:       9
-            T: 4 ( 1473) P:80 I:200 C: 100000 Min:    1 Act:    2 Avg:    2 Max:       9
-            T: 5 ( 1474) P:80 I:200 C:  99994 Min:    2 Act:    2 Avg:    2 Max:      10
-            T: 6 ( 1475) P:80 I:200 C:  99983 Min:    2 Act:    2 Avg:    2 Max:      10
-            T: 7 ( 1476) P:80 I:200 C:  99971 Min:    2 Act:    2 Avg:    2 Max:      10
-            T: 8 ( 1477) P:80 I:200 C:  99960 Min:    2 Act:    2 Avg:    2 Max:       9
-            T: 9 ( 1478) P:80 I:200 C:  99949 Min:    1 Act:    2 Avg:    2 Max:       9
-            T:10 ( 1479) P:80 I:200 C:  99938 Min:    2 Act:    2 Avg:    2 Max:      10
-            T:11 ( 1480) P:80 I:200 C:  99926 Min:    2 Act:    2 Avg:    2 Max:      10
-            T:12 ( 1481) P:80 I:200 C:  99915 Min:    1 Act:    2 Avg:    2 Max:       9
-            T:13 ( 1482) P:80 I:200 C:  99904 Min:    2 Act:    2 Avg:    2 Max:      10
-            T:14 ( 1483) P:80 I:200 C:  99892 Min:    2 Act:    2 Avg:    2 Max:      10
-            T:15 ( 1484) P:80 I:200 C:  99881 Min:    2 Act:    2 Avg:    2 Max:      10
+            # /dev/cpu_dma_latency set to 0us
+            policy: fifo: loadavg: 28.19 18.83 8.56 21/516 2798          
+
+            T: 0 ( 2720) P:80 I:200 C:1477815 Min:    1 Act:    4 Avg:    3 Max:      22
+            T: 1 ( 2721) P:80 I:200 C:1477816 Min:    1 Act:    3 Avg:    3 Max:      22
+            T: 2 ( 2722) P:80 I:200 C:1477576 Min:    1 Act:    4 Avg:    3 Max:      23
+            T: 3 ( 2723) P:80 I:200 C:1477556 Min:    1 Act:    4 Avg:    3 Max:      23
+            T: 4 ( 2724) P:80 I:200 C:1477556 Min:    1 Act:    4 Avg:    3 Max:      23
+            T: 5 ( 2725) P:80 I:200 C:1477536 Min:    2 Act:    3 Avg:    2 Max:      25
+            T: 6 ( 2726) P:80 I:200 C:1477476 Min:    1 Act:    4 Avg:    2 Max:      24
+            T: 7 ( 2727) P:80 I:200 C:1477536 Min:    1 Act:    3 Avg:    3 Max:      24
+            T: 8 ( 2728) P:80 I:200 C:1477376 Min:    2 Act:    4 Avg:    3 Max:      34
+            T: 9 ( 2729) P:80 I:200 C:1477416 Min:    1 Act:    3 Avg:    3 Max:      32
+            T:10 ( 2730) P:80 I:200 C:1477256 Min:    1 Act:    4 Avg:    3 Max:      22
+            T:11 ( 2731) P:80 I:200 C:1477156 Min:    1 Act:    4 Avg:    3 Max:      24
+            T:12 ( 2732) P:80 I:200 C:1477036 Min:    1 Act:    4 Avg:    3 Max:      24
+            T:13 ( 2733) P:80 I:200 C:1477016 Min:    1 Act:    4 Avg:    3 Max:      23
+            T:14 ( 2734) P:80 I:200 C:1477056 Min:    1 Act:    4 Avg:    3 Max:      26
+            T:15 ( 2735) P:80 I:200 C:1499181 Min:    1 Act:    3 Avg:    3 Max:      25
+            T:16 ( 2736) P:80 I:200 C:1499141 Min:    1 Act:    4 Avg:    3 Max:      39
+            T:17 ( 2737) P:80 I:200 C:1499081 Min:    1 Act:    3 Avg:    3 Max:      30
+            T:18 ( 2738) P:80 I:200 C:1499061 Min:    2 Act:    3 Avg:    2 Max:      24
+            T:19 ( 2739) P:80 I:200 C:1499061 Min:    1 Act:    4 Avg:    3 Max:      27
 
 .. NOTE: Using outputs of the test: https://warthogs.atlassian.net/browse/IENG-907?focusedCommentId=365824
 .. To be changed later to have consistent results and histogram plot
 
-The **maximum latency** is indicated by the **Max** value in the output, per CPU core. When using the real-time kernel on the same machine, the maximum latencie becomes remarkbly smaller and more deterministic. 
+The **maximum latency** is indicated by the **Max** value in the output, per
+CPU core. When using the real-time kernel on the same machine, the maximum
+latency becomes remarkably smaller and more deterministic.
 
 By default the last command runs until it receives a SIGINT signal (Ctrl+C), or 
 other signal that stops the process. To limit the number of iterations use the 
@@ -130,10 +146,22 @@ histogram. The resulted histogram will be saved in the file ``plot.png``.
 
 The resulting image should look like this:
 
-.. image:: plot_non-rt.png
-   :width: 80%
-   :align: center
-   :alt: latencies histogram plot
+.. tabs::
+    .. tab:: Default Ubuntu kernel
+
+        .. image:: default-kernel-plot.png
+           :width: 80%
+           :align: center
+           :alt: latencies histogram plot - default kernel
+        
+    .. tab:: Real-time Ubuntu kernel
+        
+        .. image:: rt-kernel-plot.png
+            :width: 80%
+            :align: center
+            :alt: latencies histogram plot - real-time kernel
+
+The x-axis was adjusted for better visualization.
 
 .. note:: 
     To get more accurate results on latency measurements, it is recommended to
@@ -167,20 +195,14 @@ The resulting image should look like this:
 .. _histogram-plot.sh: histogram-plot.sh
 .. _stress-ng: https://manpages.ubuntu.com/manpages/jammy/man1/stress-ng.1.html
 
-.. The lantency test was performed on the following machine:
-.. queue 202102-28727: 
+.. Tests perfomed in testflinger machine: 
+.. queue 202008-28173
 .. description:
-.. HP Z2 SFF G8 Workstation - Saturn, Intel i9-11900 CPU, Intel 8086:43f0 WiFi
-
-
-.. The histogram was generated based on testflinger machine: 202106-29207
-.. queue description: 
-.. HP EliteBook 830 G8 Notebook PC (64 GB) - Corvette13, Core i7-1185G7 CPU, Intel 8086:a0f0 WiFi
+.. 	HP Z2 Tower G5 Workstation - Islands, i9-10900K CPU
 .. Characteristics: 
-..          CPU: Core i7-1185G7  
-..          RAM: 64GB
 ..          OS: Ubuntu 22.04.4 LTS
-..          Kernel: 6.5.0-21-generic #21~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Feb  9 13:32:52 UTC 2 x86_64 GNU/Linux
+..          CPU: i9-10900K
+..          RAM: 64GB
 
-
-.. Latter the results will be unified and tested in only one machine
+.. The results are generated based on the system load:
+.. for ((i=0; i<$(nproc); i++)); do sudo taskset -c $i /bin/ping -l 65535 -q -s 10 -f localhost & done
