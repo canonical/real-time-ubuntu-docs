@@ -55,7 +55,7 @@ Or attaching to an already running process:
 
     taskset -pc <CPU_NUM[s]> <PID>
 
-Latter, you can check if th application is correctly running on the designated
+Then, you can check if th application is correctly running on the designated
 CPU core(s):
 
 .. code-block:: bash
