@@ -36,6 +36,7 @@ installable
 intel
 iotg
 IRQ
+IRQs
 JSON
 Juju
 Kubeflow
@@ -58,8 +59,9 @@ patchset
 patchsets
 PCI
 Permalink
+perf
 pre
-Permalink
+ps
 ReadMe
 realtime
 reST

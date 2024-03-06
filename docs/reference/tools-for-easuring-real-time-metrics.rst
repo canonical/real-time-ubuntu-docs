@@ -1,7 +1,7 @@
 Tools for Measuring Real-time Metrics
 =====================================
 
-Various tools can be utilized for measuring real-time metrics.
+Various tools are available for measuring real-time metrics.
 
 Here are some tools along with example commands:
 
