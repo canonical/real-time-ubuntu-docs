@@ -10,6 +10,7 @@ CFS's
 Charmhub
 CLI
 cpu
+Ctrl
 cyclictest
 dropdown
 dstat
@@ -33,6 +34,7 @@ Furo
 gcc
 Git
 GitHub
+gnuplot
 Grafana
 IAM
 installable
@@ -40,6 +42,8 @@ intel
 iotg
 IRQ
 IRQs
+ISRs
+ISR
 JSON
 Juju
 Kubeflow
@@ -58,6 +62,7 @@ NodePort
 observability
 OEM
 OLM
+OSAL
 patchset
 patchsets
 PCI
@@ -79,6 +84,7 @@ RTU's
 runtime
 SBCs
 SCHED
+SIGINT
 smp
 SPID
 stressor
@@ -96,4 +102,5 @@ UC
 UI
 UUID
 VM
+visualization
 YAML
