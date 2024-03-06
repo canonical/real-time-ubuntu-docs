@@ -9,7 +9,10 @@ cfs
 CFS's
 Charmhub
 CLI
+cpu
+cyclictest
 dropdown
+dstat
 Diátaxis
 EBS
 EDF
@@ -60,8 +63,11 @@ patchsets
 PCI
 Permalink
 perf
+pid
 pre
+proc
 ps
+psr
 ReadMe
 realtime
 reST
@@ -74,6 +80,8 @@ runtime
 SBCs
 SCHED
 smp
+SPID
+stressor
 subdirectories
 subdirectory
 subfolders
