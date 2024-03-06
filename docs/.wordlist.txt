@@ -4,6 +4,7 @@ addons
 API
 APIs
 balancer
+benchmarking
 CFS
 cfs
 CFS's
@@ -12,9 +13,11 @@ CLI
 cpu
 Ctrl
 cyclictest
+dev
 dropdown
 dstat
 Diátaxis
+dispatchable
 EBS
 EDF
 edf
@@ -97,10 +100,12 @@ syscall
 th
 toolchain
 tuning's
+tid
 Ubuntu
 UC
 UI
 UUID
+utilization
 VM
 visualization
 YAML

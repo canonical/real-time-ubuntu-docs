@@ -109,11 +109,3 @@ providing a continuous stream of information from the ``/proc/interrupts`` file.
 .. _/dev/null: https://en.wikipedia.org/wiki/Null_device
 
 
-
-
-
-
-
-
-
-
