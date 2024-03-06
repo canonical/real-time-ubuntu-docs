@@ -4,6 +4,36 @@ Tools for Measuring Real-time Metrics
 Various tools are available for measuring real-time metrics.
 Here are some tools along with example commands:
 
+cyclictest
+----------
+
+The `cyclictest`_ is most commonly used for benchmarking real-time systems, 
+and providing precise measurements such as actual latency and maximum latency.
+
+.. code-block:: shell
+
+    cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0
+
+This command runs a test case that is relevant for most Symmetric Multiprocessing (SMP) real-time systems.
+
+* ``--mlockall``: Locks current and future memory allocations to prevent being paged out.
+* ``--smp``: Sets options for standard testing on SMP systems.
+* ``--priority=80``: Sets the priority of the first thread to 80. 
+  Each further thread gets a lower priority.
+* ``--interval=200``: Sets the base interval of the thread(s) to 200 microseconds.
+* ``--distance=0``: Sets the distance of thread intervals to 0 microseconds.
+
+dstat
+-----
+
+The `dstat`_ is a versatile tool for generating system resource statistics.
+
+.. code-block:: shell
+
+    dstat --time --top-int
+
+This command displays system resource statistics with timestamps and shows most frequent interrupts.
+
 ps
 ---
 
@@ -33,7 +63,7 @@ such as CPU migrations, CPU cycles, instructions, and branches .
 
    perf stat dd if=/dev/zero of=/dev/null count=1000000
 
-This command reports performance counter stats for the execution of ``dd  if=/dev/zero of=/dev/null count=1000000`` 
+This command reports performance counter stats for the execution of ``dd if=/dev/zero of=/dev/null count=1000000`` 
 which copies 1 million blocks from `/dev/zero`_ to `/dev/null`_.
 
 stress-ng
@@ -50,36 +80,6 @@ as well as the various operating system kernel interfaces.
 This command runs 4 CPU, 2 virtual memory, 1 disk and 8 fork stressors for 2 minutes 
 and prints measurements including the real time spent executing the stressor, 
 numbers of bogus operations and CPU usage.
-
-cyclictest
-----------
-
-The `cyclictest`_ is most commonly used for benchmarking real-time systems, 
-and providing precise measurements such as actual latency and maximum latency.
-
-.. code-block:: shell
-
-    cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0
-
-This command runs a test case that is relevant for most Symmetric Multiprocessing (SMP) real-time systems.
-
-* ``--mlockall``: Locks current and future memory allocations to prevent being paged out.
-* ``--smp``: Sets options for standard testing on SMP systems.
-* ``--priority=80``: Set the priority of the first thread to 80. 
-  Each further thread gets a lower priority.
-* ``--interval=200``: Sets the base interval of the thread(s) to 200 microseconds.
-* ``--distance=0``: Sets the distance of thread intervals to 0 microseconds.
-
-dstat
------
-
-The `dstat`_ is a versatile tool for generating system resource statistics.
-
-.. code-block:: shell
-
-    dstat --time --top-int
-
-This command displays system resource statistics with timestamps and shows most frequent interrupts.
 
 watch
 -----
@@ -100,7 +100,7 @@ providing a continuous stream of information from the ``/proc/interrupts`` file.
 .. _perf: https://www.man7.org/linux/man-pages/man1/perf.1.html
 .. _stress-ng: https://manpages.ubuntu.com/manpages/mantic/en/man1/stress-ng.1.html
 .. _cyclictest: https://man.archlinux.org/man/cyclictest.8.en
-.. _dstat: https://linuxcommandlibrary.com/man/dstat
+.. _dstat: https://manpages.ubuntu.com/manpages/jammy/man1/pcp-dstat.1.html
 .. _watch: https://www.man7.org/linux/man-pages/man1/watch.1.html
 
 .. _nice: https://www.man7.org/linux/man-pages/man1/nice.1.html
