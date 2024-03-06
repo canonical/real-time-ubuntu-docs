@@ -9,6 +9,8 @@ cfs
 CFS's
 Charmhub
 CLI
+Ctrl
+cyclictest
 dropdown
 Diátaxis
 EBS
@@ -30,12 +32,15 @@ Furo
 gcc
 Git
 GitHub
+gnuplot
 Grafana
 IAM
 installable
 intel
 iotg
 IRQ
+ISRs
+ISR
 JSON
 Juju
 Kubeflow
@@ -54,6 +59,7 @@ NodePort
 observability
 OEM
 OLM
+OSAL
 patchset
 patchsets
 PCI
@@ -71,6 +77,7 @@ RTU's
 runtime
 SBCs
 SCHED
+SIGINT
 smp
 subdirectories
 subdirectory
@@ -86,4 +93,5 @@ UC
 UI
 UUID
 VM
+visualization
 YAML
