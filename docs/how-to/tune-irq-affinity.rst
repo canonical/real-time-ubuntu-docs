@@ -1,18 +1,17 @@
 How to Tune IRQ Affinity
 =========================
 
-IRQ (Interrupt Request) affinity refers to the assignment of interrupt service
-routines (ISRs) to specific processor cores in a computer system. In a real-time
-system, having IRQ affinity properly set up becomes crucial for improved 
-performance and responsiveness. 
-By tuning IRQ affinity, you dedicate specific interrupts to particular 
-CPU cores, preventing interruptions from being handled by multiple cores
-simultaneously. This enhances efficiency, reduces latency, and ensures more
-predictable and consistent processing times for time-sensitive tasks in 
-real-time systems. Proper IRQ affinity configuration helps in decreasing
-contention, managing resource usage, and ultimately improving the overall
-responsiveness and reliability of the system, especially in scenarios where
-time precision is critical.
+IRQ (Interrupt Request) affinity refers to assigning interrupt service routines 
+(ISRs) to specific processor cores in a computer system. Having IRQ affinity
+rightly set up becomes crucial for improved performance and responsiveness in a
+real-time system. By tuning IRQ affinity, you dedicate specific interrupts to
+particular CPU cores, preventing interruptions from being handled by multiple
+cores simultaneously. The tuning enhances efficiency, reduces latency, and
+ensures more predictable and consistent processing times for time-sensitive
+tasks in real-time systems. Proper IRQ affinity configuration helps to decrease
+contention, manage resource usage, and ultimately improve the overall 
+responsiveness and reliability of the system, especially in scenarios where time
+precision is critical.
 
 The most common `kernel parameters`_ to handle IRQ interrupts are `kthread_cpus`_
 which defines the CPUs that kernel threads are allowed to run on and `isolcpus`_
@@ -56,7 +55,7 @@ Then you can list all the available CPUs:
 
 In this case, the system has 20 CPUs available.
 
-The best way to tune a system is to isolate one or more CPU to be used to run 
+The best way to tune a system is to isolate one or more CPUs to be used to run 
 the real-time application and the others to handle the IRQs and kthreads.
 
 First check which IRQ is being handled by the CPU, or sets of CPUs that you want
@@ -106,7 +105,7 @@ associated  with a given CPU:
     IRQ 9 is associated with Core 13. Affinity Mask: fffff
 
 Then you can rewrite the `smp_affinity` file to set the IRQ to be handled by the
-CPU(s) you want. Since kernel 3.0 it's possible to use the 
+CPUs you want. Since kernel 3.0 it's possible to use the 
 `/proc/irq/<IRQ-NUMBER>/smp_affinity_list`, based on the previous output, if you
 want to set the IRQ 16 to be handled by the CPUs 0-12 and 14-19 (excluding the 
 CPU 13), you can run:
@@ -121,18 +120,17 @@ CPU 13), you can run:
 
     fdfff
 
-Then do this process for all the IRQs that are being handled by the CPU(s) that
+Then do this process for all the IRQs that are being handled by the CPUs that
 you want to isolate.
 
 .. warning::
 
-    If a IRQ is being handled by only one CPU and this is the CPU that you want
-    to isolate, you need to change the IRQ to be handled by another CPU before
-    isolating the CPU.
+    It's not allowed to turn off all CPUs for a given IRQ, meaning that you 
+    should ensure every IRQ is handled by at least one CPU. In other words, the
+    `smp_affinity` mask should never be 0.
 
-
-Now you can run your real-time application in the isolated CPU(s) and check if
-the IRQs are being handled by the CPU(s) that you want.
+Now you can run your real-time application in the isolated CPUs and check if
+the IRQs are being handled by the CPUs that you want.
 
 .. code-block:: bash
 
@@ -146,7 +144,7 @@ Or attaching to an already running process:
 
 
 Then, you can check if th application is correctly running on the designated
-CPU core(s):
+CPU cores:
 
 .. code-block:: bash
 
