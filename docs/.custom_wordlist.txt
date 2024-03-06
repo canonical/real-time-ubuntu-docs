@@ -1,12 +1,15 @@
+bitmask
 conf
 CPUAffinity
 CPUs
 cpus
 emptive
 gnuplot
+ffffff
 irq
 irqbalance
 isolcpus
+kthreads
 LTS
 ng
 proc
