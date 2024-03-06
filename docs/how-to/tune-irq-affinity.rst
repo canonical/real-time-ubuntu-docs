@@ -174,7 +174,6 @@ application. You can do this by setting the `CPUAffinity` parameter in the
 .. _kernel parameters: https://docs.kernel.org/admin-guide/kernel-parameters.html
 .. _kthread_cpus: https://www.kernel.org/doc/Documentation/sysctl/kernel.txt
 .. _isolcpus: https://wiki.linuxfoundation.org/realtime/documentation/howto/tools/cpu-partitioning/isolcpus
-.. _SMP: https://en.wikipedia.org/wiki/Symmetric_multiprocessing 
 .. _irq_affinity: https://docs.kernel.org/core-api/irq/irq-affinity.html
 
 .. This link has to be updated with the link for the reference of "boot parameters"
