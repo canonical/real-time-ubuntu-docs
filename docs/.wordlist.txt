@@ -66,6 +66,7 @@ observability
 OEM
 OLM
 OSAL
+optimization
 patchset
 patchsets
 PCI
@@ -91,6 +92,7 @@ subfolders
 subtree
 sudo
 syscall
+sched
 th
 toolchain
 tuning's

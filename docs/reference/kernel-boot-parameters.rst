@@ -18,27 +18,24 @@ The `nohz` parameter is used for enabling/disabling dynamic ticks at boot time.
 
 kthread_cpus
 ------------
+
 The `kthread_cpus` parameter refers to the list of CPUs isolated for kernel usage.
+
 For instance, specifying ``kthread_cpus=0-3`` means that the kernel is allowed to allocate between 0 and 3 kernel threads per CPU core.
 
-Add kernel boot parameters
---------------------------
-Follow these steps to configure these boot parameters:
+timer_migration
+---------------
 
-1. Edit ``/etc/default/grub`` file to append boot parameters to the ``GRUB_CMDLINE_LINUX``.
+The `timer_migration` parameter refers to an optimization technique to migrate timers from one CPU to another.
+In a real-time system with multiple sockets, it is beneficial to disable this parameter to ensure that the time will stay assigned to a core. 
 
-2. Run the following commands to update the grub configuration file and reboot the system:
+By setting ``timer_migration = 0`` in a multi socket machine, timer migration can be disabled.
 
-.. code-block:: shell
+sched_rt_runtime
+----------------
+The `sched_rt_runtime` parameter refers to the duration in microseconds during which a real-time process can dominate a CPU.
 
-    sudo update-grub
-    sudo reboot
-
-3. After rebooting, verify whether the boot parameter has been successfully added by running:
-
-.. code-block:: shell
-
-    cat /proc/cmdline
+For instance, specifying ``sched_rt_runtime=-1`` allows a process or real-time task to dominate the CPU indefinitely.
 
 Further reading
 ---------------
