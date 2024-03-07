@@ -11,6 +11,8 @@ Charmhub
 CLI
 Ctrl
 cyclictest
+CPUs
+cpus
 dropdown
 Diátaxis
 EBS
@@ -41,14 +43,17 @@ iotg
 IRQ
 ISRs
 ISR
+isolcpus
 JSON
 Juju
 Kubeflow
 Kubernetes
+kthread
 latencies
 Launchpad
 Livepatch
 LTS
+linux
 Makefile
 Mattermost
 mutex
@@ -56,6 +61,7 @@ MyST
 namespace
 namespaces
 NodePort
+nohz
 observability
 OEM
 OLM
