@@ -12,6 +12,8 @@ Charmhub
 CLI
 CPUs
 Ctrl
+Ctrl
+cyclictest
 dropdown
 Diátaxis
 dyntick
@@ -34,6 +36,7 @@ Furo
 gcc
 Git
 GitHub
+gnuplot
 Grafana
 GRUB's
 IAM
@@ -41,8 +44,13 @@ installable
 intel
 iotg
 IRQ
+<<<<<<< HEAD
 IRQs
 jitter
+=======
+ISRs
+ISR
+>>>>>>> origin/main
 JSON
 Juju
 Kubeflow
@@ -61,6 +69,7 @@ NodePort
 observability
 OEM
 OLM
+OSAL
 patchset
 patchsets
 PCI
@@ -80,6 +89,7 @@ RTU's
 runtime
 SBCs
 SCHED
+SIGINT
 smp
 subdirectories
 subdirectory
@@ -101,4 +111,5 @@ unbootable
 UUID
 userspace
 VM
+visualization
 YAML
