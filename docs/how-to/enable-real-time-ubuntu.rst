@@ -17,9 +17,8 @@ use.
 .. important:: 
 
    Once you enable Real-time Ubuntu, it won't be possible to enable certain
-   other Pro services. The external documentation for Pro describes which
-   services are :external+ubuntu-pro:doc:`compatible with Real-time Ubuntu
-   <references/compatibility_matrix>`.
+   other Pro services. The external documentation for Pro Client describes which
+   services are `compatible with Real-time Ubuntu`_.
 
    Real-time Ubuntu is not compatible with Livepatch. If Livepatch is enabled
    when you install Real-time Ubuntu, Pro will offer to disable it before
@@ -100,3 +99,4 @@ After rebooting, you'll be running Real-time Ubuntu.
 .. _Real-time Ubuntu: https://ubuntu.com/real-time
 .. _contact the real-time team: https://ubuntu.com/kernel/real-time/contact-us
 .. _Ubuntu Pro: https://ubuntu.com/pro
+.. _compatible with Real-time Ubuntu: https://canonical-ubuntu-pro-client.readthedocs-hosted.com/en/latest/references/compatibility_matrix/
