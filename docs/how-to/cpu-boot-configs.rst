@@ -52,10 +52,10 @@ Configure GRUB temporarily
 
 Reboot, and interrupt GRUB's startup sequence at its bootloader menu.
 
-Highlight the entry --- usually :command:`Ubuntu` --- that would boot Real-time
+Highlight the entry --- usually **Ubuntu** --- that would boot Real-time
 Ubuntu.
 
-Press :command:`e` to edit its boot parameters.
+Press **e** to edit its boot parameters.
 
 Append parameters to the line that starts with ``linux``:
 
@@ -69,11 +69,11 @@ parameters.
 Configure GRUB permanently
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Once your RPi has booted, launch a terminal and edit GRUB's configuration:
+Once your device has booted, launch a terminal and edit GRUB's configuration:
 
 .. code-block:: bash
 
-   sudo gedit /etc/default/grub
+   sudo nano /etc/default/grub
 
 Append parameters to the line that starts with ``GRUB_CMDLINE_LINUX_DEFAULT``:
 
@@ -83,7 +83,7 @@ Append parameters to the line that starts with ``GRUB_CMDLINE_LINUX_DEFAULT``:
 
 * Don't add space on either side of ``=`` or other punctuation.
 
-Click :guilabel:`Save` then close the editor window.
+Press :kbd:`Ctrl+X` then :kbd:`Y` to save and close the editor.
 
 Update GRUB with its new configuration:
 
@@ -97,9 +97,9 @@ CPU lists
 ~~~~~~~~~
 
 Several parameters require a CPU list --- a list of CPU numbers, starting from
-'0' and extending no higher than (the number of CPUs) - 1. (Some cases impose
-further restrictions.) You can use 'N' as shorthand for (the number of CPUs) -
-1.
+``0`` and extending no higher than the number of CPUs. 
+You can use ``N`` as shorthand for the number of CPUs.
+
 
 A CPU list must contain no spaces. The CPU numbers it specifies must be in
 strictly ascending order. Use a comma to separate individual numbers, with no
@@ -112,17 +112,17 @@ You may include ranges in a CPU list, to avoid specifying every CPU by its
 number.
 
 A simple range starts with a CPU number and ends with a higher one. Use a
-hyphen ('-') to separate the numbers, with no space on either side; for
-example:
+hyphen (``-``) to separate the numbers, with no space on either side; for
+example: 
 
 ``1-4``
 
 Within a range, you can specify equal-size subranges ("groups"). This is best
-illustrated by example. The range ``100-2000:3/25`` starts at CPU 100 and ends
+illustrated by example. The range ``100-200:3/25`` starts at CPU 100 and ends
 at CPU 2000. Within the range, the first three CPUs are specified from
 consecutive groups of 25; it's equivalent to:
 
-``100-102,125-127,150-152, ... ,1975-1977``
+``100-102,125-127,150-152,175-177``
 
 Like individual CPU numbers, a range must be separated from its neighbours by a
 comma with no space on either side.
