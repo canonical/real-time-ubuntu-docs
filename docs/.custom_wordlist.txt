@@ -7,6 +7,7 @@ emptive
 gnuplot
 ffffff
 irq
+irqaffinity
 irqbalance
 isolcpus
 kthreads

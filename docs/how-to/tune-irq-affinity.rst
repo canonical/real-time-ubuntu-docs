@@ -120,6 +120,27 @@ CPU 13), you can run:
 
     fdfff
 
+.. note::
+
+    The changes made on the `/proc` filesystem are not persistent, meaning that
+    the changes will be lost after a reboot. To make the changes persistent, you
+    can set the `irqaffinity` parameter in the `/etc/default/grub` file, like
+    described in the `boot parameters`_ documentation. For example, to isolate
+    the CPU 13 in a system with 20 cpus and leave the IRQs to be handled by the
+    CPUs 0-12 and 14-19, you can add the following line to the 
+    `GRUB_CMDLINE_LINUX` parameter:
+
+    .. code-block:: ini
+
+        GRUB_CMDLINE_LINUX="irqaffinity=0-12,14-19"
+
+    Then you can update the grub configuration:
+
+    .. code-block:: bash
+
+        sudo update-grub
+
+
 Then do this process for all the IRQs that are being handled by the CPUs that
 you want to isolate.
 
@@ -174,7 +195,8 @@ application. You can do this by setting the `CPUAffinity` parameter in the
 .. _kernel parameters: https://docs.kernel.org/admin-guide/kernel-parameters.html
 .. _kthread_cpus: https://www.kernel.org/doc/Documentation/sysctl/kernel.txt
 .. _isolcpus: https://wiki.linuxfoundation.org/realtime/documentation/howto/tools/cpu-partitioning/isolcpus
-.. _irq_affinity: https://docs.kernel.org/core-api/irq/irq-affinity.html
+.. _IRQ affinity: https://docs.kernel.org/core-api/irq/irq-affinity.html
 
-.. This link has to be updated with the link for the reference of "boot parameters"
-.. _boot parameters: https://www.kernel.org/doc/Documentation/admin-guide/kernel-parameters.rst 
+.. This link has to be updated to the link for the how-to "configure CPUs for real-time processing"
+.. in the section: "Exclude CPUs from IRQ handling"
+.. _boot parameters: https://docs.kernel.org/admin-guide/kernel-parameters.html

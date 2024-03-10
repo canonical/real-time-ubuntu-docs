@@ -9,6 +9,7 @@ cfs
 CFS's
 Charmhub
 CLI
+CMDLINE
 Ctrl
 cyclictest
 dropdown
