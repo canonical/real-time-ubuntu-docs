@@ -55,9 +55,19 @@ Reboot, and interrupt GRUB's startup sequence at its bootloader menu.
 Highlight the entry --- usually **Ubuntu** --- that would boot Real-time
 Ubuntu.
 
+.. image:: grub-menu.png
+   :alt: GRUB menu
+   :width: 100%
+   :align: center
+
 Press **e** to edit its boot parameters.
 
 Append parameters to the line that starts with ``linux``:
+
+.. image:: grub-edit.png
+   :alt: GRUB edit
+   :width: 100%
+   :align: center
 
 * Leave a space before each new parameter
 
