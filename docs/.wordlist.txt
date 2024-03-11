@@ -11,6 +11,7 @@ CFS's
 Charmhub
 CLI
 cpu
+CPUs
 Ctrl
 cyclictest
 dev
@@ -43,6 +44,7 @@ IAM
 installable
 intel
 iotg
+irq
 IRQ
 IRQs
 ISRs
@@ -57,6 +59,10 @@ Livepatch
 LTS
 Makefile
 Mattermost
+mantic
+mem
+memmove
+mlockall
 mutex
 MyST
 namespace
@@ -66,9 +72,11 @@ observability
 OEM
 OLM
 OSAL
+oslat
 patchset
 patchsets
 PCI
+pcp
 Permalink
 perf
 pid
@@ -81,6 +89,7 @@ realtime
 reST
 reStructuredText
 RT's
+rtprio
 RTD
 RTU
 RTU's
@@ -105,7 +114,19 @@ Ubuntu
 UC
 UI
 UUID
+utilized
 utilization
 VM
 visualization
 YAML
+
+
+
+
+
+
+
+
+
+
+

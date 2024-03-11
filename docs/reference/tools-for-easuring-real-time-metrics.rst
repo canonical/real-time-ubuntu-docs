@@ -34,6 +34,20 @@ The `dstat`_ is a versatile tool for generating system resource statistics.
 
 This command displays system resource statistics with timestamps and shows most frequent interrupts.
 
+oslat
+-------
+
+The `oslat`_ command is a test program designed to identify thread latency at the
+OS level caused by unexpected system scheduling or interruptions such as system ticks.
+
+.. code-block:: shell
+
+    oslat --duration 30s --cpu-list 0-3 --cpu-main-thread 0 --rtprio 95 --workload-mem 10M --workload memmove
+
+This command runs the ``oslat`` test for 30 seconds on the listed CPUs (if none are specified, it runs on all cores),
+with the given priority (specified by ``--rtprio``), using a 10M memory load, 
+and then prints the results, which include latency measurements for each core.
+
 ps
 ---
 
@@ -63,8 +77,10 @@ such as CPU migrations, CPU cycles, instructions, and branches .
 
    perf stat dd if=/dev/zero of=/dev/null count=1000000
 
-This command reports performance counter stats for the execution of ``dd if=/dev/zero of=/dev/null count=1000000`` 
-which copies 1 million blocks from `/dev/zero`_ to `/dev/null`_.
+This command reports performance counter statistics for the execution of ``dd if=/dev/zero of=/dev/null count=1000000``, 
+which reads 1,000,000 null characters from `/dev/zero`_ and writes them to `/dev/null`_.
+
+This specific command can be utilized for measuring latency during disk operations.
 
 stress-ng
 ---------
@@ -96,11 +112,12 @@ providing a continuous stream of information from the ``/proc/interrupts`` file.
 
 .. LINKS
 
+.. _cyclictest: https://man.archlinux.org/man/cyclictest.8.en
+.. _dstat: https://manpages.ubuntu.com/manpages/jammy/man1/pcp-dstat.1.html
+.. _oslat: https://manpages.ubuntu.com/manpages/jammy/man8/oslat.8.html
 .. _ps: https://www.man7.org/linux/man-pages/man1/ps.1.html
 .. _perf: https://www.man7.org/linux/man-pages/man1/perf.1.html
 .. _stress-ng: https://manpages.ubuntu.com/manpages/mantic/en/man1/stress-ng.1.html
-.. _cyclictest: https://man.archlinux.org/man/cyclictest.8.en
-.. _dstat: https://manpages.ubuntu.com/manpages/jammy/man1/pcp-dstat.1.html
 .. _watch: https://www.man7.org/linux/man-pages/man1/watch.1.html
 
 .. _nice: https://www.man7.org/linux/man-pages/man1/nice.1.html
