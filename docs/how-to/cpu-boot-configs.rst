@@ -174,9 +174,11 @@ Tickless CPUs
 An idle CPU has no tasks and therefore no scheduling requirement. When you
 enable NO_HZ *without* isolating any CPUs, idle ones will receive no scheduler
 ticks. They're then "tickless" (or "dyntick-idle"). To prevent scheduler ticks
-for tickless CPUs:
+for tickless CPUs, configure the ``nohz`` kernel boot parameter :
 
-* configure ``nohz=on``.
+.. code-block:: console
+
+    nohz=on
 
 Adaptive-tick CPUs
 ^^^^^^^^^^^^^^^^^^
