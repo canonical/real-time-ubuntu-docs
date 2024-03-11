@@ -244,9 +244,11 @@ Jitter can affect tasks assigned by the symmetric multiprocessing (SMP)
 balancing and scheduling algorithms. You can isolate CPUs, so tasks won't be
 assigned to them by those algorithms.
 
-Isolate CPUs from the general SMP scheduler:
+Isolate CPUs from the general SMP scheduler, use the boot parameter:
 
-* configure ``isolcpus=<CPU list>``.
+.. code-block:: console
+
+    isolcpus=<CPU list>
 
 Having isolated a CPU, at runtime you can assign real-time tasks to it
 explicitly using CPU affinity or CPU sets.
