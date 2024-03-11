@@ -267,9 +267,12 @@ controllers do). Protecting a CPU from having to service IRQs can remove
 significant jitter from its remaining tasks.
 
 Change the default IRQ-affinity list, to restrict which CPUs are available for
-servicing interrupts:
+servicing interrupts, use the kernel command line parameter:
 
-* configure ``irqaffinity=<CPU list>``.
+.. code-block:: console
+    
+    irqaffinity=<CPU list>
+
 
 The list must not be empty --- IRQs have to be serviced somehow.
 
