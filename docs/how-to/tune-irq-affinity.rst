@@ -14,10 +14,11 @@ responsiveness and reliability of the system, especially in scenarios where time
 precision is critical.
 
 The most common `kernel parameters`_ to handle IRQ interrupts are:
-- `kthread_cpus`_ which define the CPUs that kernel threads are allowed to run on
+
+- `kthread_cpus`_ which defines the CPUs that kernel threads are allowed to run on
 - `isolcpus`_ used to specify CPUs to be isolated from the general `SMP`_ balancing and 
 scheduler algorithms. 
-The `IRQ affinity`_ on  other hand is a way to tune the system interruptions 
+
 without modifying the kernel boot parameters. This is the focus of this document.
 With IRQ affinity, you can set a default set of CPUs which are permitted to
 handle incoming IRQs.
