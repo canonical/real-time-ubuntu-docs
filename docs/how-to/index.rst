@@ -8,3 +8,4 @@ How-to guides cover key operations and processes for using Real-time Ubuntu.
 
    enable-real-time-ubuntu
    measure-maximum-latency
+   tune-irq-affinity

@@ -9,6 +9,7 @@ cfs
 CFS's
 Charmhub
 CLI
+CMDLINE
 Ctrl
 cyclictest
 dropdown
@@ -39,10 +40,12 @@ installable
 intel
 iotg
 IRQ
-ISRs
+IRQs
 ISR
+ISRs
 JSON
 Juju
+kthread
 Kubeflow
 Kubernetes
 latencies
