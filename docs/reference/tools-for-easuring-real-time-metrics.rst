@@ -12,7 +12,8 @@ and providing precise measurements such as actual latency and maximum latency.
 
 .. code-block:: shell
 
-    cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0
+    sudo apt install -y rt-tests
+    sudo cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0
 
 This command runs a test case that is relevant for most Symmetric Multiprocessing (SMP) real-time systems.
 
@@ -30,6 +31,7 @@ The `dstat`_ is a versatile tool for generating system resource statistics.
 
 .. code-block:: shell
 
+    sudo apt install -y dstat
     dstat --time --top-int
 
 This command displays system resource statistics with timestamps and shows most frequent interrupts.
@@ -42,7 +44,8 @@ OS level caused by unexpected system scheduling or interruptions such as system 
 
 .. code-block:: shell
 
-    oslat --duration 30s --cpu-list 0-3 --cpu-main-thread 0 --rtprio 95 --workload-mem 10M --workload memmove
+    sudo apt update && sudo apt install -y rt-tests
+    sudo oslat --duration 30s --cpu-list 0-3 --cpu-main-thread 0 --rtprio 95 --workload-mem 10M --workload memmove
 
 This command runs the ``oslat`` test for 30 seconds on the listed CPUs (if none are specified, it runs on all cores),
 with the given priority (specified by ``--rtprio``), using a 10M memory load, 
@@ -75,6 +78,11 @@ such as CPU migrations, CPU cycles, instructions, and branches .
 
 .. code-block:: shell
 
+   sudo apt install -y linux-tools-common
+   sudo apt install -y linux-tools-6.5.0-25-generic
+   # Allow access to performance monitoring and observability operations
+   sudo sysctl -w kernel.perf_event_paranoid=-1
+
    perf stat dd if=/dev/zero of=/dev/null count=1000000
 
 This command reports performance counter statistics for the execution of ``dd if=/dev/zero of=/dev/null count=1000000``, 
@@ -90,8 +98,9 @@ It was designed to exercise various physical subsystems of a computer
 as well as the various operating system kernel interfaces. 
 
 .. code-block:: shell
-    
-   stress-ng --cpu 4 --vm 2 --hdd 1 --fork 8 --timeout 2m --metrics
+
+    sudo apt install -y stress-ng
+    sudo stress-ng --cpu 4 --vm 2 --hdd 1 --fork 8 --timeout 2m --metrics
 
 This command runs 4 CPU, 2 virtual memory, 1 disk and 8 fork stressors for 2 minutes 
 and prints measurements including the real time spent executing the stressor, 
