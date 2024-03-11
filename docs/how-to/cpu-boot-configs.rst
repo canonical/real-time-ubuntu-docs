@@ -230,9 +230,12 @@ threads to housekeeping CPU 0:
 Each offloaded callback thread must be woken up somehow, which introduces
 jitter if it's done by a candidate CPU. If you've assigned a housekeeping CPU,
 that may not matter; if it does, instead you can wake up RCU threads with a
-timer:
+timer, enable the boot parameter ``rcu_nocb_poll``:
 
-* configure ``rcu_nocb_poll``.
+.. code-block:: console
+
+   rcu_nocb_poll
+
 
 Isolate CPUs from SMP algorithms
 --------------------------------
