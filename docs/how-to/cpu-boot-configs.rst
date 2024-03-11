@@ -81,7 +81,7 @@ Configure GRUB permanently
 
 Once your device has booted, launch a terminal and edit GRUB's configuration:
 
-.. code-block:: shell
+.. code-block:: bash
 
    sudo nano /etc/default/grub
 
@@ -97,7 +97,7 @@ Press :kbd:`Ctrl+X` then :kbd:`Y` to save and close the editor.
 
 Update GRUB with its new configuration:
 
-.. code-block:: shell
+.. code-block:: bash
 
    sudo update-grub
 
@@ -185,7 +185,7 @@ Scheduler ticks are also pointless for a CPU with only one task: it has no
 other tasks for a scheduler to switch to. Isolate such "adaptive-ticks CPUs",
 to veto scheduler ticks for them (and, at the same time, for tickless CPUs)
 configure the following kernel command line parameters:
-
+    
 ``nohz=on nohz_full=<CPU list>``
 
 where <CPU list> specifies the CPUs to be isolated. The list must not include
@@ -201,7 +201,7 @@ in its remaining tasks. To allow that, Real-time Ubuntu is compiled with the
 ``CONFIG_RCU_NOCB_CPU=y`` kernel configuration option.
 
 To offload RCU callbacks from specified CPUs, use the boot parameter:
-
+    
 ``rcu_nocbs=<CPU list>``
 
 
