@@ -203,9 +203,12 @@ candidate CPUs. By removing a CPU from the candidate list you can reduce jitter
 in its remaining tasks. To allow that, Real-time Ubuntu is compiled with the
 ``CONFIG_RCU_NOCB_CPU=y`` kernel configuration option.
 
-Offload RCU callbacks from specified CPUs:
+Offload RCU callbacks from specified CPUs, use the boot parameter:
 
-* configure ``rcu_nocbs=<CPU list>``.
+.. code-block:: console
+    
+    rcu_nocbs=<CPU list>
+
 
 When RCU callbacks are offloaded from a CPU, it has more opportunity to enter
 dyntick-idle or adaptive-tick mode. That helps the NO_HZ facility to
