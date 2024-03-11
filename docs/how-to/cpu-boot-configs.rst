@@ -106,7 +106,7 @@ Reboot.
 CPU lists
 ~~~~~~~~~
 
-Several parameters require a CPU list --- a list of CPU numbers, starting from
+Several parameters require a `CPU list`_ --- a list of CPU numbers, starting from
 ``0`` and extending no higher than the number of CPUs. 
 You can use ``N`` as shorthand for the number of CPUs.
 
