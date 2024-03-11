@@ -190,7 +190,8 @@ to veto scheduler ticks for them (and, at the same time, for tickless CPUs):
 * configure ``nohz_full=<CPU list>``
 
 where <CPU list> specifies the CPUs to be isolated. The list must not include
-the CPU that boots the system.
+the CPU that boots the system, meaning the ones you want to avoid receiving
+scheduling-clock interrupts.
 
 Reduce read-copy-update jitter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
