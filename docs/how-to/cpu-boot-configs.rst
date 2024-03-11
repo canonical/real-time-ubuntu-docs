@@ -164,7 +164,7 @@ Reduce scheduler jitter
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Real-time Ubuntu is compiled with the ``CONFIG_NO_HZ_FULL=y`` kernel
-configuration option. This "NO_HZ" facility can reduce jitter, by vetoing
+configuration option. This "`NO_HZ`_" facility can reduce jitter, by vetoing
 unnecessary scheduling-clock interrupts. (You can assist it by also `offloading
 read-copy-update <#reduce-read-copy-update-jitter>`_ tasks.)
 
