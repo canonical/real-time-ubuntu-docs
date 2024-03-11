@@ -303,3 +303,4 @@ to real-time tasks demanding minimal jitter:
 
 .. LINKS
 .. _Real-time Ubuntu: https://ubuntu.com/real-time
+.. _NO_HZ: https://docs.kernel.org/timers/no_hz.html
