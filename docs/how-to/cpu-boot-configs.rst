@@ -183,11 +183,11 @@ Adaptive-tick CPUs
 
 Scheduler ticks are also pointless for a CPU with only one task: it has no
 other tasks for a scheduler to switch to. Isolate such "adaptive-ticks CPUs",
-to veto scheduler ticks for them (and, at the same time, for tickless CPUs):
+to veto scheduler ticks for them (and, at the same time, for tickless CPUs) configure the kernel command line parameters:
 
-* configure ``nohz=on``
-
-* configure ``nohz_full=<CPU list>``
+.. code-block:: console
+    
+    nohz=on nohz_full=<CPU list>
 
 where <CPU list> specifies the CPUs to be isolated. The list must not include
 the CPU that boots the system, meaning the ones you want to avoid receiving
