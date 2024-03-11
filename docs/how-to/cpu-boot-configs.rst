@@ -285,9 +285,9 @@ The following example would isolate CPUs 3-5 from the SMP algorithms, and
 protect them from having to service IRQs. At runtime, they could be assigned
 to real-time tasks demanding minimal jitter:
 
-* configure ``isolcpus=3-5``
-
-* configure ``irqaffinity=0-2,6-N``.
+.. code-block:: console
+    
+    isolcpus=3-5 irqaffinity=0-2,6-N
 
 .. note::
 
