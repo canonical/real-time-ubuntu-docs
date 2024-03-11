@@ -81,7 +81,7 @@ Configure GRUB permanently
 
 Once your device has booted, launch a terminal and edit GRUB's configuration:
 
-.. code-block:: bash
+.. code-block:: shell
 
    sudo nano /etc/default/grub
 
@@ -97,7 +97,7 @@ Press :kbd:`Ctrl+X` then :kbd:`Y` to save and close the editor.
 
 Update GRUB with its new configuration:
 
-.. code-block:: bash
+.. code-block:: shell
 
    sudo update-grub
 
@@ -174,22 +174,19 @@ Tickless CPUs
 An idle CPU has no tasks and therefore no scheduling requirement. When you
 enable NO_HZ *without* isolating any CPUs, idle ones will receive no scheduler
 ticks. They're then "tickless" (or "dyntick-idle"). To prevent scheduler ticks
-for tickless CPUs, configure the ``nohz`` kernel boot parameter :
+for tickless CPUs, configure the ``nohz`` kernel boot parameter:
 
-.. code-block:: console
-
-    nohz=on
+``nohz=on``
 
 Adaptive-tick CPUs
 ^^^^^^^^^^^^^^^^^^
 
 Scheduler ticks are also pointless for a CPU with only one task: it has no
 other tasks for a scheduler to switch to. Isolate such "adaptive-ticks CPUs",
-to veto scheduler ticks for them (and, at the same time, for tickless CPUs) configure the kernel command line parameters:
+to veto scheduler ticks for them (and, at the same time, for tickless CPUs)
+configure the following kernel command line parameters:
 
-.. code-block:: console
-    
-    nohz=on nohz_full=<CPU list>
+``nohz=on nohz_full=<CPU list>``
 
 where <CPU list> specifies the CPUs to be isolated. The list must not include
 the CPU that boots the system, meaning the ones you want to avoid receiving
@@ -203,11 +200,9 @@ candidate CPUs. By removing a CPU from the candidate list you can reduce jitter
 in its remaining tasks. To allow that, Real-time Ubuntu is compiled with the
 ``CONFIG_RCU_NOCB_CPU=y`` kernel configuration option.
 
-Offload RCU callbacks from specified CPUs, use the boot parameter:
+To offload RCU callbacks from specified CPUs, use the boot parameter:
 
-.. code-block:: console
-    
-    rcu_nocbs=<CPU list>
+``rcu_nocbs=<CPU list>``
 
 
 When RCU callbacks are offloaded from a CPU, it has more opportunity to enter
@@ -226,18 +221,16 @@ You can't do that using bootloader parameters; instead use the userspace
 :command:`tuna` tool at runtime. For example, to assign all RCU callback
 threads to housekeeping CPU 0:
 
-.. code-block:: bash
+.. code-block:: shell
 
    sudo tuna -t rcu* -c 0 -m
 
 Each offloaded callback thread must be woken up somehow, which introduces
 jitter if it's done by a candidate CPU. If you've assigned a housekeeping CPU,
 that may not matter; if it does, instead you can wake up RCU threads with a
-timer, enable the boot parameter ``rcu_nocb_poll``:
+timer, set the following boot parameter:
 
-.. code-block:: console
-
-   rcu_nocb_poll
+``rcu_nocb_poll``
 
 
 Isolate CPUs from SMP algorithms
@@ -247,11 +240,9 @@ Jitter can affect tasks assigned by the symmetric multiprocessing (SMP)
 balancing and scheduling algorithms. You can isolate CPUs, so tasks won't be
 assigned to them by those algorithms.
 
-Isolate CPUs from the general SMP scheduler, use the boot parameter:
+To isolate CPUs from the general SMP scheduler, use the boot parameter:
 
-.. code-block:: console
-
-    isolcpus=<CPU list>
+``isolcpus=<CPU list>``
 
 Having isolated a CPU, at runtime you can assign real-time tasks to it
 explicitly using CPU affinity or CPU sets.
@@ -272,9 +263,7 @@ significant jitter from its remaining tasks.
 Change the default IRQ-affinity list, to restrict which CPUs are available for
 servicing interrupts, use the kernel command line parameter:
 
-.. code-block:: console
-    
-    irqaffinity=<CPU list>
+``irqaffinity=<CPU list>``
 
 
 The list must not be empty --- IRQs have to be serviced somehow.
@@ -291,9 +280,7 @@ The following example would isolate CPUs 3-5 from the SMP algorithms, and
 protect them from having to service IRQs. At runtime, they could be assigned
 to real-time tasks demanding minimal jitter:
 
-.. code-block:: console
-    
-    isolcpus=3-5 irqaffinity=0-2,6-N
+``isolcpus=3-5 irqaffinity=0-2,6-N``
 
 .. note::
 
@@ -304,3 +291,4 @@ to real-time tasks demanding minimal jitter:
 .. LINKS
 .. _Real-time Ubuntu: https://ubuntu.com/real-time
 .. _NO_HZ: https://docs.kernel.org/timers/no_hz.html
+.. _CPU list: https://www.kernel.org/doc/html/v5.15/admin-guide/kernel-parameters.html#cpu-lists
