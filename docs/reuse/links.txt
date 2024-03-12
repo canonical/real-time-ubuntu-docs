@@ -2,3 +2,4 @@
 .. _Read the Docs at Canonical: https://library.canonical.com/documentation/read-the-docs
 .. _How to publish documentation on Read the Docs: https://library.canonical.com/documentation/publish-on-read-the-docs
 .. _Example product documentation: https://canonical-example-product-documentation.readthedocs-hosted.com/
+.. _SMP: https://linux-kernel-labs.github.io/refs/heads/master/lectures/smp.html

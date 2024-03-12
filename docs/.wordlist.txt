@@ -9,6 +9,7 @@ cfs
 CFS's
 Charmhub
 CLI
+CMDLINE
 Ctrl
 cyclictest
 cpu
@@ -42,11 +43,13 @@ installable
 intel
 iotg
 IRQ
+IRQs
 isolcpus
 ISR
 ISRs
 JSON
 Juju
+kthread
 Kubeflow
 Kubernetes
 kthread
