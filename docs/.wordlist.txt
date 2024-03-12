@@ -12,6 +12,7 @@ Charmhub
 CLI
 cpu
 CPUs
+CMDLINE
 Ctrl
 cyclictest
 dev
@@ -47,10 +48,11 @@ iotg
 irq
 IRQ
 IRQs
-ISRs
 ISR
+ISRs
 JSON
 Juju
+kthread
 Kubeflow
 Kubernetes
 latencies
