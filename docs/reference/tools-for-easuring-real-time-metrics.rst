@@ -2,14 +2,23 @@ Tools for Measuring Real-time Metrics
 =====================================
 
 Various tools are available for measuring real-time metrics.
-Here are some tools along with example commands:
+Here are some tools along with example commands.
+
+.. note::
+    Some of the tools mentioned below may require installation via Debian packages.
+    Before installation, please use the following command to download the newest Debian package lists:
+
+    .. code-block:: shell
+
+        sudo apt update
+
 
 cyclictest
 ----------
 
 The `cyclictest`_ is most commonly used for benchmarking real-time systems, 
 and providing precise measurements such as actual latency and maximum latency.
-It is included in the ``rt-tests`` package.
+It is included in the ``rt-tests`` Debian package.
 
 .. code-block:: shell
 
@@ -28,10 +37,10 @@ dstat
 -----
 
 The `dstat`_ is a versatile tool for generating system resource statistics.
+Installation of the Debian package for ``dstat`` is a prerequisite to its usage.
 
 .. code-block:: shell
 
-    sudo apt update && sudo apt install dstat
     dstat --time --top-int
 
 This command displays system resource statistics with timestamps and shows most frequent interrupts.
@@ -41,7 +50,7 @@ oslat
 
 The `oslat`_ program is designed to identify thread latency at the
 OS level caused by unexpected system scheduling or interruptions such as system ticks.
-It is included in the ``rt-tests`` package.
+It is included in the ``rt-tests`` Debian package.
 
 .. code-block:: shell
 
@@ -75,7 +84,7 @@ perf
 The `perf`_ is a performance analysis tool for Linux.
 It collects and reports statistics about system-wide performance metrics
 such as CPU migrations, CPU cycles, instructions, and branches.
-It is included in the ``linux-tools-common`` package.
+It is included in the ``linux-tools-common`` Debian package.
 
 .. code-block:: shell
 
@@ -94,11 +103,11 @@ stress-ng
 
 The `stress-ng`_ is a tool to load and stress a computer system.
 It was designed to exercise various physical subsystems of a computer 
-as well as the various operating system kernel interfaces. 
+as well as the various operating system kernel interfaces.
+Installation of the Debian package for ``stress-ng`` is a prerequisite to its usage.
 
 .. code-block:: shell
 
-    sudo apt update && sudo apt install stress-ng
     sudo stress-ng --cpu 4 --vm 2 --hdd 1 --fork 8 --timeout 2m --metrics
 
 This command runs 4 CPU, 2 virtual memory, 1 disk and 8 fork stressors for 2 minutes 
