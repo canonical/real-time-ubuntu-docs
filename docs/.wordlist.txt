@@ -4,6 +4,7 @@ addons
 API
 APIs
 balancer
+boottime
 CFS
 cfs
 CFS's
@@ -11,6 +12,7 @@ Charmhub
 CLI
 Ctrl
 cyclictest
+cpu
 CPUs
 cpus
 dropdown
