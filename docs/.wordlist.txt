@@ -42,9 +42,9 @@ installable
 intel
 iotg
 IRQ
-ISRs
-ISR
 isolcpus
+ISR
+ISRs
 JSON
 Juju
 Kubeflow
