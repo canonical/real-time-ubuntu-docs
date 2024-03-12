@@ -24,7 +24,7 @@ The `nohz`_ parameter is used for enabling/disabling dynamic ticks at boot time.
 
 When ``isolcpus=nohz`` is set, it disables the tick when a single task runs.
 
-When ``nohz=on`` is set, it disables dynamic ticks during boottime.
+When ``nohz=on`` is set, it disables dynamic ticks during boot time.
 
 kthread_cpus
 ------------
