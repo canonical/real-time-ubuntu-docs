@@ -9,6 +9,7 @@ Here are some tools along with example commands.
     The package names are provided in the corresponding sections.
 
     To install a Debian package:
+    
     .. code-block:: shell
 
         sudo apt update
