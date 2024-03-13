@@ -106,7 +106,7 @@ stress-ng
 The `stress-ng`_ is a tool to load and stress a computer system.
 It was designed to exercise various physical subsystems of a computer 
 as well as the various operating system kernel interfaces.
-Installation of the Debian package for ``stress-ng`` is a prerequisite to its usage.
+This tool may be installed with the ``stress-ng`` Debian package.
 
 .. code-block:: shell
 
