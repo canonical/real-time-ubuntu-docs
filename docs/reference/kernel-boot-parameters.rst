@@ -8,7 +8,6 @@ isolcpus
 
 The `isolcpus` parameter isolates CPUs from the general scheduler so that they only execute specific tasks
 and have a limited number of kernel threads available for execution.
-For further details, please refer the documentation on  `kernel's command-line parameters`_.
 
 `isolcpus` accepts two types of values: flag-list and `cpu-list`_.
 When setting a flag-list value (``isolcpus=domain``)
@@ -17,14 +16,17 @@ CPUs are isolated from the general SMP balancing and scheduling algorithms.
 Alternatively, when setting a cpu-list value (``isolcpus=1,2,10-20``),
 CPUs specified in the list (CPUs 1, 2, and 10 through 20) are isolated from the rest.
 
+For further details, please refer to `kernel's command-line parameters`_ documentation.
+
 nohz
 ----
 
 The `nohz` parameter is used for enabling/disabling dynamic ticks at boot time. 
-For further details, please refer the documentation on  `kernel's command-line parameters`_.
 
 When ``isolcpus=nohz`` is set, it disables the tick when a single task runs. 
 When ``nohz=on`` is set, it disables dynamic ticks during boot time.
+
+Read more on `kernel's command-line parameters`_ documentation.
 
 kthread_cpus
 ------------
