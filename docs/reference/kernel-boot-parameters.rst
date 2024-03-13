@@ -34,7 +34,7 @@ kthread_cpus
 
 The ``kthread_cpus`` parameter refers to the list of CPUs specifically allocated for kernel usage.
 
-For instance, specifying ``kthread_cpus=0-3`` means that the kernel is allowed to allocate between 0 and 3 kernel threads per CPU core.
+For instance, specifying ``kthread_cpus=0-3`` means that the kernel is allowed to run kernel threads on CPUs 0 through 3.
 
 timer_migration
 ---------------
