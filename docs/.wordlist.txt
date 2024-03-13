@@ -12,6 +12,7 @@ Charmhub
 CLI
 CPUs
 Ctrl
+CMDLINE
 Ctrl
 cyclictest
 dropdown
@@ -44,15 +45,16 @@ installable
 intel
 iotg
 IRQ
-<<<<<<< HEAD
 IRQs
 jitter
-=======
 ISRs
 ISR
->>>>>>> origin/main
+IRQs
+ISR
+ISRs
 JSON
 Juju
+kthread
 Kubeflow
 Kubernetes
 latencies
