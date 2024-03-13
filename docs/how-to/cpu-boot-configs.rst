@@ -174,7 +174,7 @@ Tickless CPUs
 An idle CPU has no tasks and therefore no scheduling requirement. When you
 enable NO_HZ *without* isolating any CPUs, idle ones will receive no scheduler
 ticks. They're then "tickless" (or "dyntick-idle"). To prevent scheduler ticks
-for tickless CPUs, configure the ``nohz`` kernel boot parameter:
+for tickless CPUs, configure the ``nohz`` kernel command-line parameter:
 
 ``nohz=on``
 
@@ -184,7 +184,7 @@ Adaptive-tick CPUs
 Scheduler ticks are also pointless for a CPU with only one task: it has no
 other tasks for a scheduler to switch to. Isolate such "adaptive-ticks CPUs",
 to veto scheduler ticks for them (and, at the same time, for tickless CPUs)
-configure the following kernel command line parameters:
+configure the following kernel command-line parameters:
     
 ``nohz=on nohz_full=<CPU list>``
 
@@ -200,7 +200,8 @@ candidate CPUs. By removing a CPU from the candidate list you can reduce jitter
 in its remaining tasks. To allow that, Real-time Ubuntu is compiled with the
 ``CONFIG_RCU_NOCB_CPU=y`` kernel configuration option.
 
-To offload RCU callbacks from specified CPUs, use the boot parameter:
+To offload RCU callbacks from specified CPUs, use the kernel command-line
+parameter:
     
 ``rcu_nocbs=<CPU list>``
 
@@ -240,7 +241,8 @@ Jitter can affect tasks assigned by the symmetric multiprocessing (SMP)
 balancing and scheduling algorithms. You can isolate CPUs, so tasks won't be
 assigned to them by those algorithms.
 
-To isolate CPUs from the general SMP scheduler, use the boot parameter:
+To isolate CPUs from the general SMP scheduler, use the kernel command-line
+parameter:
 
 ``isolcpus=<CPU list>``
 
@@ -261,7 +263,7 @@ controllers do). Protecting a CPU from having to service IRQs can remove
 significant jitter from its remaining tasks.
 
 Change the default IRQ-affinity list, to restrict which CPUs are available for
-servicing interrupts, use the kernel command line parameter:
+servicing interrupts, use the kernel command-line parameter:
 
 ``irqaffinity=<CPU list>``
 
