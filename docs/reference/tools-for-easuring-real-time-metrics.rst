@@ -5,12 +5,14 @@ Various tools are available for measuring real-time metrics.
 Here are some tools along with example commands.
 
 .. note::
-    Some of the tools mentioned below may require installation via Debian packages.
-    Before installation, please use the following command to download the newest Debian package lists:
+    Some of the tools aren't available on the OS, but can be installed via Debian packages.
+    The package names are provided in the corresponding sections.
 
+    To install a Debian package:
     .. code-block:: shell
 
         sudo apt update
+        sudo apt install <package-name>
 
 
 cyclictest
