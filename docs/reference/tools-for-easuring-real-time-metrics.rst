@@ -39,7 +39,7 @@ dstat
 -----
 
 The `dstat`_ is a versatile tool for generating system resource statistics.
-Installation of the Debian package for ``dstat`` is a prerequisite to its usage.
+The tool can be installed with the ``dstat`` Debian package.
 
 .. code-block:: shell
 
