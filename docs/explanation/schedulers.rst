@@ -28,7 +28,7 @@ uses the virtual runtime to determine which process should run next. The process
 with the smallest virtual runtime gets to run next. This ensures that all
 processes get a fair share of the CPU time.
 
-.. image:: cfs_scheduler.png
+.. image:: cfs_scheduler.svg
     :width: 80%
     :align: center
     :alt: Red-black tree data structure used by the CFS scheduler
