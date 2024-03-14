@@ -1,8 +1,10 @@
 bitmask
+CAS
 conf
 CPUAffinity
 CPUs
 cpus
+EAS
 emptive
 gnuplot
 ffffff
@@ -16,6 +18,11 @@ ng
 proc
 systemd
 telco
+runtimes
+sched
+setattr
+setpriority
+syscalls
 stress-ng
 ng
 ISRs
