@@ -5,6 +5,7 @@ API
 APIs
 balancer
 benchmarking
+bogo
 CFS
 cfs
 CFS's
@@ -66,6 +67,8 @@ mem
 memmove
 mlockall
 mutex
+mmap
+munmap
 MyST
 namespace
 namespaces
