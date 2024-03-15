@@ -12,6 +12,7 @@ CLI
 CMDLINE
 Ctrl
 cyclictest
+config
 cpu
 CPUs
 cpus
