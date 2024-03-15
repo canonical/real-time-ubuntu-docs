@@ -11,21 +11,21 @@ and have a limited number of kernel threads available for execution.
 
 This parameter accepts two types of values: flag-list and `cpu-list`_.
 When setting a flag-list value (e.g. ``isolcpus=domain``)
-CPUs are isolated from the general SMP balancing and scheduling algorithms.
+CPUs are isolated from the general `symmetric multiprocessing`_ (SMP) balancing and scheduling algorithms.
 
-Alternatively, when setting a cpu-list value (e.g. ``isolcpus=1,2,10-20``),
-CPUs specified in the list (CPUs 1, 2, and 10 through 20) are isolated from the rest.
+Alternatively, ``isolcpus`` accepts a list of CPUs to be isolated from the rest.
+For example, ``isolcpus=1,2,10-20`` isolates CPUs 1, 2, and 10 through 20.
 
 For further details, please refer to `kernel's command-line parameters`_ documentation.
 
 nohz
 ----
 
-The ``nohz`` parameter is used for enabling/disabling dynamic ticks at boot time. 
+The ``nohz`` parameter is used for enabling/disabling `dynamic ticks`_ at boot time.
+Dynamic tick is a config option that enables the kernel to run without a regular time interrupt.
+Enabling this parameter means kernel performs less work when idle and can potentially save power.
 
-When ``isolcpus=nohz`` is set, it disables the tick when a single task runs. 
-
-When ``nohz=on`` is set, it disables dynamic ticks during boot time.
+When ``nohz=on`` is set, it enables dynamic ticks, enabling the kernel to function without regular timer interrupts.
 
 Read more on `kernel's command-line parameters`_ documentation.
 
@@ -40,7 +40,7 @@ timer_migration
 ---------------
 
 The ``timer_migration`` parameter refers to an optimization technique to migrate timers from one CPU to another.
-In a real-time system with multiple sockets, it is beneficial to disable this parameter to ensure that the time will stay assigned to a core. 
+In a real-time system with multiple sockets, it is beneficial to disable this parameter to ensure that the timer will stay assigned to a core. 
 
 By setting ``timer_migration=0`` in a multi socket machine, timer migration can be disabled.
 
@@ -55,3 +55,5 @@ Specifying ``sched_rt_runtime=-1`` allows a process or real-time task to dominat
 
 .. _kernel's command-line parameters: https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html
 .. _cpu-list: https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html#cpu-lists
+.. _symmetric multiprocessing: https://en.wikipedia.org/wiki/Symmetric_multiprocessing
+.. _dynamic ticks: https://elinux.org/Kernel_Timer_Systems#Dynamic_ticks
