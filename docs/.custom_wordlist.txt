@@ -22,12 +22,14 @@ Pc
 Pd
 Pe
 proc
+Schedutil
 systemd
 telco
 runtimes
 sched
 setattr
 setpriority
+SMT
 syscalls
 stress-ng
 ng

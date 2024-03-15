@@ -38,6 +38,7 @@ Grafana
 IAM
 installable
 intel
+invariance
 iotg
 IRQ
 IRQs
@@ -54,6 +55,9 @@ Livepatch
 LTS
 Makefile
 Mattermost
+minimize
+minimizing
+Multithreading
 mutex
 MyST
 namespace
@@ -62,7 +66,10 @@ NodePort
 observability
 OEM
 OLM
+optimization
+optimize
 optimized
+optimizes
 OSAL
 patchset
 patchsets
@@ -91,10 +98,12 @@ sudo
 syscall
 th
 toolchain
+topologies
 tuning's
 Ubuntu
 UC
 UI
+utilization
 UUID
 VM
 visualization

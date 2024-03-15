@@ -76,8 +76,8 @@ SCHED_OTHER - Normal Scheduling
 The ``SCHED_OTHER`` policy (currently renamed to ``SCHED_NORMAL``) is the scheduler
 policy used for regular tasks, it is, tasks with static priority that don't have
 real-time requirements. Alongside with this policy there is the concept of nice 
-value, which is a value that can be set by the user by using the `nice`_, 
-`setpriority`_, or `sched_setattr`_ system calls (`syscalls`_) to change the 
+value, which is a value that can be set by the user by using the `nice(2)`_, 
+`setpriority(2)`_, or `sched_setattr(2)`_ system calls (`syscalls`_) to change the 
 priority of a task. The nice value ranges from -20 to 19, where -20 is the 
 highest priority and 19 is the lowest priority. The default nice value is 0.
 
@@ -210,22 +210,53 @@ Period matches the task's duration. Therefore, in the case of scheduling with
 
 Capacity Aware Scheduling
 -------------------------
-`The Capacity Aware Scheduling`_ is designed to provide better performance for
-multi-core systems. It uses a capacity-based scheduling algorithm to ensure that
-processes are scheduled on the cores with the most capacity. This can improve
-the performance of multi-threaded applications and reduce contention for shared
-resources.
-
+`The Capacity Aware Scheduling`_ optimizes CPU resource allocation based on task
+requirements and system capabilities. It quantifies task utilization as a
+percentage of CPU capacity, allowing for efficient scheduling in systems with
+variable CPU frequencies and asymmetric CPU capacities. The scheduler uses the
+original capacity of a CPU and its adjusted capacity to ensure tasks are
+scheduled on CPUs with sufficient capacity. The Completely Fair Scheduler (CFS)
+uses `Per-Entity Load Tracking`_ (PELT) to estimate task utilization, ensuring
+tasks are scheduled based on their capacity fitness criterion. This mechanism
+ensures that tasks running on CPUs of different capacities yield consistent duty
+cycles, regardless of their absolute performance levels. CPU invariance is
+achieved by adjusting the task utilization signal based on the CPU's capacity
+relative to the system's maximum capacity. The scheduler topology plays a 
+significant role in capacity-aware scheduling, especially in systems with
+asymmetric CPU capacities, by setting specific flags to indicate asymmetric CPU
+capacities and to ensure tasks are scheduled on CPUs with sufficient capacity.
+This approach ensures efficient and fair utilization of system resources across
+different types of tasks and CPUs.
 
 Energy Aware Scheduling
 -----------------------
 
-`The Energy Aware Scheduling`_ is designed to reduce the energy consumption of
-the system. It uses an energy-based scheduling algorithm to ensure that processes
-are scheduled on the cores with the lowest energy consumption. This can reduce
-the power consumption of the system and extend the battery life of mobile devices.
+`The Energy Aware Scheduling`_ (EAS) aims to optimize CPU task placement based
+on energy consumption, focusing on minimizing energy use while maintaining
+performance. EAS operates on heterogeneous CPU topologies, such as Arm's
+`big.LITTLE`_, where the potential for energy savings is highest. It relies on an
+Energy Model (EM) to predict the energy impact of scheduling decisions, selecting
+the most energy-efficient CPU for each task without significantly affecting
+throughput. The EM is not maintained by the scheduler but by a dedicated
+framework, ensuring it remains simple to minimize scheduler latency impact. EAS
+introduces an alternative optimization objective to the traditional
+performance-only approach, considering both energy efficiency and performance.
+During task wake-up, the EM helps the scheduler choose the best CPU candidate
+based on predicted energy consumption, taking into account the platform's
+topology, CPU capacities, and energy costs. EAS calculates total energy
+consumption for different CPU placements, selecting the option with the lowest
+total energy. This approach considers that big CPUs are generally more
+power-hungry and are used mainly when tasks don't fit the little cores. However,
+the energy efficiency of little CPUs can vary, and in some cases, a small task
+might be better off executing on a big core to save energy, despite fitting on a
+little core. EAS requires specific hardware properties and kernel features,
+including an asymmetric CPU topology, the presence of an Energy Model, and the
+Schedutil governor. It also depends on scale-invariant utilization signals and
+support for Multithreading (SMT). The platform must provide power cost tables to
+the EM framework for EAS to function, necessitating the re-building of 
+scheduling domains after the EM registration.
 
-References:
+References
 -----------
 
 - `Man page on sched(7)`_
@@ -244,11 +275,13 @@ References:
 .. _`The Real-Time Scheduler`: https://docs.kernel.org/scheduler/sched-rt-group.html
 .. _`The Capacity Aware Scheduling`: https://www.kernel.org/doc/html/latest/scheduler/sched-capacity.html
 .. _`The Energy Aware Scheduling`: https://www.kernel.org/doc/html/latest/scheduler/sched-energy.html
-.. _`nice`: https://man7.org/linux/man-pages/man2/nice.2.html
-.. _`setpriority`: https://man7.org/linux/man-pages/man2/setpriority.2.html
-.. _`sched_setattr`: https://man7.org/linux/man-pages/man2/sched_setattr.2.html
+.. _`nice(2)`: https://man7.org/linux/man-pages/man2/nice.2.html
+.. _`setpriority(2)`: https://man7.org/linux/man-pages/man2/setpriority.2.html
+.. _`sched_setattr(2)`: https://man7.org/linux/man-pages/man2/sched_setattr.2.html
 .. _`syscalls`: https://man7.org/linux/man-pages/man2/syscalls.2.html
 .. _`Round-robin scheduling`: https://en.wikipedia.org/wiki/Round-robin_scheduling
 .. _`FIFO`: https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)
 .. _`Man page on sched(7)`: https://man7.org/linux/man-pages/man7/sched.7.html
 .. _`sched_setattr(2)`: https://man7.org/linux/man-pages/man2/sched_setattr.2.html
+.. _`Per-Entity Load Tracking`: https://lwn.net/Articles/531853/
+.. _`big.LITTLE`: https://www.arm.com/technologies/big-little
