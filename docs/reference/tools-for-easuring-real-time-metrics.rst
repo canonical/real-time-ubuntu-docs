@@ -59,9 +59,14 @@ It is included in the ``rt-tests`` Debian package.
 
     sudo oslat --duration 30s --cpu-list 0-3 --cpu-main-thread 0 --rtprio 95 --workload-mem 10M --workload memmove
 
-This command runs the ``oslat`` test for 30 seconds on the listed CPUs (if none are specified, it runs on all cores),
-with the given priority (specified by ``--rtprio``), using a 10M memory load, 
-and then prints the results, which include latency measurements for each core.
+This command runs the ``oslat`` test and then prints the results, which include latency measurements for each core.
+
+* ``--duration``: Specifies the test duration of 30 seconds.
+* ``--cpu-list``: Specifies CPUs 0 through 3 to run on. If none are specified, it runs on all cores.
+* ``--cpu-main-thread``: Specifies CPU 0 to be the main thread to run on.
+* ``--rtprio``: Indicates a priority of 95 from the `SCHED_FIFO`_ range of 1-99.
+* ``--workload-mem``: Sets the memory size for the workload to 10M.
+* ``--workload``: Specifies the type of workload. Options: ``no``, ``memmove``.
 
 ps
 ---
@@ -145,4 +150,5 @@ providing a continuous stream of information from the ``/proc/interrupts`` file.
 .. _/dev/zero: https://en.wikipedia.org/wiki//dev/zero
 .. _/dev/null: https://en.wikipedia.org/wiki/Null_device
 
+.. _SCHED_FIFO: https://man7.org/linux/man-pages/man7/sched.7.html
 
