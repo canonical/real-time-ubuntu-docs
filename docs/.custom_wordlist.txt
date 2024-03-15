@@ -9,6 +9,7 @@ emptive
 GEDF
 gnuplot
 ffffff
+io
 irq
 irqaffinity
 irqbalance
