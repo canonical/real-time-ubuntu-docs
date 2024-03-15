@@ -3,7 +3,6 @@ amd
 addons
 API
 APIs
-balancer
 CFS
 cfs
 CFS's
@@ -66,15 +65,10 @@ NodePort
 observability
 OEM
 OLM
-optimization
-optimize
-optimized
-optimizes
 OSAL
 patchset
 patchsets
 PCI
-Permalink
 pre
 Permalink
 ReadMe
