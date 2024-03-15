@@ -6,6 +6,7 @@ CPUs
 cpus
 EAS
 emptive
+GEDF
 gnuplot
 ffffff
 irq
@@ -15,6 +16,11 @@ isolcpus
 kthreads
 LTS
 ng
+Pa
+Pb
+Pc
+Pd
+Pe
 proc
 systemd
 telco

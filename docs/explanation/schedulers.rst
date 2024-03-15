@@ -91,7 +91,7 @@ impact on interactive tasks. This scheduler policy is affected by the nice value
 as well.
 
 SCHED_IDLE - Idle Scheduling
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``SCHED_IDLE`` policy is used for idle tasks, it is, tasks that are not
 time-critical and can run when the system is idle (has nothing else to do). 
@@ -109,6 +109,60 @@ that high-priority processes get the CPU time they need. The Real-Time Scheduler
 is optimized for real-time applications, such as industrial control systems and
 embedded devices, where low latency and predictable performance are critical.
 
+SCHED_FIFO - First In, First Out Scheduling
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``SCHED_FIFO`` policy is used for real-time tasks that require guaranteed
+CPU time. It is a simple first-come, first-served (`FIFO`_) scheduler that gives
+the highest priority to the task with the highest priority level. The first-in,
+first-out scheduler is used to ensure that real-time tasks get the CPU time they
+need without being interrupted by lower-priority tasks. In this policy, tasks 
+receives a priority level from 1 to 99, where 1 is the highest priority and 99
+is the lowest priority.
+
+SCHED_RR - Round Robin Scheduling
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``SCHED_RR`` is a simple enhancement of ``SCHED_FIFO`` policy, but it allows
+tasks to share the same priority level. The round-robin scheduler is used to
+ensure that real-time tasks get the CPU time they need without starving 
+lower-priority tasks.
+
+As the name suggests, the ``SCHED_RR`` policy is based on 
+`Round-robin scheduling`_, algorithm, which is a simple scheduling algorithm 
+that assigns a fixed time slice to each task in a cyclic queue. When a task's 
+time slice expires, it is moved to the end of the queue and the next task is 
+scheduled to run, regardless if the task executions is finished or not. This
+ensures that all tasks get a fair share of the CPU time and that no task is
+starved.
+
+Let's see an example of how the ``SCHED_RR`` policy works. Suppose we have five 
+tasks with the same priority level and a time slice of 100ms. The tasks are
+scheduled to run in the following order:
+
+.. table:: 
+
+   +--------------+--------------+----------------+
+   | Process name | Arrival time | Execution time |
+   +==============+==============+================+
+   | Pa           | 0            | 250            |            
+   +--------------+--------------+----------------+
+   | Pb           | 50           | 120            |            
+   +--------------+--------------+----------------+
+   | Pc           | 170          | 50             |            
+   +--------------+--------------+----------------+
+   | Pd           | 180          | 100            |            
+   +--------------+--------------+----------------+
+   | Pe           | 210          | 130            |            
+   +--------------+--------------+----------------+
+
+Note that the picture bellow index of the tasks represents the remaining time in
+milliseconds for each task to finish its execution.
+
+.. image:: rr_scheduler.svg
+    :width: 80%
+    :align: center
+    :alt: Example of Round-robin scheduling
 
 Early Deadline First Scheduler
 ------------------------------
@@ -118,6 +172,40 @@ guaranteed CPU time. It uses a deadline-based scheduling algorithm to ensure
 that processes meet their deadlines. The Deadline Scheduler is optimized for
 real-time applications, such as multimedia and gaming, where low latency and
 predictable performance are critical.
+
+The Deadline scheduling policy is implemented using the GEDF (Global Earliest
+Deadline First) algorithm, which is a global scheduling algorithm that assigns
+CPU time to processes based on their deadlines. The GEDF algorithm ensures that
+processes meet their deadlines by scheduling them to run on the CPU at the
+earliest possible time. This can improve the performance of real-time applications
+and reduce the risk of missed deadlines.
+
+A sporadic task involves a series of jobs, with each job activated no more than
+once per **period**. Each job is assigned a **relative deadline**, indicating 
+when it must finish execution, and a **computation time**, representing the CPU 
+time required for its execution. The point at which a task becomes active 
+(wake up) due to a new job that needs execution is termed the **arrival time**,
+also known as the request time or release time. The **start time** denotes when 
+a task begins its execution. Consequently, the **absolute deadline** is 
+determined by adding the relative deadline to the arrival time.
+
+.. image:: edf_scheduler.svg
+    :width: 80%
+    :align: center
+    :alt: Diagram of scheduling
+
+When configuring a ``SCHED_DEADLINE`` thread with `sched_setattr(2)`_ syscall, 
+three parameters can be defined: **Runtime**, **Deadline**, and **Period**. 
+These settings may not always match the terms mentioned before: typically, 
+Runtime is set higher than the average processing time (or worst-case execution 
+time for hard real-time tasks), Deadline aligns with the relative deadline, and 
+Period matches the task's duration. Therefore, in the case of scheduling with
+``SCHED_DEADLINE``, we have:
+
+.. image:: edf_sched_scheduler.svg
+    :width: 80%
+    :align: center
+    :alt: Diagram of scheduling with SCHED_DEADLINE
 
 
 Capacity Aware Scheduling
@@ -137,6 +225,16 @@ the system. It uses an energy-based scheduling algorithm to ensure that processe
 are scheduled on the cores with the lowest energy consumption. This can reduce
 the power consumption of the system and extend the battery life of mobile devices.
 
+References:
+-----------
+
+- `Man page on sched(7)`_
+- `The Completely Fair Scheduler`_ 
+- `The Deadline scheduler`_
+- `The Real-Time Scheduler`_
+- `The Capacity Aware Scheduling`_
+- `The Energy Aware Scheduling`_
+
 
 .. Links
 
@@ -150,3 +248,7 @@ the power consumption of the system and extend the battery life of mobile device
 .. _`setpriority`: https://man7.org/linux/man-pages/man2/setpriority.2.html
 .. _`sched_setattr`: https://man7.org/linux/man-pages/man2/sched_setattr.2.html
 .. _`syscalls`: https://man7.org/linux/man-pages/man2/syscalls.2.html
+.. _`Round-robin scheduling`: https://en.wikipedia.org/wiki/Round-robin_scheduling
+.. _`FIFO`: https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)
+.. _`Man page on sched(7)`: https://man7.org/linux/man-pages/man7/sched.7.html
+.. _`sched_setattr(2)`: https://man7.org/linux/man-pages/man2/sched_setattr.2.html
