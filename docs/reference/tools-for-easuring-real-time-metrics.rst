@@ -174,7 +174,3 @@ providing a continuous stream of information from the ``/proc/interrupts`` file.
 .. _/dev/zero: https://en.wikipedia.org/wiki//dev/zero
 .. _/dev/null: https://en.wikipedia.org/wiki/Null_device
 
-
-
-
-
