@@ -10,10 +10,11 @@ The ``isolcpus`` parameter isolates CPUs from the general scheduler so that they
 and have a limited number of kernel threads available for execution.
 
 This parameter accepts two types of values: flag-list and `cpu-list`_.
-When setting a flag-list value (e.g. ``isolcpus=domain``)
+
+When specifying a flag-list value, such as ``isolcpus=domain``,
 CPUs are isolated from the general `symmetric multiprocessing`_ (SMP) balancing and scheduling algorithms.
 
-Alternatively, ``isolcpus`` accepts a list of CPUs to be isolated from the rest.
+Alternatively, ``isolcpus`` accepts cpu-list value, allowing for a list of CPUs to be isolated from the rest.
 For example, ``isolcpus=1,2,10-20`` isolates CPUs 1, 2, and 10 through 20.
 
 For further details, please refer to `kernel's command-line parameters`_ documentation.
