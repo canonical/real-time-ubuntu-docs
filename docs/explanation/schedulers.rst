@@ -50,12 +50,14 @@ The base of the CFS is the concept of virtual runtime. This concept is based on
 an "ideal multi-tasking CPU" (which in practice doesn't exist) that can
 distribute all of this physical power and run each task at precise equal speed,
 in parallel. As in real hardware it's only possible to run one task at a time,
-CFS uses the concept of virtual runtime to simulate this ideal CPU.
+(unless you have a multi-core CPU, but that's another story) the CFS uses the
+concept of virtual runtime to simulate this ideal CPU.
 
-The virtual runtime is the amount of time a process has been running on the CPU. 
-The CFS scheduler uses the virtual runtime as the parameter to determine which
-process should run next. The process with the smallest virtual runtime gets to
-run next. This ensures that all processes get a fair share of the CPU time.
+In summary the virtual runtime is the amount of time a process has been running
+on the CPU. The CFS scheduler uses the virtual runtime as the parameter to
+determine which process should run next. The process with the smallest virtual
+runtime gets to run next. This ensures that all processes get a fair share of
+the CPU time.
 
 Based on the virtual runtime, the CFS strategy is to select the process with the
 smallest virtual runtime to run next. This is done by using a red-black tree to
@@ -73,13 +75,14 @@ image below.
 SCHED_OTHER - Normal Scheduling
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ``SCHED_OTHER`` policy (currently renamed to ``SCHED_NORMAL``) is the scheduler
-policy used for regular tasks, it is, tasks with static priority that don't have
-real-time requirements. Alongside with this policy there is the concept of nice 
-value, which is a value that can be set by the user by using the `nice(2)`_, 
-`setpriority(2)`_, or `sched_setattr(2)`_ system calls (`syscalls`_) to change the 
-priority of a task. The nice value ranges from -20 to 19, where -20 is the 
-highest priority and 19 is the lowest priority. The default nice value is 0.
+The ``SCHED_OTHER`` policy (currently renamed to ``SCHED_NORMAL``) is the
+scheduler policy used for regular tasks, it is, tasks with static priority that
+don't have real-time requirements. Alongside with this policy there is the
+concept of nice value, which is a value that can be set by the user by using the
+`nice`_, `setpriority`_, or `sched_setattr`_ system calls (`syscalls`_) to
+change the priority of a task. The nice value ranges from -20 to 19, where -20
+is the highest priority and 19 is the lowest priority. The default nice value
+is 0.
 
 SCHED_BATCH - Batch Scheduling
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -104,10 +107,11 @@ Real-Time Scheduler
 -------------------
 
 `The Real-Time Scheduler`_ is designed for real-time applications that require
-guaranteed CPU time. It uses a priority-based scheduling algorithm to ensure
-that high-priority processes get the CPU time they need. The Real-Time Scheduler
-is optimized for real-time applications, such as industrial control systems and
-embedded devices, where low latency and predictable performance are critical.
+guaranteed and deterministic CPU time. It uses a priority-based scheduling
+algorithm to ensure that high-priority processes get the CPU time they need. The
+Real-Time Scheduler is optimized for real-time applications, such as industrial
+control systems and embedded devices, where low latency and predictable
+performance are critical.
 
 SCHED_FIFO - First In, First Out Scheduling
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -275,13 +279,13 @@ References
 .. _`The Real-Time Scheduler`: https://docs.kernel.org/scheduler/sched-rt-group.html
 .. _`The Capacity Aware Scheduling`: https://www.kernel.org/doc/html/latest/scheduler/sched-capacity.html
 .. _`The Energy Aware Scheduling`: https://www.kernel.org/doc/html/latest/scheduler/sched-energy.html
-.. _`nice(2)`: https://man7.org/linux/man-pages/man2/nice.2.html
-.. _`setpriority(2)`: https://man7.org/linux/man-pages/man2/setpriority.2.html
-.. _`sched_setattr(2)`: https://man7.org/linux/man-pages/man2/sched_setattr.2.html
+.. _`nice`: https://man7.org/linux/man-pages/man2/nice.2.html
+.. _`setpriority`: https://man7.org/linux/man-pages/man2/setpriority.2.html
+.. _`sched_setattr`: https://man7.org/linux/man-pages/man2/sched_setattr.2.html
 .. _`syscalls`: https://man7.org/linux/man-pages/man2/syscalls.2.html
 .. _`Round-robin scheduling`: https://en.wikipedia.org/wiki/Round-robin_scheduling
 .. _`FIFO`: https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)
 .. _`Man page on sched(7)`: https://man7.org/linux/man-pages/man7/sched.7.html
-.. _`sched_setattr(2)`: https://man7.org/linux/man-pages/man2/sched_setattr.2.html
+.. _`sched_setattr`: https://man7.org/linux/man-pages/man2/sched_setattr.2.html
 .. _`Per-Entity Load Tracking`: https://lwn.net/Articles/531853/
 .. _`big.LITTLE`: https://www.arm.com/technologies/big-little
