@@ -15,7 +15,8 @@ CLI
 cpu
 CPUs
 Ctrl
->>>>>>> main
+CPUs
+Ctrl
 CMDLINE
 Ctrl
 cyclictest
