@@ -198,7 +198,7 @@ determined by adding the relative deadline to the arrival time.
     :align: center
     :alt: Diagram of scheduling
 
-When configuring a ``SCHED_DEADLINE`` thread with `sched_setattr(2)`_ syscall, 
+When configuring a ``SCHED_DEADLINE`` thread with `sched_setattr`_ syscall, 
 three parameters can be defined: **Runtime**, **Deadline**, and **Period**. 
 These settings may not always match the terms mentioned before: typically, 
 Runtime is set higher than the average processing time (or worst-case execution 
