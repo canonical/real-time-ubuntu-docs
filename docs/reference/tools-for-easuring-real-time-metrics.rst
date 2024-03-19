@@ -109,7 +109,7 @@ It is included in the ``linux-tools-common`` Debian package.
     
     sudo perf stat dd if=/dev/zero of=/dev/null count=1000000
 
-With the above command, `perf` reports performance counter statistics for the execution of ``dd if=/dev/zero of=/dev/null count=1000000``, 
+With the above command, ``perf`` reports performance counter statistics for the execution of ``dd if=/dev/zero of=/dev/null count=1000000``, 
 which reads 1 million null characters from `/dev/zero`_ and writes them to `/dev/null`_.
 This command can be utilized for measuring latency during disk operations.
 
