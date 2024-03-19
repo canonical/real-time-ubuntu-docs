@@ -160,7 +160,7 @@ Note that in the picture bellow, the tasks index represents the remaining time i
 milliseconds for each task to finish its execution.
 
 .. image:: rr_scheduler.svg
-    :width: 80%
+    :width: 100%
     :align: center
     :alt: Example of Round-robin scheduling
 
