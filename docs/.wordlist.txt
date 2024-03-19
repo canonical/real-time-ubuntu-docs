@@ -15,6 +15,10 @@ Ctrl
 CMDLINE
 Ctrl
 cyclictest
+config
+cpu
+CPUs
+cpus
 dropdown
 Diátaxis
 dyntick
@@ -46,6 +50,7 @@ intel
 iotg
 IRQ
 IRQs
+isolcpus
 jitter
 ISRs
 ISR
@@ -57,10 +62,12 @@ Juju
 kthread
 Kubeflow
 Kubernetes
+kthread
 latencies
 Launchpad
 Livepatch
 LTS
+linux
 Makefile
 Mattermost
 mutex
@@ -68,10 +75,12 @@ MyST
 namespace
 namespaces
 NodePort
+nohz
 observability
 OEM
 OLM
 OSAL
+optimization
 patchset
 patchsets
 PCI
@@ -100,6 +109,7 @@ subranges
 subtree
 sudo
 syscall
+sched
 th
 Tickless
 tickless
