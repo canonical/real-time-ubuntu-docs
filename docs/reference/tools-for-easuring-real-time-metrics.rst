@@ -107,15 +107,11 @@ It is included in the ``linux-tools-common`` Debian package.
 
 .. code-block:: shell
     
-    # Allow access to performance monitoring and observability operations
-    $ sudo sysctl -w kernel.perf_event_paranoid=-1
+    sudo perf stat dd if=/dev/zero of=/dev/null count=1000000
 
-    $ perf stat dd if=/dev/zero of=/dev/null count=1000000
-
-This command reports performance counter statistics for the execution of ``dd if=/dev/zero of=/dev/null count=1000000``, 
-which reads 1,000,000 null characters from `/dev/zero`_ and writes them to `/dev/null`_.
-
-This specific command can be utilized for measuring latency during disk operations.
+With the above command, `perf` reports performance counter statistics for the execution of ``dd if=/dev/zero of=/dev/null count=1000000``, 
+which reads 1 million null characters from `/dev/zero`_ and writes them to `/dev/null`_.
+This command can be utilized for measuring latency during disk operations.
 
 stress-ng
 ---------
@@ -136,17 +132,16 @@ where:
 * ``--hdd 1``: Starts 1 worker continually writing, reading and removing temporary files.
 * ``--fork 8``: Starts 8 workers continually forking children that immediately exit.
 * ``--timeout 2m``: Runs each stress test for at least 2 minutes.
-* ``--metrics``: Outputs number of bogus operations in total performed by the stress processes.
+* ``--metrics``: Outputs number of bogo operations in total performed by the stress processes.
 
-This command runs 4 CPU, 2 virtual memory, 1 disk and 8 fork stressors for 2 minutes 
-and prints measurements including the real time spent executing the stressor, 
-numbers of bogus operations and CPU usage.
+This command runs the specified workload and 
+prints measurements including the real time spent executing the stressor, 
+numbers of bogo operations and CPU usage.
 
 watch
 -----
 
 The `watch`_ command is useful for monitoring changes over time by executing a program periodically.
-It monitors real-time observation of system activities such as interrupts or process status.
 
 .. code-block:: shell
 
@@ -154,6 +149,7 @@ It monitors real-time observation of system activities such as interrupts or pro
 
 With the ``--interval`` flag set to 1, the command updates the output every 1 second, 
 providing a continuous stream of information from the ``/proc/interrupts`` file.
+This could be used to monitor real-time observation of system activities such as interrupts or status of processes.
 
 .. LINKS
 
