@@ -8,3 +8,5 @@ other features of Real-time Ubuntu.
    :maxdepth: 1
 
    tools-for-easuring-real-time-metrics
+   kernel-boot-parameters
+
