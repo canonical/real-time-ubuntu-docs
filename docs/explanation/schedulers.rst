@@ -2,17 +2,17 @@ Linux Kernel Schedulers
 =======================
 
 Schedulers are like the traffic police of the kernel. They decide which process 
-gets to run and for how long and when they run. The Linux kernel has several
-schedulers, each with its own strengths and weaknesses. The default scheduler is 
-the `Completely Fair Scheduler <#cfs-completely-fair-scheduler>`_, which is 
-designed to provide fair CPU time to all processes. However, there are other 
-schedulers that are optimized for specific use cases, such as the 
+gets to run, for how long and when. The Linux kernel has several schedulers, 
+each with its strengths and weaknesses. The default scheduler is the 
+`Completely Fair Scheduler <#cfs-completely-fair-scheduler>`_, which is 
+designed to provide fair CPU time to all processes. However, other schedulers
+are optimized for specific use cases, such as the 
 `Early Deadline First Scheduler <#early-deadline-first-scheduler>`_ and the 
-`Real-Time Scheduler <#real-time-scheduler>`_, also many others with different
-use cases.
+`Real-Time Scheduler <#real-time-scheduler>`_, as well many others with 
+different use cases.
 
-Different classes of schedulers are available in the Linux kernel, each class has
-it's own set of scheduler policies, like showed below:
+Different classes of schedulers are available in the Linux kernel, each with its
+own set of scheduler policies, as shown below:
 
 .. table:: 
 
@@ -64,7 +64,7 @@ smallest virtual runtime to run next. This is done by using a red-black tree to
 keep track of the processes and their virtual runtimes. The red-black tree is a
 self-balancing binary search tree that ensures that the processes are sorted by
 their virtual runtimes. This allows the CFS scheduler to quickly find the process
-with the smallest virtual runtime and schedule it to run next, like showed in the
+with the smallest virtual runtime and schedule it to run next, as shown in the
 image below.
 
 .. image:: cfs_scheduler.svg
@@ -247,7 +247,7 @@ introduces an alternative optimization objective to the traditional
 performance-only approach, considering both energy efficiency and performance.
 During task wake-up, the EM helps the scheduler choose the best CPU candidate
 based on predicted energy consumption, taking into account the platform's
-topology, CPU capacities, and energy costs. EAS calculates total energy
+topology, CPU capacities, and energy costs. EAS calculates the total energy
 consumption for different CPU placements, selecting the option with the lowest
 total energy. This approach considers that big CPUs are generally more
 power-hungry and are used mainly when tasks don't fit the little cores. However,
