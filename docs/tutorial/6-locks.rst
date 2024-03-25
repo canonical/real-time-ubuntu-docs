@@ -28,9 +28,9 @@ see one way of making the :file:`fifo.c` example thread-safe:
                    pthread_mutex_unlock(&mutex);
            }
 
-Here for convenience we declare a global, utility mutex and initialise it once
-at start-up. Other approaches are possible, notably initialising locks that are
-local not global and require more-specialised behaviour.
+Here for convenience we declare a global, utility mutex and initialize it once
+at start-up. Other approaches are possible, notably initializing locks that are
+local not global and require more-specialized behavior.
 
 Priority inversion
 ------------------

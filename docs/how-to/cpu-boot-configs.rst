@@ -134,7 +134,7 @@ consecutive groups of 25; it's equivalent to:
 
 ``100-102,125-127,150-152,175-177``
 
-Like individual CPU numbers, a range must be separated from its neighbours by a
+Like individual CPU numbers, a range must be separated from its neighbors by a
 comma with no space on either side.
 
 Valid examples:

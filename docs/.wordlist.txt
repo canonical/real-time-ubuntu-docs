@@ -55,6 +55,7 @@ GRUB's
 IAM
 installable
 intel
+invariance
 iotg
 irq
 IRQ
@@ -79,6 +80,7 @@ LTS
 linux
 Makefile
 Mattermost
+Multithreading
 mantic
 mem
 memmove
@@ -139,6 +141,7 @@ th
 Tickless
 tickless
 toolchain
+topologies
 tuning's
 tid
 Ubuntu

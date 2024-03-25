@@ -1,7 +1,7 @@
 Pick low-hanging fruit
 ======================
 
-Merely enabling Real-time Ubuntu doesn't optimise the kernel for your
+Merely enabling Real-time Ubuntu doesn't optimize the kernel for your
 application. Tuning may be helpful, for example to reduce cycle-times and other
 latencies. Real-time Ubuntu offers various configuration options and boot
 parameters for the purpose.
