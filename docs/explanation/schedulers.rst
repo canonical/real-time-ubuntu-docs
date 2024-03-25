@@ -214,51 +214,63 @@ Period matches the task's duration. Therefore, in the case of scheduling with
 
 Capacity Aware Scheduling
 -------------------------
+
 `The Capacity Aware Scheduling`_ optimizes CPU resource allocation based on task
 requirements and system capabilities. It quantifies task utilization as a
 percentage of CPU capacity, allowing for efficient scheduling in systems with
-variable CPU frequencies and asymmetric CPU capacities. The scheduler uses the
-original capacity of a CPU and its adjusted capacity to ensure tasks are
-scheduled on CPUs with sufficient capacity. The Completely Fair Scheduler (CFS)
-uses `Per-Entity Load Tracking`_ (PELT) to estimate task utilization, ensuring
-tasks are scheduled based on their capacity fitness criterion. This mechanism
-ensures that tasks running on CPUs of different capacities yield consistent duty
-cycles, regardless of their absolute performance levels. CPU invariance is
-achieved by adjusting the task utilization signal based on the CPU's capacity
-relative to the system's maximum capacity. The scheduler topology plays a 
-significant role in capacity-aware scheduling, especially in systems with
-asymmetric CPU capacities, by setting specific flags to indicate asymmetric CPU
-capacities and to ensure tasks are scheduled on CPUs with sufficient capacity.
+variable CPU frequencies and asymmetric CPU capacities.
+
+The scheduler uses the original capacity of a CPU and its adjusted capacity to
+ensure tasks are scheduled on CPUs with sufficient capacity. The Completely Fair
+Scheduler (CFS) uses `Per-Entity Load Tracking`_ (PELT) to estimate task
+utilization, ensuring tasks are scheduled based on their capacity fitness
+criterion. This mechanism ensures that tasks running on CPUs of different
+capacities yield consistent duty cycles, regardless of their absolute
+performance levels.
+
+CPU invariance is achieved by adjusting the task utilization signal based on the
+CPU's capacity relative to the system's maximum capacity. The scheduler topology
+plays a significant role in capacity-aware scheduling, especially in systems
+with asymmetric CPU capacities, by setting specific flags to indicate asymmetric
+CPU capacities and to ensure tasks are scheduled on CPUs with sufficient
+capacity.
+
 This approach ensures efficient and fair utilization of system resources across
 different types of tasks and CPUs.
+
 
 Energy Aware Scheduling
 -----------------------
 
+
 `The Energy Aware Scheduling`_ (EAS) aims to optimize CPU task placement based
 on energy consumption, focusing on minimizing energy use while maintaining
-performance. EAS operates on heterogeneous CPU topologies, such as Arm's
-`big.LITTLE`_, where the potential for energy savings is highest. It relies on an
-Energy Model (EM) to predict the energy impact of scheduling decisions, selecting
-the most energy-efficient CPU for each task without significantly affecting
-throughput. The EM is not maintained by the scheduler but by a dedicated
-framework, ensuring it remains simple to minimize scheduler latency impact. EAS
-introduces an alternative optimization objective to the traditional
-performance-only approach, considering both energy efficiency and performance.
-During task wake-up, the EM helps the scheduler choose the best CPU candidate
-based on predicted energy consumption, taking into account the platform's
-topology, CPU capacities, and energy costs. EAS calculates the total energy
-consumption for different CPU placements, selecting the option with the lowest
-total energy. This approach considers that big CPUs are generally more
-power-hungry and are used mainly when tasks don't fit the little cores. However,
-the energy efficiency of little CPUs can vary, and in some cases, a small task
-might be better off executing on a big core to save energy, despite fitting on a
-little core. EAS requires specific hardware properties and kernel features,
-including an asymmetric CPU topology, the presence of an Energy Model, and the
-Schedutil governor. It also depends on scale-invariant utilization signals and
-support for Multithreading (SMT). The platform must provide power cost tables to
-the EM framework for EAS to function, necessitating the re-building of 
-scheduling domains after the EM registration.
+performance.
+
+EAS operates on heterogeneous CPU topologies, such as Arm's `big.LITTLE`_,
+where the potential for energy savings is highest. It relies on an Energy Model (EM)
+to predict the energy impact of scheduling decisions, selecting the most energy-efficient
+CPU for each task without significantly affecting throughput. The EM is not maintained
+by the scheduler but by a dedicated framework, ensuring it remains simple to minimize
+scheduler latency impact.
+
+EAS introduces an alternative optimization objective to the traditional performance-only
+approach, considering both energy efficiency and performance. During task wake-up, the EM
+helps the scheduler choose the best CPU candidate based on predicted energy consumption,
+taking into account the platform's topology, CPU capacities, and energy costs.
+
+EAS calculates the total energy consumption for different CPU placements, selecting the
+option with the lowest total energy. This approach considers that big CPUs are generally
+more power-hungry and are used mainly when tasks don't fit the little cores. However,
+the energy efficiency of little CPUs can vary, and in some cases, a small task might be
+better off executing on a big core to save energy, despite fitting on a little core.
+
+EAS requires specific hardware properties and kernel features, including an asymmetric
+CPU topology, the presence of an Energy Model, and the Schedutil governor. It also depends
+on scale-invariant utilization signals and support for Multithreading (SMT). The platform
+must provide power cost tables to the EM framework for EAS to function, necessitating the
+re-building of scheduling domains after the EM registration.
+
 
 References
 -----------
