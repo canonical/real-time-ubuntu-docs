@@ -12,7 +12,7 @@ The default: Completely Fair Scheduling
 Let's see briefly what real-time requirements are up against. The default
 scheduler --- ``SCHED_OTHER``, in the Completely Fair Scheduling (CFS) class
 --- ensures that every task gets some processing time. To see it in action,
-download `cfs.c`_ then build and run it:
+download :download:`cfs.c` then build and run it:
 
 .. code-block:: shell-session
 
@@ -57,7 +57,7 @@ task's priority. Unlike CFS, RT doesn't use the "niceness" mechanism and isn't
 constrained by its limited range.
 
 Let's see the effect of assigning equal priorities to identical tasks. Download
-the `fifo`_ example; it does the same as :file:`cfs` above but uses
+the :download:`fifo.c` example; it does the same as :file:`cfs` above but uses
 ``SCHED_FIFO``, an RT-class scheduler. Build and run it:
 
 .. code-block:: shell-session
@@ -141,7 +141,7 @@ are pending, the one with the closest deadline is processed first. EDF suits
 critical sporadic tasks; it isn't subject to CFS's "nice" mechanism or RT's
 priorities.
 
-Download `edf.c`_ and open it. Its thread function uses a do-nothing loop, but
+Download :download:`edf.c` and open it. Its thread function uses a do-nothing loop, but
 instead it might service a sensor: one whose data must be processed within 11
 ms of the start of every two-second period, with up to 10 ms needed for
 processing.
@@ -197,7 +197,4 @@ its parameters.
 
 
 .. LINKS:
-.. _`cfs.c`: https://github.com/lblythen/real-time-ubuntu-docs/blob/feature/doc_first-tutorial/docs/tutorial/cfs.c
-.. _`fifo`: https://github.com/lblythen/real-time-ubuntu-docs/blob/feature/doc_first-tutorial/docs/tutorial/fifo.c
 .. _`Technical deep-dive`: https://ubuntu.com/blog/real-time-kernel-technical
-.. _`edf.c`: https://github.com/lblythen/real-time-ubuntu-docs/blob/feature/doc_first-tutorial/docs/tutorial/edf.c

@@ -11,7 +11,7 @@ one, a single thread-function ran on two threads and included this operation:
 where ``calls-remaining`` was a global variable.
 
 In those examples, clarity mattered more and so locks were left out. Generally
-though, they're essential --- thread-safety is paramount. Open `lock.c`_ to
+though, they're essential --- thread-safety is paramount. Download :download:`lock.c` to
 see one way of making the :file:`fifo.c` example thread-safe:
 
 .. code-block:: C
@@ -57,5 +57,4 @@ intermediate-priority task can cause priority inversion.
 
 
 .. LINKS:
-.. _`lock.c`: https://github.com/lblythen/real-time-ubuntu-docs/blob/feature/doc_first-tutorial/docs/tutorial/lock.c
 .. _`Technical deep-dive`: https://ubuntu.com/blog/real-time-kernel-technical
