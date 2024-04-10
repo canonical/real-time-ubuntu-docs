@@ -81,7 +81,7 @@ Configure GRUB permanently
 
 Once your device has booted, launch a terminal and edit GRUB's configuration:
 
-.. code-block:: bash
+.. code-block:: shell
 
    sudo nano /etc/default/grub
 
@@ -97,7 +97,7 @@ Press :kbd:`Ctrl+X` then :kbd:`Y` to save and close the editor.
 
 Update GRUB with its new configuration:
 
-.. code-block:: bash
+.. code-block:: shell
 
    sudo update-grub
 

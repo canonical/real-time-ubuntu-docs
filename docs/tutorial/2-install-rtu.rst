@@ -10,7 +10,7 @@ Launch a shell and attach the token from your Pro dashboard to the target. Then
 enable Real-time Ubuntu, which will select the appropriate version for your OS
 and processor:
 
-.. code-block:: shell-session
+.. code-block:: shell
 
    sudo pro attach <token>
    sudo pro enable realtime-kernel
