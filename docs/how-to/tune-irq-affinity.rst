@@ -1,4 +1,4 @@
-How to Tune IRQ Affinity
+How to tune IRQ affinity
 =========================
 
 IRQ (Interrupt Request) affinity refers to assigning interrupt service routines 
@@ -27,21 +27,21 @@ handle incoming IRQs.
 First check the interruptions sources in the system, all the IRQs are listed in 
 the ``/proc/interrupts`` file. 
 
-.. code-block:: console
+.. code-block:: shell
 
-    $ cat /proc/interrupts
+    cat /proc/interrupts
 
 Its useful to monitor the IRQs while tuning the affinity. You can use the 
 ``watch`` command to monitor the IRQs in real-time:
 
-.. code-block:: bash
+.. code-block:: shell
 
     watch -n 1 cat /proc/interrupts
 
 
 First you can list the isolated CPUs:
 
-.. code-block:: bash
+.. code-block:: shell
 
     cat /sys/devices/system/cpu/isolated
 
@@ -49,7 +49,7 @@ An empty output means that no core is isolated.
 
 Then you can list all the available CPUs:
 
-.. code-block:: console
+.. code-block:: shell-session
 
     $ cat /sys/devices/system/cpu/present
 
@@ -63,7 +63,7 @@ the real-time application and the others to handle the IRQs and kthreads.
 First check which IRQ is being handled by the CPU, or sets of CPUs that you want
 to isolate. This can do either manually checking:
 
-.. code-block:: console
+.. code-block:: shell-session
 
     $ cat /proc/irq/<IRQ-NUMBER>/smp_affinity
 
@@ -77,7 +77,7 @@ allowed to handle the IRQ.
 Or you can use the :download:`check_irqs.sh` script to list the all the IRQs 
 associated  with a given CPU:
 
-.. code-block:: console
+.. code-block:: shell-session
 
     $ ./check_irqs.sh 13
 
@@ -112,11 +112,11 @@ CPUs you want. Since kernel 3.0 it's possible to use the
 want to set the IRQ 16 to be handled by the CPUs 0-12 and 14-19 (excluding the 
 CPU 13), you can run:
 
-.. code-block:: bash
+.. code-block:: shell
 
     echo 0-12,14-19 > /proc/irq/0/smp_affinity_list
 
-.. code-block:: console
+.. code-block:: shell-session
 
     $ cat /proc/irq/0/smp_affinity_list
 
@@ -139,7 +139,7 @@ CPU 13), you can run:
 
     Then you can update the grub configuration:
 
-    .. code-block:: bash
+    .. code-block:: shell
 
         sudo update-grub
 
@@ -156,13 +156,13 @@ you want to isolate.
 Now you can run your real-time application in the isolated CPUs and check if
 the IRQs are being handled by the CPUs that you want.
 
-.. code-block:: bash
+.. code-block:: shell
 
     taskset -c <CPU-NUM[s]> <COMMAND-TO-REAL-TIME-APP>
 
 Or attaching to an already running process:
 
-.. code-block:: bash
+.. code-block:: shell
 
     taskset -pc <CPU_NUM[s]> <PID>
 
@@ -170,7 +170,7 @@ Or attaching to an already running process:
 Then, you can check if th application is correctly running on the designated
 CPU cores:
 
-.. code-block:: bash
+.. code-block:: shell
 
     ps -eo psr,tid,pid,comm,%cpu,priority,nice -T | grep <PID>
 
@@ -178,7 +178,7 @@ CPU cores:
 It's also important to disable the ``irqbalance`` service, which is responsible for
 distributing IRQs across all available cores. To do so, you can run:
 
-.. code-block:: bash
+.. code-block:: shell
 
     systemctl disable irqbalance 
     systemctl stop irqbalance
@@ -188,7 +188,7 @@ Also, it's useful to keep the ``systemd`` services separated from the real-time
 application. You can do this by setting the ``CPUAffinity`` parameter in the 
 ``/etc/systemd/system.conf`` file to the cores you want to isolate. For example:
 
-.. code-block:: console
+.. code-block:: shell-session
 
     $ cat /etc/systemd/system.conf | grep CPUAffinity
 

@@ -1,4 +1,4 @@
-Kernel Boot Parameters
+Kernel boot parameters
 ======================
 
 This document lists several kernel boot parameters that are useful for tuning Real-time Ubuntu.

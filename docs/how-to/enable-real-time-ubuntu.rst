@@ -28,7 +28,7 @@ If no token is visible on your Ubuntu Pro dashboard, click the Free Personal
 Token section and it should appear. Attach your token, so the target computer
 can access Pro services:
 
-.. code-block:: shell-session
+.. code-block:: shell
 
    sudo pro attach <token>
 
@@ -42,14 +42,14 @@ and enable manually`_.
 Otherwise, install Real-time Ubuntu and automatically select the right version
 for your OS and processor:
 
-.. code-block:: shell-session
+.. code-block:: shell
 
    sudo pro enable realtime-kernel
 
 You'll need to acknowledge a warning, then you should see confirmation that the
 Real-time Ubuntu package is installed:
 
-.. code-block:: shell-session
+.. code-block:: text
 
    One moment, checking your subscription first
    Real-time Ubuntu is a beta version of the 22.04 Ubuntu kernel with the
@@ -88,7 +88,7 @@ immediately, first use the ``--access-only`` flag:
 Now that Real-time Ubuntu is accessible, you can install and enable it whenever
 you wish:
 
-.. code-block:: shell-session
+.. code-block:: shell
 
    sudo apt install ubuntu-realtime
 

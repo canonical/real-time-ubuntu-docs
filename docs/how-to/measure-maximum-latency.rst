@@ -15,7 +15,7 @@ Install
 ``cyclictest`` is part of the `rt-tests`_ package, which is a collection of 
 programs for testing the real-time capabilities of a Linux system. Install it:
 
-.. code-block:: bash
+.. code-block:: shell
 
     sudo apt install rt-tests
 
@@ -27,16 +27,16 @@ Usage
 group. Get the maximum latency of the system by running:
 
 
-.. code-block:: console 
+.. code-block:: shell 
     
-    $ sudo cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0
+    sudo cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0
 
 .. tabs::
 
     
     .. tab:: Default Ubuntu kernel
 
-        .. code-block:: console
+        .. code-block:: text
 
             # /dev/cpu_dma_latency set to 0us
             policy: fifo: loadavg: 18.66 12.77 5.80 20/410 17196          
@@ -64,7 +64,7 @@ group. Get the maximum latency of the system by running:
 
     .. tab:: Real-time Ubuntu kernel
 
-        .. code-block:: console
+        .. code-block:: text
 
             # /dev/cpu_dma_latency set to 0us
             policy: fifo: loadavg: 28.19 18.83 8.56 21/516 2798          
@@ -101,9 +101,9 @@ By default the last command runs until it receives a SIGINT signal (Ctrl+C), or
 other signal that stops the process. To limit the number of iterations use the 
 ``--loops=`` (or ``-l``) option:
 
-.. code-block:: console
+.. code-block:: shell
     
-    $ sudo cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0 --loops=100000
+    sudo cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0 --loops=100000
 
 This will run the test 100000 times.
 
@@ -111,18 +111,18 @@ Sometimes to have a comparison between different runs, it is useful to use the
 ``--duration=`` (or ``-D``) option appending 'm', 'h', or 'd' to specify 
 minutes, hours or days.
 
-.. code-block:: console
+.. code-block:: shell
     
-    $ sudo cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0 --duration=10m
+    sudo cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0 --duration=10m
 
 This will run the test for 10 minutes.
 
 The results are in microseconds(us) by default, but you can change it to nanoseconds 
 with the ``--nsecs`` (or ``-N``) option:
 
-.. code-block:: console
+.. code-block:: shell
     
-    $ sudo cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0 --nsecs
+    sudo cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0 --nsecs
 
 As described on this `OSAL`_ page, `cyclictest`  can also output a histogram of 
 the latencies using the ``--histogram`` (or ``-h``) option, which we can plot 
@@ -130,13 +130,13 @@ with `gnuplot` after some transformation.
 
 Install the `gnuplot`_ package:
 
-.. code-block:: bash
+.. code-block:: shell
 
     sudo apt install gnuplot
 
 Then, download the :download:`histogram-plot.sh` script, make it executable and run it:
 
-.. code-block:: bash
+.. code-block:: shell
 
     sudo ./histogram-plot.sh
 
@@ -168,13 +168,13 @@ The x-axis was adjusted for better visualization.
     run the test on a system with the same or very similar load that is expected in production.
     This could be done by using `stress-ng`_, so first, install it:
 
-    .. code-block:: bash
+    .. code-block:: shell
 
         sudo apt install stress-ng
 
     Then run it with the desired parameters. For example:
 
-    .. code-block:: bash
+    .. code-block:: shell
 
         sudo stress-ng --cyclic 1 --cyclic-dist 250 --cyclic-method clock_ns --cyclic-policy rr -t 3600 --log-file cyclic-stress.log --verbose
     

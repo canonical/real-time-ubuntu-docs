@@ -1,4 +1,4 @@
-Tools for Measuring Real-time Metrics
+Tools for measuring real-time metrics
 =====================================
 
 Various tools are available for measuring real-time metrics.
