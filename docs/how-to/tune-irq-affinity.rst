@@ -1,4 +1,4 @@
-How to Tune IRQ Affinity
+How to tune IRQ affinity
 =========================
 
 IRQ (Interrupt Request) affinity refers to assigning interrupt service routines 

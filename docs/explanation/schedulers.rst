@@ -1,4 +1,4 @@
-Linux Kernel Schedulers
+Linux kernel schedulers
 =======================
 
 Schedulers are like the traffic police of the kernel. They decide which process 
