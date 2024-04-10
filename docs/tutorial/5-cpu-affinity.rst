@@ -49,7 +49,7 @@ The above approach is handy for assigning a core (or cores) to several threads.
 You can also call ``sched_setaffinity()`` on an individual thread (say, within
 its thread function) to assign specific cores.
 
-A more-flexible approach can be used anywhere. Download `thread-affinity.c`_
+A more-flexible approach can be used anywhere. Download :download:`thread-affinity.c`
 and browse to where it spawns two new threads:
 
 .. code-block:: C
@@ -159,7 +159,3 @@ back. On the example system, that was done like this:
    # cat smp_affinity_list
    6
    # exit
-
-
-.. LINKS:
-.. _`thread-affinity.c`: https://github.com/lblythen/real-time-ubuntu-docs/blob/feature/doc_first-tutorial/docs/tutorial/thread-affinity.c
