@@ -10,7 +10,7 @@ determine whether a system can meet the required deadlines.
 The key tool here will be the `cyclictest`_ tool.
 
 Install
---------
+-------
 
 ``cyclictest`` is part of the `rt-tests`_ package, which is a collection of 
 programs for testing the real-time capabilities of a Linux system. Install it:
@@ -21,7 +21,7 @@ programs for testing the real-time capabilities of a Linux system. Install it:
 
 
 Usage
-------
+-----
 
 ``cyclictest`` must be run as root, with sudo, or as a member of the realtime 
 group. Get the maximum latency of the system by running:
@@ -33,8 +33,7 @@ group. Get the maximum latency of the system by running:
 
 .. tabs::
 
-    
-    .. tab:: Default Ubuntu kernel
+    .. group-tab:: Default Ubuntu kernel
 
         .. code-block:: text
 
@@ -62,7 +61,7 @@ group. Get the maximum latency of the system by running:
             T:18 (17194) P:80 I:200 C:1499845 Min:   1 Act:    3 Avg:    3 Max:      26
             T:19 (17195) P:80 I:200 C:1499842 Min:   1 Act:    4 Avg:    4 Max:     102
 
-    .. tab:: Real-time Ubuntu kernel
+    .. group-tab:: Real-time Ubuntu kernel
 
         .. code-block:: text
 
@@ -147,15 +146,16 @@ histogram. The resulted histogram will be saved in the file ``plot.png``.
 The resulting image should look like this:
 
 .. tabs::
-    .. tab:: Default Ubuntu kernel
+
+    .. group-tab:: Default Ubuntu kernel
 
         .. image:: default-kernel-plot.png
            :width: 80%
            :align: center
            :alt: latencies histogram plot - default kernel
-        
-    .. tab:: Real-time Ubuntu kernel
-        
+
+    .. group-tab:: Real-time Ubuntu kernel
+
         .. image:: rt-kernel-plot.png
             :width: 80%
             :align: center
