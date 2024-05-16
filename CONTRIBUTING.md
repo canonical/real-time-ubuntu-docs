@@ -1,9 +1,9 @@
-# Contributing to Real-time Ubuntu
+# Contributing to Real-time Ubuntu docs
 
 The [Real-time Ubuntu documentation] lives in the `docs/` directory and is deployed on Read the Docs.
-It is written using the [reStructuredText] format and built using [Sphinx].
+It is written in [reStructuredText] and built with [Sphinx].
 
-The documentation should follow the [style guide] in use for documentation at Canonical.
+The documentation should follow the [Canonical documentation style guide] in use for documentation at Canonical.
 
 To install everything you need, go to the `docs/` directory and type:
 
@@ -36,4 +36,4 @@ Submit your documentation changes via a pull request.
 [Read the Docs]: https://www.readthedocs.com
 [reStructuredText]: https://docutils.sourceforge.io/rst.html
 [Sphinx]: https://www.sphinx-doc.org
-[style guide]: https://docs.ubuntu.com/styleguide/en
+[Canonical documentation style guide]: https://docs.ubuntu.com/styleguide/en
