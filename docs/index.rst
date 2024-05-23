@@ -75,8 +75,8 @@ Project and community
    accepted.
 
 The Real-time Ubuntu project welcomes community contributions, suggestions,
-fixes and constructive feedback. If you wish to contribute to Real-time Ubuntu,
-consult the top-level CONTRIBUTING guide in the `project's repository`_.
+fixes and constructive feedback. If you wish to contribute to the Real-time
+Ubuntu docs, consult the `CONTRIBUTING guide`_.
 
 Before raising a pull request, it's generally worth `opening an issue`_ to
 discuss any proposed change unless it's trivial. Then, if you decide to raise a
@@ -92,7 +92,7 @@ it's the easiest way to grant us permission to use your contributions.
 
 
 .. LINKS
-.. _project's repository: https://github.com/canonical/real-time-ubuntu-docs
+.. _CONTRIBUTING guide: https://github.com/canonical/real-time-ubuntu-docs/blob/main/CONTRIBUTING.md
 .. _opening an issue: https://github.com/canonical/real-time-ubuntu-docs/issues
 .. _Canonical contributor agreement: https://ubuntu.com/legal/contributors
 .. _Code of Conduct: https://ubuntu.com/community/ethos/code-of-conduct
