@@ -93,6 +93,7 @@ namespace
 namespaces
 NodePort
 nohz
+Numbat
 observability
 OEM
 OLM
