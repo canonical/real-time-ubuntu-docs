@@ -11,8 +11,7 @@ passing in command lines via a bootloader.
 Prerequisites
 -------------
 
-You'll need Real-time Ubuntu, installed on a computer running Ubuntu 22.04 LTS
-("Jammy Jellyfish"). A native installation is preferred: observations of
+You'll need Real-time Ubuntu. A native installation is preferred: observations of
 real-time performance on a virtual machine can be misleading. To install
 Real-time Ubuntu, :doc:`enable-real-time-ubuntu` is recommended reading.
 

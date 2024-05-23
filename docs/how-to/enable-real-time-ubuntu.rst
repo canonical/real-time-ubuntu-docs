@@ -4,8 +4,8 @@ How to enable Real-time Ubuntu
 Prerequisites
 -------------
 
-Currently, `Real-time Ubuntu`_ is supported only on Ubuntu 22.04 LTS ("Jammy
-Jellyfish"). `Contact the real-time team`_ for further information.
+`Real-time Ubuntu`_ is supported on specific Ubuntu releases; see :doc:`../reference/releases`.
+
 
 Attach an Ubuntu Pro token
 --------------------------
@@ -97,6 +97,5 @@ After rebooting, you'll be running Real-time Ubuntu.
 
 .. LINKS
 .. _Real-time Ubuntu: https://ubuntu.com/real-time
-.. _contact the real-time team: https://ubuntu.com/kernel/real-time/contact-us
 .. _Ubuntu Pro: https://ubuntu.com/pro
 .. _compatible with Real-time Ubuntu: https://canonical-ubuntu-pro-client.readthedocs-hosted.com/en/latest/references/compatibility_matrix/
