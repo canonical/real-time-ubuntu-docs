@@ -41,7 +41,7 @@ dstat
 -----
 
 The `dstat`_ is a versatile tool for generating system resource statistics.
-The tool can be installed with the ``dstat`` Debian package.
+The tool is supported up to Ubuntu 23.10 and can be installed with the ``dstat`` Debian package.
 
 .. code-block:: shell
 
@@ -53,6 +53,9 @@ where:
 * ``--top-int``: Shows most frequent interrupt.
 
 This command displays system resource statistics with timestamps and shows most frequent interrupts.
+
+On Ubuntu 24.04, the ``dstat`` command is provided by the ``pcp`` package, which has a different (newer) implementation and plugins.
+For example, the ``--top-int`` option mentioned above is currently not supported.
 
 oslat
 -------
