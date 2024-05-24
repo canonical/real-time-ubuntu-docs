@@ -7,6 +7,6 @@ other features of Real-time Ubuntu.
 .. toctree::
    :maxdepth: 1
 
-   tools-for-easuring-real-time-metrics
+   real-time-metrics-tools
    kernel-boot-parameters
 
