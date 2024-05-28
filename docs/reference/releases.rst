@@ -13,7 +13,7 @@ The following table shows the Ubuntu releases that support Real-time Ubuntu:
    * - Ubuntu 22.04
      - Jammy Jellyfish 
      - 5.15
-   * - Ubuntu 24.04
+   * - Ubuntu 24.04 LTS
      - Noble Numbat
      - 6.8
 
