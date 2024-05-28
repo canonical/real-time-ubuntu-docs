@@ -40,21 +40,12 @@ This command runs a test case that is relevant for most Symmetric Multiprocessin
 dstat
 -----
 
-`Dstat`_ is a versatile tool for generating system resource statistics.
-
-Prerequisite
-~~~~~~~~~~~~
-
-You need to install the ``dstat`` Debian package.
-
-Usage
-~~~~~
+`dstat`_ is a versatile tool for generating system resource statistics.
+The tool can be installed with the ``dstat`` Debian package.
 
 .. note::
-   In Ubuntu 24.04 LTS, the ``dstat`` command is provided by the ``pcp`` package
+   On Ubuntu 24.04, the ``dstat`` command is provided by the ``pcp`` package
    and does not support the ``--top-init`` option.
-
-This command displays system resource statistics with timestamps and shows most frequent interrupts.
 
 .. code-block:: shell
 
@@ -64,6 +55,8 @@ where:
 
 * ``--time``: Enables time/date output.
 * ``--top-int``: Shows most frequent interrupt.
+
+This command displays system resource statistics with timestamps and shows most frequent interrupts.
 
 oslat
 -----
@@ -165,7 +158,7 @@ This could be used to monitor real-time observation of system activities such as
 .. LINKS
 
 .. _cyclictest: https://man.archlinux.org/man/cyclictest.8.en
-.. _Dstat: https://manpages.ubuntu.com/manpages/jammy/man1/pcp-dstat.1.html
+.. _dstat: https://manpages.ubuntu.com/manpages/jammy/man1/pcp-dstat.1.html
 .. _oslat: https://manpages.ubuntu.com/manpages/jammy/man8/oslat.8.html
 .. _ps: https://www.man7.org/linux/man-pages/man1/ps.1.html
 .. _perf: https://www.man7.org/linux/man-pages/man1/perf.1.html

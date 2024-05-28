@@ -10,7 +10,7 @@ The following table shows the Ubuntu releases that support Real-time Ubuntu:
    * - Version
      - Code name
      - Real-time Kernel Version
-   * - Ubuntu 22.04
+   * - Ubuntu 22.04 LTS
      - Jammy Jellyfish 
      - 5.15
    * - Ubuntu 24.04 LTS
