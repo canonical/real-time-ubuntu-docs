@@ -8,9 +8,9 @@ Real-time Ubuntu
    drawn from the PM's contribution alone. It should be updated once a *Common
    understanding* has been reached.
 
-Real-time Ubuntu is a Jammy Jellyfish 22.04 LTS kernel with the PREEMPT_RT
-patches applied.
+`Real-time Ubuntu`_ is Ubuntu with a real-time kernel.
 
+Ubuntu's real-time kernel includes the `PREEMPT_RT`_ patchset.
 It changes Linux's default scheduler to a priority-based one, increasing
 predictability by modifying the existing kernel code. Real-time Ubuntu is more
 pre-emptive than mainline, delivering determinism and lower latency.
@@ -92,6 +92,8 @@ it's the easiest way to grant us permission to use your contributions.
 
 
 .. LINKS
+.. _Real-time Ubuntu: https://ubuntu.com/real-time
+.. _PREEMPT_RT: https://wiki.linuxfoundation.org/realtime/documentation/technical_details/start
 .. _CONTRIBUTING guide: https://github.com/canonical/real-time-ubuntu-docs/blob/main/CONTRIBUTING.md
 .. _opening an issue: https://github.com/canonical/real-time-ubuntu-docs/issues
 .. _Canonical contributor agreement: https://ubuntu.com/legal/contributors

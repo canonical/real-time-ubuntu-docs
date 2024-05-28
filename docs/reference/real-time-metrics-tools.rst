@@ -40,8 +40,12 @@ This command runs a test case that is relevant for most Symmetric Multiprocessin
 dstat
 -----
 
-The `dstat`_ is a versatile tool for generating system resource statistics.
+`dstat`_ is a versatile tool for generating system resource statistics.
 The tool can be installed with the ``dstat`` Debian package.
+
+.. note::
+   On Ubuntu 24.04, the ``dstat`` command is provided by the ``pcp`` package
+   and does not support the ``--top-init`` option.
 
 .. code-block:: shell
 
@@ -55,7 +59,7 @@ where:
 This command displays system resource statistics with timestamps and shows most frequent interrupts.
 
 oslat
--------
+-----
 
 The `oslat`_ program is designed to identify thread latency at the
 OS level caused by unexpected system scheduling or interruptions such as system ticks.
