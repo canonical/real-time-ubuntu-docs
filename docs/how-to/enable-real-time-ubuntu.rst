@@ -35,7 +35,7 @@ can access Pro services:
 Install and enable automatically
 --------------------------------
 
-Real-time Ubuntu kernel is installed using the APT package manager. If you wish to
+The Real-time Ubuntu kernel is installed using the APT package manager. If you wish to
 access the repository but not install the package immediately, skip to `Install
 and enable manually`_.
 
@@ -43,7 +43,7 @@ Otherwise, install Real-time Ubuntu and automatically select the right version
 for your OS and processor:
 
 .. note::
-   The different variants of the realtime kernel aren't available in very Ubuntu release.
+   The different variants of the realtime kernel aren't available in every Ubuntu release.
    Refer to :doc:`../reference/releases` for details.
 
 Choose Generic or a corresponding variant:
