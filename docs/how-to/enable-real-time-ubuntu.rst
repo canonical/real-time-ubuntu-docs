@@ -61,7 +61,7 @@ Choose Generic or a corresponding variant:
          Using the Pro client to install it on these platforms will make the system unusable.
 
    .. group-tab:: Raspberry Pi
-      For Raspberry Pi 4 or 5:
+      For Raspberry Pi 4 and 5:
 
       .. code-block:: shell
 
