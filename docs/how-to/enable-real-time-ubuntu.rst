@@ -52,16 +52,19 @@ Real-time Ubuntu package is installed:
 .. code-block:: text
 
    One moment, checking your subscription first
-   Real-time Ubuntu is a beta version of the 22.04 Ubuntu kernel with the
-   PREEMPT_RT patchset integrated for x86_64 and ARM64.
+   Real-time kernel cannot be enabled with Livepatch.
+   Disable Livepatch and proceed to enable Real-time kernel? (y/N) y
+   Disabling incompatible service: Livepatch
+   The Real-time kernel is an Ubuntu kernel with PREEMPT_RT patches integrated.
 
-   This will change your kernel. You will need to manually configure grub to
-   revert back to your original kernel after enabling real-time.
+   This will change your kernel. To revert to your original kernel, you will need
+   to make the change manually.
 
-   Do you want to continue? [ default = Yes ]: (Y/n) yes
-   Updating package lists
-   Installing Real-time Ubuntu packages
-   Real-time Ubuntu enabled
+   Do you want to continue? [ default = Yes ]: (Y/n) Y
+   Updating Real-time kernel package lists
+   Updating standard Ubuntu package lists
+   Installing Real-time kernel packages
+   Real-time kernel enabled
    A reboot is required to complete install.
 
 After rebooting, you'll be running Real-time Ubuntu.
@@ -77,9 +80,12 @@ immediately, first use the ``--access-only`` flag:
    $ sudo pro enable realtime-kernel --access-only
 
    One moment, checking your subscription first
-   Updating package lists
+   Real-time kernel cannot be enabled with Livepatch.
+   Disable Livepatch and proceed to enable Real-time kernel? (y/N) y
+   Disabling incompatible service: Livepatch
+   Updating Real-time kernel package lists
    Skipping installing packages: ubuntu-realtime
-   Real-time Ubuntu access enabled
+   Real-time kernel access enabled
 
 .. important::
 
