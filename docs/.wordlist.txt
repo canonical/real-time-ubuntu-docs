@@ -112,6 +112,7 @@ proc
 ps
 psr
 Permalink
+raspi
 RCU
 ReadMe
 realtime

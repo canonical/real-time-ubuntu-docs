@@ -38,16 +38,44 @@ a web browser:
 Install and enable automatically
 --------------------------------
 
-Real-time Ubuntu is installed using the APT package manager. If you wish to
+The Real-time Ubuntu kernel is installed using the APT package manager. If you wish to
 access the repository but not install the package immediately, skip to `Install
 and enable manually`_.
 
 Otherwise, install Real-time Ubuntu and automatically select the right version
 for your OS and processor:
 
-.. code-block:: shell
+.. note::
+   The different variants of the realtime kernel aren't available in every Ubuntu release.
+   Refer to :doc:`../reference/releases` for details.
 
-   sudo pro enable realtime-kernel
+Choose Generic or a corresponding variant:
+
+.. tabs::
+
+   .. group-tab:: Generic
+
+      .. code-block:: shell
+
+         sudo pro enable realtime-kernel
+      
+      .. caution::
+         The generic realtime kernel is not intended for Raspberry Pi.
+         Using the Pro client to install it on these platforms will make the system unusable.
+
+   .. group-tab:: Raspberry Pi
+      For Raspberry Pi 4 and 5:
+
+      .. code-block:: shell
+
+         sudo pro enable realtime-kernel --variant=raspi
+
+   .. group-tab:: Intel IOTG
+      For 12th Gen Intel® Core™ processors:
+
+      .. code-block:: shell
+
+         sudo pro enable realtime-kernel --variant=intel-iotg
 
 You'll need to acknowledge a warning, then you should see confirmation that the
 Real-time Ubuntu package is installed:
@@ -95,11 +123,14 @@ immediately, first use the ``--access-only`` flag:
    The ``--access-only`` flag was introduced in Pro Client version 27.11.
 
 Now that Real-time Ubuntu is accessible, you can install and enable it whenever
-you wish:
+you wish.
+
+For example, to install the generic realtime kernel (not suitable for Raspberry Pi):
 
 .. code-block:: shell
 
    sudo apt install ubuntu-realtime
+
 
 After rebooting, you'll be running Real-time Ubuntu.
 
