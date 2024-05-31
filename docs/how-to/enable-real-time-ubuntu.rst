@@ -24,13 +24,16 @@ use.
    when you install Real-time Ubuntu, Pro will offer to disable it before
    continuing.
 
-If no token is visible on your Ubuntu Pro dashboard, click the Free Personal
-Token section and it should appear. Attach your token, so the target computer
-can access Pro services:
+When running this command without a token, it will generate a short code
+and prompt you to attach the machine to your Ubuntu Pro account using
+a web browser:
 
 .. code-block:: shell
 
-   sudo pro attach <token>
+   sudo pro attach
+
+.. tip::
+   Set ``-h``/ ``--help`` flag to see the user manual for this or any other Pro command.
 
 Install and enable automatically
 --------------------------------
