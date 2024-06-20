@@ -1,36 +1,37 @@
 How to Configure Boot parameters on Ubuntu Core 
 ================================================
 
-Different from classic versions of Ubuntu (Desktop and Server), `Ubuntu Core`_ is a minimal, secure and strictly
-confined operating system designed to run on embedded systems, such as IoT devices.
+Different from classic versions of Ubuntu (Desktop and Server), `Ubuntu Core`_ is a minimal, secure and strictly confined operating system designed to run on embedded systems, such as IoT devices.
 Ubuntu Core is a snap-based operating system, meaning it uses snap packages to manage applications and services.
-Its read-only nature makes it a very secure and reliable operating system but also makes it a bit more difficult to
-configure certain aspects of the system, such as boot parameters.
+Its read-only nature makes it a very secure and reliable operating system but also makes it a bit more difficult to configure certain aspects of the system, such as boot parameters.
 
+This how-to guide assumes the use of a `pre-built Ubuntu Core image`_ on a physical device rather than a virtual machine.
+While a virtual machine can be used to follow the steps in this guide, it will not provide the benefits of a real-time kernel.
 
 Configure boot parameters
 -------------------------
 
-As UC doesn't have the file :code:`/etc/default/grub` mapped for the kernel parameters, neither the `update-grub`_
-utility, it's necessary to use the `snap set`_. There are two ways to set the kernel parameters:
+As UC doesn't have the file :code:`/etc/default/grub` mapped for the kernel parameters, neither the `update-grub`_ utility, it's necessary to use the `snap set`_.
+There are two ways to set the kernel parameters:
 
 - `system system.kernel.cmdline-append`_
 - `system system.kernel.dangerous-cmdline-append`_
 
-The first one is used to dynamically append permitted kernel boot parameters that are verified against an `allow list`_
-in the `gadget snap`_, while the second one is used to append kernel boot parameters considered risky according to that
-specific gadget snap. When using the :code:`pc-gadget` or the :code:`pi-gadget`, it is advisable to use the 
-`system.kernel.dangerous-cmdline-append` option, as the allow list is not present in those gadget snaps. 
+The first one is used to dynamically append permitted kernel boot parameters that are verified against an `allow list`_ in the `gadget snap`_. 
+The second one is used to append kernel boot parameters considered risky according to that specific gadget snap.
+
+When using the :code:`pc-gadget` or the :code:`pi-gadget`, it is advisable to use the `system.kernel.dangerous-cmdline-append` option, as the allow list is not present in those gadget snaps. 
 However, in the case of `building a gadget snap`_ independently, it is possible to implement the allow list.
 
-The kernel parameters in the snap configurations exactly match the `kernel parameters`_ that would be passed to the 
-kernel on the grub command line, the :code:`GRUB_CMDLINE_LINUX_DEFAULT` on :code:`/etc/default/grub` file. 
+The kernel parameters in the snap configurations exactly match the `kernel parameters`_ that would be passed to the kernel on the grub command line, the :code:`GRUB_CMDLINE_LINUX_DEFAULT` on :code:`/etc/default/grub` file. 
 Parameters are passed as a single string in the :code:`key=value` format, with each parameter separated by a space.
 
 In the case of real-time kernel parameters, the most interesting parameters are `nohz`_, `nohz_full`_ and `irqaffinity`_.
-The :code:`nohz` is used to enable/disable dynamic ticks (possible values are `on` or `off`), the :code:`nohz_full` 
-receives a `cpu list`_ where you say in which CPUs the dynamic ticks will be disabled, and the `irqaffinity` is used to 
-set the affinity of the IRQs to the CPUs, in other words: which CPUs will handle the IRQs.
+The :code:`nohz` is used to enable/disable dynamic ticks (possible values are `on` or `off`). 
+The :code:`nohz_full` receives a `cpu list`_ specifying which CPUs will have dynamic ticks disabled. 
+The `irqaffinity` is used to set the affinity of the IRQs to the CPUs, in other words: which CPUs will handle the IRQs.
+
+For example:
 
 .. code-block:: bash
     
@@ -46,7 +47,7 @@ Then you can check if the parameters were applied:
     snapd_recovery_mode=run console=ttyS0,115200n8 console=tty1 panic=-1 nohz=on nohz_full=2-N irqaffinity=0-1
 
 
-You may wish to undo the modifications made to the kernel parameters. To do so, you can use the `snap unset`_ command:
+To undo the modifications made to the kernel parameters, use the `snap unset`_ command:
 
 .. code-block:: bash
 
@@ -68,3 +69,4 @@ You may wish to undo the modifications made to the kernel parameters. To do so, 
 .. _irqaffinity: https://docs.kernel.org/core-api/irq/irq-affinity.html
 .. _snap unset: https://snapcraft.io/docs/set-system-options
 .. _building a gadget snap: https://ubuntu.com/core/docs/gadget-building
+.. _pre-built Ubuntu Core image: https://ubuntu.com/core/docs/install-on-a-device
