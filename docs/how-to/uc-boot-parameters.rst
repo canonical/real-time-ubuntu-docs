@@ -19,9 +19,9 @@ utility, it's necessary to use the `snap set`_. There are two ways to set the ke
 
 The first one is used to dynamically append permitted kernel boot parameters that are verified against an `allow list`_
 in the `gadget snap`_, while the second one is used to append kernel boot parameters considered risky according to that
-specific gadget snap. In the case that you're interested in using the :code:`pc-gadget` or the :code:`pi-gadget`, you
-should use the `system system.kernel.dangerous-cmdline-append` option, since the allow list isn't present on those 
-gadget snaps, but if you want to `build a gadget snap`_ yourself, you can implement it.
+specific gadget snap. When using the :code:`pc-gadget` or the :code:`pi-gadget`, it is advisable to use the 
+`system.kernel.dangerous-cmdline-append` option, as the allow list is not present in those gadget snaps. 
+However, in the case of `building a gadget snap`_ independently, it is possible to implement the allow list.
 
 The kernel parameters in the snap configurations exactly match the `kernel parameters`_ that would be passed to the 
 kernel on the grub command line, the :code:`GRUB_CMDLINE_LINUX_DEFAULT` on :code:`/etc/default/grub` file. 
@@ -67,4 +67,4 @@ You may wish to undo the modifications made to the kernel parameters. To do so, 
 .. _cpu list: https://docs.kernel.org/admin-guide/kernel-parameters.html#cpu-lists
 .. _irqaffinity: https://docs.kernel.org/core-api/irq/irq-affinity.html
 .. _snap unset: https://snapcraft.io/docs/set-system-options
-.. _build a gadget snap: https://ubuntu.com/core/docs/gadget-building
+.. _building a gadget snap: https://ubuntu.com/core/docs/gadget-building
