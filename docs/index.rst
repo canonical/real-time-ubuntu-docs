@@ -41,8 +41,7 @@ In this documentation
    .. grid-item:: :doc:`How-to <how-to/index>`
 
       **Step-by-step guides** covering key operations and common tasks,
-      including :doc:`installation <how-to/enable-real-time-ubuntu>` and
-      :doc:`configuration <how-to/cpu-boot-configs>`.
+      including installation and configuration.
 
 .. grid:: 1 1 2 2
    :reverse:
