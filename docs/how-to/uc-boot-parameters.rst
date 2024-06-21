@@ -20,8 +20,11 @@ There are two ways to set the kernel parameters:
 The first one is used to dynamically append permitted kernel boot parameters that are verified against an `allow list`_ in the `gadget snap`_. 
 The second one is used to append kernel boot parameters considered risky according to that specific gadget snap.
 
-When using the :code:`pc-gadget` or the :code:`pi-gadget`, it is advisable to use the `system.kernel.dangerous-cmdline-append` option, as the allow list is not present in those gadget snaps. 
-However, in the case of `building a gadget snap`_ independently, it is possible to implement the allow list.
+When using the trial images, you need to use the 
+`system.kernel.dangerous-cmdline-append` option, as the allow list is not present in the reference gadget snaps
+(`pc-gadget`_ and `pi-gadget`_).  
+
+When creating a custom `gadget snap`_ for a real-time Ubuntu Core system, it is advisable to add an allow list with the relevant parameters.
 
 The kernel parameters in the snap configurations exactly match the `kernel parameters`_ that would be passed to the kernel on the grub command line, the :code:`GRUB_CMDLINE_LINUX_DEFAULT` on :code:`/etc/default/grub` file. 
 Parameters are passed as a single string in the :code:`key=value` format, with each parameter separated by a space.
