@@ -20,9 +20,7 @@ There are two ways to set the kernel parameters:
 The first one is used to dynamically append permitted kernel boot parameters that are verified against an `allow list`_ in the `gadget snap`_. 
 The second one is used to append kernel boot parameters considered risky according to that specific gadget snap.
 
-When using the trial images, you need to use the 
-`system.kernel.dangerous-cmdline-append` option, as the allow list is not present in the reference gadget snaps
-(`pc-gadget`_ and `pi-gadget`_).  
+When using the `trial images`_, you need to use the `system.kernel.dangerous-cmdline-append` option, as the allow list is not present in the reference gadget snaps (`pc-gadget`_ and `pi-gadget`_).  
 
 When creating a custom `gadget snap`_ for a real-time Ubuntu Core system, it is advisable to add an allow list with the relevant parameters.
 
@@ -72,4 +70,6 @@ To undo the modifications made to the kernel parameters, use the `snap unset`_ c
 .. _irqaffinity: https://docs.kernel.org/core-api/irq/irq-affinity.html
 .. _snap unset: https://snapcraft.io/docs/set-system-options
 .. _building a gadget snap: https://ubuntu.com/core/docs/gadget-building
-.. _pre-built Ubuntu Core image: https://ubuntu.com/core/docs/install-on-a-device
+.. _trial images: https://ubuntu.com/core/docs/install-on-a-device
+.. _pc-gadget: https://github.com/snapcore/pc-gadget
+.. _pi-gadget: https://github.com/snapcore/pi-gadget
