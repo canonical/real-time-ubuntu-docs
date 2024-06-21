@@ -36,22 +36,26 @@ In this documentation
 
    .. grid-item:: :doc:`Tutorial <tutorial/index>`
 
-      **Start here**: a hands-on introduction to Real-time Ubuntu for new users
+      **Start here**: a hands-on introduction to Real-time Ubuntu for new users.
 
    .. grid-item:: :doc:`How-to <how-to/index>`
 
-      **Step-by-step guides** covering key operations and common tasks
+      **Step-by-step guides** covering key operations and common tasks,
+      including installation and configuration.
 
 .. grid:: 1 1 2 2
    :reverse:
 
    .. grid-item:: :doc:`Reference <reference/index>`
 
-      **Technical information** --- specifications, APIs, architecture
+      **Technical information** about
+      :doc:`metric tools <reference/real-time-metrics-tools>`,
+      :doc:`boot parameters <reference/kernel-boot-parameters>` and
+      :doc:`supported releases <reference/releases>`.
 
-   .. grid-item:: :doc:`Explanation <explanation/index>`
+   .. grid-item:: Explanation
 
-      **Discussion and clarification** of key topics
+      **Conceptual information** about :doc:`explanation/schedulers`.
 
 .. toctree::
    :maxdepth: 1
@@ -60,7 +64,7 @@ In this documentation
    tutorial/index
    how-to/index
    reference/index
-   explanation/index
+   Explanation: Linux kernel schedules <explanation/schedulers>
 
 ---------
 
