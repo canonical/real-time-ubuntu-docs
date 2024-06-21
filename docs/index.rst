@@ -54,7 +54,7 @@ In this documentation
       :doc:`boot parameters <reference/kernel-boot-parameters>` and
       :doc:`supported releases <reference/releases>`.
 
-   .. grid-item:: :doc:`Explanation <explanation/schedulers>`
+   .. grid-item:: Explanation
 
       **Conceptual information** about :doc:`explanation/schedulers`.
 
