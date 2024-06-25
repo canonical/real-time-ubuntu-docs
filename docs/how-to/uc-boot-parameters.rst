@@ -13,10 +13,10 @@ Configure boot parameters
 
 Ubuntu Core doesn't have the :code:`/etc/default/grub` file mapped for the kernel parameters, neither the `update-grub`_ utility.
 Instead, the kernel parameters should be modified `using snap options`_.
-There are two ways to set the kernel parameters:
+There are two snap options for setting the kernel parameters:
 
-- `system system.kernel.cmdline-append`_
-- `system system.kernel.dangerous-cmdline-append`_
+- `system.kernel.cmdline-append`_
+- `system.kernel.dangerous-cmdline-append`_
 
 The first one is used to dynamically append permitted kernel boot parameters that are verified against an `allow list`_ in the `gadget snap`_. 
 The second one is used to append any other kernel boot parameters, considered as unvetted by the gadget snap.
@@ -60,8 +60,8 @@ To undo the modifications made to the kernel parameters, use the `snap unset`_ c
 .. _Ubuntu Core: https://ubuntu.com/core
 .. _update-grub: https://manpages.ubuntu.com/manpages/xenial/man8/update-grub.8.html
 .. _snap set: https://ubuntu.com/core/docs/modify-kernel-options
-.. _system system.kernel.cmdline-append: https://snapcraft.io/docs/system-options#heading--kernel-cmdline-append
-.. _system system.kernel.dangerous-cmdline-append: https://snapcraft.io/docs/system-options#heading--kernel-dangerous-cmdline-append
+.. _system.kernel.cmdline-append: https://snapcraft.io/docs/system-options#heading--kernel-cmdline-append
+.. _system.kernel.dangerous-cmdline-append: https://snapcraft.io/docs/system-options#heading--kernel-dangerous-cmdline-append
 .. _gadget snap: https://snapcraft.io/docs/gadget-snap
 .. _allow list: https://snapcraft.io/docs/the-gadget-snap#heading--dynamic
 .. _nohz: https://docs.kernel.org/timers/no_hz.html
