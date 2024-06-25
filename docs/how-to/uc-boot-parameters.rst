@@ -11,7 +11,8 @@ While a virtual machine can be used to follow the steps in this guide, it will n
 Configure boot parameters
 -------------------------
 
-As UC doesn't have the file :code:`/etc/default/grub` mapped for the kernel parameters, neither the `update-grub`_ utility, it's necessary to use the `snap set`_.
+Ubuntu Core doesn't have the :code:`/etc/default/grub` file mapped for the kernel parameters, neither the `update-grub`_ utility.
+Instead, the kernel parameters should be modified `using snap options`_.
 There are two ways to set the kernel parameters:
 
 - `system system.kernel.cmdline-append`_
