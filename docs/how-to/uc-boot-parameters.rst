@@ -1,4 +1,4 @@
-How to Configure Boot parameters on Ubuntu Core 
+How to configure boot parameters on Ubuntu Core 
 ================================================
 
 Different from classic versions of Ubuntu (Desktop and Server), `Ubuntu Core`_ is a minimal, secure and strictly confined operating system designed to run on embedded systems, such as IoT devices.
