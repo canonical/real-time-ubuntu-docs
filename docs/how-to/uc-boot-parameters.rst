@@ -19,7 +19,7 @@ There are two ways to set the kernel parameters:
 - `system system.kernel.dangerous-cmdline-append`_
 
 The first one is used to dynamically append permitted kernel boot parameters that are verified against an `allow list`_ in the `gadget snap`_. 
-The second one is used to append kernel boot parameters considered risky according to that specific gadget snap.
+The second one is used to append any other kernel boot parameters, considered as unvetted by the gadget snap.
 
 When using the `trial images`_, you need to use the `system.kernel.dangerous-cmdline-append` option, as the allow list is not present in the reference gadget snaps (`pc-gadget`_ and `pi-gadget`_).  
 
