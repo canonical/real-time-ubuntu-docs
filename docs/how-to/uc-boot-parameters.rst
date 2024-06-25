@@ -28,7 +28,7 @@ When creating a custom `gadget snap`_ for a real-time Ubuntu Core system, it is 
 The kernel parameters in the snap configurations exactly match the `kernel parameters`_ that would be passed to the kernel on the grub command line, the :code:`GRUB_CMDLINE_LINUX_DEFAULT` on :code:`/etc/default/grub` file. 
 Parameters are passed as a single string in the :code:`key=value` format, with each parameter separated by a space.
 
-In the case of `real-time kernel parameters, the most interesting parameters are `nohz`_, `nohz_full`_ and `irqaffinity`_.
+In the case of :doc:`real-time kernel parameters <../reference/kernel-boot-parameters>`, the most interesting parameters are `nohz`_, `nohz_full`_ and `irqaffinity`_.
 The :code:`nohz` is used to enable/disable dynamic ticks (possible values are `on` or `off`). 
 The :code:`nohz_full` receives a `cpu list`_ specifying which CPUs will have dynamic ticks disabled. 
 The `irqaffinity` is used to set the affinity of the IRQs to the CPUs, in other words: which CPUs will handle the IRQs.
@@ -74,4 +74,5 @@ To undo the modifications made to the kernel parameters, use the `snap unset`_ c
 .. _trial images: https://ubuntu.com/core/docs/install-on-a-device
 .. _pc-gadget: https://github.com/snapcore/pc-gadget
 .. _pi-gadget: https://github.com/snapcore/pi-gadget
-.. _real-time kernel parameters: /reference/kernel/kernel-boot-parameters
+.. _using snap options: https://snapcraft.io/docs/system-options
+.. _pre-built Ubuntu Core image: https://ubuntu.com/core/docs/install-on-a-device
