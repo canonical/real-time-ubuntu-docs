@@ -70,6 +70,9 @@ Choose Generic or a corresponding variant:
 
          sudo pro enable realtime-kernel --variant=raspi
 
+      If this fails with ``could not find entitlement named "raspi"``, update the Pro client and retry:
+      ``sudo apt update && sudo apt install ubuntu-pro-client``.
+
    .. group-tab:: Intel IOTG
       For 12th Gen Intel® Core™ processors:
 
