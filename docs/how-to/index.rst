@@ -22,6 +22,6 @@ Tune performance for real-time processing:
 
 .. toctree::
    :maxdepth: 1
-
-   Configure CPUs for real-time processing <cpu-boot-configs>
+   
+   Configure kernel boot parameters <kernel-boot-parameters>
    Tune IRQ affinity <tune-irq-affinity>

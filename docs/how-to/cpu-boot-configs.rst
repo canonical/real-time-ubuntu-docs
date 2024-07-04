@@ -1,5 +1,17 @@
+:orphan:
+:nosearch:
+
 How to configure CPUs for real-time processing
 ==============================================
+
+.. warning::
+   Deprecated document.
+
+   Refer to:
+   
+   * `How to configure kernel boot parameters <../kernel-boot-parameters>`_
+   * `Kernel boot parameters <../../reference/kernel-boot-parameters>`_
+
 
 This is a guide to configuring CPUs for real-time processing, by passing
 startup commands to `Real-time Ubuntu`_.
