@@ -1,11 +1,12 @@
-How to configure kernel boot parameters
+How to modify kernel boot parameters
 =======================================
 
 The real-time performance-tuning features compiled into the kernel can be
 controlled by various means. The approach used here is a common one:
 passing command line parameters via a bootloader.
 
-The Linux kernel supports a wide range of parameters, but only a few of them are relevant to real-time tuning. The `kernel boot parameters <../../reference/kernel-boot-parameters>`_ page is good a reference.
+The Linux kernel supports a wide range of parameters, but only a few of them are relevant to real-time tuning.
+The `kernel boot parameters <../../reference/kernel-boot-parameters>`_ page is good a reference.
 
 Depending on the underlying boot mechanism, there are multiple ways to pass command line parameters to the kernel.
 

@@ -9,7 +9,7 @@ How to configure CPUs for real-time processing
 
    Refer to:
    
-   * `How to configure kernel boot parameters <../kernel-boot-parameters>`_
+   * `How to modify kernel boot parameters <../modify-kernel-boot-parameters>`_
    * `Kernel boot parameters <../../reference/kernel-boot-parameters>`_
 
 
