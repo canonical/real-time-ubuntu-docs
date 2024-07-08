@@ -127,7 +127,7 @@ CPU 13), you can run:
     The changes made on the ``/proc`` filesystem are not persistent, meaning that
     the changes will be lost after a reboot. To make the changes persistent, you
     can set the ``irqaffinity`` parameter as a persistent parameter as
-    described in `how to modify kernel boot parameters <../modify-kernel-boot-parameters>`_. 
+    described in :doc:`modify-kernel-boot-parameters`. 
     For example, to isolate the CPU 13 in a system with 20 cpus and leave the IRQs
     to be handled by the CPUs 0-12 and 14-19, you can add the following: 
     ``irqaffinity=0-12,14-19``
