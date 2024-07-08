@@ -22,7 +22,7 @@ strictly ascending order. Use a comma to separate individual numbers, with no
 space on either side.
 
 Ranges
-^^^^^^
+~~~~~~
 
 You may include ranges in a CPU list, to avoid specifying every CPU by its
 number.
@@ -59,7 +59,6 @@ Non-compliant examples:
 
 * ``1-8`` (invalid in, say, an eight-CPU system, whose highest CPU number
   should be '7')
-
 
 Real-time tuning parameters
 ---------------------------
