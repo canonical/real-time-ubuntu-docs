@@ -42,7 +42,7 @@ In this documentation
 
       **Step-by-step guides** covering key operations and common tasks, such as
       :doc:`installing the real-time kernel <how-to/enable-real-time-ubuntu>` and
-      :doc:`configuring the CPUs <how-to/cpu-boot-configs>`.
+      :doc:`configuring the boot parameters <how-to/kernel-boot-parameters>`.
 
 .. grid:: 1 1 2 2
    :reverse:
