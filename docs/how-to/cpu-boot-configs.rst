@@ -4,6 +4,7 @@ How to configure CPUs for real-time processing
 You can tune the performance of Real-time Ubuntu by configuring the interaction between the kernel and CPUs.
 Keep in mind that there is no one-size-fits-all approach to turning the kernel.
 The tuning depends on the hardware and expected workload.
+This is usually an iterative configuration and analysis process involving not only the kernel but also the real-time application.
 
 The parameters covered here should be passed to the bootloader.
 For that, refer to :doc:`modify-kernel-boot-parameters`.
