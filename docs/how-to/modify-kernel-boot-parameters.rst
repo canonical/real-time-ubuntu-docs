@@ -1,5 +1,5 @@
 How to modify kernel boot parameters
-=======================================
+====================================
 
 The real-time performance-tuning features compiled into the kernel can be
 controlled by various means. The approach used here is a common one:
@@ -47,7 +47,7 @@ Ubuntu.
    :width: 100%
    :align: center
 
-Press **e** to edit its boot parameters.
+Press :kbd:`e` to edit its boot parameters.
 
 Append parameters to the line that starts with ``linux``:
 
@@ -68,13 +68,13 @@ parameters.
 Configure GRUB permanently
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Once your device has booted, launch use a text editor to edit ``/etc/default/grub``.
+Once your device has booted, use a text editor to open ``/etc/default/grub``.
 
-Append parameters to the line that starts with ``GRUB_CMDLINE_LINUX``:
+Add parameters to ``GRUB_CMDLINE_LINUX``:
 
 * Enter parameters *inside* the double-quotes
 
-* Leave a space after each new parameter
+* Leave a space before each new parameter
 
 * Don't add space round ``=`` and other punctuations for each key-value
 
