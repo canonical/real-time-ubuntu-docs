@@ -8,16 +8,13 @@ passing command line parameters via a bootloader.
 The Linux kernel supports a wide range of parameters, but only a few of them are relevant to real-time tuning.
 :doc:`/reference/kernel-boot-parameters` is good a reference.
 
-Depending on the underlying boot mechanism, there are multiple ways to pass command line parameters to the kernel.
+Depending on the underlying boot mechanism, there are multiple ways to pass command line parameters to the kernel:
 
-For Raspberry Pi, jump to :ref:`raspberry-pi`.
+* For Raspberry Pi, jump to :ref:`raspberry-pi`.
+* Ubuntu Core uses GRUB but provides a different interface for `modifying kernel options <https://ubuntu.com/core/docs/modify-kernel-options>`_.
+* Continue reading for systems that use the :ref:`GNU GRUB bootloader <grub-bootloader>`.
 
-Ubuntu Core uses GRUB but provides a different interface for 
-`modifying kernel options <https://ubuntu.com/core/docs/modify-kernel-options>`_.
-
-.. Replace the Ubuntu Core link to the internal how-to (https://documentation.ubuntu.com/real-time/en/ubuntu-core-devel/how-to/uc-boot-parameters/), once released.
-
-Continue reading for systems that use the GNU GRUB bootloader.
+.. _grub-bootloader:
 
 Modify kernel boot parameters via GRUB
 --------------------------------------
