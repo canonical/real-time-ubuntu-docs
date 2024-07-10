@@ -57,9 +57,7 @@ Append parameters to the line that starts with ``linux``:
    :align: center
 
 * Leave a space before each new parameter
-
 * Don't add space round ``=`` and other punctuations for each key-value
-
 * Don't add line breaks
 
 Press :kbd:`Ctrl+X` to exit the editor and continue booting with the new
@@ -73,11 +71,8 @@ Once your device has booted, use a text editor to open ``/etc/default/grub``.
 Add parameters to ``GRUB_CMDLINE_LINUX``:
 
 * Enter parameters *inside* the double-quotes
-
 * Leave a space before each new parameter
-
 * Don't add space round ``=`` and other punctuations for each key-value
-
 * Don't add line breaks
 
 For example, after adding ``nohz=on`` and ``nohz_full=1-3``:
@@ -116,9 +111,7 @@ Use a text editor to edit this file ``/boot/firmware/cmdline.txt``.
 Append parameters to the line:
 
 * Leave a space after each new parameter
-
 * Don't add space round ``=`` and other punctuations for each key-value
-
 * Don't add line breaks
 
 For example, after adding ``nohz=on`` and ``nohz_full=1-3`` to the above example:
