@@ -18,6 +18,7 @@ Ctrl
 CPUs
 Ctrl
 CMDLINE
+cmdline
 Ctrl
 cyclictest
 dev
@@ -111,6 +112,7 @@ pre
 proc
 ps
 psr
+punctuations
 Permalink
 raspi
 RCU
@@ -146,6 +148,7 @@ toolchain
 topologies
 tuning's
 tid
+txt
 Ubuntu
 ubuntu
 UC

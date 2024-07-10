@@ -125,23 +125,13 @@ CPU 13), you can run:
 .. note::
 
     The changes made on the ``/proc`` filesystem are not persistent, meaning that
-    The changes made on the ``/proc`` filesystem are not persistent, meaning that
     the changes will be lost after a reboot. To make the changes persistent, you
-    can set the ``irqaffinity`` parameter in the ``/etc/default/grub`` file, like
-    described in the `boot parameters`_ documentation. For example, to isolate
-    the CPU 13 in a system with 20 cpus and leave the IRQs to be handled by the
-    CPUs 0-12 and 14-19, you can add the following line to the 
-    ``GRUB_CMDLINE_LINUX`` parameter:
+    can set the ``irqaffinity`` parameter as a persistent parameter as
+    described in :doc:`modify-kernel-boot-parameters`. 
+    For example, to isolate the CPU 13 in a system with 20 cpus and leave the IRQs
+    to be handled by the CPUs 0-12 and 14-19, you can add the following: 
+    ``irqaffinity=0-12,14-19``
 
-    .. code-block:: ini
-
-        GRUB_CMDLINE_LINUX="irqaffinity=0-12,14-19"
-
-    Then you can update the grub configuration:
-
-    .. code-block:: shell
-
-        sudo update-grub
 
 
 Then do this process for all the IRQs that are being handled by the CPUs that
