@@ -1,0 +1,38 @@
+name: rt-gadget
+type: gadget
+base: core22
+version: 0.1
+summary: RT Gadget
+description: Custom gadget to configure the RT system
+
+architectures:
+  - build-on:
+    - amd64
+
+grade: stable
+confinement: strict
+
+parts:
+  gadget:
+    plugin: nil
+    build-snaps:
+      - yq
+    stage-snaps:
+      - pc/22
+    override-stage: |
+      craftctl default
+
+      # add the desired kernel command line parameters
+      yq e '.kernel-cmdline.append=
+             [
+               "nohz=on",
+               "nohz_full=2-N",
+               "irqaffinity=0-1"
+             ]
+           ' ./meta.pc/gadget.yaml
+
+      mkdir -p $CRAFT_PART_INSTALL/meta/
+      cp -v ./meta.pc/gadget.yaml $CRAFT_PART_INSTALL/meta/
+
+      craftctl default
+    
