@@ -191,7 +191,7 @@ The x-axis was adjusted for better visualization.
 .. _cyclictest: https://wiki.linuxfoundation.org/realtime/documentation/howto/tools/cyclictest/start
 .. _rt-tests: https://wiki.linuxfoundation.org/realtime/documentation/howto/tools/rt-tests
 .. _OSAL: https://www.osadl.org/Create-a-latency-plot-from-cyclictest-hi.bash-script-for-latency-plot.0.html
-.. _gnuplot: http://www.gnuplot.vt.edu/
+.. _gnuplot: http://www.gnuplot.info/
 .. _stress-ng: https://manpages.ubuntu.com/manpages/jammy/man1/stress-ng.1.html
 
 .. Tests perfomed in testflinger machine: 
