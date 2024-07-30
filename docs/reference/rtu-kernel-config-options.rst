@@ -88,7 +88,7 @@ Boolean value that enables stats accounting and CPU time spent in the kernel.
 
 VIRT_CPU_ACCOUNTING_GEN
 ~~~~~~~~~~~~~~~~~~~~~~~~
-Related to CPU isolation, this configuration enable task and CPU time accounting on `full dynticks systems`_(NO_HZ systems).
+Related to CPU isolation, this configuration enable task and CPU time accounting on `full dynticks systems`_ also known as NO_HZ systems.
 This accounting is implemented by watching every kernel-user boundaries using the context tracking subsystem.
 The accounting is thus performed at the expense of some significant overhead.
 
