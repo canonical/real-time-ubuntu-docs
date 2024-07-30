@@ -10,4 +10,5 @@ other features of Real-time Ubuntu.
    releases
    real-time-metrics-tools
    kernel-boot-parameters
+   rtu-kernel-config-options
 
