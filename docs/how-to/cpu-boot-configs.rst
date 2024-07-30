@@ -1,109 +1,17 @@
 How to configure CPUs for real-time processing
 ==============================================
 
-This is a guide to configuring CPUs for real-time processing, by passing
-startup commands to `Real-time Ubuntu`_.
+You can tune the performance of Real-time Ubuntu by configuring the interaction between the kernel and CPUs.
+Keep in mind that there is no one-size-fits-all approach to turning the kernel.
+The tuning depends on the hardware and expected workload.
+This is usually an iterative configuration and analysis process involving not only the kernel but also the real-time application.
 
-Performance-tuning features are compiled into the kernel; they can be
-controlled by various means. The approach you'll use here is a common one:
-passing in command lines via a bootloader.
+The parameters covered here should be passed to the bootloader.
+For that, refer to :doc:`modify-kernel-boot-parameters`.
 
-Prerequisites
--------------
-
-You'll need Real-time Ubuntu. A native installation is preferred: observations of
-real-time performance on a virtual machine can be misleading. To install
-Real-time Ubuntu, :doc:`enable-real-time-ubuntu` is recommended reading.
-
-Use a multi-core processor. Examples here were written for, and tested on,
-12-core x86-64 (amd64) hardware. 
-
-Your system will need a bootloader that can pass command lines --- GRUB is
-assumed. (Some computers can be configured to launch a kernel directly from
-firmware instead. That's rare and it doesn't support passing command lines.)
-
-Administrator ("root") privileges are required.
-
-.. caution:: Proceed at your own risk!
-
-   You should be familiar with your bootloader --- in particular with accessing
-   its menu during startup, updating its configuration, and recovering an
-   unbootable machine if necessary. Experiment on an isolated system if
-   possible. Back up important settings, software and data before continuing.
-
-Configuring bootloader parameters
----------------------------------
-
-You can temporarily or permanently configure parameters which GRUB will pass to
-Real-time Ubuntu.
-
-When first testing a real-time tuning feature, `configure it temporarily
-<#configure-grub- temporarily>`_. Temporary bootloader parameters are passed to
-the kernel on a single startup. To re-use them you'll need to re-enter them ---
-they don't persist across reboots.
-
-When you're satisfied that a parameter achieves what you want, you can make it
-permanent by `updating GRUB's configuration <#configure-grub-permanently>`_
-then rebooting.
-
-Configure GRUB temporarily
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Reboot, and interrupt GRUB's startup sequence at its bootloader menu.
-
-Highlight the entry --- usually **Ubuntu** --- that would boot Real-time
-Ubuntu.
-
-.. image:: grub-menu.png
-   :alt: GRUB menu
-   :width: 100%
-   :align: center
-
-Press **e** to edit its boot parameters.
-
-Append parameters to the line that starts with ``linux``:
-
-.. image:: grub-edit.png
-   :alt: GRUB edit
-   :width: 100%
-   :align: center
-
-* Leave a space before each new parameter
-
-* Don't add space on either side of ``=`` or other punctuation.
-
-Press :kbd:`Ctrl+X` to exit the editor and continue booting with the new
-parameters.
-
-Configure GRUB permanently
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Once your device has booted, launch a terminal and edit GRUB's configuration:
-
-.. code-block:: shell
-
-   sudo nano /etc/default/grub
-
-Append parameters to the line that starts with ``GRUB_CMDLINE_LINUX_DEFAULT``:
-
-* Enter parameters *inside* the double-quotes
-
-* Leave a space after each new parameter
-
-* Don't add space on either side of ``=`` or other punctuation.
-
-Press :kbd:`Ctrl+X` then :kbd:`Y` to save and close the editor.
-
-Update GRUB with its new configuration:
-
-.. code-block:: shell
-
-   sudo update-grub
-
-Reboot.
 
 CPU lists
-~~~~~~~~~
+---------
 
 Several parameters require a `CPU list`_ --- a list of CPU numbers, starting from
 ``0`` and extending no higher than the number of CPUs. 
@@ -115,7 +23,7 @@ strictly ascending order. Use a comma to separate individual numbers, with no
 space on either side.
 
 Ranges
-^^^^^^
+~~~~~~
 
 You may include ranges in a CPU list, to avoid specifying every CPU by its
 number.
