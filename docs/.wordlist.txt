@@ -142,6 +142,7 @@ reStructuredText
 riscv
 RISCV
 RPi
+rq
 RT's
 rtprio
 RTD
