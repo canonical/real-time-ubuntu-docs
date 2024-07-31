@@ -7,36 +7,50 @@ Once satisfied with the configurations, it is time to prepare the operating syst
 
 This guide shows how to statically set the desired Kernel command-line options for the Ubuntu Core system.
 
-To do this, we need to create a custom Gadget snap.
+To do this, we need to create a custom gadget snap.
+The `gadget snap`_ documentation is a recommended read before starting.
 
 
 Create the gadget snap
 ----------------------
 
-This is best done by staging an existing reference gadget, then changing it for our purpose.
+This is best done by forking an existing reference gadget, then changing it for our purpose.
 For example, there is the `pc gadget`_ which is suitable for most AMD64 platforms, and the `pi gadget`_ which is meant for Raspberry Pis.
 
-We will create our custom gadget by staging the core22 pc gadget.
-This makes the process much simpler as we only need to create a `snapcraft.yaml` file which stages and customized the gadget.
+Let's create a custom gadget snap based on the core22 pc gadget.
 
-Create the `snapcraft.yaml` file with the following content:
+Clone the specific branch and enter the directory:
 
-.. literalinclude :: uc-image-creation/snapcraft.yaml
-   :language: yaml
+.. code-block:: shell
 
-By default, the ``meta.pc/gadget.yaml`` file includes the volumes layout for the Ubuntu Core image.
-We can add various other configurations to it such as the list of default snap configurations, interface connections, and most interesting fos us, the static kernel command line options.
-In the above example, we have are adding a few kernel command line parameters.
+    git clone https://github.com/snapcore/pc-gadget.git --branch=22 --depth=1
+    cd pc-gadget
+
+
+Add the desired kernel command line in an array to `kernel-cmdline.append` in `gadget/gadget-amd64.yaml`.
+For example:
+
+.. code-block:: yaml
+
+    kernel-cmdline:
+        append:
+            - nohz=on
+            - nohz_full=2-N
+            - irqaffinity=0-1
+
+
+Modify `snapcraft.yaml` to fit your application.
+At least, make sure to change the name and version to something distinct, for example: `realtime-pc` and `example`
+
 
 Now, build the gadget snap:
 
+.. code-block:: console
 
-.. code-block:: bash
+    $ snapcraft --verbose
+    ...
+    Created snap package realtime-pc_example_amd64.snap
 
-    snapcraft --verbose
-
-
-This results in creating a snap named `rt-gadget_test_amd64.snap`.
 
 .. note::
     You need to rebuild the snap every time you change the `snapcraft.yaml` file.
@@ -45,8 +59,8 @@ This results in creating a snap named `rt-gadget_test_amd64.snap`.
 Create the model assertion
 --------------------------
 
-The `model assertion`_ is
-a digitally signed document that describes the content of the Ubuntu Core image.
+The model assertion is a digitally signed document that describes the content of the Ubuntu Core image.
+Read the `model assertion`_ documentation before continuing.
 
 Below is an example model assertion in YAML, describing a `core22` Ubuntu Core
 image:
@@ -54,6 +68,7 @@ image:
 .. literalinclude :: uc-image-creation/model.json
    :language: json
 
+Create the model assertion in the same directory as the pc-gadget.
 
 The gadget snap no channel and id, because it isn't in the store.
 We're going to build it locally and pass it to the image builder.
@@ -69,53 +84,71 @@ Here are the needed steps:
 
 1) Create and register a key
 
-```bash
-snap login
-snap keys
-# Continue if you have no existing keys.
-# You'll be asked to set a passphrase which is needed before signing
-snap create-key rt-gadget-guide
-snapcraft register-key rt-gadget-guide
-```
 
-We now have a registered key named ``rt-gadget-guide`` which we'll use later.
+.. code-block:: shell
+
+    snapcraft create-key realtime-ubuntu
+    snapcraft register-key realtime-ubuntu
+
+
+You can use `snapcraft list-keys` to check your existing keys.
 
 2) Sign the model assertion
 
+.. code-block:: shell
+
+    snap sign -k realtime-ubuntu model.json > model.signed.yaml
+
 The `snap sign` command takes JSON as input and produces YAML as output!
-
-.. code: bash
-
-    snap sign -k otbr-uc-tutorial model.json > model.json.signed
-
-
-This will produce a signed model named `model.signed.yaml`.
 
 .. note:
 
     You need to repeat the signing every time you change the input model, because the signature is calculated based on the model.
 
+Before we continue, let's have an overview of our files :
+
+.. code-block:: console
+
+    $ tree -L 1
+    .
+    ├── model.json
+    ├── model.signed.yaml
+    └── pc-gadget
+
+    2 directories, 2 files
+
+
 Build the Ubuntu Core image
 ---------------------------
 
-We use ``ubuntu-image`` and set the path to:
+First, get familiar with the tooling by refer to the guide on `building Ubuntu Core images`_.
 
-- The signed model assertion YAML file.
-- The locally built gadget snap.
+We use ``ubuntu-image`` and set the path to the:
 
-.. code: bash
+- signed model assertion YAML file
+- locally built gadget snap
+
+.. code-block:: shell
 
     ubuntu-image snap model.signed.yaml --verbose --validation=enforce \
-        --snap otbr-gadget_test_amd64.snap
+        --snap pc-gadget/realtime-pc_example_amd64.snap
 
-This downloads all the snaps specified in the model assertion and builds
-an image file called ``pc.img``.
+This downloads all the snaps specified in the model assertion and builds an image file called ``pc.img``.
 
-✅ The image file is now ready to be flashed on a medium to create a bootable drive
-with the Ubuntu Core installer!
+✅ The image file is now ready to be flashed on a medium to create a bootable drive with the Ubuntu Core installer!
+
+
+----
+
+This guide provided a very basic setup to configure Ubuntu Core for real-time processing and create a bootable OS image for it. 
+For production settings, the operating system configuration involved many more steps, such as network configuration, user management, and full disk encryption.
+The `Ubuntu Core documentation`_ is the best place to continue to learn about the various aspects.
 
 .. LINKS
 .. _pc gadget: https://snapcraft.io/pc
 .. _pi gadget: https://snapcraft.io/pi
 .. _model assertion: https://ubuntu.com/core/docs/reference/assertions/model
 .. _signing model assertion: https://ubuntu.com/core/docs/sign-model-assertion
+.. _gadget snap: https://snapcraft.io/docs/the-gadget-snap
+.. _building Ubuntu Core images: https://ubuntu.com/core/docs/build-write-image
+.. _Ubuntu Core documentation: https://ubuntu.com/core/docs

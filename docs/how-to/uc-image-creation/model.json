@@ -8,9 +8,10 @@
     "authority-id": "<developer-id>",
     "brand-id": "<developer-id>",
     "timestamp": "<timestamp>",
+    "store": "<brand-store-id>",
     "snaps": [
       {
-        "name": "rt-gadget",
+        "name": "realtime-pc",
         "type": "gadget"
       },
       {
