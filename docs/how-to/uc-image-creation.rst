@@ -27,7 +27,7 @@ Clone the specific branch and enter the directory:
     cd pc-gadget
 
 
-Add the desired kernel command line in an array to `kernel-cmdline.append` in `gadget/gadget-amd64.yaml`.
+Add the desired kernel command line in an array to ``kernel-cmdline.append`` in ``gadget/gadget-amd64.yaml``.
 For example:
 
 .. code-block:: yaml
@@ -39,8 +39,8 @@ For example:
             - irqaffinity=0-1
 
 
-Modify `snapcraft.yaml` to fit your application.
-At least, make sure to change the name and version to something distinct, for example: `realtime-pc` and `example`
+Modify ``snapcraft.yaml`` to fit your application.
+At least, make sure to change the name and version to something distinct, for example to ``realtime-pc`` and ``example`` respectively.
 
 
 Now, build the gadget snap:
@@ -52,7 +52,7 @@ Now, build the gadget snap:
     Created snap package realtime-pc_example_amd64.snap
 
 
-.. note::
+.. tip::
     You need to rebuild the snap every time you change the `snapcraft.yaml` file.
 
 
@@ -70,15 +70,17 @@ image:
 
 Create the model assertion in the same directory as the pc-gadget.
 
-The gadget snap no channel and id, because it isn't in the store.
-We're going to build it locally and pass it to the image builder.
-In practice, the snap should be uploaded to the store and then listed in the model assertion along with its ID and channel.
+In this model assertion, the gadget snap has no ``channel`` and ``id``, because it isn't in the store.
+We're have built it locally and will pass it to the image builder.
+In practice, the gadget snap should be uploaded to the store and then listed in the model assertion along with its channel and id.
 This makes it possible to use a signed snap that receives updates.
 
 Set the right ``authority-id`` and ``brand-id``.
+
 Set the ``timestamp`` to a RFC3339 formatted string.
 
-Next, we need to sign the model assertion. Refer to the guide on `signing model assertion`_ for details on how to sign the model assertion. 
+Next, we need to sign the model assertion.
+Refer to the guide on `signing model assertion`_ for details on how to sign the model assertion. 
 
 Here are the needed steps:
 
@@ -99,9 +101,9 @@ You can use `snapcraft list-keys` to check your existing keys.
 
     snap sign -k realtime-ubuntu model.json > model.signed.yaml
 
-The `snap sign` command takes JSON as input and produces YAML as output!
+The ``snap sign`` command takes JSON as input and produces YAML as output!
 
-.. note:
+.. tip::
 
     You need to repeat the signing every time you change the input model, because the signature is calculated based on the model.
 
@@ -121,12 +123,12 @@ Before we continue, let's have an overview of our files :
 Build the Ubuntu Core image
 ---------------------------
 
-First, get familiar with the tooling by refer to the guide on `building Ubuntu Core images`_.
+First, get familiar with the tooling by referring to the guide on `building Ubuntu Core images`_.
 
-We use ``ubuntu-image`` and set the path to the:
+We use ``ubuntu-image`` and as input give the path to:
 
-- signed model assertion YAML file
-- locally built gadget snap
+- The signed model assertion YAML file
+- The locally built gadget snap
 
 .. code-block:: shell
 
@@ -141,7 +143,7 @@ This downloads all the snaps specified in the model assertion and builds an imag
 ----
 
 This guide provided a very basic setup to configure Ubuntu Core for real-time processing and create a bootable OS image for it. 
-For production settings, the operating system configuration involved many more steps, such as network configuration, user management, and full disk encryption.
+For production, the operating system configuration involves many more steps, such as network configuration, user management, and full disk encryption.
 The `Ubuntu Core documentation`_ is the best place to continue to learn about the various aspects.
 
 .. LINKS
