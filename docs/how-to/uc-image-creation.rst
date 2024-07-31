@@ -139,6 +139,12 @@ This downloads all the snaps specified in the model assertion and builds an imag
 
 ✅ The image file is now ready to be flashed on a medium to create a bootable drive with the Ubuntu Core installer!
 
+Once booted, the kernel parameters can be verified by looking into ``/proc/cmdline``:
+
+.. code-block:: console
+
+    $ cat /proc/cmdline
+    snapd_recovery_mode=run console=ttyS0,115200n8 console=tty1 panic=-1 nohz=on nohz_full=2-N irqaffinity=0-1
 
 ----
 
