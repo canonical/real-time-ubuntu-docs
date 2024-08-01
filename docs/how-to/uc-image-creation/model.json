@@ -18,19 +18,19 @@
         "name": "realtime-kernel",
         "type": "kernel",
         "default-channel": "22/stable",
-        "id": "pYVQrBcKmBa0mZ4CCN7ExT6jH8rY1hza"
+        "id": "qOnOYvhgxU2fQhw3TgnjaSuOWhO2jDdm"
+      },
+      {
+        "name": "core22",
+        "type": "base",
+        "default-channel": "latest/edge",
+        "id": "amcUKQILKXHHTlmSa7NMdnXSx02dNeeT"
       },
       {
         "name": "snapd",
         "type": "snapd",
         "default-channel": "latest/stable",
         "id": "PMrrV4ml8uWuEUDBT8dSGnKUYbevVhc4"
-      },
-      {
-        "name": "core22",
-        "type": "base",
-        "default-channel": "latest/stable",
-        "id": "amcUKQILKXHHTlmSa7NMdnXSx02dNeeT"
       }
     ]
   }
