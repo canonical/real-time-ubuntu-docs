@@ -141,11 +141,11 @@ Build the Ubuntu Core image
 
 First, get familiar with the tooling by referring to the guide on `building Ubuntu Core images`_.
 
-We use ``ubuntu-image`` which needs the following:
+We use ``ubuntu-image`` and need to set the paths to the following as input:
 
 - Exported store credentials
 - Signed model assertion YAML file
-- The locally built gadget snap
+- Locally built gadget snap
 
 Export the store credentials to a file:
 
@@ -179,6 +179,11 @@ Then build the image:
 
 This downloads all the snaps specified in the model assertion and builds an image file called ``pc.img``.
 There is a warning for ``realtime-pc`` gadget snap because this is being side-loaded, rather than fetched from the store.
+
+.. code-block:: console
+
+    $ file pc.img 
+    pc.img: DOS/MBR boot sector; partition 1 : ID=0xee, start-CHS (0x0,0,0), end-CHS (0x0,0,0), startsector 1, 6162431 sectors, extended partition table (last)
 
 ✅ The image file is now ready to be flashed on a medium to create a bootable drive with the Ubuntu Core installer!
 
