@@ -44,6 +44,8 @@ For example:
             - irqaffinity=0-1
 
 
+Refer to :doc:`../reference/kernel-boot-parameters` for the list of supported parameters.
+
 Modify ``snapcraft.yaml`` to fit your application.
 At least, make sure to change the name and version to something distinct, for example to ``realtime-pc`` and ``example`` respectively.
 
