@@ -1,18 +1,23 @@
 How to create a real-time Ubuntu Core image
 ===========================================
 
+.. tip::
+
+    This guide assumes you have access to features available exclusively to `IoT App Store`_ users.
+
 The :doc:`../how-to/uc-boot-parameters` describes the method for dynamically configuring the system for real-time processing.
 The configuration is an iterative process that is best done together with the expected workload. 
 Once satisfied with the configurations, it is time to prepare the operating system for going into production.
 
 This guide shows how to statically set the desired Kernel command-line options for the Ubuntu Core system.
 
-To do this, we need to create a custom gadget snap.
-The `gadget snap`_ documentation is a recommended read before starting.
+To do this, we need to create a custom gadget snap, create a model assertion, and then build the OS image.
 
 
 Create the gadget snap
 ----------------------
+
+The `gadget snap`_ documentation is a recommended read before starting.
 
 This is best done by forking an existing reference gadget, then changing it for our purpose.
 For example, there is the `pc gadget`_ which is suitable for most AMD64 platforms, and the `pi gadget`_ which is meant for Raspberry Pis.
@@ -70,14 +75,25 @@ image:
 
 Create the model assertion in the same directory as the pc-gadget.
 
-In this model assertion, the gadget snap has no ``channel`` and ``id``, because it isn't in the store.
+Set the following:
+
+
+- ``authority-id``, ``brand-id`` to your developer ID
+- ``timestamp`` to a RFC3339 formatted string, withing you signing key's validity
+- ``store`` to you IoT App Store ID
+
+Change the value of ``model`` to something representative of your model.
+
+The ``snaps`` array is a list of snaps that get included in the image.
+The gadget snap has no ``channel`` and ``id``, because it isn't in the store.
 We're have built it locally and will pass it to the image builder.
 In practice, the gadget snap should be uploaded to the store and then listed in the model assertion along with its channel and id.
-This makes it possible to use a signed snap that receives updates.
+Uploading to the store makes it possible to use a signed snap that receives updates.
 
-Set the right ``authority-id`` and ``brand-id``.
+The ``realtime-kernel`` snap contains the realtime Linux kernel.
+This snap should be included explicitly in your IoT App Store.
 
-Set the ``timestamp`` to a RFC3339 formatted string.
+Add any other snaps, including for example your realtime application.
 
 Next, we need to sign the model assertion.
 Refer to the guide on `signing model assertion`_ for details on how to sign the model assertion. 
@@ -125,17 +141,44 @@ Build the Ubuntu Core image
 
 First, get familiar with the tooling by referring to the guide on `building Ubuntu Core images`_.
 
-We use ``ubuntu-image`` and as input give the path to:
+We use ``ubuntu-image`` which needs the following:
 
-- The signed model assertion YAML file
+- Exported store credentials
+- Signed model assertion YAML file
 - The locally built gadget snap
+
+Export the store credentials to a file:
 
 .. code-block:: shell
 
-    ubuntu-image snap model.signed.yaml --verbose --validation=enforce \
+    snapcraft export-login credentials.txt
+
+Then build the image:
+
+.. code-block:: console
+
+    $ UBUNTU_STORE_AUTH_DATA_FILENAME=credentials.txt \
+        ubuntu-image snap model.signed.yaml  --verbose --validation=enforce \
         --snap pc-gadget/realtime-pc_example_amd64.snap
+    [0] prepare_image
+    Fetching snapd (21759)
+    Fetching realtime-kernel (134)
+    Fetching core22 (1380)
+    WARNING: "realtime-pc" installed from local snaps disconnected from a store cannot be refreshed subsequently!
+    Copying "pc-gadget/realtime-pc_example_amd64.snap" (realtime-pc)
+    [1] load_gadget_yaml
+    [2] set_artifact_names
+    [3] populate_rootfs_contents
+    [4] generate_disk_info
+    [5] calculate_rootfs_size
+    [6] populate_bootfs_contents
+    [7] populate_prepare_partitions
+    [8] make_disk
+    [9] generate_snap_manifest
+    Build successful
 
 This downloads all the snaps specified in the model assertion and builds an image file called ``pc.img``.
+There is a warning for ``realtime-pc`` gadget snap because this is being side-loaded, rather than fetched from the store.
 
 ✅ The image file is now ready to be flashed on a medium to create a bootable drive with the Ubuntu Core installer!
 
@@ -153,6 +196,7 @@ For production, the operating system configuration involves many more steps, suc
 The `Ubuntu Core documentation`_ is the best place to continue to learn about the various aspects.
 
 .. LINKS
+.. _IoT App Store: https://ubuntu.com/core/services/guide/iot-app-store-intro
 .. _pc gadget: https://snapcraft.io/pc
 .. _pi gadget: https://snapcraft.io/pi
 .. _model assertion: https://ubuntu.com/core/docs/reference/assertions/model
