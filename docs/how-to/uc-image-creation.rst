@@ -109,7 +109,7 @@ Here are the needed steps:
     snapcraft register-key realtime-ubuntu
 
 
-You can use `snapcraft list-keys` to check your existing keys.
+You can use ``snapcraft list-keys`` to check your existing keys.
 
 2) Sign the model assertion
 
@@ -160,6 +160,7 @@ Then build the image:
     $ UBUNTU_STORE_AUTH_DATA_FILENAME=credentials.txt \
         ubuntu-image snap model.signed.yaml  --verbose --validation=enforce \
         --snap pc-gadget/realtime-pc_example_amd64.snap
+    
     [0] prepare_image
     Fetching snapd (21759)
     Fetching realtime-kernel (134)
