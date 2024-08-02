@@ -65,6 +65,12 @@ The reduced jitter comes at the cost of increased `call_rcu()`_ overhead and pot
 This option creates kthreads ("``rcuox/N``") to invoke callbacks on specified CPUs, where "``N``" is the CPU being offloaded and "``x``" will be "``p``" for RCU-preempt (**PREEMPTION kernels**) and "``s``" for RCU-sched (**non PREEMPTION kernels**).
 Affinity or cgroups can be used to control the CPU set for the kthreads.
 
+RCU_NOCB_CPU_CB_BOOST
+~~~~~~~~~~~~~~~~~~~~~
+Used to offload RCU callbacks from real-kernel threads to energy-efficient CPUs.
+It invokes offloaded callbacks as `SCHED_FIFO`_ possible starvation caused by heavy background load on SCHED_OTHER.
+It's necessary to ensure that latency-sensitive tasks will either run with higher priority or in some other isolated CPU.
+
 TASKS_RCU
 ~~~~~~~~~
 Enables task-based RCU implementation that uses only voluntary context switches (non preemptible).
@@ -192,3 +198,4 @@ Currently this feature is needed on modern architectures like **amd64**, **arm64
 .. _context tracking header: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/linux/context_tracking.h?h=v5.15
 .. _update_irq_load_avg(): https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/kernel/sched/pelt.c?h=v5.15#n434
 .. _update_rq_clock_task(): https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/kernel/sched/core.c?h=v5.15#n610
+.. _SCHED_FIFO: https://man7.org/linux/man-pages/man7/sched.7.html
