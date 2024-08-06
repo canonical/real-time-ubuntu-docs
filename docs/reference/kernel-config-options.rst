@@ -1,4 +1,4 @@
-Real-time Ubuntu kernel configuration options
+Kernel configuration options
 =============================================
 
 Real-time Ubuntu kernel configuration options are crucial for achieving low-latency and high-responsiveness in systems where deterministic performance is essential.
