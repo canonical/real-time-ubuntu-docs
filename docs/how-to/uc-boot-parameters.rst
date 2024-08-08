@@ -62,7 +62,7 @@ To undo the modifications made to the kernel parameters, use the `snap unset`_ c
 .. _snap set: https://ubuntu.com/core/docs/modify-kernel-options
 .. _system.kernel.cmdline-append: https://snapcraft.io/docs/system-options#heading--kernel-cmdline-append
 .. _system.kernel.dangerous-cmdline-append: https://snapcraft.io/docs/system-options#heading--kernel-dangerous-cmdline-append
-.. _gadget snap: https://snapcraft.io/docs/gadget-snap
+.. _gadget snap: https://snapcraft.io/docs/the-gadget-snap
 .. _allow list: https://snapcraft.io/docs/the-gadget-snap#heading--dynamic
 .. _nohz: https://docs.kernel.org/timers/no_hz.html
 .. _nohz_full: https://docs.kernel.org/timers/no_hz.html#omit-scheduling-clock-ticks-for-cpus-with-only-one-runnable-task
