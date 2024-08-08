@@ -9,16 +9,19 @@ This guide depends on a running Ubuntu Core instance with the real-time kernel.
 This should be on a physical device rather than a virtual machine.
 While a virtual machine can be used to follow the steps in this guide, it will not provide the benefits of a real-time kernel.
 
-----
-
 Ubuntu Core doesn't have the :code:`/etc/default/grub` file mapped for the kernel parameters, neither the `update-grub`_ utility.
-Instead, the kernel parameters should be modified `using snap options`_.
+The kernel parameters can be modified statically (as kernel configuration options) or dynamically (as kernel command line parameters).
+
+Static configurations should be added during the image build; refer to ``:doc:`</how-to/TBA>``.
+Dynamic configurations can be set `using snap options`_.
+This guide focuses on the dynamic configuration method, suitable for iteratively tuning the operating system.
+
 There are two snap options for setting the kernel parameters:
 
 - `system.kernel.cmdline-append`_
 - `system.kernel.dangerous-cmdline-append`_
 
-The first one is used to dynamically append permitted kernel boot parameters that are verified against an `allow list`_ in the `gadget snap`_. 
+The first one is used to append permitted kernel boot parameters that are verified against an `allow list`_ in the `gadget snap`_. 
 The second one is used to append any other kernel boot parameters, considered as not analyzed by the gadget snap.
 
 When using the reference gadget snaps (`pc-gadget`_ and `pi-gadget`_), you need to use the `system.kernel.dangerous-cmdline-append` option, as the allow list is not present in them.

@@ -11,7 +11,7 @@ The Linux kernel supports a wide range of parameters, but only a few of them are
 Depending on the underlying boot mechanism, there are multiple ways to pass command line parameters to the kernel:
 
 * For Raspberry Pi, jump to :ref:`raspberry-pi`.
-* Ubuntu Core uses GRUB but provides a different interface for `modifying kernel options <https://ubuntu.com/core/docs/modify-kernel-options>`_.
+* Ubuntu Core uses GRUB but provides a different interface for :doc:`modifying kernel options </how-to/uc-boot-parameters>`.
 * Continue reading for systems that use the :ref:`GNU GRUB bootloader <grub-bootloader>`.
 
 .. _grub-bootloader:

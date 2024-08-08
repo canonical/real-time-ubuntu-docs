@@ -16,6 +16,7 @@ irq
 irqaffinity
 irqbalance
 isolcpus
+iteratively
 kthreads
 LTS
 ng
