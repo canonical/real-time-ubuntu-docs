@@ -13,6 +13,10 @@ This guide shows how to statically set the desired Kernel command-line options f
 
 To do this, we need to create a custom gadget snap, create a model assertion, and then build the OS image.
 
+.. admonition:: Project directory
+
+    Start in an empty directory.
+    We refer to this in different parts of the document as our *project directory*.
 
 Create the gadget snap
 ----------------------
@@ -24,7 +28,7 @@ For example, there is the `pc gadget`_ which is suitable for most AMD64 platform
 
 Let's create a custom gadget snap based on the core22 pc gadget.
 
-Clone the specific branch and enter the directory:
+Inside the project directory, clone the specific branch and enter the repository:
 
 .. code-block:: shell
 
@@ -75,7 +79,7 @@ image:
 .. literalinclude :: uc-image-creation/model.json
    :language: json
 
-Create the model assertion in the same directory as the pc-gadget.
+Create the model assertion inside the project directory.
 
 Set the following:
 
@@ -125,7 +129,7 @@ The ``snap sign`` command takes JSON as input and produces YAML as output!
 
     You need to repeat the signing every time you change the input model, because the signature is calculated based on the model.
 
-Before we continue, let's have an overview of our files :
+Before we continue, let's have an overview of the files inside our project directory:
 
 .. code-block:: console
 
@@ -137,6 +141,7 @@ Before we continue, let's have an overview of our files :
 
     2 directories, 2 files
 
+The project directory should contain the model assertion, the signed model assertion, and pc-gadget directory.
 
 Build the Ubuntu Core image
 ---------------------------
