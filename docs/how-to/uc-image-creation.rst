@@ -3,7 +3,7 @@ How to create a real-time Ubuntu Core image
 
 .. tip::
 
-    This guide assumes you have access to features available exclusively to `IoT App Store`_ users.
+    This guide assumes you have access to features available exclusively to `dedicated Snap Store`_ users.
 
 The :doc:`../how-to/uc-boot-parameters` describes the method for dynamically configuring the system for real-time processing.
 The configuration is an iterative process that is best done together with the expected workload. 
@@ -82,7 +82,7 @@ Set the following:
 
 - ``authority-id``, ``brand-id`` to your developer ID
 - ``timestamp`` to a RFC3339 formatted string, withing you signing key's validity
-- ``store`` to you IoT App Store ID
+- ``store`` to your dedicated Snap Store ID
 
 Change the value of ``model`` to something representative of your model.
 
@@ -93,7 +93,7 @@ In practice, the gadget snap should be uploaded to the store and then listed in 
 Uploading to the store makes it possible to use a signed snap that receives updates.
 
 The ``realtime-kernel`` snap contains the realtime Linux kernel.
-This snap should be included explicitly in your IoT App Store.
+This snap should be included explicitly in your dedicated Snap Store.
 
 Add any other snaps, including for example your realtime application.
 
@@ -204,7 +204,7 @@ For production, the operating system configuration involves many more steps, suc
 The `Ubuntu Core documentation`_ is the best place to continue to learn about the various aspects.
 
 .. LINKS
-.. _IoT App Store: https://ubuntu.com/core/services/guide/iot-app-store-intro
+.. _dedicated Snap Store: https://ubuntu.com/core/services/guide/iot-app-store-intro
 .. _pc gadget: https://snapcraft.io/pc
 .. _pi gadget: https://snapcraft.io/pi
 .. _model assertion: https://ubuntu.com/core/docs/reference/assertions/model
