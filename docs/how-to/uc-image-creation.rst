@@ -51,7 +51,7 @@ For example:
 Refer to :doc:`../reference/kernel-boot-parameters` for the list of supported parameters.
 
 Modify ``snapcraft.yaml`` to fit your application.
-At least, make sure to change the name and version to something distinct, for example to ``realtime-pc`` and ``example`` respectively.
+At least, make sure to change the name and version to something distinct, for example, to ``realtime-pc`` and ``example`` respectively.
 
 
 Now, build the gadget snap:
@@ -85,15 +85,15 @@ Set the following:
 
 
 - ``authority-id``, ``brand-id`` to your developer ID
-- ``timestamp`` to a RFC3339 formatted string, withing you signing key's validity
+- ``timestamp`` to a RFC3339 formatted string, within you signing key's validity
 - ``store`` to your dedicated Snap Store ID
 
 Change the value of ``model`` to something representative of your model.
 
 The ``snaps`` array is a list of snaps that get included in the image.
-The gadget snap has no ``channel`` and ``id``, because it isn't in the store.
-We're have built it locally and will pass it to the image builder.
-In practice, the gadget snap should be uploaded to the store and then listed in the model assertion along with its channel and id.
+The gadget snap has no listed ``channel`` and ``id``, because it isn't in a Store.
+We have built it locally in the earlier steps and will later on pass it directly to the image builder.
+In practice, the gadget snap should be uploaded to a Store and then listed in the model assertion along with its channel and id.
 Uploading to the store makes it possible to use a signed snap that receives updates.
 
 The ``realtime-kernel`` snap contains the realtime Linux kernel.
