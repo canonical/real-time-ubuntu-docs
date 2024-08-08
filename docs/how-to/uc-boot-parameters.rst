@@ -1,15 +1,15 @@
 How to configure boot parameters on Ubuntu Core 
 ================================================
 
-Different from classic versions of Ubuntu (Desktop and Server), `Ubuntu Core`_ is a minimal, secure and strictly confined operating system designed to run on embedded systems, such as IoT devices.
-Ubuntu Core is a snap-based operating system, meaning it uses snap packages to manage applications and services.
-Its read-only nature makes it a very secure and reliable operating system but also makes it a bit more difficult to configure certain aspects of the system, such as boot parameters.
+.. note::
 
-This how-to guide assumes the use of a `pre-built Ubuntu Core image`_ on a physical device rather than a virtual machine.
+    This guide assumes access to features available exclusively to `dedicated Snap Store`_ users.
+
+This guide depends on a running Ubuntu Core instance with the real-time kernel. 
+This should be on a physical device rather than a virtual machine.
 While a virtual machine can be used to follow the steps in this guide, it will not provide the benefits of a real-time kernel.
 
-Configure boot parameters
--------------------------
+----
 
 Ubuntu Core doesn't have the :code:`/etc/default/grub` file mapped for the kernel parameters, neither the `update-grub`_ utility.
 Instead, the kernel parameters should be modified `using snap options`_.
@@ -21,7 +21,7 @@ There are two snap options for setting the kernel parameters:
 The first one is used to dynamically append permitted kernel boot parameters that are verified against an `allow list`_ in the `gadget snap`_. 
 The second one is used to append any other kernel boot parameters, considered as not analyzed by the gadget snap.
 
-When using the `trial images`_, you need to use the `system.kernel.dangerous-cmdline-append` option, as the allow list is not present in the reference gadget snaps (`pc-gadget`_ and `pi-gadget`_).  
+When using the reference gadget snaps (`pc-gadget`_ and `pi-gadget`_), you need to use the `system.kernel.dangerous-cmdline-append` option, as the allow list is not present in them.
 
 When creating a custom `gadget snap`_ for a real-time Ubuntu Core system, it is advisable to add an allow list with the relevant parameters.
 
@@ -71,8 +71,7 @@ To undo the modifications made to the kernel parameters, use the `snap unset`_ c
 .. _irqaffinity: https://docs.kernel.org/core-api/irq/irq-affinity.html
 .. _snap unset: https://snapcraft.io/docs/set-system-options
 .. _building a gadget snap: https://ubuntu.com/core/docs/gadget-building
-.. _trial images: https://ubuntu.com/core/docs/install-on-a-device
 .. _pc-gadget: https://github.com/snapcore/pc-gadget
 .. _pi-gadget: https://github.com/snapcore/pi-gadget
 .. _using snap options: https://snapcraft.io/docs/system-options
-.. _pre-built Ubuntu Core image: https://ubuntu.com/core/docs/install-on-a-device
+.. _dedicated Snap Store: https://ubuntu.com/core/docs/dedicated-snap-stores
