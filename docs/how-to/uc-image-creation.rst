@@ -209,7 +209,7 @@ For production, the operating system configuration involves many more steps, suc
 The `Ubuntu Core documentation`_ is the best place to continue to learn about the various aspects.
 
 .. LINKS
-.. _dedicated Snap Store: https://ubuntu.com/core/services/guide/iot-app-store-intro
+.. _dedicated Snap Store: https://ubuntu.com/core/docs/dedicated-snap-stores
 .. _pc gadget: https://snapcraft.io/pc
 .. _pi gadget: https://snapcraft.io/pi
 .. _model assertion: https://ubuntu.com/core/docs/reference/assertions/model
