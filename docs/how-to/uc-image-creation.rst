@@ -214,6 +214,6 @@ The `Ubuntu Core documentation`_ is the best place to continue to learn about th
 .. _pi gadget: https://snapcraft.io/pi
 .. _model assertion: https://ubuntu.com/core/docs/reference/assertions/model
 .. _signing model assertion: https://ubuntu.com/core/docs/sign-model-assertion
-.. _gadget snap: https://snapcraft.io/docs/the-gadget-snap
+.. _gadget snap: https://ubuntu.com/core/docs/gadget-snaps
 .. _building Ubuntu Core images: https://ubuntu.com/core/docs/build-write-image
 .. _Ubuntu Core documentation: https://ubuntu.com/core/docs
