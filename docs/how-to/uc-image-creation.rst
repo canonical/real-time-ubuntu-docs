@@ -205,7 +205,9 @@ Once booted, the kernel parameters can be verified by looking into ``/proc/cmdli
 ----
 
 This guide provided a very basic setup to configure Ubuntu Core for real-time processing and create a bootable OS image for it. 
-For production, the operating system configuration involves many more steps, such as network configuration, user management, and full disk encryption.
+For production, the operating system configuration involves many more steps, such as network configuration and full disk encryption.
+The device will also need a serial assertion to authenticate itself and receive for example updates to the real-time kernel snap from a dedicated Snap Store.
+
 The `Ubuntu Core documentation`_ is the best place to continue to learn about the various aspects.
 
 .. LINKS
