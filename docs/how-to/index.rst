@@ -26,4 +26,5 @@ Tune performance for real-time processing:
    Modify kernel boot parameters <modify-kernel-boot-parameters>
    Configure CPUs for real-time processing <cpu-boot-configs>
    Tune IRQ affinity <tune-irq-affinity>
-   Configure kernel boot parameters on Ubuntu Core <uc-boot-parameters>
+
+   Ubuntu Core <ubuntu-core>
