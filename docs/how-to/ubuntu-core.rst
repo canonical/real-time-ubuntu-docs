@@ -10,7 +10,8 @@ This collection of documents focus on configuring Ubuntu Core for real-time comp
 .. toctree::
    :maxdepth: 1
 
-   Configure kernel boot parameters on Ubuntu Core <uc-boot-parameters> 
+   Configure kernel boot parameters on Ubuntu Core <uc-boot-parameters>
+   Create a real-time Ubuntu Core image <uc-image-creation>
 
 
 .. LINKS
