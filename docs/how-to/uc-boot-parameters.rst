@@ -11,7 +11,7 @@ While a virtual machine can be used to follow the steps in this guide, it will n
 
 Ubuntu Core doesn't have the :code:`/etc/default/grub` file mapped for the kernel parameters, neither the `update-grub`_ utility.
 On Ubuntu Core, the kernel parameters can be modified statically or dynamically.
-Static configurations should be added during the image build; refer to ``:doc:`</how-to/TBA>``.
+Static configurations should be added during the image build; refer to :doc:`../how-to/uc-image-creation`.
 Dynamic configurations can be set `using snap options`_ on a running system.
 This guide focuses on the dynamic configuration method, suitable for iteratively tuning the operating system.
 

@@ -1,16 +1,15 @@
 How to create a real-time Ubuntu Core image
 ===========================================
 
-.. tip::
+.. note::
 
-    This guide assumes you have access to features available exclusively to `dedicated Snap Store`_ users.
+    This guide assumes access to features available exclusively to `dedicated Snap Store`_ users.
 
 The :doc:`../how-to/uc-boot-parameters` describes the method for dynamically configuring the system for real-time processing.
 The configuration is an iterative process that is best done together with the expected workload. 
 Once satisfied with the configurations, it is time to prepare the operating system for going into production.
 
 This guide shows how to statically set the desired Kernel command-line options for the Ubuntu Core system.
-
 To do this, we need to create a custom gadget snap, create a model assertion, and then build the OS image.
 
 .. admonition:: Project directory
