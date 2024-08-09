@@ -9,6 +9,7 @@ BLK
 bogo
 boolean
 bootloader
+bootable
 CFS
 cfs
 CFS's
@@ -161,6 +162,7 @@ SoftIRQs
 softirq
 SPID
 stressor
+snapcraft
 subdirectories
 subdirectory
 subfolders
@@ -191,5 +193,6 @@ userspace
 VIRT
 VM
 visualization
+yaml
 YAML
 
