@@ -5,15 +5,17 @@ How to configure boot parameters on Ubuntu Core
 
     This guide assumes access to features available exclusively to `dedicated Snap Store`_ users.
 
-This guide depends on a running Ubuntu Core instance with the real-time kernel. 
-This should be on a physical device rather than a virtual machine.
-While a virtual machine can be used to follow the steps in this guide, it will not provide the benefits of a real-time kernel.
-
 Ubuntu Core doesn't have the :code:`/etc/default/grub` file mapped for the kernel parameters, neither the `update-grub`_ utility.
 On Ubuntu Core, the kernel parameters can be modified statically or dynamically.
 Static configurations should be added during the image build; refer to :doc:`../how-to/uc-image-creation`.
 Dynamic configurations can be set `using snap options`_ on a running system.
 This guide focuses on the dynamic configuration method, suitable for iteratively tuning the operating system.
+
+.. Refer to :doc:`../how-to/uc-image-creation` if you want to create a real-time Ubuntu Core image.
+
+Open a terminal and access your real-time Ubuntu Core instance.
+The instance should be on a physical device rather than a virtual machine.
+While a virtual machine can be used to follow the steps in this guide, it will not provide the benefits of a real-time kernel.
 
 There are two snap options for setting the kernel parameters:
 
@@ -33,7 +35,7 @@ Parameters are passed as a single string in the :code:`key=value` format, with e
 In the case of :doc:`real-time kernel parameters <../reference/kernel-boot-parameters>`, the most interesting parameters are `nohz`_, `nohz_full`_ and `irqaffinity`_.
 The :code:`nohz` is used to enable/disable dynamic ticks (possible values are `on` or `off`). 
 The :code:`nohz_full` receives a `cpu list`_ specifying which CPUs will have dynamic ticks disabled. 
-The `irqaffinity` is used to set the affinity of the IRQs to the CPUs, in other words: which CPUs will handle the IRQs.
+The `irqaffinity` is used to set the affinity of the interrupt requests (IRQs) to the CPUs, in other words: which CPUs will handle the IRQs.
 
 For example:
 
