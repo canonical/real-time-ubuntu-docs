@@ -5,11 +5,141 @@ How to create a real-time Ubuntu Core image
 
     This guide assumes access to features available exclusively to `dedicated Snap Store`_ users.
 
-The :doc:`../how-to/uc-boot-parameters` describes the method for dynamically configuring the system for real-time processing.
-The configuration is an iterative process that is best done together with the expected workload. 
-Once satisfied with the configurations, it is time to prepare the operating system for going into production.
+Canonical builds and publishes Ubuntu Core images for a range of `supported platforms`_.
+However, these images include the generic Linux kernel. 
+In order to run Ubuntu Core with the real-time kernel, we need to build it ourselves. 
 
-This guide shows how to statically set the desired Kernel command-line options for the Ubuntu Core system.
+This guide shows how to build and Ubuntu Core image with the real-time kernel.
+We start by showing how to :ref:`build a vanilla image <ubuntu-core-image>` which is excellent for testing and tuning, and then illustrate how to :ref:`make a custom image <custom-ubuntu-core-image>` with production-ready kernel configurations.
+
+
+.. _ubuntu-core-image:
+
+Create an image with the real-time kernel
+-----------------------------------------
+
+To do this we need to describe the image content and then use a tool to build it.
+
+.. _model-assertion:
+
+Create the model assertion
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The model assertion is a digitally signed document that describes the content of the Ubuntu Core image.
+Read the `model assertion`_ documentation before continuing.
+
+Below is an example model assertion in YAML, describing a `core22` Ubuntu Core
+image:
+
+.. literalinclude :: uc-image-creation/model.json
+   :language: json
+
+Inside an empty directory, create a file named ``model.json`` with the above content.
+
+Change the following:
+
+- ``authority-id``, ``brand-id`` to your developer ID, since this is custom model. Use ``snapcraft whoami`` command to get your developer ID.
+- ``timestamp`` to a RFC3339 formatted string, within you signing key's validity. Use ``date -Iseconds --utc`` command to use the current time.
+- ``store`` to your dedicated Snap Store ID.
+- ``model`` to something representative of your model.
+
+The ``snaps`` array is a list of snaps that get included in the image.
+In that list, the ``realtime-kernel`` snap contains the realtime Linux kernel.
+Here you can add any other snaps, including for example your real-time applications.
+
+Next, we need to sign the model assertion.
+Refer to the guide on `signing model assertion`_ for details on how to sign the model assertion. 
+
+Here are the needed steps:
+
+1) Create and register a key
+
+
+.. code-block:: shell
+
+    snapcraft create-key realtime-ubuntu
+    snapcraft register-key realtime-ubuntu
+
+
+You can use ``snapcraft list-keys`` to check your existing keys.
+
+2) Sign the model assertion
+
+.. code-block:: shell
+
+    snap sign -k realtime-ubuntu model.json > model.signed.yaml
+
+The ``snap sign`` command takes JSON as input and produces YAML as output!
+
+.. tip::
+
+    You need to repeat the signing every time you change the input model, because the signature is calculated based on the model.
+
+
+Build the image
+~~~~~~~~~~~~~~~
+
+First, get familiar with the tooling by referring to the guide on `building Ubuntu Core images`_.
+
+We use ``ubuntu-image`` and need to set the paths to the following as input:
+
+- Exported store credentials
+- Signed model assertion YAML file
+
+Export the store credentials to a file:
+
+.. code-block:: shell
+
+    snapcraft export-login credentials.txt
+
+Then build the image:
+
+.. code-block:: console
+
+    $ UBUNTU_STORE_AUTH_DATA_FILENAME=credentials.txt ubuntu-image snap model.signed.yaml --verbose --validation=enforce
+    [0] prepare_image
+    Fetching snapd (21759)
+    Fetching realtime-kernel (149)
+    Fetching core22 (1586)
+    Fetching pc (146)
+    [1] load_gadget_yaml
+    [2] set_artifact_names
+    [3] populate_rootfs_contents
+    [4] generate_disk_info
+    [5] calculate_rootfs_size
+    [6] populate_bootfs_contents
+    [7] populate_prepare_partitions
+    [8] make_disk
+    [9] generate_snap_manifest
+    Build successful
+
+This downloads all the snaps specified in the model assertion and builds an image file called ``pc.img``.
+
+.. hint::
+
+    To fetch the ``realtime-kernel`` snap for this image build, it should be included explicitly in your dedicated Snap Store.
+
+.. code-block:: console
+
+    $ file pc.img 
+    pc.img: DOS/MBR boot sector; partition 1 : ID=0xee, start-CHS (0x0,0,0), end-CHS (0x0,0,0), startsector 1, 6195199 sectors, extended partition table (last)
+
+✅ The image file is now ready to be flashed on a medium to create a bootable drive with the Ubuntu Core installer!
+
+----
+
+At this point, you could continue by tuning your system for real-time processing. 
+The :doc:`../how-to/uc-boot-parameters` guide describes the method for dynamically configuring the kernel command line parameters.
+The configuration is an iterative process that is best done together with the expected workload.
+
+Once satisfied with the configurations, continue below to learn how those configurations can be set statically during the image build.
+
+.. _custom-ubuntu-core-image:
+
+Create a custom real-time Ubuntu Core image
+-------------------------------------------
+
+This section shows how to statically set the desired Kernel command-line parameters for the Ubuntu Core system.
 To do this, we need to create a custom gadget snap, create a model assertion, and then build the OS image.
 
 .. admonition:: Project directory
@@ -69,64 +199,26 @@ Now, build the gadget snap:
 Create the model assertion
 --------------------------
 
-The model assertion is a digitally signed document that describes the content of the Ubuntu Core image.
-Read the `model assertion`_ documentation before continuing.
-
-Below is an example model assertion in YAML, describing a `core22` Ubuntu Core
-image:
-
-.. literalinclude :: uc-image-creation/model.json
-   :language: json
-
 Create the model assertion inside the project directory.
+Follow the same steps in :ref:`model-assertion` section but replace the ``pc`` snap entry with the following:
 
-Set the following:
+.. code-block:: json
 
+    {
+        "name": "realtime-pc",
+        "type": "gadget"
+    },
 
-- ``authority-id``, ``brand-id`` to your developer ID
-- ``timestamp`` to a RFC3339 formatted string, within you signing key's validity
-- ``store`` to your dedicated Snap Store ID
-
-Change the value of ``model`` to something representative of your model.
-
-The ``snaps`` array is a list of snaps that get included in the image.
-The gadget snap has no listed ``channel`` and ``id``, because it isn't in a Store.
+Unlike the original ``pc`` snap definition, this entry has no listed ``channel`` and ``id``, because it isn't in a Store.
 We have built it locally in the earlier steps and will later on pass it directly to the image builder.
 In practice, the gadget snap should be uploaded to a Store and then listed in the model assertion along with its channel and id.
 Uploading to the store makes it possible to use a signed snap that receives updates.
 
-The ``realtime-kernel`` snap contains the realtime Linux kernel.
-This snap should be included explicitly in your dedicated Snap Store.
-
-Add any other snaps, including for example your realtime application.
-
-Next, we need to sign the model assertion.
-Refer to the guide on `signing model assertion`_ for details on how to sign the model assertion. 
-
-Here are the needed steps:
-
-1) Create and register a key
-
-
-.. code-block:: shell
-
-    snapcraft create-key realtime-ubuntu
-    snapcraft register-key realtime-ubuntu
-
-
-You can use ``snapcraft list-keys`` to check your existing keys.
-
-2) Sign the model assertion
+Sign the model assertion which has our custom ``realtime-pc`` gadget:
 
 .. code-block:: shell
 
     snap sign -k realtime-ubuntu model.json > model.signed.yaml
-
-The ``snap sign`` command takes JSON as input and produces YAML as output!
-
-.. tip::
-
-    You need to repeat the signing every time you change the input model, because the signature is calculated based on the model.
 
 Before we continue, let's have an overview of the files inside our project directory:
 
@@ -140,26 +232,18 @@ Before we continue, let's have an overview of the files inside our project direc
 
     2 directories, 2 files
 
-The project directory should contain the model assertion, the signed model assertion, and pc-gadget directory.
+The project directory should contain the model assertion, the signed model assertion, and the pc-gadget directory.
 
 Build the Ubuntu Core image
 ---------------------------
 
-First, get familiar with the tooling by referring to the guide on `building Ubuntu Core images`_.
-
-We use ``ubuntu-image`` and need to set the paths to the following as input:
+Similar to before, we use ``ubuntu-image`` but this time we need to also provide the path to the custom gadget snap file:
 
 - Exported store credentials
 - Signed model assertion YAML file
-- Locally built gadget snap
+- **Locally built gadget snap**
 
-Export the store credentials to a file:
-
-.. code-block:: shell
-
-    snapcraft export-login credentials.txt
-
-Then build the image:
+Build with the following command:
 
 .. code-block:: console
 
@@ -184,17 +268,13 @@ Then build the image:
     [9] generate_snap_manifest
     Build successful
 
-This downloads all the snaps specified in the model assertion and builds an image file called ``pc.img``.
+This adds all the snaps specified in the model assertion and builds an image file called ``pc.img``.
 There is a warning for ``realtime-pc`` gadget snap because this is being side-loaded, rather than fetched from the store.
 
-.. code-block:: console
 
-    $ file pc.img 
-    pc.img: DOS/MBR boot sector; partition 1 : ID=0xee, start-CHS (0x0,0,0), end-CHS (0x0,0,0), startsector 1, 6162431 sectors, extended partition table (last)
+✅ The image file with the custom configurations is ready! 
 
-✅ The image file is now ready to be flashed on a medium to create a bootable drive with the Ubuntu Core installer!
-
-Once booted, the kernel parameters can be verified by looking into ``/proc/cmdline``:
+On a running instance based off this image, the kernel parameters can be verified by looking into ``/proc/cmdline``:
 
 .. code-block:: console
 
@@ -210,6 +290,7 @@ The device will also need a serial assertion to authenticate itself and receive 
 The `Ubuntu Core documentation`_ is the best place to continue to learn about the various aspects.
 
 .. LINKS
+.. _supported platforms: https://ubuntu.com/core/docs/supported-platforms
 .. _dedicated Snap Store: https://ubuntu.com/core/docs/dedicated-snap-stores
 .. _pc gadget: https://snapcraft.io/pc
 .. _pi gadget: https://snapcraft.io/pi
