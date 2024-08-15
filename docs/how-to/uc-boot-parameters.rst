@@ -64,7 +64,7 @@ To undo the modifications made to the kernel parameters, use the `snap unset`_ c
 ---
 
 Once you are satisfied with the configurations, consider configuring them statically so that they are built into the image. 
-Read more on the `image creation guide <../uc-image-creation#custom-ubuntu-core-image>`_.
+Read more on :doc:`../how-to/uc-image-creation`.
 
 .. Is there a better way to reference an anchor on another doc? 
 
