@@ -9,7 +9,7 @@ Canonical builds and publishes Ubuntu Core images for a range of `supported plat
 However, these images include the generic Linux kernel. 
 In order to run Ubuntu Core with the real-time kernel, we need to build it ourselves. 
 
-This guide shows how to build and Ubuntu Core image with the real-time kernel.
+This guide shows how to build an Ubuntu Core image with the real-time kernel.
 We start by showing how to :ref:`build a vanilla image <ubuntu-core-image>` which is excellent for testing and tuning, and then illustrate how to :ref:`make a custom image <custom-ubuntu-core-image>` with production-ready kernel configurations.
 
 
@@ -54,14 +54,14 @@ Here are the needed steps:
 
 1) Create and register a key
 
+Use ``snapcraft list-keys`` to check your existing keys.
+If you don't already have a key, create one locally and register it with your account:
 
 .. code-block:: shell
 
     snapcraft create-key realtime-ubuntu
     snapcraft register-key realtime-ubuntu
 
-
-You can use ``snapcraft list-keys`` to check your existing keys.
 
 2) Sign the model assertion
 
