@@ -5,7 +5,7 @@ How to configure boot parameters on Ubuntu Core
 
     This guide assumes access to features available exclusively to `dedicated Snap Store`_ users.
 
-Ubuntu Core doesn't have the :code:`/etc/default/grub` file mapped for the kernel parameters, neither the `update-grub`_ utility.
+Ubuntu Core doesn't have the :code:`/etc/default/grub` file mapped for the kernel parameters, nor the `update-grub`_ utility.
 On Ubuntu Core, the kernel parameters can be modified statically or dynamically.
 Static configurations are added during the image build.
 On the other hand, dynamic configurations are set `using snap options`_ on a running system.

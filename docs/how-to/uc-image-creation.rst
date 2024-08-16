@@ -127,7 +127,7 @@ This downloads all the snaps specified in the model assertion and builds an imag
     $ file pc.img 
     pc.img: DOS/MBR boot sector; partition 1 : ID=0xee, start-CHS (0x0,0,0), end-CHS (0x0,0,0), startsector 1, 6195199 sectors, extended partition table (last)
 
-✅ The image file is now ready to be flashed on a medium to create a bootable drive with the Ubuntu Core installer!
+✅ The image file is now ready. Refer to Ubuntu Core guide on `flashing the image to a storage medium`_.
 
 ----
 
@@ -240,7 +240,9 @@ The project directory should contain the model assertion, the signed model asser
 Build the Ubuntu Core image
 ---------------------------
 
-Similar to before, we use ``ubuntu-image`` but this time we need to also provide the path to the custom gadget snap file:
+Similar to before, we use ``ubuntu-image`` to build the image.
+This time we also need to provide the path to the custom gadget snap file.
+We therefore need:
 
 - Exported store credentials
 - Signed model assertion YAML file
@@ -275,9 +277,9 @@ This adds all the snaps specified in the model assertion and builds an image fil
 There is a warning for ``realtime-pc`` gadget snap because this is being side-loaded, rather than fetched from the store.
 
 
-✅ The image file with the custom configurations is ready! 
+✅ The image file with the custom configurations is ready! Refer to Ubuntu Core guide on `flashing the image to a storage medium`_.
 
-On a running instance based off this image, the kernel parameters can be verified by looking into ``/proc/cmdline``:
+After installing and running a device with this image, the kernel parameters can be verified by looking into ``/proc/cmdline``:
 
 .. code-block:: console
 
@@ -302,3 +304,4 @@ The `Ubuntu Core documentation`_ is the best place to continue to learn about th
 .. _gadget snap: https://ubuntu.com/core/docs/gadget-snaps
 .. _building Ubuntu Core images: https://ubuntu.com/core/docs/build-write-image
 .. _Ubuntu Core documentation: https://ubuntu.com/core/docs
+.. _flashing the image to a storage medium: https://ubuntu.com/core/docs/install-on-a-device
