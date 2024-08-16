@@ -39,7 +39,7 @@ Inside an empty directory, create a file named ``model.json`` with the above con
 Change the following:
 
 - ``authority-id``, ``brand-id`` to your developer ID, since this is custom model. Use ``snapcraft whoami`` command to get your developer ID.
-- ``timestamp`` to a RFC3339 formatted string, within you signing key's validity. Use ``date -Iseconds --utc`` command to use the current time.
+- ``timestamp`` to an RFC3339 formatted string that falls within the validity period of your signing key. Use ``date -Iseconds --utc`` command to generate the current time.
 - ``store`` to your dedicated Snap Store ID.
 - ``model`` to something representative of your model.
 
@@ -62,6 +62,7 @@ If you don't already have a key, create one locally and register it with your ac
     snapcraft create-key realtime-ubuntu
     snapcraft register-key realtime-ubuntu
 
+Remember to update the model assertion's ``timestamp``, if you created a new key and plan to use it next.
 
 2) Sign the model assertion
 
