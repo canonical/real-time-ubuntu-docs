@@ -11,8 +11,10 @@
     "store": "<brand-store-id>",
     "snaps": [
       {
-        "name": "realtime-pc",
-        "type": "gadget"
+        "name": "pc",
+        "type": "gadget",
+        "default-channel": "22/stable",
+        "id": "UqFziVZDHLSyO3TqSWgNBoAdHbLI4dAH"
       },
       {
         "name": "realtime-kernel",

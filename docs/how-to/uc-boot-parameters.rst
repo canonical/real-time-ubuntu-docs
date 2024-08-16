@@ -5,13 +5,15 @@ How to configure boot parameters on Ubuntu Core
 
     This guide assumes access to features available exclusively to `dedicated Snap Store`_ users.
 
-Ubuntu Core doesn't have the :code:`/etc/default/grub` file mapped for the kernel parameters, neither the `update-grub`_ utility.
+Ubuntu Core doesn't have the :code:`/etc/default/grub` file mapped for the kernel parameters, nor the `update-grub`_ utility.
 On Ubuntu Core, the kernel parameters can be modified statically or dynamically.
-Static configurations should be added during the image build; refer to :doc:`../how-to/uc-image-creation`.
-Dynamic configurations can be set `using snap options`_ on a running system.
+Static configurations are added during the image build.
+On the other hand, dynamic configurations are set `using snap options`_ on a running system.
 This guide focuses on the dynamic configuration method, suitable for iteratively tuning the operating system.
 
-.. Refer to :doc:`../how-to/uc-image-creation` if you want to create a real-time Ubuntu Core image.
+.. hint::
+    
+    Refer to :doc:`../how-to/uc-image-creation` if you want to create a real-time Ubuntu Core image.
 
 Open a terminal and access your real-time Ubuntu Core instance.
 The instance should be on a physical device rather than a virtual machine.
@@ -59,6 +61,12 @@ To undo the modifications made to the kernel parameters, use the `snap unset`_ c
 
     snap unset system system.kernel.dangerous-cmdline-append
 
+---
+
+Once you are satisfied with the configurations, consider configuring them statically so that they are built into the image. 
+Read more on :doc:`../how-to/uc-image-creation`.
+
+.. Is there a better way to reference an anchor on another doc? 
 
 .. LINKS
 .. _Ubuntu Core: https://ubuntu.com/core
