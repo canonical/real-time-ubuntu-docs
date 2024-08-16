@@ -41,7 +41,7 @@ Change the following:
 - ``authority-id``, ``brand-id`` to your developer ID, since this is custom model. Use ``snapcraft whoami`` command to get your developer ID.
 - ``timestamp`` to an RFC3339 formatted string that falls within the validity period of your signing key. Use ``date -Iseconds --utc`` command to generate the current time.
 - ``store`` to your dedicated Snap Store ID.
-- ``model`` to something representative of your model.
+- ``model`` to a name that accurately represents your device(s).
 
 The ``snaps`` array is a list of snaps that get included in the image.
 In that list, the ``realtime-kernel`` snap contains the realtime Linux kernel.
@@ -55,12 +55,14 @@ Here are the needed steps:
 1) Create and register a key
 
 Use ``snapcraft list-keys`` to check your existing keys.
-If you don't already have a key, create one locally and register it with your account:
+If you don't already have a key, create one locally and register it with your account.
+Choose a meaningful name for the key, as it can be used to sign multiple models.
+In this guide we use ``rtu-model`` to sign all our real-time Ubuntu models.
 
 .. code-block:: shell
 
-    snapcraft create-key realtime-ubuntu
-    snapcraft register-key realtime-ubuntu
+    snapcraft create-key rtu-model
+    snapcraft register-key rtu-model
 
 Remember to update the model assertion's ``timestamp``, if you created a new key and plan to use it next.
 
@@ -68,7 +70,7 @@ Remember to update the model assertion's ``timestamp``, if you created a new key
 
 .. code-block:: shell
 
-    snap sign -k realtime-ubuntu model.json > model.signed.yaml
+    snap sign -k rtu-model model.json > model.signed.yaml
 
 The ``snap sign`` command takes JSON as input and produces YAML as output!
 
@@ -215,11 +217,11 @@ We have built it locally in the earlier steps and will later on pass it directly
 In practice, the gadget snap should be uploaded to a Store and then listed in the model assertion along with its channel and id.
 Uploading to the store makes it possible to use a signed snap that receives updates.
 
-Sign the model assertion which has our custom ``realtime-pc`` gadget:
+Sign the model assertion which has our custom ``realtime-pc`` gadget, using the same key which we created in the previous section of this guide:
 
 .. code-block:: shell
 
-    snap sign -k realtime-ubuntu model.json > model.signed.yaml
+    snap sign -k rtu-model model.json > model.signed.yaml
 
 Before we continue, let's have an overview of the files inside our project directory:
 
