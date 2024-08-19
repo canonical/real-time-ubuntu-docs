@@ -25,7 +25,8 @@ Improving the flexibility to preempt tasks executing within the kernel would thu
     :align: center
     :alt: Unbounded priority inversion
 
-    Source: `Introduction to RTOS Part 11 -- Priority Inversion | Digi-Key Electronics <https://www.digikey.com/en/maker/projects/introduction-to-rtos-solution-to-part-11-priority-inversion/abf4b8f7cd4a4c70bece35678d178321>`_
+    Unbounded Priority Inversion [`DigiKey`_]
+
 
 In this specific example, task M finishes running and releases the CPU -- where the horizontal bar turns from green to red in the drawing -- allowing task L to start running again while still holding the lock.
 Only once task L releases it, task H will wake up and acquire the lock, starting its work within the critical section.
@@ -57,6 +58,13 @@ Priority inheritance in a real-time kernel solves the issue of task M starting t
     :align: center
     :alt: Priority inheritance
 
-    Source `Introduction to RTOS Part 11 -- Priority Inversion | Digi-Key Electronics <https://www.digikey.com/en/maker/projects/introduction-to-rtos-solution-to-part-11-priority-inversion/abf4b8f7cd4a4c70bece35678d178321>`_
+    Unbounded Priority Inversion [`DigiKey`_]
 
+References
+----------
 
+- `Introduction to RTOS - Solution to Part 11 (Priority Inversion) <https://www.digikey.com/en/maker/projects/introduction-to-rtos-solution-to-part-11-priority-inversion/abf4b8f7cd4a4c70bece35678d178321>`_
+
+.. Links
+
+.. _DigiKey: https://www.digikey.com/en/maker/projects/introduction-to-rtos-solution-to-part-11-priority-inversion/abf4b8f7cd4a4c70bece35678d178321
