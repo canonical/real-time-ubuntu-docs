@@ -4,6 +4,7 @@ conf
 CPUAffinity
 CPUs
 cpus
+DigiKey
 EAS
 emptive
 GEDF
@@ -23,6 +24,7 @@ Pc
 Pd
 Pe
 proc
+RTOS
 Schedutil
 systemd
 telco

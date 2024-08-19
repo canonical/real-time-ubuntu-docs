@@ -45,7 +45,7 @@ Similarly to the previous scenario, task H wakes up and starts running, but it i
 The high-priority task H wants to take the same lock held by the low-priority task L.
 Differently than in the priority inversion's case, and instead of H going to sleep and waiting, priority inheritance occurs, with L acquiring H's priority.
 The low-priority task L can now run with the same priority as task H, enabling it to finish its work in the critical section and then release the lock.
-The inheritance mechanism centres around boosting the lower task's priority, giving it one higher than the upcoming medium priority task M, which would cause unbounded latencies.
+The inheritance mechanism centers around boosting the lower task's priority, giving it one higher than the upcoming medium priority task M, which would cause unbounded latencies.
 
 Once task L finishes its critical section work, task H acquires the lock, where the red bar turns orange.
 Whenever task H completes, it will, in turn, release the lock.
