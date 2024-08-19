@@ -7,10 +7,10 @@ The present and the following section will introduce unbounded priority inversio
 Unbounded priority inversion
 ----------------------------
 
-Let's begin with priority inversion by looking at the diagram sketched below.
+Let's begin with priority inversion by looking at the diagram below.
 Three tasks, L, M, and H, with varying priority levels, low, medium and high, are present in the kernel and about to contest for CPU access.
 
-The low-priority task L runs until it takes a lock; in the diagram below, the blue bar turns red.
+The low-priority task L runs until it takes a lock; in the diagram below, the blue bar turns purple.
 After acquiring it, task L holds the lock and begins modifying some critical sections within the kernel. 
 Once the higher-priority task H appears, it preempts task L and starts to run.
 At this point, task H would like to acquire the same lock task L is holding.
@@ -20,12 +20,12 @@ In such a setup, priority inversion can occur if a medium-priority task M comes 
 Once task M starts running, the high-priority task H will potentially wait for an unbounded amount of time, preventing it from doing work in a critical kernel section.
 Improving the flexibility to preempt tasks executing within the kernel would thus help guarantee an upper time boundary.
 
-.. figure:: priority-inversion-inheritance/digikey-unbounded-priority-inversion.png
+.. figure:: priority-inversion-inheritance/unbounded-priority-inversion.svg
     :width: 100%
     :align: center
     :alt: Unbounded priority inversion
 
-    Unbounded Priority Inversion [`DigiKey`_]
+    Unbounded priority inversion: A high-priority task being indefinitely delayed by a medium-priority task due to a lack of proper priority management.
 
 
 In this specific example, task M finishes running and releases the CPU -- where the horizontal bar turns from green to red in the drawing -- allowing task L to start running again while still holding the lock.
@@ -53,18 +53,15 @@ Only now can the medium-priority task M come along and start running.
 If needed, the higher-priority task H could further preempt task M to finish its processing.
 Priority inheritance in a real-time kernel solves the issue of task M starting to run between tasks H and L, which would give rise to unbounded latencies and priority inversion.
 
-.. figure:: priority-inversion-inheritance/digikey-priority-inheritance.png
+.. figure:: priority-inversion-inheritance/priority-inheritance.svg
     :width: 100%
     :align: center
     :alt: Priority inheritance
 
-    Unbounded Priority Inversion [`DigiKey`_]
+    Priority inheritance: A low-priority task temporarily inherits the higher priority of a waiting task to complete its work in a critical section of the kernel and release the resource needed by the high-priority task.
 
 References
 ----------
 
 - `Introduction to RTOS - Solution to Part 11 (Priority Inversion) <https://www.digikey.com/en/maker/projects/introduction-to-rtos-solution-to-part-11-priority-inversion/abf4b8f7cd4a4c70bece35678d178321>`_
 
-.. Links
-
-.. _DigiKey: https://www.digikey.com/en/maker/projects/introduction-to-rtos-solution-to-part-11-priority-inversion/abf4b8f7cd4a4c70bece35678d178321
