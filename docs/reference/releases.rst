@@ -23,7 +23,6 @@ The following table shows the Ubuntu releases that support Real-time Ubuntu:
 Refer to :doc:`../how-to/enable-real-time-ubuntu` to set up a supported Ubuntu version.
 
 The real-time kernel is also available on `Ubuntu Core`_.
-Please `contact the real-time team`_ for further information.
+Please refer to :doc:`../how-to/ubuntu-core` guides for further information.
 
 .. _Ubuntu Core: https://ubuntu.com/core
-.. _contact the real-time team: https://ubuntu.com/kernel/real-time/contact-us

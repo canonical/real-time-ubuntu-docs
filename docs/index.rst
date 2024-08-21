@@ -43,6 +43,8 @@ In this documentation
       **Step-by-step guides** covering key operations and common tasks, such as
       :doc:`installing the real-time kernel <how-to/enable-real-time-ubuntu>` and
       :doc:`configuring the CPUs <how-to/cpu-boot-configs>`.
+      There are also guidelines on deploying real-time systems with
+      :doc:`Ubuntu Core <how-to/ubuntu-core>`.   
 
 .. grid:: 1 1 2 2
    :reverse:
