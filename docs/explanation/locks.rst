@@ -145,9 +145,8 @@ local_lock_t
 References
 ----------
 
-`Lock types and their rules`_
-
-`Unreliable Guide To Locking - Rusty Russell`_
+- `Lock types and their rules`_
+- `Unreliable Guide To Locking - Rusty Russell`_
 
 .. Links
 
