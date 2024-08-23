@@ -12,7 +12,7 @@ Priority inversion
 Let's begin with priority inversion by looking at the diagram below.
 Three tasks, L, M, and H, with varying priority levels, low, medium and high, are present in the kernel and about to contest for CPU access.
 
-The low-priority task L runs until it takes a lock.
+The low-priority task L runs until it takes a lock; in the diagram below, the blue bar turns purple.
 After acquiring it, task L holds the lock and begins modifying some critical sections within the kernel. 
 Once the higher-priority task H appears, it preempts task L and starts to run.
 At this point, task H would like to acquire the same lock task L is holding.
@@ -30,7 +30,7 @@ Improving the flexibility to preempt tasks executing within the kernel would thu
     Unbounded priority inversion: A high-priority task being indefinitely delayed by a medium-priority task due to a lack of proper priority management.
 
 
-In this specific example, task M finishes running and releases the CPU -- where the horizontal bar turns from green to red in the drawing -- allowing task L to start running again while still holding the lock.
+In this specific example, task M finishes running and releases the CPU -- where the horizontal bar turns from green to purple in the diagram -- allowing task L to start running again while still holding the lock.
 Only once task L releases it, task H will wake up and acquire the lock, starting its work within the critical section.
 
 Priority inversion occurred on the Mars Rover, and it is a critical challenge for developers and engineers working with real-time systems. With unbounded priority inversion, the need for priority inheritance becomes clear.
@@ -49,7 +49,7 @@ Differently than in the priority inversion's case, and instead of H going to sle
 The low-priority task L can now run with the same priority as task H, enabling it to finish its work in the critical section and then release the lock.
 The inheritance mechanism centers around boosting the lower task's priority, giving it one higher than the upcoming medium priority task M, which would cause unbounded latencies.
 
-Once task L finishes its critical section work, task H acquires the lock, where the red bar turns orange.
+Once task L finishes its critical section work, task H acquires the lock, where the purple bar turns orange.
 Whenever task H completes, it will, in turn, release the lock.
 Only now can the medium-priority task M come along and start running.
 If needed, the higher-priority task H could further preempt task M to finish its processing.
