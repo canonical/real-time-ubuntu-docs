@@ -65,7 +65,7 @@ In this documentation
    tutorial/index
    how-to/index
    reference/index
-   Explanation: Linux kernel schedules <explanation/schedulers>
+   explanation/index
 
 ---------
 
