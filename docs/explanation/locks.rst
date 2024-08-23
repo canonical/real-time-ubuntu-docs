@@ -7,7 +7,7 @@ Linux kernel locks
   The details provided here may not fully apply to newer kernel versions.
   
   The interface of kernel locks hasn't changed significantly over the years, nevertheless they are considered as unstable and subject to change.
-  This is discussed in the `"The Linux Kernel Driver Interface" document`_.
+  This is discussed in the `The Linux Kernel Driver Interface`_ documentation.
 
 
 In the `kernel space`_, certain critical code regions across all `subsystems`_ must be protected from `context switching`_ or, in the case of real-time kernels, from `preemption`_.
@@ -46,7 +46,7 @@ This lock behaves different on ``PREEMPT_RT`` kernels.
 - On non-PREEMPT_RT kernels it relies on the architecture dependent assembly implementation of a ``arch_rwlock_t``.
 - On PREEMPT_RT kernels it is implemented as a ``rwbase_rt``, realizing a sleeping lock.
 
-.. _spinlock:
+.. _spinlock_t:
 
 spinlock_t
 ~~~~~~~~~~
@@ -71,7 +71,7 @@ mutex
 ~~~~~
 
 A Mutex, short for "mutual exclusion" is used to protect critical sections of code, ensuring that only one thread or process can access a shared resource at any given time.
-Specificaly, the ``mutex`` type (defined on `include/linux/mutex_types.h`_) is a simple mutex implementation that varies regarging if the current kernel is a PREEMPT_RT kernel or not.
+Specifically, the ``mutex`` type (defined on `include/linux/mutex_types.h`_) is a simple mutex implementation that varies regarding if the current kernel is a PREEMPT_RT kernel or not.
 
 - For non-PREEMPT_RT kernels scenarios the implementation relies on an atomic which holds the owner and a :ref:`raw_spinlock_t`
 - On PREEMPT_RT kernels, the implementation is based on a sleeping lock.
@@ -139,7 +139,7 @@ local_lock_t
 ``local_lock_t`` (defined in `include/linux/local_lock_internal.h`_) is a cpu lock lock implementation that is implemented in two different ways depending on whether the real-time kernel configuration (i.e., with ``PREEMPT_RT`` enabled) is used.
 
 - In non-preemptive scenarios it is just a simple typedef structure without any special fields.
-- With ``PREEMPT_RT`` enabled it maps to a :ref:`spinlock`
+- With ``PREEMPT_RT`` enabled it maps to a :ref:`spinlock_t`
 
 
 References
@@ -189,5 +189,5 @@ References
 .. _`system call`: https://en.wikipedia.org/wiki/System_call
 .. _`completions`: https://docs.kernel.org/scheduler/completion.html
 .. _`priority inversion`: https://en.wikipedia.org/wiki/Priority_inversion
-.. _`"The Linux Kernel Driver Interface" document`: https://docs.kernel.org/process/stable-api-nonsense.html
+.. _`The Linux Kernel Driver Interface`: https://docs.kernel.org/process/stable-api-nonsense.html
 .. _`Read-Copy-Update`: https://docs.kernel.org/RCU/whatisRCU.html
