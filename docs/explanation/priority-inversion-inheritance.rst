@@ -1,16 +1,18 @@
 Priority inversion and inheritance
 ==================================
 
-Among the reasons why PREEMPT_RT is not in mainline yet is that much of the locking within the kernel has to be updated to prevent priority inversion from occurring in a real-time environment.
-The present and the following section will introduce unbounded priority inversion and the need for priority inheritance.
+When a high-priority task is delayed by a low-priority task due to competition for a shared resource, an intermediate-priority task might complete its execution before the high-priority task can proceed.
+This situation is referred to as priority inversion and can be resolved using priority inheritance.
 
-Unbounded priority inversion
+The following sections introduce priority inversion and the need for priority inheritance.
+
+Priority inversion
 ----------------------------
 
 Let's begin with priority inversion by looking at the diagram below.
 Three tasks, L, M, and H, with varying priority levels, low, medium and high, are present in the kernel and about to contest for CPU access.
 
-The low-priority task L runs until it takes a lock; in the diagram below, the blue bar turns purple.
+The low-priority task L runs until it takes a lock.
 After acquiring it, task L holds the lock and begins modifying some critical sections within the kernel. 
 Once the higher-priority task H appears, it preempts task L and starts to run.
 At this point, task H would like to acquire the same lock task L is holding.
@@ -64,4 +66,4 @@ References
 ----------
 
 - `Introduction to RTOS - Solution to Part 11 (Priority Inversion) <https://www.digikey.com/en/maker/projects/introduction-to-rtos-solution-to-part-11-priority-inversion/abf4b8f7cd4a4c70bece35678d178321>`_
-
+- `Priority inversion - priority inheritance <https://wiki.linuxfoundation.org/realtime/documentation/technical_basics/pi>`_
