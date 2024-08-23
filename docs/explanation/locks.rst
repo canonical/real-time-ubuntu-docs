@@ -70,7 +70,7 @@ In some cases, ``raw_spinlock_t`` can also be employed when the critical section
 mutex
 ~~~~~
 
-A mutex, short for "mutual exclusion," is used to protect critical sections of code, ensuring that only one thread or process can access a shared resource at any given time.
+A Mutex, short for "mutual exclusion" is used to protect critical sections of code, ensuring that only one thread or process can access a shared resource at any given time.
 Specificaly, the ``mutex`` type (defined on `include/linux/mutex_types.h`_) is a simple mutex implementation that varies regarging if the current kernel is a PREEMPT_RT kernel or not.
 
 - For non-PREEMPT_RT kernels scenarios the implementation relies on an atomic which holds the owner and a :ref:`raw_spinlock_t`
