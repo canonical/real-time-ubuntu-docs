@@ -44,7 +44,7 @@ By implementing this approach, the number of locks used can be reduced, which in
 This lock behaves different on ``PREEMPT_RT`` kernels.
 
 - On non-PREEMPT_RT kernels it relies on the architecture dependent assembly implementation of a ``arch_rwlock_t``.
-- On PREEMPT_RT kernels it is implemented to a ``rwbase_rt`` is implemented as a sleeping lock.
+- On PREEMPT_RT kernels it is implemented as a ``rwbase_rt``, realizing a sleeping lock.
 
 .. _spinlock:
 
