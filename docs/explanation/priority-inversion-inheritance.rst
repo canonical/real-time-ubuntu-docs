@@ -7,7 +7,7 @@ This situation is referred to as priority inversion and can be resolved using pr
 The following sections introduce priority inversion and the need for priority inheritance.
 
 Priority inversion
-----------------------------
+------------------
 
 Let's begin with priority inversion by looking at the diagram below.
 Three tasks, L, M, and H, with varying priority levels, low, medium and high, are present in the kernel and about to contest for CPU access.
@@ -15,9 +15,9 @@ Three tasks, L, M, and H, with varying priority levels, low, medium and high, ar
 The low-priority task L runs until it takes a lock; in the diagram below, the blue bar turns purple.
 After acquiring it, task L holds the lock and begins modifying some critical sections within the kernel. 
 Once the higher-priority task H appears, it preempts task L and starts to run.
-At this point, task H would like to acquire the same lock task L is holding.
+At this point, task H tries to acquire the same lock task L is holding.
 As it can't do so, the higher-priority task H goes to sleep and waits for the lower-priority task L to release the lock.
-Task L thus continues running while Task H is sleeping.
+Task L thus continues running while task H is sleeping.
 In such a setup, priority inversion can occur if a medium-priority task M comes along and preempts task L.
 Once task M starts running, the high-priority task H will potentially wait for an unbounded amount of time, preventing it from doing work in a critical kernel section.
 Improving the flexibility to preempt tasks executing within the kernel would thus help guarantee an upper time boundary.
@@ -42,15 +42,15 @@ A real-time Linux kernel resolves the unbounded latencies of priority inversion 
 
 The diagram below helps illustrate the mechanism.
 As before, the low-priority task L starts running and acquires the lock.
-Similarly to the previous scenario, task H wakes up and starts running, but it is soon blocked while attempting to get the lock.
+Similar to the previous scenario, task H wakes up and starts running, but it is soon blocked while attempting to get the lock.
 
 The high-priority task H wants to take the same lock held by the low-priority task L.
-Differently than in the priority inversion's case, and instead of H going to sleep and waiting, priority inheritance occurs, with L acquiring H's priority.
+In this case, and instead of H going to sleep and waiting, priority inheritance occurs, with L acquiring H's priority.
 The low-priority task L can now run with the same priority as task H, enabling it to finish its work in the critical section and then release the lock.
 The inheritance mechanism centers around boosting the lower task's priority, giving it one higher than the upcoming medium priority task M, which would cause unbounded latencies.
 
 Once task L finishes its critical section work, task H acquires the lock, where the purple bar turns orange.
-Whenever task H completes, it will, in turn, release the lock.
+When task H completes, it will, in turn, release the lock.
 Only now can the medium-priority task M come along and start running.
 If needed, the higher-priority task H could further preempt task M to finish its processing.
 Priority inheritance in a real-time kernel solves the issue of task M starting to run between tasks H and L, which would give rise to unbounded latencies and priority inversion.
