@@ -5,7 +5,7 @@ Linux kernel locks
 
   This documentation covers some kernel internals specific to Linux kernel v6.8.
   The details provided here may not fully apply to newer kernel versions.
-  
+
   The interface of kernel locks hasn't changed significantly over the years, nevertheless they are considered as unstable and subject to change.
   This is discussed in the `The Linux Kernel Driver Interface`_ documentation.
 
