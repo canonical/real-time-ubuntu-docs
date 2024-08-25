@@ -93,7 +93,7 @@ Essentially, RT-mutexes can be used to implement spinlock_t and read-write locks
 semaphore
 ~~~~~~~~~~
 
-The ``semaphore`` (defined in `include/linux/semaphore.h`_) structure discussed here follow the counting semaphore structure (as the binary semaphore equivalent is essentially a mutex).
+The ``semaphore`` (defined in `include/linux/semaphore.h`_) structure discussed here follows the counting semaphore structure (as the binary semaphore equivalent is essentially a mutex).
 It's a foundational implementation intended for use within other kernel lock structures.
 Internally, it relies on a :ref:`raw_spinlock_t` and a counter.
 Their primary use cases involve serialization and waiting.
