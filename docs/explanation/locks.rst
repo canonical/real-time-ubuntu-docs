@@ -136,7 +136,7 @@ Unlike other locking mechanisms, disabling preemption or interrupts is strictly 
 local_lock_t
 ~~~~~~~~~~~~
 
-``local_lock_t`` (defined in `include/linux/local_lock_internal.h`_) is a cpu lock lock implementation that is implemented in two different ways depending on whether the real-time kernel configuration (i.e., with ``PREEMPT_RT`` enabled) is used.
+``local_lock_t`` (defined in `include/linux/local_lock_internal.h`_) is a cpu lock implementation that is implemented in two different ways depending on whether the real-time kernel configuration (i.e., with ``PREEMPT_RT`` enabled) is used.
 
 - In non-preemptive scenarios it is just a simple typedef structure without any special fields.
 - With ``PREEMPT_RT`` enabled, it maps to a per CPU :ref:`spinlock_t`, which protects the critical section while staying preemptible. 
