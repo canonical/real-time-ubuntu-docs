@@ -73,7 +73,7 @@ mutex
 A Mutex, short for "mutual exclusion" is used to protect critical sections of code, ensuring that only one thread or process can access a shared resource at any given time.
 Specifically, the ``mutex`` type (defined on `include/linux/mutex_types.h`_) is a simple mutex implementation that varies depending on whether the current kernel is a PREEMPT_RT kernel or not.
 
-- For non-PREEMPT_RT kernels the implementation relies on an atomic operator which holds the owner and a :ref:`raw_spinlock_t`
+- For non-PREEMPT_RT kernels, the implementation relies on an atomic operator which holds the owner and a :ref:`raw_spinlock_t`
 - On PREEMPT_RT kernels, the implementation is based on a sleeping lock.
 
 The primary use case for this type of lock occurs when data needs to be shared between different user contexts.
