@@ -54,7 +54,7 @@ spinlock_t
 ``spinlock_t`` is the most generic implementation of spinlock structures, as defined in `include/linux/spinlock_types.h`_.
 It is implemented in two different ways, depending on whether the real-time kernel configuration (i.e., with ``PREEMPT_RT`` enabled) is used.
 
-- In non-PREEMPT_RT scenarios, ``spinlock_t`` is a ``typedef`` structure based on :ref:`raw_spinlock_t`.
+- In non-PREEMPT_RT scenarios, ``spinlock_t`` maps to :ref:`raw_spinlock_t`.
 - In PREEMPT_RT kernels, this is implemented as a :ref:`rt_mutex`, making this a sleeping lock.
 
 .. _raw_spinlock_t:
