@@ -1,0 +1,4 @@
+Refer to `Ubuntu Pro Client - How to enable Real-time Ubuntu`_ to set up a
+supported Ubuntu machine.
+
+.. _Ubuntu Pro Client - How to enable Real-time Ubuntu: https://canonical-ubuntu-pro-client.readthedocs-hosted.com/en/latest/howtoguides/enable_realtime_kernel/

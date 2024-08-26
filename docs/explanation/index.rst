@@ -1,5 +1,3 @@
-:orphan:
-
 Explanation
 ===========
 
@@ -10,4 +8,4 @@ Explanation clarifies, deepens and broadens your understanding of Real-time Ubun
 
    schedulers
    locks
-
+   priority-inversion-inheritance

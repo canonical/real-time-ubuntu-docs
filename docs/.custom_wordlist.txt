@@ -5,6 +5,7 @@ conf
 CPUAffinity
 CPUs
 cpus
+DigiKey
 EAS
 emptive
 Futexes
@@ -33,6 +34,7 @@ Pd
 Pe
 percpu
 proc
+RTOS
 Schedutil
 Seqlocks
 seqlock

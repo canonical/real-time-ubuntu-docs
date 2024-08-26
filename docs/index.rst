@@ -54,9 +54,9 @@ In this documentation
       :doc:`boot parameters <reference/kernel-boot-parameters>` and
       :doc:`supported releases <reference/releases>`.
 
-   .. grid-item:: Explanation
+   .. grid-item:: :doc:`Explanation <explanation/index>`
 
-      **Conceptual information** about :doc:`explanation/schedulers`.
+      **Conceptual information** about real-time systems, such as :doc:`explanation/schedulers` and :doc:`explanation/priority-inversion-inheritance`.
 
 .. toctree::
    :maxdepth: 1
