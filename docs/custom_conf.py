@@ -136,6 +136,7 @@ linkcheck_ignore = [
     'https://github.com/lblythen/real-time-ubuntu-docs/blob/feature/doc_first-tutorial/docs/tutorial/lock.c',
 
     # Working, accessible, but misinterpreted as broken
+    'https://www.digikey.com/en/maker/projects/introduction-to-rtos-solution-to-part-11-priority-inversion/abf4b8f7cd4a4c70bece35678d178321', # 403 via linkcheck and CI
 ]
 
 # Pages on which to ignore anchors
