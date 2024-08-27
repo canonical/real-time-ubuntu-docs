@@ -2,9 +2,9 @@ name: Main Documentation Checks
 
 on:
   push:
-    branches-ignore:    
-      - 'ubuntu-core-devel'
+    branches: [ main ]
   pull_request:
+  # Manual trigger
   workflow_dispatch:
 
 concurrency:
