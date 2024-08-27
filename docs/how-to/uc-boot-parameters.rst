@@ -38,7 +38,7 @@ In the case of :doc:`real-time kernel parameters <../reference/kernel-boot-param
 - :code:`nohz_full` which receives a `cpu list`_ specifying which CPUs will have dynamic ticks disabled. 
 - :code:`irqaffinity` used to set the affinity of the interrupt requests (IRQs) to the CPUs, in other words: which CPUs will handle the IRQs.
 
-For example:
+For example, the command below enables dynamic ticks, disabling them for all CPUs 2-N, and setting CPUs 0-1 to handle IRQs:
 
 .. code-block:: bash
     
