@@ -132,7 +132,7 @@ This downloads all the snaps specified in the model assertion and builds an imag
 ----
 
 After installing this image on your device, you can continue by tuning your system for real-time processing. 
-The :doc:`../how-to/uc-boot-parameters` guide describes the method for dynamically configuring the kernel command line parameters.
+The :doc:`../how-to/modify-kernel-boot-parameters` guide describes the method for dynamically configuring the kernel command line parameters.
 The configuration is an iterative process that is best done together with the expected workload.
 
 Once satisfied with the configurations, continue below to learn how those configurations can be set statically during the image build.
