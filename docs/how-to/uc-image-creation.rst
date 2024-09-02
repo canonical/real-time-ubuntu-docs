@@ -57,29 +57,29 @@ Below are the needed steps:
 
 1. Create and register a key
 
-Use ``snapcraft list-keys`` to check your existing keys.
-If you don't already have a key, create one locally and register it with your account.
-Choose a meaningful name for the key, as it can be used to sign multiple models.
-In this guide we use ``rtu-model`` to sign all our real-time Ubuntu models.
+   Use ``snapcraft list-keys`` to check your existing keys.
+   If you don't already have a key, create one locally and register it with your account.
+   Choose a meaningful name for the key, as it can be used to sign multiple models.
+   In this guide we use ``rtu-model`` to sign all our real-time Ubuntu models.
 
-.. code-block:: shell
+   .. code-block:: shell
 
-    snapcraft create-key rtu-model
-    snapcraft register-key rtu-model
+      snapcraft create-key rtu-model
+      snapcraft register-key rtu-model
 
-Remember to update the model assertion's ``timestamp``, if you created a new key and plan to use it next.
+   Remember to update the model assertion's ``timestamp``, if you created a new key and plan to use it next.
 
 2. Sign the model assertion
 
-.. code-block:: shell
+   .. code-block:: shell
 
-    snap sign -k rtu-model model.json > model.signed.yaml
+      snap sign -k rtu-model model.json > model.signed.yaml
 
-The ``snap sign`` command takes JSON as input and produces YAML as output.
+   The ``snap sign`` command takes JSON as input and produces YAML as output.
 
-.. tip::
+   .. tip::
 
-    You need to repeat the signing every time you change the input model, because the signature is calculated based on the model.
+      You need to repeat the signing every time you change the input model, because the signature is calculated based on the model.
 
 
 Build the image
