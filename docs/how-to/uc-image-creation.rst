@@ -10,7 +10,7 @@ However, these images include the generic Linux kernel.
 In order to run Ubuntu Core with the real-time kernel, we need to build it ourselves. 
 
 This guide shows how to build an Ubuntu Core image with the real-time kernel.
-We start by showing how to :ref:`build a vanilla image <ubuntu-core-image>` which is excellent for testing and tuning, and then illustrate how to :ref:`make a custom image <custom-ubuntu-core-image>` with production-ready kernel configurations.
+We will first :ref:`build a vanilla image <ubuntu-core-image>` - which is excellent for testing and tuning - then proceed to :ref:`make a custom image <custom-ubuntu-core-image>` with production-ready kernel configurations.
 
 
 .. _ubuntu-core-image:
@@ -31,17 +31,18 @@ Read the `model assertion`_ documentation before continuing.
 Below is an example model assertion in YAML, describing a `core22` Ubuntu Core
 image:
 
-.. literalinclude :: uc-image-creation/model.json
+.. literalinclude:: uc-image-creation/model.json
    :language: json
+   :emphasize-lines: 4, 8-11, 19-24
 
 Inside an empty directory, create a file named ``model.json`` with the above content.
 
 Change the following:
 
+- ``model`` to a name that accurately represents your device(s).
 - ``authority-id``, ``brand-id`` to your developer ID, since this is custom model. Use ``snapcraft whoami`` command to get your developer ID.
 - ``timestamp`` to an RFC3339 formatted time set after the registration of your signing key. If you already have a registered key, use ``date -Iseconds --utc`` command to generate the current time. If not, do this in the next steps after registering your key.
 - ``store`` to your dedicated Snap Store ID.
-- ``model`` to a name that accurately represents your device(s).
 
 The ``snaps`` array is a list of snaps that get included in the image.
 In that list, the ``realtime-kernel`` snap contains the realtime Linux kernel.
@@ -49,10 +50,9 @@ Here you can add any other snaps, including for example your real-time applicati
 
 Next, we need to sign the model assertion.
 Refer to the guide on `signing model assertion`_ for details on how to sign the model assertion. 
+Below are the needed steps:
 
-Here are the needed steps:
-
-1) Create and register a key
+1. Create and register a key
 
 Use ``snapcraft list-keys`` to check your existing keys.
 If you don't already have a key, create one locally and register it with your account.
@@ -66,13 +66,13 @@ In this guide we use ``rtu-model`` to sign all our real-time Ubuntu models.
 
 Remember to update the model assertion's ``timestamp``, if you created a new key and plan to use it next.
 
-2) Sign the model assertion
+2. Sign the model assertion
 
 .. code-block:: shell
 
     snap sign -k rtu-model model.json > model.signed.yaml
 
-The ``snap sign`` command takes JSON as input and produces YAML as output!
+The ``snap sign`` command takes JSON as input and produces YAML as output.
 
 .. tip::
 
@@ -151,14 +151,14 @@ To do this, we need to create a custom gadget snap, create a model assertion, an
     We refer to this in different parts of the document as our *project directory*.
 
 Create the gadget snap
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 The `gadget snap`_ documentation is a recommended read before starting.
 
 This is best done by forking an existing reference gadget, then changing it for our purpose.
 For example, there is the `pc gadget`_ which is suitable for most AMD64 platforms, and the `pi gadget`_ which is meant for Raspberry Pis.
 
-Let's create a custom gadget snap based on the core22 pc gadget.
+This section uses the core22 pc gadget snap as an example for creating a custom gadget snap.
 
 Inside the project directory, clone the specific branch and enter the repository:
 
@@ -183,8 +183,7 @@ For example:
 Refer to :doc:`../reference/kernel-boot-parameters` for the list of supported parameters.
 
 Modify ``snapcraft.yaml`` to fit your application.
-At least, make sure to change the name and version to something distinct, for example, to ``realtime-pc`` and ``example`` respectively.
-
+At minimum, make sure to change the name and version to something distinct, for example, to ``realtime-pc`` and ``example`` respectively.
 
 Now, build the gadget snap:
 
@@ -200,7 +199,7 @@ Now, build the gadget snap:
 
 
 Create the model assertion
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Create the model assertion inside the project directory.
 Follow the same steps in :ref:`model-assertion` section but replace the ``pc`` snap entry with the following:
@@ -212,12 +211,12 @@ Follow the same steps in :ref:`model-assertion` section but replace the ``pc`` s
         "type": "gadget"
     },
 
-Unlike the original ``pc`` snap definition, this entry has no listed ``channel`` and ``id``, because it isn't in a Store.
-We have built it locally in the earlier steps and will later on pass it directly to the image builder.
-In practice, the gadget snap should be uploaded to a Store and then listed in the model assertion along with its channel and id.
+Unlike the original ``pc`` snap definition, this entry has no listed ``channel`` and ``id``, because it isn't published in a Store.
+The locally built gadget snap will be passed directly to the image builder.
+For production use, the gadget snap should be uploaded to a Store and then listed in the model assertion along with its channel and id.
 Uploading to the store makes it possible to use a signed snap that receives updates.
 
-Sign the model assertion which has our custom ``realtime-pc`` gadget, using the same key which we created in the previous section of this guide:
+Sign the model assertion which has our custom ``realtime-pc`` gadget, using the same key which was created in the previous section of this guide:
 
 .. code-block:: shell
 
@@ -238,7 +237,7 @@ Before we continue, let's have an overview of the files inside our project direc
 The project directory should contain the model assertion, the signed model assertion, and the pc-gadget directory.
 
 Build the Ubuntu Core image
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Similar to before, we use ``ubuntu-image`` to build the image.
 This time we also need to provide the path to the custom gadget snap file.
@@ -288,7 +287,7 @@ After installing and running a device with this image, the kernel parameters can
 
 ----
 
-This guide provided a very basic setup to configure Ubuntu Core for real-time processing and create a bootable OS image for it. 
+This guide provides a very basic setup to configure Ubuntu Core for real-time processing and create a bootable OS image for it. 
 For production, the operating system configuration involves many more steps, such as network configuration and full disk encryption.
 The device will also need a serial assertion to authenticate itself and receive for example updates to the real-time kernel snap from a dedicated Snap Store.
 
