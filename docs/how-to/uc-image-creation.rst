@@ -1,4 +1,4 @@
-How to create a real-time Ubuntu Core image
+How to create a Real-time Ubuntu Core image
 ===========================================
 
 .. note::
@@ -10,7 +10,7 @@ However, these images include the generic Linux kernel.
 In order to run Ubuntu Core with the real-time kernel, we need to build it ourselves. 
 
 This guide shows how to build an Ubuntu Core image with the real-time kernel.
-We will first :ref:`build a vanilla image <ubuntu-core-image>` - which is excellent for testing and tuning - then proceed to :ref:`make a custom image <custom-ubuntu-core-image>` with production-ready kernel configurations.
+We will first :ref:`build a vanilla image <ubuntu-core-image>` - which is excellent for testing and tuning - then proceed to :ref:`making a custom image <custom-ubuntu-core-image>` with production-ready kernel configurations.
 
 
 .. _ubuntu-core-image:
@@ -47,6 +47,9 @@ Change the following:
 The ``snaps`` array is a list of snaps that get included in the image.
 In that list, the ``realtime-kernel`` snap contains the realtime Linux kernel.
 Here you can add any other snaps, including for example your real-time applications.
+
+Sign the model assertion
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Next, we need to sign the model assertion.
 Refer to the guide on `signing model assertion`_ for details on how to sign the model assertion. 
