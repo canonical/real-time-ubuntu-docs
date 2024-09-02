@@ -11,7 +11,7 @@ The Linux kernel supports a wide range of parameters, but only a few of them are
 Depending on the underlying boot mechanism, there are multiple ways to pass command line parameters to the kernel:
 
 * For Raspberry Pi, jump to :ref:`raspberry-pi`.
-* Ubuntu Core uses GRUB but provides a different interface for modifying kernel boot parameters; scroll down to :ref:`ubuntu-core`.
+* Ubuntu Core uses GRUB but provides a different interface for modifying kernel boot parameters; scroll down to :ref:`ubuntu-core-kernel-cmdline`.
 * Continue reading for systems that use the :ref:`GNU GRUB bootloader <grub-bootloader>`.
 
 .. _grub-bootloader:
@@ -130,7 +130,7 @@ Verify the parameters passed to the kernel at boot time:
    reboot=w coherent_pool=1M 8250.nr_uarts=1 pci=pcie_bus_safe snd_bcm2835.enable_compat_alsa=0 snd_bcm2835.enable_hdmi=1  smsc95xx.macaddr=D8:3A:DD:E4:0B:D3 vc_mem.mem_base=0x3fc00000 vc_mem.mem_size=0x40000000  console=ttyAMA10,115200 multipath=off dwc_otg.lpm_enable=0 console=tty1 root=LABEL=writable rootfstype=ext4 rootwait fixrtc nohz=on nohz_full=1-3
 
 
-.. _ubuntu-core:
+.. _ubuntu-core-kernel-cmdline:
 
 Modify boot parameters on Ubuntu Core
 -------------------------------------

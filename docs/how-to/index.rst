@@ -34,7 +34,7 @@ Configure Real-time Ubuntu Core:
 
    Create a real-time Ubuntu Core image <uc-image-creation>
 
-For tuning an existing Ubuntu Core system, refer to :doc:`modify-kernel-boot-parameters`.
+For tuning an existing Ubuntu Core system, refer to :ref:`ubuntu-core-kernel-cmdline`.
 
 
 .. LINKS
