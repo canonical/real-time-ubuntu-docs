@@ -148,9 +148,9 @@ This section focuses on the dynamic method for configuring kernel boot parameter
 
 .. hint::
     
-    Refer to :doc:`../how-to/uc-image-creation` if you want to create a real-time Ubuntu Core image.
+    Refer to :doc:`../how-to/uc-image-creation` if you want to create a Real-time Ubuntu Core image.
 
-Open a terminal and access your real-time Ubuntu Core instance.
+Open a terminal and access your Real-time Ubuntu Core instance.
 The instance should be on a physical device rather than a virtual machine.
 While a virtual machine can be used to follow the steps in this guide, it will not provide the benefits of a real-time kernel.
 

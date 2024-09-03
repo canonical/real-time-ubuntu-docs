@@ -32,7 +32,7 @@ Configure Real-time Ubuntu Core:
 .. toctree::
    :maxdepth: 1
 
-   Create a real-time Ubuntu Core image <uc-image-creation>
+   Create a Real-time Ubuntu Core image <uc-image-creation>
 
 For tuning an existing Ubuntu Core system, refer to :ref:`ubuntu-core-kernel-cmdline`.
 
