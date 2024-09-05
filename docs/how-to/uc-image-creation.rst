@@ -135,7 +135,7 @@ This downloads all the snaps specified in the model assertion and builds an imag
 ----
 
 After installing this image on your device, you can continue by tuning your system for real-time processing. 
-The :ref:`ubuntu-core` guide describes the method for dynamically configuring the kernel command line parameters.
+The :ref:`ubuntu-core-kernel-cmdline` guide describes the method for dynamically configuring the kernel command line parameters.
 The configuration is an iterative process that is best done together with the expected workload.
 
 Once satisfied with the configurations, continue below to learn how those configurations can be set statically during the image build.
