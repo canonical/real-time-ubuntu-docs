@@ -6,7 +6,7 @@ How to create a Real-time Ubuntu Core image
     This guide assumes access to features currently available exclusively to `dedicated Snap Store`_ users.
 
 Canonical builds and publishes generic and silicon-optimized Ubuntu Core images for a range of `supported platforms`_.
-The generic Ubuntu Core images include the generic Linux kernel by default.
+The generic Ubuntu Core images include the generic Ubuntu kernel by default.
 In order to run Ubuntu Core with the real-time kernel, we need to build it ourselves. 
 
 This guide shows how to build an Ubuntu Core image with the real-time kernel.
