@@ -1,6 +1,7 @@
 bitmask
 bh
 CAS
+cmdline
 conf
 CPUAffinity
 CPUs
@@ -15,12 +16,14 @@ GEDF
 gnuplot
 ffffff
 io
+IoT
 irq
 irqaffinity
 irqbalance
 irqrestore
 irqsave
 isolcpus
+iteratively
 kthreads
 LTS
 mutex
@@ -30,6 +33,7 @@ ng
 Pa
 Pb
 Pc
+pc
 Pd
 Pe
 percpu
