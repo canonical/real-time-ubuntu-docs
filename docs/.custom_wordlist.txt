@@ -66,4 +66,7 @@ stress-ng
 ng
 ISRs
 ww
-
+OPC
+UA
+GPIO
+KPIs
