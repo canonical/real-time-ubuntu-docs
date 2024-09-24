@@ -212,14 +212,14 @@ Inside the project directory, clone the specific branch of the pc-gadget and ent
 
         .. code-block:: shell
 
-            git clone https://github.com/snapcore/pc-gadget.git --branch=22 --depth=1
+            git clone https://github.com/canonical/pc-gadget.git --branch=22 --depth=1
             cd pc-gadget
 
     .. group-tab:: Ubuntu Core 24
 
         .. code-block:: shell
 
-            git clone https://github.com/snapcore/pc-gadget.git --branch=24 --depth=1
+            git clone https://github.com/canonical/pc-gadget.git --branch=24 --depth=1
             cd pc-gadget
 
 
