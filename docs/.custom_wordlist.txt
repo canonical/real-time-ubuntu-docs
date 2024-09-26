@@ -10,14 +10,11 @@ bootable
 bootloader
 CAS
 cfs
-CFS
 CFS's
 cgroup
-CGROUP
 cgroups
 CGROUPs
 cmdline
-CMDLINE
 conf
 config
 cpu
@@ -34,7 +31,6 @@ dyntick
 dynticks
 EAS
 edf
-EDF
 EDF's
 empt
 emptable
@@ -63,7 +59,6 @@ IOLATENCY
 IoT
 iotg
 irq
-IRQ
 irqaffinity
 irqbalance
 irqrestore
@@ -97,7 +92,6 @@ NMI
 NMIs
 NOCB
 nohz
-NOHZ
 optimization
 OSAL
 oslat
@@ -118,7 +112,6 @@ Permalink
 pid
 PMD
 posix
-POSIX
 preemptible
 proc
 ps
@@ -126,10 +119,8 @@ psr
 punctuations
 raspi
 rcu
-RCU
 realtime
 riscv
-RISCV
 RPi
 rq
 rtmutex
@@ -145,7 +136,6 @@ rwlock
 rwsem
 SBCs
 sched
-SCHED
 scheduler's
 Schedutil
 seqlock
