@@ -63,7 +63,6 @@ irqaffinity
 irqbalance
 irqrestore
 IRQs
-IRQs
 irqsave
 isolcpus
 ISR
@@ -182,9 +181,6 @@ ubuntu
 UC
 unbootable
 userspace
-utilization
-utilized
 VIRT
-visualization
 ww
 yaml
