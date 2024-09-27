@@ -25,7 +25,7 @@
       {
         "name": "core22",
         "type": "base",
-        "default-channel": "latest/edge",
+        "default-channel": "latest/stable",
         "id": "amcUKQILKXHHTlmSa7NMdnXSx02dNeeT"
       },
       {

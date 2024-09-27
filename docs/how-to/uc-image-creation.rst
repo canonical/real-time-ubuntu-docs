@@ -28,12 +28,24 @@ Create the model assertion
 The model assertion is a digitally signed document that describes the content of the Ubuntu Core image.
 Read the `model assertion`_ documentation before continuing.
 
-Below is an example model assertion in YAML, describing a `core22` Ubuntu Core
-image:
+Below are example model assertions, describing the Ubuntu Core image content for most recent releases:
 
-.. literalinclude:: uc-image-creation/model.json
-   :language: json
-   :emphasize-lines: 4, 8-11, 19-24
+.. tabs::
+
+    .. group-tab:: Ubuntu Core 22
+
+        .. literalinclude:: uc-image-creation/model-core22.json
+            :language: json
+            :emphasize-lines: 4, 8-11, 19-24
+
+    .. group-tab:: Ubuntu Core 24
+
+        .. literalinclude:: uc-image-creation/model-core24.json
+            :language: json
+            :emphasize-lines: 4, 8-11, 19-24
+
+        The ``console-conf`` snap added here is only to allow interactive user and network configuration.
+        An image created for deployment at scale should not include that.
 
 Inside an empty directory, create a file named ``model.json`` with the above content.
 
@@ -100,26 +112,57 @@ Export the store credentials to a file:
 
 Then build the image:
 
-.. code-block:: console
+.. tabs::
 
-    $ UBUNTU_STORE_AUTH_DATA_FILENAME=credentials.txt ubuntu-image snap model.signed.yaml --verbose --validation=enforce
-    [0] prepare_image
-    Fetching snapd (21759)
-    Fetching realtime-kernel (149)
-    Fetching core22 (1586)
-    Fetching pc (146)
-    [1] load_gadget_yaml
-    [2] set_artifact_names
-    [3] populate_rootfs_contents
-    [4] generate_disk_info
-    [5] calculate_rootfs_size
-    [6] populate_bootfs_contents
-    [7] populate_prepare_partitions
-    [8] make_disk
-    [9] generate_snap_manifest
-    Build successful
+    .. group-tab:: Ubuntu Core 22
 
-This downloads all the snaps specified in the model assertion and builds an image file called ``pc.img``.
+        .. code-block:: console
+
+            $ UBUNTU_STORE_AUTH_DATA_FILENAME=credentials.txt \
+                ubuntu-image snap model.signed.yaml --verbose --validation=enforce
+            [0] prepare_image
+            Fetching snapd (21759)
+            Fetching realtime-kernel (149)
+            Fetching core22 (1586)
+            Fetching pc (146)
+            [1] load_gadget_yaml
+            [2] set_artifact_names
+            [3] populate_rootfs_contents
+            [4] generate_disk_info
+            [5] calculate_rootfs_size
+            [6] populate_bootfs_contents
+            [7] populate_prepare_partitions
+            [8] make_disk
+            [9] generate_snap_manifest
+            Build successful
+
+    .. group-tab:: Ubuntu Core 24
+
+        .. code-block:: console
+
+            $ UBUNTU_STORE_AUTH_DATA_FILENAME=credentials.txt \
+                ubuntu-image snap model.signed.yaml --verbose --validation=enforce
+            [0] prepare_image
+            Fetching snapd (21759)
+            Fetching realtime-kernel (153)
+            Fetching core24 (490)
+            Fetching pc (178)
+            Fetching console-conf (40)
+            WARNING: the kernel for the specified UC20+ model does not carry assertion max formats information, assuming possibly incorrectly the kernel revision can use the same formats as snapd
+            [1] load_gadget_yaml
+            [2] set_artifact_names
+            [3] populate_rootfs_contents
+            [4] generate_disk_info
+            [5] calculate_rootfs_size
+            [6] populate_bootfs_contents
+            [7] populate_prepare_partitions
+            [8] make_disk
+            [9] generate_snap_manifest
+            Build successful
+
+        The warning about assertion max formats can be safely ignored; see `ubuntu-image assertion warning`_.
+
+    This downloads all the snaps specified in the model assertion and builds an image file called ``pc.img``.
 
 .. hint::
 
@@ -161,14 +204,23 @@ The `gadget snap`_ documentation is a recommended read before starting.
 This is best done by forking an existing reference gadget, then changing it for our purpose.
 For example, there is the `pc gadget`_ which is suitable for most AMD64 platforms, and the `pi gadget`_ which is meant for Raspberry Pis.
 
-This section uses the core22 pc gadget snap as an example for creating a custom gadget snap.
+Inside the project directory, clone the specific branch of the pc-gadget and enter the repository:
 
-Inside the project directory, clone the specific branch and enter the repository:
+.. tabs::
 
-.. code-block:: shell
+    .. group-tab:: Ubuntu Core 22
 
-    git clone https://github.com/snapcore/pc-gadget.git --branch=22 --depth=1
-    cd pc-gadget
+        .. code-block:: shell
+
+            git clone https://github.com/canonical/pc-gadget.git --branch=22 --depth=1
+            cd pc-gadget
+
+    .. group-tab:: Ubuntu Core 24
+
+        .. code-block:: shell
+
+            git clone https://github.com/canonical/pc-gadget.git --branch=24 --depth=1
+            cd pc-gadget
 
 
 Add the desired kernel command line in an array to ``kernel-cmdline.append`` in ``gadget/gadget-amd64.yaml``.
@@ -252,28 +304,60 @@ We therefore need:
 
 Build with the following command:
 
-.. code-block:: console
+.. tabs::
 
-    $ UBUNTU_STORE_AUTH_DATA_FILENAME=credentials.txt \
-        ubuntu-image snap model.signed.yaml  --verbose --validation=enforce \
-        --snap pc-gadget/realtime-pc_example_amd64.snap
-    
-    [0] prepare_image
-    Fetching snapd (21759)
-    Fetching realtime-kernel (134)
-    Fetching core22 (1380)
-    WARNING: "realtime-pc" installed from local snaps disconnected from a store cannot be refreshed subsequently!
-    Copying "pc-gadget/realtime-pc_example_amd64.snap" (realtime-pc)
-    [1] load_gadget_yaml
-    [2] set_artifact_names
-    [3] populate_rootfs_contents
-    [4] generate_disk_info
-    [5] calculate_rootfs_size
-    [6] populate_bootfs_contents
-    [7] populate_prepare_partitions
-    [8] make_disk
-    [9] generate_snap_manifest
-    Build successful
+    .. group-tab:: Ubuntu Core 22
+
+        .. code-block:: console
+
+            $ UBUNTU_STORE_AUTH_DATA_FILENAME=credentials.txt \
+                ubuntu-image snap model.signed.yaml  --verbose --validation=enforce \
+                --snap pc-gadget/realtime-pc_example_amd64.snap
+            
+            [0] prepare_image
+            Fetching snapd (21759)
+            Fetching realtime-kernel (134)
+            Fetching core22 (1380)
+            WARNING: "realtime-pc" installed from local snaps disconnected from a store cannot be refreshed subsequently!
+            Copying "pc-gadget/realtime-pc_example_amd64.snap" (realtime-pc)
+            [1] load_gadget_yaml
+            [2] set_artifact_names
+            [3] populate_rootfs_contents
+            [4] generate_disk_info
+            [5] calculate_rootfs_size
+            [6] populate_bootfs_contents
+            [7] populate_prepare_partitions
+            [8] make_disk
+            [9] generate_snap_manifest
+            Build successful
+
+    .. group-tab:: Ubuntu Core 24
+
+        .. code-block:: console
+
+            $ UBUNTU_STORE_AUTH_DATA_FILENAME=credentials.txt \
+                    ubuntu-image snap model.signed.yaml  --verbose --validation=enforce \
+                    --snap pc-gadget/realtime-pc_example_amd64.snap
+            [0] prepare_image
+            Fetching snapd (21759)
+            Fetching realtime-kernel (153)
+            Fetching core24 (490)
+            Fetching console-conf (40)
+            WARNING: the kernel for the specified UC20+ model does not carry assertion max formats information, assuming possibly incorrectly the kernel revision can use the same formats as snapd
+            WARNING: "realtime-pc" installed from local snaps disconnected from a store cannot be refreshed subsequently!
+            Copying "pc-gadget/realtime-pc_example_amd64.snap" (realtime-pc)
+            [1] load_gadget_yaml
+            [2] set_artifact_names
+            [3] populate_rootfs_contents
+            [4] generate_disk_info
+            [5] calculate_rootfs_size
+            [6] populate_bootfs_contents
+            [7] populate_prepare_partitions
+            [8] make_disk
+            [9] generate_snap_manifest
+            Build successful
+
+        The warning about assertion max formats can be safely ignored; see `ubuntu-image assertion warning`_.
 
 This adds all the snaps specified in the model assertion and builds an image file called ``pc.img``.
 There is a warning for ``realtime-pc`` gadget snap because this is being side-loaded, rather than fetched from the store.
@@ -307,3 +391,4 @@ The `Ubuntu Core documentation`_ is the best place to continue to learn about th
 .. _building Ubuntu Core images: https://ubuntu.com/core/docs/build-write-image
 .. _Ubuntu Core documentation: https://ubuntu.com/core/docs
 .. _flashing the image to a storage medium: https://ubuntu.com/core/docs/install-on-a-device
+.. _ubuntu-image assertion warning: https://forum.snapcraft.io/t/ubuntu-image-warning-kernel-snap/37774/3?u=farshidtz
