@@ -28,15 +28,9 @@ Create the model assertion
 The model assertion is a digitally signed document that describes the content of the Ubuntu Core image.
 Read the `model assertion`_ documentation before continuing.
 
-Below are example model assertions, describing the Ubuntu Core image content for most recent releases:
+Below are example model assertions, describing the Ubuntu Core image content for recent releases:
 
 .. tabs::
-
-    .. group-tab:: Ubuntu Core 22
-
-        .. literalinclude:: uc-image-creation/model-core22.json
-            :language: json
-            :emphasize-lines: 4, 8-11, 19-24
 
     .. group-tab:: Ubuntu Core 24
 
@@ -46,6 +40,13 @@ Below are example model assertions, describing the Ubuntu Core image content for
 
         The ``console-conf`` snap added here is only to allow interactive user and network configuration.
         An image created for deployment at scale should not include that.
+
+    .. group-tab:: Ubuntu Core 22
+
+        .. literalinclude:: uc-image-creation/model-core22.json
+            :language: json
+            :emphasize-lines: 4, 8-11, 19-24
+
 
 Inside an empty directory, create a file named ``model.json`` with the above content.
 
@@ -114,28 +115,6 @@ Then build the image:
 
 .. tabs::
 
-    .. group-tab:: Ubuntu Core 22
-
-        .. code-block:: console
-
-            $ UBUNTU_STORE_AUTH_DATA_FILENAME=credentials.txt \
-                ubuntu-image snap model.signed.yaml --verbose --validation=enforce
-            [0] prepare_image
-            Fetching snapd (21759)
-            Fetching realtime-kernel (149)
-            Fetching core22 (1586)
-            Fetching pc (146)
-            [1] load_gadget_yaml
-            [2] set_artifact_names
-            [3] populate_rootfs_contents
-            [4] generate_disk_info
-            [5] calculate_rootfs_size
-            [6] populate_bootfs_contents
-            [7] populate_prepare_partitions
-            [8] make_disk
-            [9] generate_snap_manifest
-            Build successful
-
     .. group-tab:: Ubuntu Core 24
 
         .. code-block:: console
@@ -161,6 +140,28 @@ Then build the image:
             Build successful
 
         The warning about assertion max formats can be safely ignored; see `ubuntu-image assertion warning`_.
+
+    .. group-tab:: Ubuntu Core 22
+
+        .. code-block:: console
+
+            $ UBUNTU_STORE_AUTH_DATA_FILENAME=credentials.txt \
+                ubuntu-image snap model.signed.yaml --verbose --validation=enforce
+            [0] prepare_image
+            Fetching snapd (21759)
+            Fetching realtime-kernel (149)
+            Fetching core22 (1586)
+            Fetching pc (146)
+            [1] load_gadget_yaml
+            [2] set_artifact_names
+            [3] populate_rootfs_contents
+            [4] generate_disk_info
+            [5] calculate_rootfs_size
+            [6] populate_bootfs_contents
+            [7] populate_prepare_partitions
+            [8] make_disk
+            [9] generate_snap_manifest
+            Build successful
 
     This downloads all the snaps specified in the model assertion and builds an image file called ``pc.img``.
 
@@ -204,7 +205,7 @@ The `gadget snap`_ documentation is a recommended read before starting.
 This is best done by forking an existing reference gadget, then changing it for our purpose.
 For example, there is the `pc gadget`_ which is suitable for most AMD64 platforms, and the `pi gadget`_ which is meant for Raspberry Pis.
 
-Inside the project directory, clone the specific branch of the pc-gadget and enter the repository:
+Inside the project directory, clone the specific branch of the pc-gadget repository and enter the repository:
 
 .. tabs::
 
