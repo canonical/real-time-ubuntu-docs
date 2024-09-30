@@ -392,4 +392,4 @@ The `Ubuntu Core documentation`_ is the best place to continue to learn about th
 .. _building Ubuntu Core images: https://ubuntu.com/core/docs/build-write-image
 .. _Ubuntu Core documentation: https://ubuntu.com/core/docs
 .. _flashing the image to a storage medium: https://ubuntu.com/core/docs/install-on-a-device
-.. _ubuntu-image assertion warning: https://forum.snapcraft.io/t/ubuntu-image-warning-kernel-snap/37774/3?u=farshidtz
+.. _ubuntu-image assertion warning: https://forum.snapcraft.io/t/ubuntu-image-warning-kernel-snap/37774/3
