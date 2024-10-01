@@ -36,7 +36,7 @@ Below are example model assertions, describing the Ubuntu Core image content for
 
         .. literalinclude:: uc-image-creation/model-core24.json
             :language: json
-            :emphasize-lines: 4, 8-11, 19-24
+            :emphasize-lines: 4, 8-11, 19-24, 37-42
 
         The ``console-conf`` snap added here is only to allow interactive user and network configuration.
         An image created for deployment at scale should not include that.
@@ -209,18 +209,18 @@ Inside the project directory, clone the specific branch of the pc-gadget reposit
 
 .. tabs::
 
-    .. group-tab:: Ubuntu Core 22
-
-        .. code-block:: shell
-
-            git clone https://github.com/canonical/pc-gadget.git --branch=22 --depth=1
-            cd pc-gadget
-
     .. group-tab:: Ubuntu Core 24
 
         .. code-block:: shell
 
             git clone https://github.com/canonical/pc-gadget.git --branch=24 --depth=1
+            cd pc-gadget
+
+    .. group-tab:: Ubuntu Core 22
+
+        .. code-block:: shell
+
+            git clone https://github.com/canonical/pc-gadget.git --branch=22 --depth=1
             cd pc-gadget
 
 
@@ -307,31 +307,6 @@ Build with the following command:
 
 .. tabs::
 
-    .. group-tab:: Ubuntu Core 22
-
-        .. code-block:: console
-
-            $ UBUNTU_STORE_AUTH_DATA_FILENAME=credentials.txt \
-                ubuntu-image snap model.signed.yaml  --verbose --validation=enforce \
-                --snap pc-gadget/realtime-pc_example_amd64.snap
-            
-            [0] prepare_image
-            Fetching snapd (21759)
-            Fetching realtime-kernel (134)
-            Fetching core22 (1380)
-            WARNING: "realtime-pc" installed from local snaps disconnected from a store cannot be refreshed subsequently!
-            Copying "pc-gadget/realtime-pc_example_amd64.snap" (realtime-pc)
-            [1] load_gadget_yaml
-            [2] set_artifact_names
-            [3] populate_rootfs_contents
-            [4] generate_disk_info
-            [5] calculate_rootfs_size
-            [6] populate_bootfs_contents
-            [7] populate_prepare_partitions
-            [8] make_disk
-            [9] generate_snap_manifest
-            Build successful
-
     .. group-tab:: Ubuntu Core 24
 
         .. code-block:: console
@@ -359,6 +334,31 @@ Build with the following command:
             Build successful
 
         The warning about assertion max formats can be safely ignored; see `ubuntu-image assertion warning`_.
+
+    .. group-tab:: Ubuntu Core 22
+
+        .. code-block:: console
+
+            $ UBUNTU_STORE_AUTH_DATA_FILENAME=credentials.txt \
+                ubuntu-image snap model.signed.yaml  --verbose --validation=enforce \
+                --snap pc-gadget/realtime-pc_example_amd64.snap
+            
+            [0] prepare_image
+            Fetching snapd (21759)
+            Fetching realtime-kernel (134)
+            Fetching core22 (1380)
+            WARNING: "realtime-pc" installed from local snaps disconnected from a store cannot be refreshed subsequently!
+            Copying "pc-gadget/realtime-pc_example_amd64.snap" (realtime-pc)
+            [1] load_gadget_yaml
+            [2] set_artifact_names
+            [3] populate_rootfs_contents
+            [4] generate_disk_info
+            [5] calculate_rootfs_size
+            [6] populate_bootfs_contents
+            [7] populate_prepare_partitions
+            [8] make_disk
+            [9] generate_snap_manifest
+            Build successful
 
 This adds all the snaps specified in the model assertion and builds an image file called ``pc.img``.
 There is a warning for ``realtime-pc`` gadget snap because this is being side-loaded, rather than fetched from the store.
