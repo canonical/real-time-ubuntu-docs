@@ -80,9 +80,9 @@ Project and community
    They should be updated when community contributions to the RTU code can be
    accepted.
 
-The Real-time Ubuntu project welcomes community contributions, suggestions,
-fixes and constructive feedback. If you wish to contribute to the Real-time
-Ubuntu docs, consult the `CONTRIBUTING guide`_.
+The Real-time Ubuntu documentation project welcomes community contributions,
+suggestions, fixes and constructive feedback. If you wish to contribute to the
+Real-time Ubuntu documentation, consult the `CONTRIBUTING guide`_.
 
 Before raising a pull request, it's generally worth `opening an issue`_ to
 discuss any proposed change unless it's trivial. Then, if you decide to raise a
