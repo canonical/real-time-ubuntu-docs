@@ -57,6 +57,12 @@ Append parameters to the line that starts with ``linux``:
 * Don't add space round ``=`` and other punctuations for each key-value
 * Don't add line breaks
 
+For example, after adding ``nohz=on`` and ``nohz_full=1-3``:
+
+.. code-block:: text
+
+           linux        /boot/vmlinuz-5.15.0-1056-realtime root=UUID=06cfb4f1-21f9-4568-b656-926224e20fb3 ro quiet splash $vt_handoff nohz=on nohz_full=1-3
+
 Press :kbd:`Ctrl+X` to exit the editor and continue booting with the new
 parameters.
 
