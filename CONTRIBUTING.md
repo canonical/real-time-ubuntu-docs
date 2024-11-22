@@ -43,7 +43,8 @@ make woke      # to check for non-inclusive language
 ```
 
 ## Propose changes
-Submit your documentation changes via a pull request on Github.
+
+Submit your documentation changes via a pull request on GitHub.
 
 
 [Real-time Ubuntu documentation]: https://canonical-real-time-ubuntu-documentation.readthedocs-hosted.com
