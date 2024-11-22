@@ -155,6 +155,7 @@ custom_linkcheck_anchors_ignore_for_url = [
 # Add extensions
 custom_extensions = [
     'sphinx.ext.todo',
+    'versionwarning.extension',
 ]
 
 # Add MyST extensions

@@ -27,7 +27,8 @@ extensions = [
     'sphinxext.opengraph',
     'myst_parser',
     'sphinxcontrib.jquery',
-    'notfound.extension'
+    'notfound.extension',
+    'versionwarning.extension',
 ]
 extensions.extend(custom_extensions)
 
@@ -137,3 +138,12 @@ html_js_files = ['header-nav.js']
 if 'github_issues' in html_context and html_context['github_issues'] and not disable_feedback_button:
     html_js_files.append('github_issue_links.js')
 html_js_files.extend(custom_html_js_files)
+
+# -- Version Warning Banner configuration ------------------------------------
+versionwarning_messages = {
+    'annecyh-banner-test': 'You are not reading the most up to date version of this documentation. Please see the latest version.',
+    'annecyh/banner-test': 'You are not reading the most up to date version of this documentation. Please see the latest version.',
+}
+versionwarning_admonition_type = 'warning'
+versionwarning_banner_title = 'Warning'
+versionwarning_body_selector = 'div[class="article-container"]'
