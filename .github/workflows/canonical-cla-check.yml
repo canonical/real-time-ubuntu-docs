@@ -1,0 +1,10 @@
+name: Canonical CLA check
+on: [pull_request_target]
+
+jobs:
+  check-for-cla:
+    name: Check if author has signed the Canonical CLA.
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check if CLA signed.
+      uses: canonical/has-signed-canonical-cla@main
