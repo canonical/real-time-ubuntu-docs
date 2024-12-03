@@ -1,6 +1,6 @@
 # Real-time Ubuntu
 
-<!-->
+<!--
 TODO: The product docs' home-page must be based on a template. The template
 requires the four-par intro below, which must be drawn from the Alignment
 doc's *Common understanding* column. That column is arrived at by consensus
