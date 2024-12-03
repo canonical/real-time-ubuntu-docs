@@ -1,7 +1,5 @@
 aarch
 amd
-analyzed
-behavior
 benchmarking
 bh
 bitmask
@@ -11,7 +9,6 @@ boolean
 bootable
 bootloader
 CAS
-centers
 cfs
 CFS's
 cgroup
@@ -55,8 +52,6 @@ GPIO
 GRUB's
 hardirq
 HPC
-initialize
-initializing
 intel
 invariance
 io
@@ -84,8 +79,6 @@ LTS
 mantic
 mem
 memmove
-minimize
-minimizing
 mlockall
 mmap
 Multithreading
@@ -93,16 +86,12 @@ munmap
 mutex
 mutexes
 Mutexes
-neighbors
 ng
 NMI
 NMIs
 NOCB
 nohz
 optimization
-optimize
-optimized
-optimizes
 OSAL
 oslat
 OSNOISE
@@ -129,7 +118,6 @@ psr
 punctuations
 raspi
 rcu
-realizing
 realtime
 riscv
 RPi
@@ -151,7 +139,6 @@ scheduler's
 Schedutil
 seqlock
 Seqlocks
-serialization
 setattr
 setpriority
 SIGINT
@@ -164,7 +151,6 @@ softirq
 softIRQ
 softIRQs
 SoftIRQs
-specialized
 SPID
 spinlock
 spinlocks
@@ -175,8 +161,6 @@ subdirectory
 subranges
 sudo
 superset
-synchronization
-synchronize
 syscall
 syscalls
 systemd
@@ -197,9 +181,6 @@ ubuntu
 UC
 unbootable
 userspace
-utilized
-utilization
 VIRT
-visualization
 ww
 yaml
