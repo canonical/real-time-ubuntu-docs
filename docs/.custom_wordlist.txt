@@ -122,10 +122,10 @@ realtime
 riscv
 RPi
 rq
+RT's
 rtmutex
 RTOS
 rtprio
-RT's
 RTU
 RTU's
 runtime
