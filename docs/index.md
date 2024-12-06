@@ -22,7 +22,7 @@ times. Real-time Ubuntu provides an upper bound on execution time, to the most
 demanding workloads in industrial, telco, automotive, and robotics
 applications.
 
-% TODO: Clarify and tighten next par.
+<!-- TODO: Clarify and tighten next par. -->
 
 From assembly lines processing and delivering data in real-time to ensure
 system integrity to critical telco infrastructure operating at low latency for
@@ -102,7 +102,8 @@ If you decide to raise a pull request, make sure you have signed the
 /explanation/index
 ```
 
-% LINKS
+<!-- LINKS -->
+
 [Real-time Ubuntu]: https://ubuntu.com/real-time
 [PREEMPT_RT]: https://wiki.linuxfoundation.org/realtime/documentation/technical_details/start
 [Contributing guide]: https://github.com/canonical/real-time-ubuntu-docs/blob/main/CONTRIBUTING.md

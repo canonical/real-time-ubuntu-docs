@@ -83,6 +83,8 @@ make linkcheck
 make woke       # to check for non-inclusive language
 ```
 
+For more information about the inclusive language check, see [woke].
+
 ## Propose changes
 
 Submit your documentation changes via a pull request on GitHub.
@@ -139,7 +141,7 @@ git commit -m "docs(ref/kernel-boot): Add example for nohz parameter" -s
 ```
 
 
-% LINKS
+<!-- LINKS -->
 
 [Ubuntu Code of Conduct]: https://ubuntu.com/community/ethos/code-of-conduct
 [Canonical contributor licence agreement]: https://ubuntu.com/legal/contributors
@@ -152,5 +154,6 @@ git commit -m "docs(ref/kernel-boot): Add example for nohz parameter" -s
 [starter pack guide]: https://canonical-starter-pack.readthedocs-hosted.com/latest/
 [Canonical style guides]: https://canonical-documentation-with-sphinx-and-readthedocscom.readthedocs-hosted.com/#style-guides
 [Diátaxis]: https://diataxis.fr/
+[woke]: https://github.com/get-woke/woke
 [related issues, pull requests, and repositories]: https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/autolinked-references-and-urls
 [conventional commits]: https://www.conventionalcommits.org/
