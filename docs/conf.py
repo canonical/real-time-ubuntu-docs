@@ -197,7 +197,10 @@ linkcheck_ignore = [
 
 # A regex list of URLs where anchors are ignored by 'make linkcheck'
 
-linkcheck_anchors_ignore_for_url = [r"https://github\.com/.*"]
+linkcheck_anchors_ignore_for_url = [
+    r"https://github\.com/.*",
+    r"https://snapcraft\.io/docs/.*"
+    ]
 
 
 ########################
@@ -326,6 +329,6 @@ latex_elements = ast.literal_eval(latex_config.replace("$PROJECT", project))
 
 myst_substitutions = {
   "U_COC": "[Ubuntu Code of Conduct](https://ubuntu.com/community/ethos/code-of-conduct)",
-  "C_CLA": "[Canonical contributor licence agreement](https://ubuntu.com/legal/contributors)",
+  "C_CLA": "[Canonical contributor license agreement](https://ubuntu.com/legal/contributors)",
   "PROJNAME_FULL": "Real-time Ubuntu documentation",
 }

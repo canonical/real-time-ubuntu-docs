@@ -9,7 +9,7 @@ The guidelines below will help keep your contributions effective and meaningful.
 
 When contributing, you must abide by the [Ubuntu Code of Conduct].
 
-## Licence and copyright
+## License and copyright
 
 Unless explicitly stated in the license headers of source files, all
 contributions to Real-time Ubuntu documentation are licensed under the Creative
@@ -18,7 +18,7 @@ To view a copy of this license, visit
 http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to Creative
 Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
 
-All contributors must sign the [Canonical contributor licence agreement],
+All contributors must sign the [Canonical contributor license agreement],
 which grants Canonical permission to use the contributions. The author of a
 change remains the copyright owner of their code (no copyright assignment
 occurs).
@@ -144,7 +144,7 @@ git commit -m "docs(ref/kernel-boot): Add example for nohz parameter" -s
 <!-- LINKS -->
 
 [Ubuntu Code of Conduct]: https://ubuntu.com/community/ethos/code-of-conduct
-[Canonical contributor licence agreement]: https://ubuntu.com/legal/contributors
+[Canonical contributor license agreement]: https://ubuntu.com/legal/contributors
 [Real-time Ubuntu releases]: https://documentation.ubuntu.com/real-time/en/latest/reference/releases/
 [Canonical's Sphinx starter pack]: https://github.com/canonical/sphinx-docs-starter-pack
 [Read the Docs]: https://about.readthedocs.com/
