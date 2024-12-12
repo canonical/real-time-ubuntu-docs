@@ -36,7 +36,7 @@ example:
 
 Within a range, you can specify equal-size subranges ("groups"). This is best
 illustrated by example. The range ``100-200:3/25`` starts at CPU 100 and ends
-at CPU 2000. Within the range, the first three CPUs are specified from
+at CPU 200. Within the range, the first three CPUs are specified from
 consecutive groups of 25; it's equivalent to:
 
 ``100-102,125-127,150-152,175-177``
