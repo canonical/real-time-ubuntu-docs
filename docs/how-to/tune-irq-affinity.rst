@@ -128,7 +128,7 @@ CPUs you want.
 
 
 
-Do this process for all the IRQs that are being handled by the CPUs that
+Do this for all the IRQs that are being handled by the CPUs that
 you want to isolate.
 
 .. note::
