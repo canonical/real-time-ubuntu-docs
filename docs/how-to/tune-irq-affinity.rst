@@ -19,7 +19,7 @@ The most common `kernel parameters`_ to handle IRQ interrupts are:
 - `isolcpus`_ used to specify CPUs to be isolated from the general `SMP`_ balancing and scheduler algorithms. 
 
 
-The `IRQ affinity`_ on other hand is a way to tune the system interruptions
+The `IRQ affinity`_ on the other hand is a way to tune the system interruptions
 without modifying the kernel boot parameters. This is the focus of this document.
 With IRQ affinity, you can set a default set of CPUs which are permitted to
 handle incoming IRQs.
