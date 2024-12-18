@@ -60,7 +60,7 @@ In this case, the system has 20 CPUs available.
 The best way to tune a system is to isolate one or more CPUs to be used to run 
 the real-time application and the others to handle the IRQs and kthreads.
 
-To check which CPUs are set for handling the IRQ, read the `smp_affinity` file
+To check which CPUs are set for handling the IRQ, read the ``smp_affinity`` file
 for each IRQ:
 
 .. code-block:: shell-session
