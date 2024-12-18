@@ -19,19 +19,19 @@ The most common `kernel parameters`_ to handle IRQ interrupts are:
 - `isolcpus`_ used to specify CPUs to be isolated from the general `SMP`_ balancing and scheduler algorithms. 
 
 
-The `IRQ affinity`_ on  other hand is a way to tune the system interruptions
+The `IRQ affinity`_ on the other hand is a way to tune the system interruptions
 without modifying the kernel boot parameters. This is the focus of this document.
 With IRQ affinity, you can set a default set of CPUs which are permitted to
 handle incoming IRQs.
 
-First check the interruptions sources in the system, all the IRQs are listed in 
+First check the interruption sources in the system, all the IRQs are listed in 
 the ``/proc/interrupts`` file. 
 
 .. code-block:: shell
 
     cat /proc/interrupts
 
-Its useful to monitor the IRQs while tuning the affinity. You can use the 
+It's useful to monitor the IRQs while tuning the affinity. You can use the 
 ``watch`` command to monitor the IRQs in real-time:
 
 .. code-block:: shell
@@ -39,7 +39,7 @@ Its useful to monitor the IRQs while tuning the affinity. You can use the
     watch -n 1 cat /proc/interrupts
 
 
-First you can list the isolated CPUs:
+You can list the isolated CPUs:
 
 .. code-block:: shell
 
@@ -47,7 +47,7 @@ First you can list the isolated CPUs:
 
 An empty output means that no core is isolated.
 
-Then you can list all the available CPUs:
+Conversely, you can list all the available CPUs:
 
 .. code-block:: shell-session
 
@@ -60,8 +60,8 @@ In this case, the system has 20 CPUs available.
 The best way to tune a system is to isolate one or more CPUs to be used to run 
 the real-time application and the others to handle the IRQs and kthreads.
 
-First check which IRQ is being handled by the CPU, or sets of CPUs that you want
-to isolate. This can do either manually checking:
+To check which CPUs are set for handling the IRQ, read the ``smp_affinity`` file
+for each IRQ:
 
 .. code-block:: shell-session
 
@@ -69,13 +69,13 @@ to isolate. This can do either manually checking:
 
     ffffff
 
-OBS: The ``smp_affinity`` file is a bitmask, where each bit represents a CPU, where
+The ``smp_affinity`` file is a bitmask, where each bit represents a CPU, where
 ``1`` means that the CPU is allowed to handle the IRQ and ``0`` means that the CPU
 is not allowed to handle the IRQ. An output of ``ffffff`` means that all CPUs are
 allowed to handle the IRQ.
 
-Or you can use the :download:`check_irqs.sh` script to list the all the IRQs 
-associated  with a given CPU:
+To list all the IRQs associated with a given CPU, you can use the
+:download:`check_irqs.sh` script:
 
 .. code-block:: shell-session
 
@@ -107,20 +107,29 @@ associated  with a given CPU:
     IRQ 9 is associated with Core 13. Affinity Mask: fffff
 
 Then you can rewrite the ``smp_affinity`` file to set the IRQ to be handled by the
-CPUs you want. Since kernel 3.0 it's possible to use the 
-``/proc/irq/<IRQ-NUMBER>/smp_affinity_list``, based on the previous output, if you
-want to set the IRQ 16 to be handled by the CPUs 0-12 and 14-19 (excluding the 
-CPU 13), you can run:
+CPUs you want.
 
-.. code-block:: shell
+.. tip::
+    
+    Since kernel 3.0 it's possible to use the 
+    ``/proc/irq/<IRQ-NUMBER>/smp_affinity_list``. For example, to
+    set the IRQ 16 to be handled by the CPUs 0-12 and 14-19 (excluding the 
+    CPU 13), run:
 
-    echo 0-12,14-19 > /proc/irq/0/smp_affinity_list
+    .. code-block:: shell
 
-.. code-block:: shell-session
+        echo 0-12,14-19 > /proc/irq/16/smp_affinity_list
 
-    $ cat /proc/irq/0/smp_affinity_list
+    .. code-block:: shell-session
 
-    fdfff
+        $ cat /proc/irq/0/smp_affinity_list
+
+        0-12,14-19
+
+
+
+Do this for all the IRQs that are being handled by the CPUs that
+you want to isolate.
 
 .. note::
 
@@ -130,12 +139,11 @@ CPU 13), you can run:
     described in :doc:`modify-kernel-boot-parameters`. 
     For example, to isolate the CPU 13 in a system with 20 cpus and leave the IRQs
     to be handled by the CPUs 0-12 and 14-19, you can add the following: 
-    ``irqaffinity=0-12,14-19``
+    ``irqaffinity=0-12,14-19``. 
 
+    Note that unlike the changes made to ``/proc/irq``, the setting passed as 
+    kernel command line applies to all IRQs. 
 
-
-Then do this process for all the IRQs that are being handled by the CPUs that
-you want to isolate.
 
 .. warning::
 
@@ -157,7 +165,7 @@ Or attaching to an already running process:
     taskset -pc <CPU_NUM[s]> <PID>
 
 
-Then, you can check if th application is correctly running on the designated
+Then, you can check if the application is correctly running on the designated
 CPU cores:
 
 .. code-block:: shell
@@ -174,7 +182,7 @@ distributing IRQs across all available cores. To do so, you can run:
     systemctl stop irqbalance
     systemctl status irqbalance
 
-Also, it's useful to keep the ``systemd`` services separated from the real-time
+Lastly, it's useful to keep the ``systemd`` services separated from the real-time
 application. You can do this by setting the ``CPUAffinity`` parameter in the 
 ``/etc/systemd/system.conf`` file to the cores you want to isolate. For example:
 
