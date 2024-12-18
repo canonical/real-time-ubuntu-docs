@@ -74,7 +74,7 @@ The ``smp_affinity`` file is a bitmask, where each bit represents a CPU, where
 is not allowed to handle the IRQ. An output of ``ffffff`` means that all CPUs are
 allowed to handle the IRQ.
 
-To list all the IRQs associated with a given CPU, can use the
+To list all the IRQs associated with a given CPU, you can use the
 :download:`check_irqs.sh` script:
 
 .. code-block:: shell-session
