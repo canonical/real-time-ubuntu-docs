@@ -4,10 +4,6 @@ How to Download Real-Time Ubuntu Kernel Source Code
 The source code for Ubuntu's Real-Time kernel is available for download.
 The process depends on the release of Ubuntu you are using.
 
-=====
-Setup
-=====
-
 .. tab-set::
 
     .. tab-item:: LTS Releases (22.04, 24.04, etc.)
@@ -16,7 +12,7 @@ Setup
 
         LTS Releases of Ubuntu require Ubuntu Pro to download their respective real-time kernel source code.
 
-        Follow the following tutorial (TODO link) to ensure you have Ubuntu pro enabled.
+        See https://documentation.ubuntu.com/pro/ for information about Ubuntu Pro.
 
         **2. Enable access to the Real-time Kernel**
 
