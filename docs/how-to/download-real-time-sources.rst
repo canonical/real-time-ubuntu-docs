@@ -8,8 +8,6 @@ The process depends on the release of Ubuntu you are using.
 Setup
 =====
 
-.. TODO these tab names are too long, shorten them
-
 .. TODO consider using synced tabs instead: https://sphinx-design.readthedocs.io/en/latest/tabs.html#synchronised-tabs
    This would allow for more distinct sections :shrug:
 
@@ -40,13 +38,15 @@ Setup
 
             sudo pro enable realtime-kernel
 
-        You can verify the realtime-kernel is activated with `sudo pro status`.
+        You can verify the realtime-kernel is activated with ``sudo pro status``.
+
+        .. NOTE I don't think sudo pro status will tell you if you used the access-only flag or not.
 
         ----------------------------------------------
         #. Enable downloading source packages with apt
         ----------------------------------------------
 
-        apt is used to download the real-time kernel source code. We need to enable apt's ability to download source packages from its archives.
+        apt is used to download the real-time kernel source code. We need to enable :spellexception:`apt's` ability to download source packages from its archives.
 
         We need to edit ``/etc/apt/sources.list.d/ubuntu-realtime-kernel.sources``. You can use this command to do the work for you:
 
