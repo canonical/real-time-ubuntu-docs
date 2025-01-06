@@ -15,7 +15,7 @@ Setup
 
 .. tab-set::
 
-    .. tab-item:: LTS Release (24.04 Noble Numbat, 22.04 Jammy Jellyfish, 20.04 Focal Fossa, etc.)
+    .. tab-item:: LTS Release (22.04, 24.04, etc.)
 
         Enable Ubuntu Pro
 
