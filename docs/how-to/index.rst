@@ -37,15 +37,12 @@ Configure Real-time Ubuntu Core:
 For tuning an existing Ubuntu Core system, refer to :ref:`ubuntu-core-kernel-cmdline`.
 
 
-Download Real-time Ubuntu kernel source code:
-
-.. TODO this can probably be merged with something above it
-.. TODO BUG the sidebar doesn't show if I'm on another article... Only if I'm on this page or its parents...
+Download Real-time Ubuntu Kernel Source Code:
 
 .. toctree::
    :maxdepth: 1
 
-   How to Download Real-Time Ubuntu Kernel Source Code <download-real-time-sources>
+   Download Real-Time Ubuntu Kernel Source Code <download-real-time-sources>
 
 
 .. LINKS
