@@ -1,4 +1,4 @@
-How to Download Real-Time Ubuntu Kernel Source Code
+How to download Real-time Ubuntu kernel source code
 ===================================================
 
 The source code for Ubuntu's Real-Time kernel is available for download.
