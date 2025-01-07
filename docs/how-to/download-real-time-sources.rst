@@ -12,7 +12,7 @@ The process depends on the release of Ubuntu you are using.
 
         LTS Releases of Ubuntu require Ubuntu Pro to download their respective real-time kernel source code.
 
-        See https://documentation.ubuntu.com/pro/ for information about Ubuntu Pro.
+        See the `Ubuntu Pro documentation <https://documentation.ubuntu.com/pro/>`_ for more information.
 
         **2. Enable access to the Real-time Kernel**
 
