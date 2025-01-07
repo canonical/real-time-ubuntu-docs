@@ -4,98 +4,93 @@ How to download Real-time Ubuntu kernel source code
 The source code for Ubuntu's real-time kernel is available for download.
 The process depends on the release of Ubuntu you are using.
 
-.. tab-set::
+#. Enable access to the real-time Ubuntu kernel.
 
-    .. tab-item:: LTS Releases (22.04, 24.04, etc.)
+    .. tab-set::
+        :sync-group: release
 
-        **1. Enable Ubuntu Pro**
+        .. tab-item:: LTS releases (22.04, 24.04, etc.)
+            :sync: lts
 
-        LTS Releases of Ubuntu require Ubuntu Pro to download their respective real-time kernel source code.
+            .. note::
+                LTS Releases of Ubuntu require Ubuntu Pro to download their respective real-time kernel source code.
+                See the `Ubuntu Pro documentation <https://documentation.ubuntu.com/pro/>`_ for more information.
 
-        See the `Ubuntu Pro documentation <https://documentation.ubuntu.com/pro/>`_ for more information.
+            Enable access to the real-time kernel feature with the following command:
 
-        **2. Enable access to the Real-time Kernel**
+            .. code-block:: shell
 
-        Enable access with the following command:
+                sudo pro enable realtime-kernel --access-only
+            
 
-        .. code-block:: shell
+            If you additionally want to install the real-time kernel to this system, remove the ``--access-only`` flag:
 
-            sudo pro enable realtime-kernel --access-only
+            .. code-block:: shell
+
+                sudo pro enable realtime-kernel
+
+            You can verify the realtime-kernel is activated with ``sudo pro status``.
+
+            .. NOTE I don't think sudo pro status will tell you if you used the access-only flag or not.
+
+        .. tab-item:: Interim releases (24.10, etc.)
+            :sync: interim
+            
+            The real-time kernel source is freely available in the 
+            `universe repository <https://packages.ubuntu.com/oracular/linux-realtime>`_ for interim releases. 
+            No actions are required for this step!
         
 
-        If you additionally want to install the real-time kernel to this system, remove the ``--access-only`` flag:
+#. Enable downloading source packages with apt.
 
-        .. code-block:: shell
+    apt is used to download the real-time kernel source. We need to enable the source repositories (``deb-src``) to allow ``apt`` to download real-time kernel source packages from its archives.
 
-            sudo pro enable realtime-kernel
+    .. tab-set::
+        :sync-group: release
 
-        You can verify the realtime-kernel is activated with ``sudo pro status``.
+        .. tab-item:: LTS Releases (22.04, 24.04, etc.)
+            :sync: lts
 
-        .. NOTE I don't think sudo pro status will tell you if you used the access-only flag or not.
+            Use the following command to add ``deb-src`` to the :file:`ubuntu-realtime-kernel.sources` file:
 
-        **3. Enable downloading source packages with apt**
+            .. code-block:: shell
+                
+                sudo sed -i '2s/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu-realtime-kernel.sources
 
-        apt is used to download the real-time kernel source code. We need to enable :spellexception:`apt's` ability to download source packages (``deb-src``) from its archives.
+        .. tab-item:: Interim Releases (24.10, etc.)
+            :sync: interim
 
-        We can enable this by editing ``/etc/apt/sources.list.d/ubuntu-realtime-kernel.sources``. Use this command to do the work for you:
+            Use the following command to add ``deb-src`` to the :file:`ubuntu.sources` file:
 
-        .. code-block:: shell
-            
-            sudo sed -i 's/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu-realtime-kernel.sources
-
-        **4. Download the Real-Time Kernel Source Code**
-
-        First, apt needs to be refreshed to index newly-packaged repositories:
-
-        .. code-block:: shell
-
-            sudo apt update
-            
-        apt can now see the source code packages. Run the following commands to download them:
-
-        .. code-block:: shell
-
-            sudo apt install dpkg-dev
-            sudo apt-get source --only-source linux-realtime
-
-        .. tip:: 
-
-            Ensure you have enough disk space: The downloaded and extracted packages take almost 2GB of storage.
-
-        At this point, the unpacked source files are in your current directory!
+            .. code-block:: shell
+                
+                sudo sed -i '1s/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu.sources
 
 
+#. Get the real-time kernel source code.
 
-    .. tab-item:: Interim Releases (24.10, etc.)
+    First, refresh apt to index newly-added repositories:
 
-        **1. Enable downloading source packages with apt**
+    .. code-block:: shell 
 
-        apt is used to download the real-time kernel source code. We need to enable :spellexception:`apt's` ability to download source packages (``deb-src``) from its archives.
+        sudo apt update
 
-        We can enable this by editing ``/etc/apt/sources.list.d/ubuntu.sources``. Use this command to do the work for you:
+    Next, install ``dpkg-dev``, which is required to unpack Debian source packages:
 
-        .. code-block:: shell
-            
-            sudo sed -i 's/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu.sources
+    .. code-block:: shell
+        
+        sudo apt install dpkg-dev
 
-        **2. Download the Real-Time Kernel Source Code**
+    Lastly, download the real-time kernel source code:
 
-        First, apt needs to be refreshed to index newly-packaged repositories:
+    .. code-block:: shell
 
-        .. code-block:: shell
+        sudo apt-get source --only-source linux-realtime
 
-            sudo apt update
-            
-        apt can now see the source code packages. Run the following commands to download them:
 
-        .. code-block:: shell
+    .. tip:: 
 
-            sudo apt install dpkg-dev
-            sudo apt-get source --only-source linux-realtime
+        Ensure you have enough disk space; the downloaded and extracted packages take almost 2GB of storage.
 
-        .. tip:: 
-
-            Ensure you have enough disk space: The downloaded and extracted packages take almost 2GB of storage.
-
-        At this point, the unpacked source files are in your current directory!
+At this point, the unpacked source files are in your current directory.
 
