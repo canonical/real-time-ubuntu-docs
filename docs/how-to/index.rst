@@ -42,7 +42,7 @@ Download Real-time Ubuntu Kernel Source Code:
 .. toctree::
    :maxdepth: 1
 
-   Download Real-Time Ubuntu Kernel Source Code <download-real-time-sources>
+   Download Real-time Ubuntu kernel source code <download-real-time-sources>
 
 
 .. LINKS
