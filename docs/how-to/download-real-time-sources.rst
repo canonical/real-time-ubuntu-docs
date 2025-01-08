@@ -62,8 +62,8 @@ apt is used to download the real-time kernel source. We need to enable the sourc
 
         In older LTS versions of Ubuntu, open the ``/etc/apt/sources.list`` file in a text editor (requires elevated permissions).
 
-        Then, uncomment (delete the leading ``#``) the line which includes ``deb-src http://archive.ubuntu.com/ubuntu/ jammy main``. 
-        For other releases, ``jammy`` will match the codename for your release.
+        Then, :spellexception:`uncomment` (delete the leading ``#``) the line which includes ``deb-src http://archive.ubuntu.com/ubuntu/ jammy main``. 
+        For other releases, ``jammy`` will match the code-name for your release.
 
         For example, the file looks like this for 22.04 LTS (Jammy Jellyfish):
 
@@ -83,7 +83,7 @@ apt is used to download the real-time kernel source. We need to enable the sourc
 
 
         .. caution::
-            Be sure to uncomment only the line which inclues ``main`` after the release codename.
+            Be sure to :spellexception:`uncomment` only the line which includes ``main`` after the release code-name.
 
 
     .. tab-item:: Interim Releases (24.10, etc.)
