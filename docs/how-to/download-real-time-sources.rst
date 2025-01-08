@@ -48,7 +48,7 @@ apt is used to download the real-time kernel source. We need to enable the sourc
 .. tab-set::
     :sync-group: release
 
-    .. tab-item:: LTS Releases (22.04, 24.04, etc.)
+    .. tab-item:: 24.04 LTS and newer
         :sync: lts
 
         Use the following command to add ``deb-src`` to the :file:`ubuntu-realtime-kernel.sources` file:
@@ -56,6 +56,35 @@ apt is used to download the real-time kernel source. We need to enable the sourc
         .. code-block:: shell
             
             sudo sed -i '2s/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu-realtime-kernel.sources
+
+    .. tab-item:: 22.04 LTS and older
+        :sync: lts
+
+        In older LTS versions of Ubuntu, open the ``/etc/apt/sources.list`` file in a text editor (requires elevated permissions).
+
+        Then, uncomment (delete the leading ``#``) the line which includes ``deb-src http://archive.ubuntu.com/ubuntu/ jammy main``. 
+        For other releases, ``jammy`` will match the codename for your release.
+
+        For example, the file looks like this for 22.04 LTS (Jammy Jellyfish):
+
+        .. code-block:: debsources
+
+            # See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to
+            # newer versions of the distribution.
+            deb http://archive.ubuntu.com/ubuntu/ jammy main restricted universe multiverse
+            # deb-src http://archive.ubuntu.com/ubuntu/ jammy main restricted universe multiverse
+            # ^^^^^ Uncomment the line above! ^^^^^
+
+            deb http://archive.ubuntu.com/ubuntu/ jammy-updates main restricted universe multiverse
+            # deb-src http://archive.ubuntu.com/ubuntu/ jammy-updates main restricted universe multiverse
+            # ^^^^^ Leave this one (and all others underneath) alone. ^^^^^
+
+            # ...
+
+
+        .. caution::
+            Be sure to uncomment only the line which inclues ``main`` after the release codename.
+
 
     .. tab-item:: Interim Releases (24.10, etc.)
         :sync: interim
