@@ -13,7 +13,7 @@ The process depends on the release of Ubuntu you are using.
         :sync: lts
 
         .. note::
-            LTS Releases of Ubuntu require Ubuntu Pro to download their respective real-time kernel source code.
+            LTS releases of Ubuntu require Ubuntu Pro to download their respective real-time kernel source code.
             See the `Ubuntu Pro documentation <https://documentation.ubuntu.com/pro/>`_ for more information.
 
         Enable access to the real-time kernel feature with the following command:
