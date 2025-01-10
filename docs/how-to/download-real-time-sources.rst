@@ -2,6 +2,7 @@ How to download Real-time Ubuntu kernel source code
 ===================================================
 
 The source code for Ubuntu's real-time kernel is available for download.
+The following guide will show you how to download it for your system's release of Ubuntu.
 The process depends on the release of Ubuntu you are using.
 
 Enable access to the real-time Ubuntu kernel
