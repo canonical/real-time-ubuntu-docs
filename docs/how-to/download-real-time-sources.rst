@@ -21,7 +21,6 @@ The process depends on the release of Ubuntu you are using.
         .. code-block:: shell
 
             sudo pro enable realtime-kernel --access-only
-        
 
         If you additionally want to install the real-time kernel to this system, remove the ``--access-only`` flag:
 
