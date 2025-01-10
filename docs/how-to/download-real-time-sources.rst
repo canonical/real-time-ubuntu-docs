@@ -4,7 +4,8 @@ How to download Real-time Ubuntu kernel source code
 The source code for Ubuntu's real-time kernel is available for download.
 The process depends on the release of Ubuntu you are using.
 
-1. Enable access to the real-time Ubuntu kernel.
+Enable access to the real-time Ubuntu kernel
+---------------------------------------------
 
 .. tab-set::
     :sync-group: release
@@ -40,7 +41,8 @@ The process depends on the release of Ubuntu you are using.
         No actions are required for this step!
     
 
-2. Enable downloading source packages with apt.
+Enable downloading source packages with apt
+--------------------------------------------
 
 apt is used to download the real-time kernel source. We need to enable the source repositories (``deb-src``) to allow ``apt`` to download real-time kernel source packages from its archives.
 
@@ -95,7 +97,8 @@ apt is used to download the real-time kernel source. We need to enable the sourc
             sudo sed -i '1s/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu.sources
 
 
-3. Get the real-time kernel source code.
+Get the real-time kernel source code
+-------------------------------------
 
 First, refresh apt to index newly-added repositories:
 
