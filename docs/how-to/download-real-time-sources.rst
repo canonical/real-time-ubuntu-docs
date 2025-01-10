@@ -18,21 +18,15 @@ Enable access to the real-time Ubuntu kernel
             LTS releases of Ubuntu require Ubuntu Pro to download their respective real-time kernel source code.
             See the `Ubuntu Pro documentation <https://documentation.ubuntu.com/pro/>`_ for more information.
 
-        Enable access to the real-time kernel feature with the following command:
+        If you've already enabled the real-time kernel, you don't need to do anything in this step.
+        You can verify the realtime-kernel is activated with ``sudo pro status``.
+
+        Otherwise, enable access to the real-time kernel source packages with the following command:
 
         .. code-block:: shell
 
             sudo pro enable realtime-kernel --access-only
 
-        If you additionally want to install the real-time kernel to this system, remove the ``--access-only`` flag:
-
-        .. code-block:: shell
-
-            sudo pro enable realtime-kernel
-
-        You can verify the realtime-kernel is activated with ``sudo pro status``.
-
-        .. NOTE I don't think sudo pro status will tell you if you used the access-only flag or not.
 
     .. tab-item:: Interim releases (24.10, etc.)
         :sync: interim
