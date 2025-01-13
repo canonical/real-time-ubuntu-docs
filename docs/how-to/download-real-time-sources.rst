@@ -44,15 +44,6 @@ apt is used to download the real-time kernel source. We need to enable the sourc
 .. tab-set::
     :sync-group: release
 
-    .. tab-item:: 24.04 LTS and newer
-        :sync: lts
-
-        Use the following command to add ``deb-src`` to the :file:`ubuntu-realtime-kernel.sources` file:
-
-        .. code-block:: shell
-            
-            sudo sed -i '2s/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu-realtime-kernel.sources
-
     .. tab-item:: 22.04 LTS and older
         :sync: lts
 
@@ -80,6 +71,15 @@ apt is used to download the real-time kernel source. We need to enable the sourc
 
         .. caution::
             Be sure to :spellexception:`uncomment` only the line which includes ``main`` after the release code-name.
+
+    .. tab-item:: 24.04 LTS and newer
+        :sync: lts
+
+        Use the following command to add ``deb-src`` to the :file:`ubuntu-realtime-kernel.sources` file:
+
+        .. code-block:: shell
+            
+            sudo sed -i '2s/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu-realtime-kernel.sources
 
 
     .. tab-item:: Interim Releases (24.10, etc.)
