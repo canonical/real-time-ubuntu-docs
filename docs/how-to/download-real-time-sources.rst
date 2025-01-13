@@ -19,7 +19,7 @@ Enable access to the real-time Ubuntu kernel
             See the `Ubuntu Pro documentation <https://documentation.ubuntu.com/pro/>`_ for more information.
 
         If you've already enabled the real-time kernel, you don't need to do anything in this step.
-        You can verify the realtime-kernel is activated with ``sudo pro status``.
+        You can verify the ``realtime-kernel`` service is activated with ``sudo pro status``.
 
         Otherwise, enable access to the real-time kernel source packages with the following command:
 
