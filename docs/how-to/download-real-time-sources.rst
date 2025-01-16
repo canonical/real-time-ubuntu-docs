@@ -47,12 +47,9 @@ apt is used to download the real-time kernel source. We need to enable the sourc
     .. tab-item:: 22.04 LTS and older
         :sync: lts
 
-        In older LTS versions of Ubuntu, open the ``/etc/apt/sources.list`` file in a text editor (requires elevated permissions).
+        Open the ``/etc/apt/sources.list`` file in a text editor (requires elevated permissions) and :spellexception:`uncomment` (delete the leading ``#``) the line which includes ``deb-src http://archive.ubuntu.com/ubuntu/ <release> main``. 
 
-        Then, :spellexception:`uncomment` (delete the leading ``#``) the line which includes ``deb-src http://archive.ubuntu.com/ubuntu/ jammy main``. 
-        For other releases, ``jammy`` will match the code-name for your release.
-
-        For example, the file looks like this for 22.04 LTS (Jammy Jellyfish):
+        For example, for Ubuntu 22.04 LTS (Jammy Jellyfish), only :spellexception:`uncomment` line number 4:
 
         .. code-block:: debsources
 
