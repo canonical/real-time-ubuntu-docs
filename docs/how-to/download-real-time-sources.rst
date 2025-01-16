@@ -52,7 +52,6 @@ apt is used to download the real-time kernel source. We need to enable the sourc
         For example, for Ubuntu 22.04 LTS (Jammy Jellyfish), only :spellexception:`uncomment` line number 4:
 
         .. code-block:: debsources
-
            :emphasize-lines: 4
            :linenos:
 
