@@ -53,18 +53,16 @@ apt is used to download the real-time kernel source. We need to enable the sourc
 
         .. code-block:: debsources
 
-            # See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to
-            # newer versions of the distribution.
-            deb http://archive.ubuntu.com/ubuntu/ jammy main restricted universe multiverse
-            # deb-src http://archive.ubuntu.com/ubuntu/ jammy main restricted universe multiverse
-            # ^^^^^ Uncomment the line above! ^^^^^
+           :emphasize-lines: 4
+           :linenos:
 
-            deb http://archive.ubuntu.com/ubuntu/ jammy-updates main restricted universe multiverse
-            # deb-src http://archive.ubuntu.com/ubuntu/ jammy-updates main restricted universe multiverse
-            # ^^^^^ Leave this one (and all others underneath) alone. ^^^^^
+           # See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to
+           # newer versions of the distribution.
+           deb http://archive.ubuntu.com/ubuntu/ jammy main restricted universe multiverse
+           deb-src http://archive.ubuntu.com/ubuntu/ jammy main restricted universe multiverse
 
-            # ...
-
+           deb http://archive.ubuntu.com/ubuntu/ jammy-updates main restricted universe multiverse
+           # deb-src http://archive.ubuntu.com/ubuntu/ jammy-updates main restricted universe multiverse
 
         .. caution::
             Be sure to :spellexception:`uncomment` only the line which includes ``main`` after the release code-name.
