@@ -46,10 +46,8 @@ APT is used to download the real-time kernel source. We need to enable the sourc
 
     .. tab-item:: 22.04 LTS
         :sync: lts
-        Open the ``/etc/apt/sources.list`` file in a text editor (requires elevated permissions) and :spellexception:`uncomment` (delete the leading ``#``) the line which includes ``deb-src http://archive.ubuntu.com/ubuntu/ <release> main``. 
 
-
-        For example, for Ubuntu 22.04 LTS (Jammy Jellyfish), only :spellexception:`uncomment` line number 4:
+        Open the ``/etc/apt/sources.list`` file in a text editor (requires elevated permissions) and :spellexception:`uncomment` (delete the leading ``#``) the line which includes ``deb-src http://archive.ubuntu.com/ubuntu/ jammy main``. 
 
         .. code-block:: debsources
            :emphasize-lines: 4
@@ -85,11 +83,10 @@ APT is used to download the real-time kernel source. We need to enable the sourc
             
             sudo sed -i '1s/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu.sources
 
-
 Get the real-time kernel source code
 -------------------------------------
 
-First, refresh apt to index newly-added repositories:
+First, refresh APT to index newly-added repositories:
 
 .. code-block:: shell 
 
