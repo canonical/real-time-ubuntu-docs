@@ -332,3 +332,5 @@ myst_substitutions = {
   "C_CLA": "[Canonical contributor license agreement](https://ubuntu.com/legal/contributors)",
   "PROJNAME_FULL": "Real-time Ubuntu documentation",
 }
+
+suppress_warnings = ['git.too_shallow']
