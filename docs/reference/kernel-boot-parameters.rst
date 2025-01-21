@@ -37,21 +37,6 @@ The ``kthread_cpus`` parameter refers to the list of CPUs specifically allocated
 
 For instance, specifying ``kthread_cpus=0-3`` means that the kernel is allowed to run kernel threads on CPUs 0 through 3.
 
-timer_migration
----------------
-
-The ``timer_migration`` parameter refers to an optimization technique to migrate timers from one CPU to another.
-In a real-time system with multiple sockets, it is beneficial to disable this parameter to ensure that the timer will stay assigned to a core. 
-
-By setting ``timer_migration=0`` in a multi socket machine, timer migration can be disabled.
-
-sched_rt_runtime
-----------------
-
-The ``sched_rt_runtime`` parameter refers to the duration in microseconds during which a real-time process can dominate a CPU.
-
-Specifying ``sched_rt_runtime=-1`` allows a process or real-time task to dominate the CPU indefinitely.
-
 .. LINKS
 
 .. _kernel's command-line parameters: https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html
