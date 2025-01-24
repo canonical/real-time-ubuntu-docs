@@ -162,13 +162,13 @@ This could be used to monitor real-time observation of system activities such as
 .. _oslat: https://manpages.ubuntu.com/manpages/jammy/man8/oslat.8.html
 .. _ps: https://www.man7.org/linux/man-pages/man1/ps.1.html
 .. _perf: https://www.man7.org/linux/man-pages/man1/perf.1.html
-.. _stress-ng: https://manpages.ubuntu.com/manpages/mantic/en/man1/stress-ng.1.html
+.. _stress-ng: https://manpages.ubuntu.com/manpages/noble/en/man1/stress-ng.1.html
 .. _watch: https://www.man7.org/linux/man-pages/man1/watch.1.html
 
 .. _nice: https://www.man7.org/linux/man-pages/man1/nice.1.html
 .. _SCHED_FIFO: https://man7.org/linux/man-pages/man7/sched.7.html
-.. _mmap: https://manpages.ubuntu.com/manpages/mantic/en/man2/mmap.2.html
-.. _munmap: https://manpages.ubuntu.com/manpages/mantic/en/man2/munmap.2.html
+.. _mmap: https://manpages.ubuntu.com/manpages/noble/en/man2/mmap.2.html
+.. _munmap: https://manpages.ubuntu.com/manpages/noble/en/man2/munmap.2.html
 
 .. _interrupt requests: https://en.wikipedia.org/wiki/Interrupt_request
 .. _/dev/zero: https://en.wikipedia.org/wiki//dev/zero
