@@ -13,8 +13,7 @@ results
 ```
 
 ```{admonition} Collaboration
-This tutorial is a collaborative effort between Intel and Canonical.
-It can also be found under [Intel's Github account](https://github.com/intel/edge-developer-kit-reference-scripts/tree/main/usecases/real-time/tcc_tutorial).
+This tutorial is a collaborative effort between **Intel** and **Canonical**.
 ```
 
 ## Key Takeaways of this Tutorial
