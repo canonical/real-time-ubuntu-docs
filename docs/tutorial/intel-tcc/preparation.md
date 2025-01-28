@@ -58,7 +58,7 @@ docker ps
 
 Once the containers are up and running, you can connect to Grafana by following these steps:
 - Open your preferred web browser.
-- Enter the following URL in the address bar: [http://localhost:3000](http://localhost:3000)
+- Enter the following URL in the address bar: [http://localhost:3000/](http://localhost:3000/)
   - If you are running Docker on a remote server, replace `localhost` with the server's IP address or domain name.
     Also make sure port 3000 is exposed through your firewall.
 

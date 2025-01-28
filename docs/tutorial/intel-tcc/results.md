@@ -8,7 +8,7 @@
 ```
 
 ```{warning}
-Performance varies by use, configuration and other factors. Learn more at [Intel Performance Index](http://www.Intel.com/PerformanceIndex). 
+Performance varies by use, configuration and other factors. Learn more at [Intel Performance Index](https://www.intel.com/PerformanceIndex).
 See above for workloads and configurations. Results may vary.
 ```
 
