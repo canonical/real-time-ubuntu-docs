@@ -1,0 +1,26 @@
+# Isolate a core for the Real-time App
+
+```{figure} images/setup_CAT_isol.png
+   :width: 100%
+   :alt: Isolated Core - System Setup
+
+   Isolated Core - System Setup
+```
+
+- Add the following parameters to the kernel command line - /etc/default/grub
+  ```sh
+  GRUB_CMDLINE_LINUX="clocksource=tsc tsc=reliable nmi_watchdog=0 nosoftlockup isolcpus=3 rcu_nocbs=3 nohz_full=3 irqaffinity=0 "
+  ```
+
+- Update grub and reboot the system to apply the optimizations.
+  ```sh
+  sudo update-grub
+  sudo reboot now 
+  ``` 
+
+- Apply Optimizations done in {doc}`1-default-configs` and {doc}`2-cache-partitioning`
+
+- Start real-time application and check the statistics on the Grafana dashboard, you should see less cache misses and latency spikes on the real-time core.
+  ```sh
+  sudo ./rt_linux_tutorial -s 1
+  ```
