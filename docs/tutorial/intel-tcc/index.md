@@ -12,6 +12,11 @@ preparation
 results
 ```
 
+```{admonition} Collaboration
+This tutorial is a collaborative effort between Intel and Canonical.
+It can also be found under [Intel's Github account](https://github.com/intel/edge-developer-kit-reference-scripts/tree/main/usecases/real-time/tcc_tutorial).
+```
+
 ## Key Takeaways of this Tutorial
 - **BIOS TCC Mode**
 - **Linux Kernel Command-line tuning**
