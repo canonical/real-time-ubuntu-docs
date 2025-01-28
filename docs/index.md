@@ -34,7 +34,7 @@ continuous production, the most exacting applications run on Real-time Ubuntu.
 
 ````{grid} 1 1 2 2
 
-```{grid-item-card} [Tutorial](/tutorial/index)
+```{grid-item-card} [Tutorials](/tutorial/index)
 
 **Start here**: a hands-on introduction to Real-time Ubuntu for new users.
 ```
