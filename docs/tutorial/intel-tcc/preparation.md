@@ -59,7 +59,7 @@ docker ps
 Once the containers are up and running, you can connect to Grafana by following these steps:
 - Open your preferred web browser.
 - Enter the following URL in the address bar: [http://localhost:3000](http://localhost:3000)
-  - If you are running Docker on a remote server, replace localhost with the server's IP address or domain name.
+  - If you are running Docker on a remote server, replace `localhost` with the server's IP address or domain name.
     Also make sure port 3000 is exposed through your firewall.
 
 - Log In to Grafana: You will be prompted to log in. Use the following credentials:
@@ -104,7 +104,7 @@ sudo apt update
 sudo apt install msr-tools
 ```
 
-#### Install Paho MQTT C Client Library and cJson
+#### Install Paho MQTT C Client Library and cJSON
 
 ```bash
 sudo apt install git build-essential
@@ -115,7 +115,7 @@ sudo apt install libcjson-dev
 ```
 ### Clone and build the Application
 
-Clone the repo containing the source code for our test C application.
+Clone the repository containing the source code for our test C application.
 Then compile it using the provided Makefile.
 
 ```sh
@@ -195,7 +195,7 @@ Start and enable Grafana service.
 sudo systemctl start grafana-server
 sudo systemctl enable grafana-server
 ```
-Access Grafana at e.g. http://localhost:3000/ and log in with the default credentials (admin/admin).
+Access Grafana at e.g. [http://localhost:3000/](http://localhost:3000/) and log in with the default credentials (admin/admin).
 
 #### Add InfluxDB as a Data Source in Grafana
 
