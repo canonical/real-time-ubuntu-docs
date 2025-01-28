@@ -13,7 +13,7 @@ We will partition the Last Level Cache (*LLC*) to exclusively provide a portion 
 
 As depicted above the LLC of i5-1350PE has a Capacity BitMask (*CBM*) length of 8 bits (`0xFF`).
 For this tutorial LLC is partitioned in half.
-P cores 0-2, all E cores and Gfx operates with Class of Service 0 (*CLOS 0*), being assigned half the cache.
+P cores 0-2, all E cores and GFX operates with Class of Service 0 (*CLOS 0*), being assigned half the cache.
 P cores 3 which will be used for real-time workloads, operating on Class of Service 1 (*CLOS 1*) is assigned the other half.
 
 Each class of service will be assigned a CBM length of 4 (`0xF0` and `0xF0`) when partitioning the cache in half.

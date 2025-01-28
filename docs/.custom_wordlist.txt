@@ -7,12 +7,14 @@ autotools
 benchmarking
 bh
 bitmask
+BitMask
 BLK
 bogo
 boolean
 bootable
 bootloader
 CAS
+CBM
 cfs
 CFS's
 cgclassify
@@ -22,12 +24,15 @@ cgroup
 cgroups
 CGROUPs
 cjk
+cJSON
+CLOS
 cmdline
 conf
 config
 configfs
 cpu
 CPUAffinity
+CPUID
 cpus
 CPUs
 Cpusets
@@ -35,6 +40,7 @@ cpuset
 cpusets
 cryptographically
 cset
+CTO's
 Ctrl
 cyclictest
 dev
@@ -43,6 +49,7 @@ DigiKey
 dispatchable
 dstat
 dvipng
+DVFS
 dyntick
 dynticks
 EAS
@@ -55,6 +62,7 @@ emptible
 emption
 emptive
 empts
+EPP
 ffffff
 fifo
 filesystem
@@ -65,6 +73,7 @@ futexes
 Futexes
 gcc
 GEDF
+GFX
 github
 gnuplot
 GPG
@@ -73,9 +82,12 @@ GRUB's
 gyre
 hardirq
 HPC
+http
 https
+HWP
 Indri
 init
+InfluxDB
 intel
 invariance
 io
@@ -102,6 +114,8 @@ latencies
 latexmk
 linux
 Livepatch
+LLC
+localhost
 LTS
 lxd
 mantic
@@ -109,6 +123,10 @@ mem
 memmove
 mlockall
 mmap
+Mosquitto
+MQTT
+MSR
+MSRs
 Multithreading
 munmap
 mutex
@@ -125,6 +143,7 @@ oslat
 OSNOISE
 otf
 Pa
+Paho
 patchset
 patchsets
 Pb
@@ -152,6 +171,9 @@ raspi
 rcu
 realtime
 riscv
+QoS
+RDC
+RDT
 RPi
 rq
 RT's
@@ -204,7 +226,9 @@ syscalls
 sysfs
 systemd
 tasklets
+TCC
 telco
+Telegraf
 tex
 texlive
 th
