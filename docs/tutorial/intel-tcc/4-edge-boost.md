@@ -8,7 +8,7 @@
 ```
 
 With Speed Shift for Edge Computing, the frequency of the real-time core can be boosted to leverage higher single-threaded performance.
-This tutorial follows the recommendations for the enveloping configuration listed in the [TCC User Guide](https://cdrdv2.intel.com/v1/dl/getContent/831067?fileName=Public+TCC+User+Guide+-+September+2024+-+RDC-831067) and in the Intel® 64 and IA-32 Architectures Software Developer’s Manual Vol3 section "Power and Thermal Management-Hardware Controlled Performance States - RDC#[671200](https://cdrdv2.intel.com/v1/dl/getContent/671200)".
+This tutorial follows the recommendations for the enveloping configuration listed in the [TCC User Guide](https://www.intel.com/content/www/us/en/content-details/831067/public-intel-time-coordinated-compute-tcc-user-guide.html) and in the Intel® 64 and IA-32 Architectures Software Developer’s Manual Vol3 section "Power and Thermal Management-Hardware Controlled Performance States - RDC#[671200](https://cdrdv2.intel.com/v1/dl/getContent/671200)".
 
 Therefore, the maximum allowed frequency of all best-effort cores is limited to the base frequency, and the Energy Performance Preferences (EPP) is set to `power`. This configuration allows the best-effort cores to scale their frequency between the minimum and base frequency depending on core utilization.
 
