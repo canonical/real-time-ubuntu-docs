@@ -18,7 +18,7 @@
   sudo reboot now 
   ``` 
 
-- Apply Optimizations done in {doc}`1-default-configs` and {doc}`2-cache-partitioning`
+- Apply Optimizations done in {doc}`default-configs` and {doc}`cache-partitioning`
 
 - Start real-time application and check the statistics on the Grafana dashboard, you should see less cache misses and latency spikes on the real-time core.
   ```sh
