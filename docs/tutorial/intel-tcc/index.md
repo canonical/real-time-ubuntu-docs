@@ -5,10 +5,10 @@
 :hidden:
 
 preparation
-1-default-configs
-2-cache-partitioning
-3-core-isolation
-4-edge-boost
+default-configs
+cache-partitioning
+core-isolation
+edge-boost
 results
 ```
 
