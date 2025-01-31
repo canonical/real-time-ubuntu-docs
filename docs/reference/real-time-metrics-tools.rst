@@ -148,7 +148,8 @@ perf
 The `perf`_ is a performance analysis tool for Linux.
 It collects and reports statistics about system-wide performance metrics
 such as CPU migrations, CPU cycles, instructions, and branches.
-This tool is pre-installed on Ubuntu and Ubuntu Core.
+This tool is pre-installed on Ubuntu 24.04 and included in the ``linux-tools-common`` Debian package for Ubuntu 22.04.
+It is not available on Ubuntu Core.
 
 .. code-block:: shell
     
