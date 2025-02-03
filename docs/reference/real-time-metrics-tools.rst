@@ -69,7 +69,7 @@ dstat
 
 `dstat`_ is a versatile tool for generating system resource statistics.
 The tool can be installed with the ``dstat`` Debian package on Ubuntu.
-It is not available on Ubuntu Core.
+It is not available as a package on Ubuntu Core.
 
 .. note::
    On Ubuntu 24.04, the ``dstat`` command is provided by the ``pcp`` package
@@ -149,7 +149,7 @@ The `perf`_ is a performance analysis tool for Linux.
 It collects and reports statistics about system-wide performance metrics
 such as CPU migrations, CPU cycles, instructions, and branches.
 This tool is pre-installed on Ubuntu 24.04 and included in the ``linux-tools-common`` Debian package for Ubuntu 22.04.
-It is not available on Ubuntu Core.
+It is not packaged for Ubuntu Core.
 
 .. code-block:: shell
     
