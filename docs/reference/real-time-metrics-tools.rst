@@ -5,23 +5,50 @@ Various tools are available for measuring real-time metrics.
 Here are some tools along with example commands.
 
 .. note::
-    Some of the tools aren't available on the OS, but can be installed via Debian packages.
+    Some of the tools aren't available on the OS, but can be installed via Debian or snap packages.
     The package names are provided in the corresponding sections.
 
-    To install a Debian package:
-    
-    .. code-block:: shell
+    .. tabs::
 
-        sudo apt update
-        sudo apt install <package-name>
+        .. group-tab:: Install a Debian package
 
+            To install a Debian package, use the following commands:
+
+            .. code-block:: shell
+
+                sudo apt update
+                sudo apt install <package-name>
+
+        .. group-tab:: Install a Snap
+            The snaps mentioned in this document are primarily meant for Ubuntu Core, although they may be installed on Ubuntu as well.
+            
+            To install a snap, use the following command:
+
+            .. code-block:: shell
+
+                sudo snap install <snap>
+
+            You may need to set the `channel`_ flag to install a specific version of the snap.
 
 cyclictest
 ----------
 
 The `cyclictest`_ is most commonly used for benchmarking real-time systems, 
 and providing precise measurements such as actual latency and maximum latency.
-It is included in the ``rt-tests`` Debian package.
+
+
+.. tabs::
+    .. group-tab:: Ubuntu
+        Install the ``rt-tests`` Debian package.
+
+    .. group-tab:: Ubuntu Core
+        Install the `rt-tests snap`_.
+        
+        Add an alias for ``cyclictest``:
+
+        .. code-block:: shell
+
+            sudo snap alias rt-tests.cyclictest cyclictest
 
 .. code-block:: shell
 
@@ -41,7 +68,8 @@ dstat
 -----
 
 `dstat`_ is a versatile tool for generating system resource statistics.
-The tool can be installed with the ``dstat`` Debian package.
+The tool can be installed with the ``dstat`` Debian package on Ubuntu.
+It is not available as a package on Ubuntu Core.
 
 .. note::
    On Ubuntu 24.04, the ``dstat`` command is provided by the ``pcp`` package
@@ -63,7 +91,20 @@ oslat
 
 The `oslat`_ program is designed to identify thread latency at the
 OS level caused by unexpected system scheduling or interruptions such as system ticks.
-It is included in the ``rt-tests`` Debian package.
+
+.. tabs::
+    .. group-tab:: Ubuntu
+        Install the ``rt-tests`` Debian package.
+
+    .. group-tab:: Ubuntu Core
+        Install the `rt-tests snap`_.
+        
+        
+        Add an alias for ``oslat``:
+
+        .. code-block:: shell
+
+            sudo snap alias rt-tests.oslat oslat
 
 .. code-block:: shell
 
@@ -107,7 +148,8 @@ perf
 The `perf`_ is a performance analysis tool for Linux.
 It collects and reports statistics about system-wide performance metrics
 such as CPU migrations, CPU cycles, instructions, and branches.
-It is included in the ``linux-tools-common`` Debian package.
+This tool is pre-installed on Ubuntu 24.04 and included in the ``linux-tools-common`` Debian package for Ubuntu 22.04.
+It is not packaged for Ubuntu Core.
 
 .. code-block:: shell
     
@@ -124,6 +166,23 @@ The `stress-ng`_ is a tool to load and stress a computer system.
 It was designed to exercise various physical subsystems of a computer 
 as well as the various operating system kernel interfaces.
 This tool may be installed with the ``stress-ng`` Debian package.
+
+.. tabs::
+    .. group-tab:: Ubuntu
+        Install the ``stress-ng`` Debian package.
+
+    .. group-tab:: Ubuntu Core
+        Install the `stress-ng-dev snap`_ in developer mode:
+
+        .. code-block:: shell
+
+            sudo snap install --devmode --beta stress-ng-dev
+        
+        Add an alias for ``stress-ng``:
+
+        .. code-block:: shell
+
+            sudo snap alias stress-ng-dev.stress-ng stress-ng
 
 .. code-block:: shell
 
@@ -174,3 +233,6 @@ This could be used to monitor real-time observation of system activities such as
 .. _/dev/zero: https://en.wikipedia.org/wiki//dev/zero
 .. _/dev/null: https://en.wikipedia.org/wiki/Null_device
 
+.. _channel: https://snapcraft.io/docs/channels
+.. _rt-tests snap: https://snapcraft.io/rt-tests
+.. _stress-ng-dev snap: https://snapcraft.io/stress-ng-dev
