@@ -194,7 +194,6 @@ linkcheck_ignore = [
 
 ]
 
-
 # A regex list of URLs where anchors are ignored by 'make linkcheck'
 
 linkcheck_anchors_ignore_for_url = [
@@ -202,6 +201,9 @@ linkcheck_anchors_ignore_for_url = [
     r"https://snapcraft\.io/docs/.*"
     ]
 
+# give linkcheck multiple tries on failure
+# linkcheck_timeout = 30
+linkcheck_retries = 3
 
 ########################
 # Configuration extras #
