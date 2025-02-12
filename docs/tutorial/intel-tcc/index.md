@@ -39,8 +39,8 @@ An example C program is provided to demonstrate the possible optimization steps 
 It includes a control task that performs random pointer chasing to simulate a workload and measures wake up jitter, execution time and cache misses.
 The application also features a statistics handler thread that processes and logs timing information.
 
-```{figure} images/rt_app.png
-   :width: 50%
+```{figure} images/rt_linux_tutorial-alt.drawio.svg
+   :width: 100%
    :alt: High-level design of rt app
 
    High-level Design of the test application

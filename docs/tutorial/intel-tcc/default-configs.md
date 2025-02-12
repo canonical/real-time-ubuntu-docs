@@ -1,6 +1,6 @@
 # Default Configuration
 
-```{figure} images/setup_basic.png
+```{figure} images/tcc_setup_basic.drawio.svg
    :width: 100%
    :alt: Basic - System Setup
 

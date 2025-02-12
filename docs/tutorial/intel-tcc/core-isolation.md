@@ -1,6 +1,6 @@
 # Isolate a core for the Real-time App
 
-```{figure} images/setup_CAT_isol.png
+```{figure} images/tcc_setup_CAT_isol.drawio.svg
    :width: 100%
    :alt: Isolated Core - System Setup
 
