@@ -47,13 +47,15 @@ Please follow the steps described in [Install Docker Engine on Ubuntu](https://d
 
 ### Start the Grafana Statistics Infrastructure
 
+Download the source code archive [here](intel-tcc-tutorial.tar.gz).
+
 ```bash
-git clone https://github.com/intel/edge-developer-kit-reference-scripts.git
-cd edge-developer-kit-reference-scripts/usecases/real-time/tcc_tutorial/docker/docker-compose
+tar -xvf intel-tcc-tutorial.tar.gz --one-top-level
+cd intel-tcc-tutorial/docker/docker-compose
 docker compose up -d 
 
 # Verify the telegraf, grafana, influxdb and mosquitto containers are up and running
-docker ps
+docker compose ps
 ```
 
 Once the containers are up and running, you can connect to Grafana by following these steps:
@@ -113,14 +115,14 @@ sudo apt install libpaho-mqtt-dev
 # Install cJSON https://github.com/DaveGamble/cJSON.git 
 sudo apt install libcjson-dev
 ```
-### Clone and build the Application
+### Build the Application
 
-Clone the repository containing the source code for our test C application.
+Download the source code archive [here](intel-tcc-tutorial.tar.gz).
 Then compile it using the provided Makefile.
 
 ```sh
-git clone https://github.com/intel/edge-developer-kit-reference-scripts.git
-cd edge-developer-kit-reference-scripts/usecases/real-time/tcc_tutorial
+tar -xvf intel-tcc-tutorial.tar.gz --one-top-level
+cd intel-tcc-tutorial
 make
 ```
 

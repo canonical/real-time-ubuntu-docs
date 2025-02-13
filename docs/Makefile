@@ -27,5 +27,13 @@ help:
         "* other possible targets:                    make <TAB twice> \n" \
         "------------------------------------------------------------- \n"
 
+generate-tarball:
+	tar -czvf tutorial/intel-tcc/intel-tcc-tutorial.tar.gz -C tutorial/intel-tcc/code .
+
+clean clean-doc:
+	rm tutorial/intel-tcc/intel-tcc-tutorial.tar.gz
+	$(MAKE) -f Makefile.sp sp-$@
+
 %:
+	$(MAKE) generate-tarball
 	$(MAKE) -f Makefile.sp sp-$@
