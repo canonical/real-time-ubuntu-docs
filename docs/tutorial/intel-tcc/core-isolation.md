@@ -7,9 +7,10 @@
    Isolated Core - System Setup
 ```
 
-- Add the following parameters to the kernel command line - /etc/default/grub
+- Edit `/etc/default/grub` and append `clocksource=tsc tsc=reliable nmi_watchdog=0 nosoftlockup isolcpus=3 rcu_nocbs=3 nohz_full=3 irqaffinity=0` to `GRUB_CMDLINE_LINUX_DEFAULT`.
+  It should look similar to this:
   ```sh
-  GRUB_CMDLINE_LINUX="clocksource=tsc tsc=reliable nmi_watchdog=0 nosoftlockup isolcpus=3 rcu_nocbs=3 nohz_full=3 irqaffinity=0 "
+  GRUB_CMDLINE_LINUX_DEFAULT="quiet splash clocksource=tsc tsc=reliable nmi_watchdog=0 nosoftlockup isolcpus=3 rcu_nocbs=3 nohz_full=3 irqaffinity=0"
   ```
 
 - Update grub and reboot the system to apply the optimizations.

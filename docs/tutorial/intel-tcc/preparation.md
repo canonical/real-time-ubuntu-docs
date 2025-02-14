@@ -35,6 +35,15 @@ Talk to your board vendor if the <span style="font-family: 'Courier New';">Intel
 
 Refer to [How to enable Real-time Ubuntu](https://canonical-ubuntu-pro-client.readthedocs-hosted.com/en/latest/howtoguides/enable_realtime_kernel/) for more details.
 
+### Other required software
+
+Install other required tools:
+```
+sudo apt update
+sudo apt install msr-tools
+sudo apt install stress-ng
+```
+
 ```{note}
 For the rest of the required software you can either use Docker, or manually setup everything yourself.
 ```
@@ -100,12 +109,6 @@ The `rt_linux_tutorial` application can be started by running the Docker contain
 
 ````
 ````{group-tab} Manual setup
-
-### Install MSR Tools
-```bash
-sudo apt update
-sudo apt install msr-tools
-```
 
 #### Install Paho MQTT C Client Library and cJSON
 

@@ -50,7 +50,16 @@ sudo ./setCoreFrequency.sh basefrequency
 ````
 
 ## Run first Test
+
 Start real-time application and check the statistics on the Grafana dashboard. 
+
 ```sh
 sudo ./rt_linux_tutorial -s 1
+```
+
+Run *stress-ng* to create artificial load on the system.
+You should see this having an effect on all metrics reported on the Grafana dashboard.
+
+```sh
+stress-ng -c 1 --cache-level=3
 ```

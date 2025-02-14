@@ -15,10 +15,10 @@ Therefore, the maximum allowed frequency of all best-effort cores is limited to 
 For the real-time core, the frequency is boosted to 3.1GHz, and the Energy Performance Preferences (EPP) is set to `performance` to ensure Quality of Service (QoS) in case of power limit throttling.
 
 ````{note}
-This configuration can be applied by using the convenience script, with the `rt_boost` argument, followed by the identifier of the real-time core, and the core frequency:
+This configuration can be applied by using the convenience script, with the `rt-boost` argument, followed by the identifier of the real-time core, and the core frequency:
 
 ```sh
-sudo ./setCoreFrequency.sh rt_boost '3' 3100000
+sudo ./setCoreFrequency.sh rt-boost '3' 3100000
 ```
 ````
 
