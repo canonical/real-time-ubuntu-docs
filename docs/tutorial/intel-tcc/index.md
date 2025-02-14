@@ -14,7 +14,7 @@ results
 
 ```{admonition} Collaboration
 This tutorial is a collaborative effort between **Intel** and **Canonical**.
-All instructions and source code are provided and released under the 3-Clause BSD License.
+All instructions and source code are provided and released under the [3-Clause BSD License](https://spdx.org/licenses/BSD-3-Clause.html).
 ```
 
 ## Key Takeaways of this Tutorial

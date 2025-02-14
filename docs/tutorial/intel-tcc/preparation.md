@@ -119,11 +119,24 @@ sudo apt install libcjson-dev
 ### Build the Application
 
 Download the source code archive [here](intel-tcc-tutorial.tar.gz).
+Then extract it.
+
+```
+tar -xvf intel-tcc-tutorial.tar.gz --one-top-level
+cd intel-tcc-tutorial
+```
+
+Make any required changes to the source code like buffer sizes.
+Most likely you will need to change the MQTT address in `rt_linux_tutorial.c` to look like this:
+
+```
+#define ADDRESS     "tcp://localhost:1883" // use localhost if app does not run in container
+//#define ADDRESS     "tcp://mosquitto:1883"
+```
+
 Then compile it using the provided Makefile.
 
 ```sh
-tar -xvf intel-tcc-tutorial.tar.gz --one-top-level
-cd intel-tcc-tutorial
 make
 ```
 
@@ -138,17 +151,15 @@ sudo ./rt_linux_tutorial
 ```
 
 #### Install Mosquitto MQTT Broker
+
 ```bash
-sudo apt update
 sudo apt install mosquitto mosquitto-clients
 ```
+
 #### Install and Configure Telegraf
 
-Install Telegraf.
-```bash
-sudo apt update
-sudo apt install telegraf
-```
+Install Telegraf by following their guide [here](https://docs.influxdata.com/telegraf/v1/install/#install-from-the-influxdata-repository).
+
 Configure Telegraf to use the `mqtt_consumer` input plugin and the `influxdb` output plugin by editing `/etc/telegraf/telegraf.conf`.
 
 For example by appending this to the config file:
@@ -169,59 +180,80 @@ For example by appending this to the config file:
   database = "tcc_tutorial_data" # the database to write to
 ```
 
-#### Install and Set Up InfluxDB
+Then restart Telegraf:
 
-Install InfluxDB.
-```bash
-sudo apt update
-sudo apt install influxdb
 ```
-Start and enable InfluxDB service.
+sudo systemctl restart telegraf
+```
 
-```bash
-sudo systemctl start influxdb
-sudo systemctl enable influxdb
-```
+#### Install and Set Up InfluxDB v1
+
+Install and start InfluxDB v1 as explained in [this guide](https://docs.influxdata.com/influxdb/v1/introduction/install/#installing-influxdb-oss).
+
 Create a new InfluxDB database.
 ```bash
 influx -execute 'CREATE DATABASE tcc_tutorial_data'
 ```
-#### Install and Configure Grafana
+#### Install and Configure Grafana OSS
 
-Install Grafana.
-```bash
-sudo apt update
-sudo apt install grafana
-```
-Start and enable Grafana service.
-```bash
-sudo systemctl start grafana-server
-sudo systemctl enable grafana-server
-```
+Install Grafana OSS according to [their documentation](https://grafana.com/docs/grafana/latest/setup-grafana/installation/debian/#install-from-apt-repository).
+Then start it using [these steps](https://grafana.com/docs/grafana/latest/setup-grafana/start-restart-grafana/#linux).
+
 Access Grafana at e.g. [http://localhost:3000/](http://localhost:3000/) and log in with the default credentials (admin/admin).
 
 #### Add InfluxDB as a Data Source in Grafana
 
-In the Grafana UI, go to *Configuration* > *Data Sources* and add InfluxDB as a data source.
-Enter the connection details for your InfluxDB instance.
+In the Grafana UI, go to *Connections* > *Data Sources* > **Add Datasource** > **InfluxDB**.
+Enter the connection details for your InfluxDB instance:
 
-#### Create a Dashboard and Panel in Grafana
-Create a new dashboard in Grafana.
-Add a new panel and configure it to display data from the InfluxDB data source.
+* URL: `http://localhost:8086`
+* Database: `tcc_tutorial_data`
+
+Click on *Save & test*
+
+#### Create a Dashboard in Grafana
+
+Download [this](code/docker/docker-compose/grafana-provisioning/dashboards/rt_linux_tutorial.json) file.
+
+In Grafana go to *Dashboards* > *New* > *Import* and upload the file you just downloaded.
+
+You will see a dashboard with three empty panels.
+For each panel click on the three dots menu in the top right hand corner, and click *Edit*.
+Click on the dropdown next to Datasource and select Influxdb.
+Click back and then save the dashboard.
 
 #### Verifying the Data Flow
-Use `mosquitto_sub` to subscribe to the MQTT topic and verify that messages are being published.
-Check Telegraf logs for any processing errors.
-Query InfluxDB to confirm that data is being written.
-View the Grafana dashboard to see the visualized data.
+
+Run the `rt_linux_tutorial` application and configure it to publish statistics to MQTT:
+
+```
+sudo ./rt_linux_tutorial -s 1
+```
+
+* Subscribe to the MQTT topic and verify that messages are being published:
+
+```
+mosquitto_sub -t "#"
+```
+
+* Check Telegraf logs for any processing errors:
+
+```
+journalctl -f -u telegraf
+```
+
+* Query InfluxDB to confirm that data is being written.
+* View the Grafana dashboard to see the visualized data.
 
 #### Troubleshooting
-Ensure that all services (Mosquitto, Telegraf, InfluxDB, Grafana) are running.
-Check network connectivity between components.
-Verify configuration files for correct syntax and settings.
-Consult logs for each component for error messages.
+
+* Ensure that all services (Mosquitto, Telegraf, InfluxDB, Grafana) are running.
+* Check network connectivity between components.
+* Verify configuration files for correct syntax and settings.
+* Consult logs for each component for error messages.
 
 #### Conclusion
+
 By following these steps, you should have a fully functional data pipeline that collects data from a C application, sends it via MQTT, processes it with Telegraf, stores it in InfluxDB, and visualizes it with Grafana
 
 ````
