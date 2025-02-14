@@ -206,7 +206,7 @@ Access Grafana at e.g. [http://localhost:3000/](http://localhost:3000/) and log 
 
 #### Add InfluxDB as a Data Source in Grafana
 
-In the Grafana UI, go to *Connections* > *Data Sources* > **Add Datasource** > **InfluxDB**.
+In the Grafana UI, go to *Connections* > *Data Sources* > *Add Datasource* > *InfluxDB*.
 Enter the connection details for your InfluxDB instance:
 
 * URL: `http://localhost:8086`
