@@ -211,7 +211,7 @@ Access Grafana at e.g. [http://localhost:3000/](http://localhost:3000/) and log 
 
 #### Add InfluxDB as a Data Source in Grafana
 
-In the Grafana UI, go to *Connections* > *Data Sources* > *Add Datasource* > *InfluxDB*.
+In the Grafana UI, go to *Connections* > *Data Sources* > *Add Data Source* > *InfluxDB*.
 Enter the connection details for your InfluxDB instance:
 
 * URL: `http://localhost:8086`
@@ -227,7 +227,7 @@ In Grafana go to *Dashboards* > *New* > *Import* and upload the file you just do
 
 You will see a dashboard with three empty panels.
 For each panel click on the three dots menu in the top right hand corner, and click *Edit*.
-Click on the dropdown next to Datasource and select Influxdb.
+Click on the dropdown next to Data Source and select InfluxDB.
 Click back and then save the dashboard.
 
 #### Verifying the Data Flow
