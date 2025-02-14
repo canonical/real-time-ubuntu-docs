@@ -26,12 +26,13 @@ All instructions and source code are provided and released under the 3-Clause BS
 ## Required hardware
 
 The following system was used to develop and validate the results obtained in this tutorial.
-Other 13th and 14th generation Intel CPUs that support *Intel Time Coordinated Computing* should also work.
-See [this list](https://cdrdv2.intel.com/v1/dl/getContent/831868?explicitVersion=true) (slide 41), or check on [Intel ARK](https://www.intel.com/content/www/us/en/ark/featurefilter.html?productType=873&0_TimeCoordinatedComputing=True).
 
 - CPU: Intel® Core™ i5-1350PE processors
 - RAM: 16GB
 - DISK: 128GB
+
+Other 13th and 14th generation Intel CPUs that support *Intel Time Coordinated Computing* (TCC) should also work.
+See [this list](https://cdrdv2.intel.com/v1/dl/getContent/831868?explicitVersion=true) (slide 41), or check on [Intel ARK](https://www.intel.com/content/www/us/en/ark/featurefilter.html?productType=873&0_TimeCoordinatedComputing=True).
 
 ## Test Application
 

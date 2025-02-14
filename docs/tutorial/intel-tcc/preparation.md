@@ -16,7 +16,7 @@ This sections outlines the steps and components required to set up the system an
 ### Enable Intel® TCC Mode
 
 With the Intel® reference BIOS the <span style="font-family: 'Courier New';">Intel® TCC Mode</span> can be enabled under <span style="font-family: 'Courier New';">"Intel® Advanced Menu > Time Coordinated Computing"</span>.
-Talk to your board vendor if the <span style="font-family: 'Courier New';">Intel® TCC Mode</span> is not visible or follow the steps listed in the "Intel® Core Processors Firmware Configuration" section of [TCC User Guide](https://cdrdv2.intel.com/v1/dl/getContent/831868?explicitVersion=true) and set the options manually.
+Talk to your board vendor if the <span style="font-family: 'Courier New';">Intel® TCC Mode</span> is not visible or follow the steps listed in the "Intel® Core Processors Firmware Configuration" section of [TCC User Guide](https://www.intel.com/content/www/us/en/content-details/831067/public-intel-time-coordinated-compute-tcc-user-guide.html) and set the options manually.
 
 ### Install Ubuntu OS
 1. Install the latest [Ubuntu 24.04 LTS Desktop](https://releases.ubuntu.com/noble/). 
@@ -28,11 +28,12 @@ Talk to your board vendor if the <span style="font-family: 'Courier New';">Intel
   With a free Ubuntu Pro subscription you get five personal tokens which can be used for up to five machines.
   The kernel can simply be installed by running these commands:
   ```bash
-  pro attach <token>
-  pro enable realtime-kernel
+  sudo pro attach
+  sudo pro enable realtime-kernel
+  sudo reboot
   ```
 
-Refer to [A CTO's guide to real-time Linux](https://ubuntu.com/engage/cto-guide-real-time-kernel) for more details. 
+Refer to [How to enable Real-time Ubuntu](https://canonical-ubuntu-pro-client.readthedocs-hosted.com/en/latest/howtoguides/enable_realtime_kernel/) for more details.
 
 ```{note}
 For the rest of the required software you can either use Docker, or manually setup everything yourself.
@@ -78,7 +79,7 @@ First make any changes to the C program code, like modifying the `WORKLOAD_BUFFE
 Build the Docker image by running the following command in the directory containing `Dockerfile`:
 
 ```bash
-cd edge-developer-kit-reference-scripts/usecases/real-time/tcc_tutorial/docker
+cd intel-tcc-tutorial/docker
 docker build -t rt_linux_tutorial_image .
 ```
 
