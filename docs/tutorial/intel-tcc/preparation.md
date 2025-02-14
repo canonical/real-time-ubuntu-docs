@@ -27,6 +27,7 @@ Talk to your board vendor if the <span style="font-family: 'Courier New';">Intel
   A free [Ubuntu Pro account](https://ubuntu.com/pro/dashboard) is available for personal and small-scale commercial use.
   With a free Ubuntu Pro subscription you get five personal tokens which can be used for up to five machines.
   The kernel can simply be installed by running these commands:
+  
   ```bash
   sudo pro attach
   sudo pro enable realtime-kernel
@@ -38,7 +39,7 @@ Refer to [How to enable Real-time Ubuntu](https://canonical-ubuntu-pro-client.re
 ### Other required software
 
 Install other required tools:
-```
+```bash
 sudo apt update
 sudo apt install msr-tools
 sudo apt install stress-ng
@@ -93,6 +94,7 @@ docker build -t rt_linux_tutorial_image .
 ```
 
 To verify that the image was built successfully, list all Docker images:
+
 ```bash
 docker images
 ```
@@ -124,7 +126,7 @@ sudo apt install libcjson-dev
 Download the source code archive [here](intel-tcc-tutorial.tar.gz).
 Then extract it.
 
-```
+```bash
 tar -xvf intel-tcc-tutorial.tar.gz --one-top-level
 cd intel-tcc-tutorial
 ```
@@ -132,21 +134,22 @@ cd intel-tcc-tutorial
 Make any required changes to the source code like buffer sizes.
 Most likely you will need to change the MQTT address in `rt_linux_tutorial.c` to look like this:
 
-```
+```c
 #define ADDRESS     "tcp://localhost:1883" // use localhost if app does not run in container
 //#define ADDRESS     "tcp://mosquitto:1883"
 ```
 
 Then compile it using the provided Makefile.
 
-```sh
+```bash
 make
 ```
 
 This will generate the executable named `rt_linux_tutorial`.
 
 Run the application with superuser privileges to allow MSR access and to set thread affinities. 
-```sh
+
+```bash
 sudo ./rt_linux_tutorial
 
 -i <time> Set the cycle time of the control thread in microseconds - default is 500us
@@ -166,6 +169,7 @@ Install Telegraf by following their guide [here](https://docs.influxdata.com/tel
 Configure Telegraf to use the `mqtt_consumer` input plugin and the `influxdb` output plugin by editing `/etc/telegraf/telegraf.conf`.
 
 For example by appending this to the config file:
+
 ```bash
 # Read metrics from MQTT topic(s)
 [[inputs.mqtt_consumer]]
@@ -185,7 +189,7 @@ For example by appending this to the config file:
 
 Then restart Telegraf:
 
-```
+```bash
 sudo systemctl restart telegraf
 ```
 
@@ -194,6 +198,7 @@ sudo systemctl restart telegraf
 Install and start InfluxDB v1 as explained in [this guide](https://docs.influxdata.com/influxdb/v1/introduction/install/#installing-influxdb-oss).
 
 Create a new InfluxDB database.
+
 ```bash
 influx -execute 'CREATE DATABASE tcc_tutorial_data'
 ```
@@ -229,19 +234,19 @@ Click back and then save the dashboard.
 
 Run the `rt_linux_tutorial` application and configure it to publish statistics to MQTT:
 
-```
+```bash
 sudo ./rt_linux_tutorial -s 1
 ```
 
 * Subscribe to the MQTT topic and verify that messages are being published:
 
-```
+```bash
 mosquitto_sub -t "#"
 ```
 
 * Check Telegraf logs for any processing errors:
 
-```
+```bash
 journalctl -f -u telegraf
 ```
 

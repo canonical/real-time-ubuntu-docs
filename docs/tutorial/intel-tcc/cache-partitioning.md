@@ -30,7 +30,8 @@ Here are some references if you need more information:
 - Intel® 64 and IA-32 Architectures Software Developer’s Manual - RDC#[671200](https://cdrdv2.intel.com/v1/dl/getContent/671200)
   
 Here is an example how the LLC can be partitioned with the Linux `msr-tools`:
-```sh
+
+```bash
 #define LLC Core Masks
 wrmsr 0xc90 0xF0 # best effort
 wrmsr 0xc91 0x0F # real-time
@@ -47,12 +48,14 @@ wrmsr -p 3 0xc8f 0x100000000 # assign real-time core to CLOS1
 A convenience script is provided to automate the cache partitioning.
 Simply use the script with the `rt_optimized` argument to partition the cache like depicted above.
 To reset the cache back to default flat partitioning, run the script again with the `default` argument.
-```sh
+
+```bash
 sudo ./setCacheAllocation.sh rt_optimized
 ```
 ````
 
 Start the real-time application if it is not already running and check the statistics on the Grafana dashboard. You should observe an improvement in cache misses and latency. However, there may still be some spikes in latency and cache misses, which we will address in the next optimization steps.
-```sh
+
+```bash
 sudo ./rt_time_linux_tutorial -s 1
-  ```
+```

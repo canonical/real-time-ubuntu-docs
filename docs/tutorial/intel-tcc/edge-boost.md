@@ -17,13 +17,14 @@ For the real-time core, the frequency is boosted to 3.1GHz, and the Energy Perfo
 ````{note}
 This configuration can be applied by using the convenience script, with the `rt-boost` argument, followed by the identifier of the real-time core, and the core frequency:
 
-```sh
+```bash
 sudo ./setCoreFrequency.sh rt-boost '3' 3100000
 ```
 ````
 
 Start the real-time application if it is not running and check the statistics on the Grafana dashboard.
 You should see significant improvement in the execution time. 
-```sh
+
+```bash
 sudo ./rt_linux_tutorial -s 1
 ```
