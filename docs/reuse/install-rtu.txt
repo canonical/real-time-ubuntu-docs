@@ -1,4 +1,18 @@
+LTS releases of Ubuntu (e.g. 22.04, 24.04)
+------------------------------------------
+
 Refer to `Ubuntu Pro Client - How to enable Real-time Ubuntu`_ to set up a
 supported Ubuntu machine.
 
 .. _Ubuntu Pro Client - How to enable Real-time Ubuntu: https://canonical-ubuntu-pro-client.readthedocs-hosted.com/en/latest/howtoguides/enable_realtime_kernel/
+
+Interim releases of Ubuntu (e.g. 24.10, 25.04)
+----------------------------------------------
+
+Real-time Ubuntu is available for install from the universe apt repository:
+
+.. code-block:: shell
+
+        sudo add-apt-repository universe
+        sudo apt update
+        sudo apt install ubuntu-realtime
