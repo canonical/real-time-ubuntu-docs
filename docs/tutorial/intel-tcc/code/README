@@ -1,6 +1,6 @@
-The files in this directory has been sourced from
-https://github.com/intel/edge-developer-kit-reference-scripts/tree/main/usecases/real-time/tcc_tutorial
-at commit hash 86e72045298a96601b7a98d21dbc768fb67f7852
-dated 20 January 2025.
+The files in this directory have been sourced from
+https://github.com/intel/edge-developer-kit-reference-scripts/tree/86e72045298a96601b7a98d21dbc768fb67f7852/usecases/real-time/tcc_tutorial
+
+The licensing has been added to LICENSE.txt.
 
 The images directory has been removed as it is not used.
