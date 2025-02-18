@@ -27,13 +27,14 @@ help:
         "* other possible targets:                    make <TAB twice> \n" \
         "------------------------------------------------------------- \n"
 
-generate-tarball:
-	tar -czvf tutorial/intel-tcc/intel-tcc-tutorial.tar.gz -C tutorial/intel-tcc/code .
+# For each code sample directory, create a tar.gz. The archive name should end in *-code.tar.gz.
+code-archives:
+	tar -czvf tutorial/intel-tcc/tutorial-intel-tcc-code.tar.gz -C tutorial/intel-tcc/code .
 
 clean clean-doc:
-	rm tutorial/intel-tcc/intel-tcc-tutorial.tar.gz
+	find . -type f -name '*-code.tar.gz' -exec rm {} +
 	$(MAKE) -f Makefile.sp sp-$@
 
 %:
-	$(MAKE) generate-tarball
+	$(MAKE) code-archives
 	$(MAKE) -f Makefile.sp sp-$@

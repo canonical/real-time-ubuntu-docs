@@ -14,7 +14,7 @@ build:
     pre_install:
       - git fetch --unshallow || true
     post_install:
-      - cd docs && make generate-tarball
+      - cd docs && make code-archives
 
 # Build documentation in the docs/ directory with Sphinx
 sphinx:

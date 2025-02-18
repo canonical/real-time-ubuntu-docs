@@ -58,7 +58,7 @@ Please follow the steps described in [Install Docker Engine on Ubuntu](https://d
 
 ### Start the Grafana Statistics Infrastructure
 
-Download the source code archive [here](intel-tcc-tutorial.tar.gz).
+Download the source code archive [here](tutorial-intel-tcc-code.tar.gz).
 
 ```bash
 tar -xvf intel-tcc-tutorial.tar.gz --one-top-level
@@ -123,7 +123,7 @@ sudo apt install libcjson-dev
 ```
 ### Build the Application
 
-Download the source code archive [here](intel-tcc-tutorial.tar.gz).
+Download the source code archive [here](tutorial-intel-tcc-code.tar.gz).
 Then extract it.
 
 ```bash
