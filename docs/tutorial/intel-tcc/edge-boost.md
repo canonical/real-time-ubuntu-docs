@@ -1,6 +1,6 @@
 # Apply Speed Shift for Edge to boost the Real-time App
 
-```{figure} images/tcc_setup_CAT_isol_boost.drawio.svg
+```{figure} images/tcc_setup_CAT_isol_boost.svg
    :width: 100%
    :alt: Speed Shift - System Setup
 

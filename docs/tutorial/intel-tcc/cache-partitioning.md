@@ -1,6 +1,6 @@
 # Partition the LLC(L3) Cache
 
-```{figure} images/tcc_setup_CAT.drawio.svg
+```{figure} images/tcc_setup_CAT.svg
    :width: 100%
    :alt: Cache Partitioning - System Setup
 
