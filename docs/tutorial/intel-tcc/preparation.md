@@ -45,6 +45,13 @@ sudo apt install msr-tools
 sudo apt install stress-ng
 ```
 
+Download the example code archive [here](tutorial-intel-tcc-code.tar.gz).
+Then extract it.
+
+```bash
+tar -xvf tutorial-intel-tcc-code.tar.gz --one-top-level
+```
+
 ```{note}
 For the rest of the required software you can either use Docker, or manually setup everything yourself.
 ```
@@ -58,18 +65,21 @@ Please follow the steps described in [Install Docker Engine on Ubuntu](https://d
 
 ### Start the Grafana Statistics Infrastructure
 
-Download the source code archive [here](tutorial-intel-tcc-code.tar.gz).
+The docker-compose definition of the statistics infrastructure is provided in the example code archive you downloaded earlier.
+Navigate into the `docker-compose` subdirectory, and then execute docker compose:
 
 ```bash
-tar -xvf intel-tcc-tutorial.tar.gz --one-top-level
-cd intel-tcc-tutorial/docker/docker-compose
+cd tutorial-intel-tcc-code/docker/docker-compose
 docker compose up -d 
+```
 
-# Verify the telegraf, grafana, influxdb and mosquitto containers are up and running
+Verify that the Telegraf, Grafana, InfluxDB and Mosquitto containers are up and running:
+
+```
 docker compose ps
 ```
 
-Once the containers are up and running, you can connect to Grafana by following these steps:
+If everything is running, you can connect to Grafana by following these steps:
 - Open your preferred web browser.
 - Enter the following URL in the address bar: [http://localhost:3000/](http://localhost:3000/)
   - If you are running Docker on a remote server, replace `localhost` with the server's IP address or domain name.
@@ -86,10 +96,10 @@ If the dashboard is not visible by default, you should find the `rt_linux_tutori
 
 First make any changes to the C program code, like modifying the `WORKLOAD_BUFFER_SIZE`.
 
-Build the Docker image by running the following command in the directory containing `Dockerfile`:
+Then build the Docker image by running the following command in the directory containing `Dockerfile`:
 
 ```bash
-cd intel-tcc-tutorial/docker
+cd tutorial-intel-tcc-code/docker
 docker build -t rt_linux_tutorial_image .
 ```
 
@@ -123,20 +133,12 @@ sudo apt install libcjson-dev
 ```
 ### Build the Application
 
-Download the source code archive [here](tutorial-intel-tcc-code.tar.gz).
-Then extract it.
-
-```bash
-tar -xvf intel-tcc-tutorial.tar.gz --one-top-level
-cd intel-tcc-tutorial
-```
-
+The source code for the application can be found in the example code archive you downloaded earlier.
 Make any required changes to the source code like buffer sizes.
-Most likely you will need to change the MQTT address in `rt_linux_tutorial.c` to look like this:
+You will also need to change the MQTT address in `rt_linux_tutorial.c` to point to the MQTT broker running on localhost:
 
 ```c
-#define ADDRESS     "tcp://localhost:1883" // use localhost if app does not run in container
-//#define ADDRESS     "tcp://mosquitto:1883"
+#define ADDRESS     "tcp://localhost:1883"
 ```
 
 Then compile it using the provided Makefile.
@@ -166,9 +168,7 @@ sudo apt install mosquitto mosquitto-clients
 
 Install Telegraf by following their guide [here](https://docs.influxdata.com/telegraf/v1/install/#install-from-the-influxdata-repository).
 
-Configure Telegraf to use the `mqtt_consumer` input plugin and the `influxdb` output plugin by editing `/etc/telegraf/telegraf.conf`.
-
-For example by appending this to the config file:
+Configure Telegraf to use the `mqtt_consumer` input plugin and the `influxdb` output plugin. This can be done by editing `/etc/telegraf/telegraf.conf` and appending the following to the config file:
 
 ```bash
 # Read metrics from MQTT topic(s)
@@ -207,7 +207,7 @@ influx -execute 'CREATE DATABASE tcc_tutorial_data'
 Install Grafana OSS according to [their documentation](https://grafana.com/docs/grafana/latest/setup-grafana/installation/debian/#install-from-apt-repository).
 Then start it using [these steps](https://grafana.com/docs/grafana/latest/setup-grafana/start-restart-grafana/#linux).
 
-Access Grafana at e.g. [http://localhost:3000/](http://localhost:3000/) and log in with the default credentials (admin/admin).
+Access Grafana at [http://localhost:3000/](http://localhost:3000/) and log in with the default credentials (admin/admin).
 
 #### Add InfluxDB as a Data Source in Grafana
 
@@ -221,13 +221,13 @@ Click on *Save & test*
 
 #### Create a Dashboard in Grafana
 
-Download [this](code/docker/docker-compose/grafana-provisioning/dashboards/rt_linux_tutorial.json) file.
-
-In Grafana go to *Dashboards* > *New* > *Import* and upload the file you just downloaded.
+An example Grafana dashboard is provided in the example code archive you downloaded earlier.
+It is located under `tutorial-intel-tcc-code/docker/docker-compose/grafana-provisioning/dashboards/rt_linux_tutorial.json`.
+In Grafana go to *Dashboards* > *New* > *Import* and upload this `json` file.
 
 You will see a dashboard with three empty panels.
 For each panel click on the three dots menu in the top right hand corner, and click *Edit*.
-Click on the dropdown next to Data Source and select InfluxDB.
+Next to Data Source, click on the dropdown and select InfluxDB.
 Click back and then save the dashboard.
 
 #### Verifying the Data Flow
