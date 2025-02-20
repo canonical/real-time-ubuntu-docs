@@ -14,7 +14,7 @@ results
 
 ```{admonition} Collaboration
 This tutorial is a collaborative effort between **Intel** and **Canonical**.
-All instructions and source code are provided and released under the 3-Clause BSD License.
+All instructions and source code are provided and released under the [3-Clause BSD License](https://spdx.org/licenses/BSD-3-Clause.html).
 ```
 
 ## Key Takeaways of this Tutorial
@@ -26,12 +26,13 @@ All instructions and source code are provided and released under the 3-Clause BS
 ## Required hardware
 
 The following system was used to develop and validate the results obtained in this tutorial.
-Other 13th and 14th generation Intel CPUs that support *Intel Time Coordinated Computing* should also work.
-See [this list](https://cdrdv2.intel.com/v1/dl/getContent/831868?explicitVersion=true) (slide 41), or check on [Intel ARK](https://www.intel.com/content/www/us/en/ark/featurefilter.html?productType=873&0_TimeCoordinatedComputing=True).
 
 - CPU: Intel® Core™ i5-1350PE processors
 - RAM: 16GB
 - DISK: 128GB
+
+Other 13th and 14th generation Intel CPUs that support *Intel Time Coordinated Computing* (TCC) should also work.
+See [this list](https://cdrdv2.intel.com/v1/dl/getContent/831868?explicitVersion=true) (slide 41), or check on [Intel ARK](https://www.intel.com/content/www/us/en/ark/featurefilter.html?productType=873&0_TimeCoordinatedComputing=True).
 
 ## Test Application
 
@@ -39,8 +40,8 @@ An example C program is provided to demonstrate the possible optimization steps 
 It includes a control task that performs random pointer chasing to simulate a workload and measures wake up jitter, execution time and cache misses.
 The application also features a statistics handler thread that processes and logs timing information.
 
-```{figure} images/rt_app.png
-   :width: 50%
+```{figure} images/rt_linux_tutorial.svg
+   :width: 100%
    :alt: High-level design of rt app
 
    High-level Design of the test application

@@ -1,6 +1,6 @@
 # Apply Speed Shift for Edge to boost the Real-time App
 
-```{figure} images/setup_CAT_isol_boost.png
+```{figure} images/tcc_setup_CAT_isol_boost.svg
    :width: 100%
    :alt: Speed Shift - System Setup
 
@@ -15,15 +15,16 @@ Therefore, the maximum allowed frequency of all best-effort cores is limited to 
 For the real-time core, the frequency is boosted to 3.1GHz, and the Energy Performance Preferences (EPP) is set to `performance` to ensure Quality of Service (QoS) in case of power limit throttling.
 
 ````{note}
-This configuration can be applied by using the convenience script, with the `rt_boost` argument, followed by the identifier of the real-time core, and the core frequency:
+This configuration can be applied by using the convenience script, with the `rt-boost` argument, followed by the identifier of the real-time core, and the core frequency:
 
-```sh
-sudo ./setCoreFrequency.sh rt_boost '3' 3100000
+```bash
+sudo ./setCoreFrequency.sh rt-boost '3' 3100000
 ```
 ````
 
 Start the real-time application if it is not running and check the statistics on the Grafana dashboard.
 You should see significant improvement in the execution time. 
-```sh
+
+```bash
 sudo ./rt_linux_tutorial -s 1
 ```
