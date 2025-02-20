@@ -8,5 +8,8 @@ In this tutorial, three easy-to-use features of the Intel TCC toolbox, along wit
 By leveraging these tools, system integrators can efficiently enhance the performance and reliability of their real-time applications.
 
 ```{note}
-Note: Please keep in mind that performance varies by use, configuration and other factors. Learn more at www.Intel.com/PerformanceIndexPerformance results are based on testing as of dates shown in configurations and may not reflect all publicly available updates.  No product or component can be absolutely secure
+Note: Please keep in mind that performance varies by use, configuration and other factors.
+Learn more [here](https://www.intel.com/PerformanceIndexPerformance).
+Results are based on testing as of dates shown in configurations and may not reflect all publicly available updates.
+No product or component can be absolutely secure
 ```
