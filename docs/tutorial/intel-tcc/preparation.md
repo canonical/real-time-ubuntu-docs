@@ -16,7 +16,7 @@ This sections outlines the steps and components required to set up the system an
 ### Enable Intel® TCC Mode
 
 With the Intel® reference BIOS the <span style="font-family: 'Courier New';">Intel® TCC Mode</span> can be enabled under <span style="font-family: 'Courier New';">"Intel® Advanced Menu > Time Coordinated Computing"</span>.
-Talk to your board vendor if the <span style="font-family: 'Courier New';">Intel® TCC Mode</span> is not visible or follow the steps listed in the "Intel® Core Processors Firmware Configuration" section of [TCC User Guide](https://cdrdv2.intel.com/v1/dl/getContent/831868?explicitVersion=true) and set the options manually.
+Talk to your board vendor if the <span style="font-family: 'Courier New';">Intel® TCC Mode</span> is not visible or follow the steps listed in the "Intel® Core Processors Firmware Configuration" section of [TCC User Guide](https://www.intel.com/content/www/us/en/content-details/831067/public-intel-time-coordinated-compute-tcc-user-guide.html) and set the options manually.
 
 ### Install Ubuntu OS
 1. Install the latest [Ubuntu 24.04 LTS Desktop](https://releases.ubuntu.com/noble/). 
@@ -27,12 +27,30 @@ Talk to your board vendor if the <span style="font-family: 'Courier New';">Intel
   A free [Ubuntu Pro account](https://ubuntu.com/pro/dashboard) is available for personal and small-scale commercial use.
   With a free Ubuntu Pro subscription you get five personal tokens which can be used for up to five machines.
   The kernel can simply be installed by running these commands:
+  
   ```bash
-  pro attach <token>
-  pro enable realtime-kernel
+  sudo pro attach
+  sudo pro enable realtime-kernel
+  sudo reboot
   ```
 
-Refer to [A CTO's guide to real-time Linux](https://ubuntu.com/engage/cto-guide-real-time-kernel) for more details. 
+Refer to [How to enable Real-time Ubuntu](https://canonical-ubuntu-pro-client.readthedocs-hosted.com/en/latest/howtoguides/enable_realtime_kernel/) for more details.
+
+### Other required software
+
+Install other required tools:
+```bash
+sudo apt update
+sudo apt install msr-tools
+sudo apt install stress-ng
+```
+
+Download the example code archive [here](tutorial-intel-tcc-code.tar.gz).
+Then extract it.
+
+```bash
+tar -xvf tutorial-intel-tcc-code.tar.gz --one-top-level
+```
 
 ```{note}
 For the rest of the required software you can either use Docker, or manually setup everything yourself.
@@ -47,16 +65,21 @@ Please follow the steps described in [Install Docker Engine on Ubuntu](https://d
 
 ### Start the Grafana Statistics Infrastructure
 
-```bash
-git clone https://github.com/intel/edge-developer-kit-reference-scripts.git
-cd edge-developer-kit-reference-scripts/usecases/real-time/tcc_tutorial/docker/docker-compose
-docker compose up -d 
+The docker-compose definition of the statistics infrastructure is provided in the example code archive you downloaded earlier.
+Navigate into the `docker-compose` subdirectory, and then execute docker compose:
 
-# Verify the telegraf, grafana, influxdb and mosquitto containers are up and running
-docker ps
+```bash
+cd tutorial-intel-tcc-code/docker/docker-compose
+docker compose up -d 
 ```
 
-Once the containers are up and running, you can connect to Grafana by following these steps:
+Verify that the Telegraf, Grafana, InfluxDB and Mosquitto containers are up and running:
+
+```
+docker compose ps
+```
+
+If everything is running, you can connect to Grafana by following these steps:
 - Open your preferred web browser.
 - Enter the following URL in the address bar: [http://localhost:3000/](http://localhost:3000/)
   - If you are running Docker on a remote server, replace `localhost` with the server's IP address or domain name.
@@ -73,14 +96,15 @@ If the dashboard is not visible by default, you should find the `rt_linux_tutori
 
 First make any changes to the C program code, like modifying the `WORKLOAD_BUFFER_SIZE`.
 
-Build the Docker image by running the following command in the directory containing `Dockerfile`:
+Then build the Docker image by running the following command in the directory containing `Dockerfile`:
 
 ```bash
-cd edge-developer-kit-reference-scripts/usecases/real-time/tcc_tutorial/docker
+cd tutorial-intel-tcc-code/docker
 docker build -t rt_linux_tutorial_image .
 ```
 
 To verify that the image was built successfully, list all Docker images:
+
 ```bash
 docker images
 ```
@@ -98,12 +122,6 @@ The `rt_linux_tutorial` application can be started by running the Docker contain
 ````
 ````{group-tab} Manual setup
 
-### Install MSR Tools
-```bash
-sudo apt update
-sudo apt install msr-tools
-```
-
 #### Install Paho MQTT C Client Library and cJSON
 
 ```bash
@@ -113,21 +131,27 @@ sudo apt install libpaho-mqtt-dev
 # Install cJSON https://github.com/DaveGamble/cJSON.git 
 sudo apt install libcjson-dev
 ```
-### Clone and build the Application
+### Build the Application
 
-Clone the repository containing the source code for our test C application.
+The source code for the application can be found in the example code archive you downloaded earlier.
+Make any required changes to the source code like buffer sizes.
+You will also need to change the MQTT address in `rt_linux_tutorial.c` to point to the MQTT broker running on localhost:
+
+```c
+#define ADDRESS     "tcp://localhost:1883"
+```
+
 Then compile it using the provided Makefile.
 
-```sh
-git clone https://github.com/intel/edge-developer-kit-reference-scripts.git
-cd edge-developer-kit-reference-scripts/usecases/real-time/tcc_tutorial
+```bash
 make
 ```
 
 This will generate the executable named `rt_linux_tutorial`.
 
 Run the application with superuser privileges to allow MSR access and to set thread affinities. 
-```sh
+
+```bash
 sudo ./rt_linux_tutorial
 
 -i <time> Set the cycle time of the control thread in microseconds - default is 500us
@@ -135,20 +159,17 @@ sudo ./rt_linux_tutorial
 ```
 
 #### Install Mosquitto MQTT Broker
+
 ```bash
-sudo apt update
 sudo apt install mosquitto mosquitto-clients
 ```
+
 #### Install and Configure Telegraf
 
-Install Telegraf.
-```bash
-sudo apt update
-sudo apt install telegraf
-```
-Configure Telegraf to use the `mqtt_consumer` input plugin and the `influxdb` output plugin by editing `/etc/telegraf/telegraf.conf`.
+Install Telegraf by following their guide [here](https://docs.influxdata.com/telegraf/v1/install/#install-from-the-influxdata-repository).
 
-For example by appending this to the config file:
+Configure Telegraf to use the `mqtt_consumer` input plugin and the `influxdb` output plugin. This can be done by editing `/etc/telegraf/telegraf.conf` and appending the following to the config file:
+
 ```bash
 # Read metrics from MQTT topic(s)
 [[inputs.mqtt_consumer]]
@@ -166,59 +187,81 @@ For example by appending this to the config file:
   database = "tcc_tutorial_data" # the database to write to
 ```
 
-#### Install and Set Up InfluxDB
-
-Install InfluxDB.
-```bash
-sudo apt update
-sudo apt install influxdb
-```
-Start and enable InfluxDB service.
+Then restart Telegraf:
 
 ```bash
-sudo systemctl start influxdb
-sudo systemctl enable influxdb
+sudo systemctl restart telegraf
 ```
+
+#### Install and Set Up InfluxDB v1
+
+Install and start InfluxDB v1 as explained in [this guide](https://docs.influxdata.com/influxdb/v1/introduction/install/#installing-influxdb-oss).
+
 Create a new InfluxDB database.
+
 ```bash
 influx -execute 'CREATE DATABASE tcc_tutorial_data'
 ```
-#### Install and Configure Grafana
+#### Install and Configure Grafana OSS
 
-Install Grafana.
-```bash
-sudo apt update
-sudo apt install grafana
-```
-Start and enable Grafana service.
-```bash
-sudo systemctl start grafana-server
-sudo systemctl enable grafana-server
-```
-Access Grafana at e.g. [http://localhost:3000/](http://localhost:3000/) and log in with the default credentials (admin/admin).
+Install Grafana OSS according to [their documentation](https://grafana.com/docs/grafana/latest/setup-grafana/installation/debian/#install-from-apt-repository).
+Then start it using [these steps](https://grafana.com/docs/grafana/latest/setup-grafana/start-restart-grafana/#linux).
+
+Access Grafana at [http://localhost:3000/](http://localhost:3000/) and log in with the default credentials (admin/admin).
 
 #### Add InfluxDB as a Data Source in Grafana
 
-In the Grafana UI, go to *Configuration* > *Data Sources* and add InfluxDB as a data source.
-Enter the connection details for your InfluxDB instance.
+In the Grafana UI, go to *Connections* > *Data Sources* > *Add Data Source* > *InfluxDB*.
+Enter the connection details for your InfluxDB instance:
 
-#### Create a Dashboard and Panel in Grafana
-Create a new dashboard in Grafana.
-Add a new panel and configure it to display data from the InfluxDB data source.
+* URL: `http://localhost:8086`
+* Database: `tcc_tutorial_data`
+
+Click on *Save & test*
+
+#### Create a Dashboard in Grafana
+
+An example Grafana dashboard is provided in the example code archive you downloaded earlier.
+It is located under `tutorial-intel-tcc-code/docker/docker-compose/grafana-provisioning/dashboards/rt_linux_tutorial.json`.
+In Grafana go to *Dashboards* > *New* > *Import* and upload this `json` file.
+
+You will see a dashboard with three empty panels.
+For each panel click on the three dots menu in the top right hand corner, and click *Edit*.
+Next to Data Source, click on the dropdown and select InfluxDB.
+Click back and then save the dashboard.
 
 #### Verifying the Data Flow
-Use `mosquitto_sub` to subscribe to the MQTT topic and verify that messages are being published.
-Check Telegraf logs for any processing errors.
-Query InfluxDB to confirm that data is being written.
-View the Grafana dashboard to see the visualized data.
+
+Run the `rt_linux_tutorial` application and configure it to publish statistics to MQTT:
+
+```bash
+sudo ./rt_linux_tutorial -s 1
+```
+
+* Subscribe to the MQTT topic and verify that messages are being published:
+
+```bash
+mosquitto_sub -t "#"
+```
+
+* Check Telegraf logs for any processing errors:
+
+```bash
+journalctl -f -u telegraf
+```
+
+* Query InfluxDB to confirm that data is being written.
+* View the Grafana dashboard to see the visualized data.
 
 #### Troubleshooting
-Ensure that all services (Mosquitto, Telegraf, InfluxDB, Grafana) are running.
-Check network connectivity between components.
-Verify configuration files for correct syntax and settings.
-Consult logs for each component for error messages.
+
+* Ensure that all services (Mosquitto, Telegraf, InfluxDB, Grafana) are running.
+* Check network connectivity between components.
+* Verify configuration files for correct syntax and settings.
+* Consult logs for each component for error messages.
 
 #### Conclusion
+
 By following these steps, you should have a fully functional data pipeline that collects data from a C application, sends it via MQTT, processes it with Telegraf, stores it in InfluxDB, and visualizes it with Grafana
 
 ````
