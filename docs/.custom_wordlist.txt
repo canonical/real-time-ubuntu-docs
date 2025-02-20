@@ -15,6 +15,7 @@ bootable
 bootloader
 CAS
 CBM
+centric
 cfs
 CFS's
 cgclassify
@@ -89,6 +90,7 @@ Indri
 init
 InfluxDB
 intel
+integrators
 invariance
 io
 IOLATENCY
@@ -119,6 +121,7 @@ localhost
 LTS
 lxd
 mantic
+Maskable
 mem
 memmove
 mlockall
@@ -191,6 +194,7 @@ rwsem
 sandboxed
 sandboxing
 SBCs
+SBL
 sched
 scheduler's
 Schedutil
@@ -201,6 +205,7 @@ Seqlocks
 setattr
 setpriority
 SIGINT
+SKU
 SMI
 SMIs
 smp
@@ -218,6 +223,7 @@ Spinlocks
 squashfs
 stress-ng
 stressor
+STDOUT
 subdirectory
 subranges
 sudo
@@ -241,14 +247,17 @@ TIMERLAT
 TOC
 toolchain
 topologies
+TSC
 tuning's
 txt
 typedef
 ubuntu
 UC
+UEFI
 unbootable
 unsquash
 userspace
+VC
 utils
 VIRT
 WCAG

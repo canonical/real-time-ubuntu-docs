@@ -64,8 +64,6 @@ services:
       - ./influxdb.conf:/etc/influxdb/influxdb.conf:ro
     environment:
       - INFLUXDB_DB="tcc_tutorial_data"
-    security_opt:
-      - no-new-privileges:true
     cpuset: "1"
 
   telegraf:
