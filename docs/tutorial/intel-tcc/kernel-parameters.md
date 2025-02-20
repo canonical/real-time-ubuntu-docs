@@ -1,4 +1,4 @@
-# Kernel parameters
+# Kernel command-line parameters
 
 For this tutorial we add a couple of Linux Kernel command line parameters for real-time optimization:
 
@@ -31,5 +31,5 @@ To do this:
   
   ```bash
   sudo update-grub
-  sudo reboot now 
+  sudo reboot
   ``` 

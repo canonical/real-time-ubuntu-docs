@@ -11,6 +11,7 @@ bootable
 bootloader
 CAS
 CBM
+centric
 cfs
 CFS's
 cgroup
@@ -65,6 +66,7 @@ http
 HWP
 InfluxDB
 intel
+integrators
 invariance
 io
 IOLATENCY
@@ -91,6 +93,7 @@ LLC
 localhost
 LTS
 mantic
+Maskable
 mem
 memmove
 mlockall
@@ -157,6 +160,7 @@ rw
 rwlock
 rwsem
 SBCs
+SBL
 sched
 scheduler's
 Schedutil
@@ -165,6 +169,7 @@ Seqlocks
 setattr
 setpriority
 SIGINT
+SKU
 SMI
 SMIs
 smp
@@ -180,6 +185,7 @@ spinlocks
 Spinlocks
 stress-ng
 stressor
+STDOUT
 subdirectory
 subranges
 sudo
@@ -199,13 +205,16 @@ Timerlat
 TIMERLAT
 toolchain
 topologies
+TSC
 tuning's
 txt
 typedef
 ubuntu
 UC
+UEFI
 unbootable
 userspace
+VC
 VIRT
 ww
 yaml
