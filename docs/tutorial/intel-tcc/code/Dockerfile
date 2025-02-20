@@ -29,47 +29,24 @@
 ###################################################################################
 FROM ubuntu:24.04
 
-# Update
-RUN apt update
-RUN apt upgrade -y
-
 # Update package list and install dependencies
-RUN apt update && apt install -y \
-    build-essential \
-    cmake \
-    git \
+RUN apt-get update && apt-get install -y \
+    make gcc \
     msr-tools \
-    vim \
-    sudo
+    libpaho-mqtt-dev \
+    libcjson-dev
 
-# Clone the cJOSN repository and build and install the library
-RUN git clone https://github.com/DaveGamble/cJSON.git && \
-    cd cJSON && \
-    mkdir build && \
-    cd build && \
-    cmake .. && \
-    make && \
-    make install && \
-    ldconfig
-
-# Clone the paho.mqqt.c repository and build and install the library
-RUN git clone https://github.com/eclipse/paho.mqtt.c.git && \
-    cd paho.mqtt.c && \
-    mkdir build && \
-    cd build && \
-    cmake .. && \
-    make && \
-    make install && \
-    ldconfig
-
-# Install and build 
+# Copy source
 WORKDIR /root
-RUN git clone https://github.com/intel/edge-developer-kit-reference-scripts.git
-WORKDIR /root/edge-developer-kit-reference-scripts/usecases/real-time/tcc_tutorial
-RUN make 
-RUN ls -l /root/edge-developer-kit-reference-scripts/usecases/real-time/tcc_tutorial
-# Give execute permissions to the file
-RUN chmod +x /root/edge-developer-kit-reference-scripts/usecases/real-time/tcc_tutorial/rt_linux_tutorial
+COPY LICENSE.txt Makefile pointer_chasing.c pointer_chasing.h \
+     README rt_linux_tutorial.c setCacheAllocation.sh setCoreFrequency.sh \
+     /root/
+
+# Build
+RUN make
+
+# Make compiled binary executable
+RUN chmod +x /root/rt_linux_tutorial
 
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
     CMD npm --version || exit 1
