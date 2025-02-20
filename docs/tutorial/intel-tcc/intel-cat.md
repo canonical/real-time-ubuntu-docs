@@ -13,9 +13,9 @@ In both scenarios, a memory-centric workload on the best-effort cores is simulat
 
 ```{figure} images/tcc_setup_CAT.svg
    :width: 100%
-   :alt: Cache Partitioning - System Setup
+   :alt: Cache partitioning system setup
 
-   Cache Partitioning - System Setup
+   Cache partitioning system setup
 ```
 
 ## Run experiment
@@ -23,10 +23,10 @@ In both scenarios, a memory-centric workload on the best-effort cores is simulat
 1. Start the real-time application if it is not already running, and output the statistics to the Grafana dashboard.
  
    ```bash
-   sudo ./rt_linux_tutorial -i 1000 -s 1
+   ./rt_linux_tutorial -i 1000 -s 1
    ```
  
-2. In a second terminal start *stress-ng* with a memory centric stressor.
+2. In a second terminal start *stress-ng* with a memory-centric stressor.
 
    ```bash
    stress-ng --vm 8 --vm-bytes 128M --fork 4
@@ -68,9 +68,9 @@ Alternatively, you can use the script with the `rt_optimized` option to partitio
 
 ```{figure} images/result_CAT.png
    :width: 100%
-   :alt: Cache Partitioning - Results
+   :alt: Cache partitioning results
 
-   Cache Partitioning - Results
+   Cache partitioning results
 ```
 
 Examining the performance metrics of the real-time application shows that, in the initial phase, the cores running the best-effort workloads are mostly idling.

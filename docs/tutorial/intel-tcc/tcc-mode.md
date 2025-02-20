@@ -1,4 +1,4 @@
-# Time Coordinated Computing Mode
+# Time Coordinated Computing mode
 
 Let's take a look at the *Intel® TCC Mode* and how this single UEFI BIOS/Slim Bootloader (SBL) knob can help to quickly optimize firmware settings for low latency.
 The *Intel® TCC Mode* should be available on all *Intel® TCC* enabled platforms.
@@ -14,24 +14,31 @@ Intel® TCC Mode includes a wide range of real-time optimizations including the 
   - Limiting amount of cache available to the GPU.
   - Setting up virtual channels for VC-capable endpoints.
 
+
+```{note}
+If your system does not have the *Intel® TCC Mode* option it its BIOS, you can still continue this tutorial.
+Just skip the rest of this page and continue with [Cache partitioning using Intel CAT](intel-cat).
+```
+
 Now, let's take a concrete example and see how the Intel® TCC Mode optimizes power states for low latency.
 To do this, we will compare the statistics of the test application with the default settings of the Intel® reference BIOS, which includes Intel® TCC Mode disabled, and with Intel® TCC Mode enabled.
 
 The block diagram below illustrates the setup used for the *Intel® TCC Mode* analysis.
 ```{figure} images/tcc_setup_basic.svg
    :width: 100%
-   :alt: Basic - System Setup
+   :alt: Basic system setup
 
-   Basic - System Setup
+   Basic system setup
 ```
  
 ## Run experiment
 
-1. Boot the system with the default BIOS options, start the real-time application with a cycle time of 1ms, and output the statistics to the Grafana dashboard.
+1. Boot the system with the default BIOS options, and start the `intel_tcc_tutorial_image` Docker container.
+   Inside it start the real-time application with a cycle time of 1ms, and output the statistics to the Grafana dashboard.
    Let the test application run for some seconds and monitor the statistics.
 
    ```sh
-   sudo ./rt_linux_tutorial -i 1000 -s 1
+   ./rt_linux_tutorial -i 1000 -s 1
    ```
 
 2. Reboot the system and enable *Intel® TCC Mode* in the BIOS.
@@ -41,9 +48,9 @@ The block diagram below illustrates the setup used for the *Intel® TCC Mode* an
 
 ```{figure} images/results_basic.png
    :width: 100%
-   :alt: TCC Mode - results
+   :alt: TCC Mode results
 
-   TCC Mode - results
+   TCC Mode results
 ```
 
 Looking at the performance metrics of the real-time application - execution time, scheduling jitter, and cache misses - shows that, in general, all three are still a bit noisy.

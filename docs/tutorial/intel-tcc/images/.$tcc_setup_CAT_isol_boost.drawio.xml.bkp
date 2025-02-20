@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.9 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="26.0.9">
   <diagram name="Page-1" id="YjMsYgd88uqY2qyxjDsJ">
-    <mxGraphModel dx="1368" dy="838" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="943" dy="578" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -178,8 +178,8 @@
         <mxCell id="5mEE2i773dOTVrSqIEy8-1" value="L3 cache&amp;nbsp;core 3" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#E95420;fontFamily=Ubuntu;fontStyle=1;rotation=0;" parent="1" vertex="1">
           <mxGeometry x="344.27" y="580" width="121.46" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="5mEE2i773dOTVrSqIEy8-2" value="RT app" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Ubuntu;fontColor=#E95420;rotation=0;fontStyle=1" parent="1" vertex="1">
-          <mxGeometry x="380" y="390" width="60" height="20" as="geometry" />
+        <mxCell id="5mEE2i773dOTVrSqIEy8-2" value="RT app" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Ubuntu;fontColor=#E95420;rotation=-45;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="380" y="390" width="50" height="20" as="geometry" />
         </mxCell>
         <mxCell id="5mEE2i773dOTVrSqIEy8-3" value="" style="endArrow=classic;html=1;rounded=0;dashed=1;dashPattern=1 1;strokeColor=#FFFFFF;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
