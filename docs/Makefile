@@ -99,7 +99,7 @@ epub: install
 serve: html
 	cd "$(BUILDDIR)"; python3 -m http.server --bind 127.0.0.1 8000
 
-clean: clean-doc
+clean: clean-doc clean-code-archives
 	@test ! -e "$(VENVDIR)" -o -d "$(VENVDIR)" -a "$(abspath $(VENVDIR))" != "$(VENVDIR)"
 	rm -rf $(VENVDIR)
 	rm -rf $(SPHINXDIR)/node_modules/
@@ -181,7 +181,16 @@ allmetrics: html
 	@eval '$(METRICSDIR)/source_metrics.sh $(PWD)'
 	@eval '$(METRICSDIR)/build_metrics.sh $(PWD) $(METRICSDIR)'
 
+# For each code sample directory, create a tar.gz. The archive name should end in *-code.tar.gz.
+code-archives:
+	tar -czvf tutorial/intel-tcc/tutorial-intel-tcc-code.tar.gz -C tutorial/intel-tcc/code .
+
+clean-code-archives:
+	find . -type f -name '*-code.tar.gz' -exec rm {} +
+	$(MAKE) -f Makefile.sp sp-$@
+
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %:
+	$(MAKE) code-archives
 	. $(VENV); $(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
