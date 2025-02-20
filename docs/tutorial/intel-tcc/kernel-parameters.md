@@ -1,4 +1,4 @@
-# Kernel parameters
+# Kernel Command-line Parameters
 
 For this tutorial we add a couple of Linux Kernel command line parameters for real-time optimization:
 

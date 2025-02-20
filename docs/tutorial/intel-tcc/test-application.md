@@ -1,6 +1,7 @@
 # Test Application
 
-The test application is made up of a control thread that performs random pointer chasing to simulate a workload and measures wake up jitter, execution time and cache misses.
+The test application is named **rt_linux_tutorial**.
+It's architecture consist of a control thread that performs random pointer chasing to simulate a workload and measures wake up jitter, execution time and cache misses.
 The application also features a statistics handler thread that processes and logs timing information.
 The statistics are either output to the console via stdout or published to an MQTT broker.
 
