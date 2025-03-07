@@ -136,11 +136,11 @@ html_context = {
     # Docs branch in the repo; used in links for viewing the source files
     #
     # TODO: To customise the branch, uncomment and update as needed.
-    "github_version": "main",
+    "repo_default_branch": "main",
     # Docs location in the repo; used in links for viewing the source files
     #
     # TODO: To customise the directory, uncomment and update as needed.
-    "github_folder": "/docs/",
+    "repo_folder": "/docs/",
 
     # TODO: To enable or disable the Previous / Next buttons at the bottom of pages
     # Valid options: none, prev, next, both
@@ -187,10 +187,14 @@ redirects = {}
 
 linkcheck_ignore = [
     "http://127.0.0.1:8000",
+    "http://localhost:3000/",
     "https://github.com/canonical/real-time-ubuntu-docs/*",
 
     # Working, accessible, but misinterpreted as broken
     'https://www.digikey.com/en/maker/projects/introduction-to-rtos-solution-to-part-11-priority-inversion/abf4b8f7cd4a4c70bece35678d178321', # 403 via linkcheck and CI
+    'https://www.intel.com/content/www/us/en/ark/featurefilter.html*',
+    'https://www.intel.com/content/www/us/en/content-details/831067/public-intel-time-coordinated-compute-tcc-user-guide.html',
+    'https://www.intel.com/PerformanceIndex',
 
 ]
 

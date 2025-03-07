@@ -9,7 +9,7 @@ system.
 Operating system and kernel
 ---------------------------
 
-This tutorial requires a computer running one of the :doc:`../reference/releases`.
+This tutorial requires a computer running one of the :doc:`/reference/releases`.
 Ubuntu should be installed "native" --- i.e. directly on the computer's hardware, not in a Virtual Machine (VM).
 
 Hardware
