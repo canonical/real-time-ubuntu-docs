@@ -100,6 +100,7 @@ If you decide to raise a pull request, make sure you have signed the
 /how-to/index
 /reference/index
 /explanation/index
+/reference/releases
 ```
 
 <!-- LINKS -->
