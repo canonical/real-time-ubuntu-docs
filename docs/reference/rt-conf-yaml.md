@@ -4,7 +4,7 @@ The following schema reflects all configuration keys available in `config.yaml` 
 
 ## Top-level directives
 
-There are three top-level dictionaries in `config.yaml`, {ref}`kernel_cmdline <kcmd>`, {ref}`irqt` and `cpu_governance`.
+There are three top-level dictionaries in `config.yaml`, {ref}`kcmd`, {ref}`irqt` and {ref}`cpug`.
 
 (kcmd)=
 ### kernel_cmdline
@@ -13,7 +13,7 @@ Type: `dict`
 
 _Optional_
 
-[Kernel Boot Parameters]({ref}`kernel-boot-parameters`) that affects real-time behavior
+{ref}`kernel-boot-parameters` that affects real-time behavior
 
 
 #### isolcpus
