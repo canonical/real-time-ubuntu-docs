@@ -1,11 +1,10 @@
 # rt-conf config.yaml schema
 
-The following schema reflects all configuration keys available in `config.yaml` for [rt-conf](https://github.com/canonical/rt-conf) tool
+The following schema reflects all configuration keys available in `config.yaml` for `rt-conf` tool
 
 ## Top-level directives
 
-There are three top-level dictionaries in [config.yaml](https://github.com/canonical/rt-conf/blob/main/config.yaml), {ref}`kernel_cmdline <kcmd>`, {ref}`irqt` and `cpu_governance`.
-
+There are three top-level dictionaries in `config.yaml`, {ref}`kernel_cmdline <kcmd>`, {ref}`irqt` and `cpu_governance`.
 
 (kcmd)=
 ### kernel_cmdline
