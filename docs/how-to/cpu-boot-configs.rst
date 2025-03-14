@@ -11,6 +11,7 @@ For that, refer to :doc:`modify-kernel-boot-parameters`.
 
 
 .. _cpu-lists:
+
 CPU lists
 ---------
 
