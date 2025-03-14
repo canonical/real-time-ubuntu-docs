@@ -10,6 +10,7 @@ The parameters covered here should be passed to the bootloader.
 For that, refer to :doc:`modify-kernel-boot-parameters`.
 
 
+.. _cpu-lists:
 CPU lists
 ---------
 

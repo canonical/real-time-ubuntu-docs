@@ -22,7 +22,7 @@ Type: `string`
 
 _Optional_
 
-A string formated as a [cpu-list](https://www.kernel.org/doc/html/v5.15/admin-guide/kernel-parameters.html#cpu-lists).
+A string formated as {ref}`cpu-lists`. 
 Isolate CPUs from general execution.
 
 #### nohz 
@@ -43,7 +43,7 @@ Type: `string`
 
 _Optional_
 
-A string formated as a [cpu-list](https://www.kernel.org/doc/html/v5.15/admin-guide/kernel-parameters.html#cpu-lists).
+A string formated as {ref}`cpu-lists`. 
 Specifies the adaptive-ticks cpus, which means the specified list of CPUs whose tick will be stopped whenever possible.
 The boot CPU will be forced outside the range to maintain the timekeeping.
 
@@ -53,7 +53,7 @@ Type: `string`
 
 _Optional_
 
-A string formated as a [cpu-list](https://www.kernel.org/doc/html/v5.15/admin-guide/kernel-parameters.html#cpu-lists).
+A string formated as {ref}`cpu-lists`. 
 Specifies the list of CPUs to be alocated for kernel threads.
 
 #### irqaffinity
@@ -62,7 +62,7 @@ Type: `string`
 
 _Optional_
 
-A string formated as a [cpu-list](https://www.kernel.org/doc/html/v5.15/admin-guide/kernel-parameters.html#cpu-lists).
+A string formated as {ref}`cpu-lists`. 
 Specifies the list of CPUs for IRQ handling.
 
 (irqt)=
@@ -93,7 +93,7 @@ Type `string`
 
 _Required_
 
-A string formated as a [cpu-list](https://www.kernel.org/doc/html/v5.15/admin-guide/kernel-parameters.html#cpu-lists).
+A string formated as {ref}`cpu-lists`. 
 Specifies the list of CPUs which will handle the matched IRQs on the {ref}`filter <irqfilter>`.
 
 (irqfilter)=
@@ -165,7 +165,7 @@ Type: `string`
 
 _Required_
 
-A string formated as a [cpu-list](https://www.kernel.org/doc/html/v5.15/admin-guide/kernel-parameters.html#cpu-lists).
+A string formated as {ref}`cpu-lists`. 
 Specifies which cpus are going to be configured with the scaling governor specified in the item.
 
 
