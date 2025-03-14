@@ -83,8 +83,7 @@ ogp_site_name = project
 #
 # TODO: To customise the preview image, update as needed.
 
-ogp_image = \
-    "https://assets.ubuntu.com/v1/253da317-image-document-ubuntudocs.svg"
+ogp_image = "https://assets.ubuntu.com/v1/253da317-image-document-ubuntudocs.svg"
 
 
 # Product favicon; shown in bookmarks, browser tabs, etc.
@@ -136,16 +135,33 @@ html_context = {
     # Docs branch in the repo; used in links for viewing the source files
     #
     # TODO: To customise the branch, uncomment and update as needed.
-    "github_version": "main",
+    'repo_default_branch': 'main',
     # Docs location in the repo; used in links for viewing the source files
     #
-    # TODO: To customise the directory, uncomment and update as needed.
-    "github_folder": "/docs/",
 
+
+    # TODO: To customise the directory, uncomment and update as needed.
+    "repo_folder": "/docs/",
     # TODO: To enable or disable the Previous / Next buttons at the bottom of pages
     # Valid options: none, prev, next, both
     "sequential_nav": "both",
+    # TODO: To enable listing contributors on individual pages, set to True
+    "display_contributors": False,
+
+    # Required for feedback button    
+    'github_issues': 'enabled',
 }
+
+# TODO: To enable the edit button on pages, uncomment and change the link to a
+# public repository on GitHub or Launchpad. Any of the following link domains
+# are accepted:
+# - https://github.com/example-org/example"
+# - https://launchpad.net/example
+# - https://git.launchpad.net/example
+#
+# html_theme_options = {
+# 'source_edit_link': 'https://github.com/canonical/sphinx-docs-starter-pack',
+# }
 
 # Project slug; see https://meta.discourse.org/t/what-is-category-slug/87897
 #
@@ -191,8 +207,8 @@ linkcheck_ignore = [
 
     # Working, accessible, but misinterpreted as broken
     'https://www.digikey.com/en/maker/projects/introduction-to-rtos-solution-to-part-11-priority-inversion/abf4b8f7cd4a4c70bece35678d178321', # 403 via linkcheck and CI
+    ]
 
-]
 
 # A regex list of URLs where anchors are ignored by 'make linkcheck'
 
@@ -244,19 +260,15 @@ extensions = [
     'sphinx.ext.todo',
 ]
 
-
 # Excludes files or directories from processing
 
 exclude_patterns = [
     "doc-cheat-sheet*",
-
 ]
 
 # Adds custom CSS files, located under 'html_static_path'
 
-html_css_files = [
-    "css/pdf.css",
-]
+# html_css_files = []
 
 
 # Adds custom JavaScript files, located under 'html_static_path'
@@ -297,6 +309,10 @@ rst_prolog = """
    :class: align-center
 .. role:: h2
     :class: hclass2
+.. role:: woke-ignore
+    :class: woke-ignore
+.. role:: vale-ignore
+    :class: vale-ignore
 """
 
 # Workaround for https://github.com/canonical/canonical-sphinx/issues/34
@@ -304,35 +320,8 @@ rst_prolog = """
 if "discourse_prefix" not in html_context and "discourse" in html_context:
     html_context["discourse_prefix"] = html_context["discourse"] + "/t/"
 
-#####################
-# PDF configuration #
-#####################
-
-latex_additional_files = [
-    "./.sphinx/fonts/Ubuntu-B.ttf",
-    "./.sphinx/fonts/Ubuntu-R.ttf",
-    "./.sphinx/fonts/Ubuntu-RI.ttf",
-    "./.sphinx/fonts/UbuntuMono-R.ttf",
-    "./.sphinx/fonts/UbuntuMono-RI.ttf",
-    "./.sphinx/fonts/UbuntuMono-B.ttf",
-    "./.sphinx/images/Canonical-logo-4x.png",
-    "./.sphinx/images/front-page-light.pdf",
-    "./.sphinx/images/normal-page-footer.pdf",
-]
-
-latex_engine = "xelatex"
-latex_show_pagerefs = True
-latex_show_urls = "footnote"
-
-with open(".sphinx/latex_elements_template.txt", "rt") as file:
-    latex_config = file.read()
-
-latex_elements = ast.literal_eval(latex_config.replace("$PROJECT", project))
-
 myst_substitutions = {
   "U_COC": "[Ubuntu Code of Conduct](https://ubuntu.com/community/ethos/code-of-conduct)",
   "C_CLA": "[Canonical contributor license agreement](https://ubuntu.com/legal/contributors)",
   "PROJNAME_FULL": "Real-time Ubuntu documentation",
 }
-
-suppress_warnings = ['git.too_shallow']
