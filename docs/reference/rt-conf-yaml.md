@@ -22,7 +22,7 @@ Type: `string`
 
 _Optional_
 
-A string formated as {ref}`cpu-lists`. 
+A string formatted as {ref}`cpu-lists`. 
 Isolate CPUs from general execution.
 
 #### nohz 
@@ -43,7 +43,7 @@ Type: `string`
 
 _Optional_
 
-A string formated as {ref}`cpu-lists`. 
+A string formatted as {ref}`cpu-lists`. 
 Specifies the adaptive-ticks cpus, which means the specified list of CPUs whose tick will be stopped whenever possible.
 The boot CPU will be forced outside the range to maintain the timekeeping.
 
@@ -53,8 +53,8 @@ Type: `string`
 
 _Optional_
 
-A string formated as {ref}`cpu-lists`. 
-Specifies the list of CPUs to be alocated for kernel threads.
+A string formatted as {ref}`cpu-lists`. 
+Specifies the list of CPUs to be allocated for kernel threads.
 
 #### irqaffinity
 
@@ -62,23 +62,23 @@ Type: `string`
 
 _Optional_
 
-A string formated as {ref}`cpu-lists`. 
+A string formatted as {ref}`cpu-lists`. 
 Specifies the list of CPUs for IRQ handling.
 
 (irqt)=
-### irq_tunning 
+### irq_tuning 
 
 Type: `list[dict]`
 
 _Optional_
 
-A list of configurations including the list of cpus to be aplied and the filters.
-Runtime configurations that aren't persisted, related to IRQ affinity tunning.
+A list of configurations including the list of cpus to be applied and the filters.
+Runtime configurations that aren't persisted, related to IRQ affinity tuning.
 
 Example:
 
 ```yaml
-irq_tunning:
+irq_tuning:
   - cpus: "2-3"
     filter:
       actions: "iwlwifi"
@@ -87,32 +87,32 @@ irq_tunning:
       type: "edge"
 ```
 
-#### irq_tunning.<list item>.cpus
+#### irq_tuning.<list item>.cpus
 
 Type `string`
 
 _Required_
 
-A string formated as {ref}`cpu-lists`. 
+A string formatted as {ref}`cpu-lists`. 
 Specifies the list of CPUs which will handle the matched IRQs on the {ref}`filter <irqfilter>`.
 
 (irqfilter)=
-#### irq_tunning.<list item>.filter
+#### irq_tuning.<list item>.filter
 Type: `dict`
 
 _Required_
 
 A dictionary with keys related to IRQ properties of `/sys/kernel/irq/<IRQ-num>/`.
 
-##### irq_tunning.<list item>.filter.actions
+##### irq_tuning.<list item>.filter.actions
 Type: `regex string`
 
 _Optional_
 
 The IRQ action chain. A comma-separated list of zero or more device names associated with this interrupt.
-For network related, generary is the name of the network interface shown in `ip link show`. 
+For network related, generally is the name of the network interface shown in `ip link show`. 
 
-##### irq_tunning.<list item>.filter.chip_name
+##### irq_tuning.<list item>.filter.chip_name
 Type: `regex string`
 
 _Optional_
@@ -121,17 +121,17 @@ Chip name supplied by the associated device driver.
 
 Example: `IR-PCI-MSIX-0000:04:00.0`
 
-##### irq_tunning.<list item>.filter.name
+##### irq_tuning.<list item>.filter.name
 Type: `regex string`
 
 _Optional_
 
 Human-readable flow handler name as defined by the irq chip driver.
-Commun values are:
+Common values are:
   * `edge`
   * `fasteoi`
 
-##### irq_tunning.<list item>.filter.type
+##### irq_tuning.<list item>.filter.type
 Type: `enum`
 
 _Optional_
@@ -149,7 +149,7 @@ Type: `list[dict]`
 _Optional_
 
 Runtime configurations that aren't persisted, related to cpu power management.
-A list of dictionaries with the CPU scaling governor and the cpu list to be aplied.
+A list of dictionaries with the CPU scaling governor and the cpu list to be applied.
 
 Example:
 
@@ -165,7 +165,7 @@ Type: `string`
 
 _Required_
 
-A string formated as {ref}`cpu-lists`. 
+A string formatted as {ref}`cpu-lists`. 
 Specifies which cpus are going to be configured with the scaling governor specified in the item.
 
 
