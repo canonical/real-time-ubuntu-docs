@@ -122,7 +122,7 @@ Chip name supplied by the associated device driver.
 
 Example: `IR-PCI-MSIX-0000:04:00.0`
 
-#### irq_tuning.rules[*].filter.name
+#### irq_tuning[*].filter.name
 
 Type: `regex string`
 
@@ -133,7 +133,7 @@ Example values are:
   * `edge`
   * `fasteoi`
 
-#### irq_tuning.rules[*].filter.type
+#### irq_tuning[*].filter.type
 
 Type: `enum`
 
