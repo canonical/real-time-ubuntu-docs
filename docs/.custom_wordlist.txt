@@ -23,7 +23,12 @@ cpu
 CPUAffinity
 cpus
 CPUs
+CPUset
+cpuset
+CPUsets
+cpusets
 cryptographically
+cset
 Ctrl
 cyclictest
 dev
@@ -62,6 +67,7 @@ gyre
 hardirq
 HPC
 https
+Indri
 intel
 invariance
 io
