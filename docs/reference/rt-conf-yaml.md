@@ -2,12 +2,10 @@
 
 The following schema reflects all configuration keys available in `config.yaml` for `rt-conf` tool
 
-## Top-level directives
-
 There are three top-level dictionaries in `config.yaml`, {ref}`kcmd`, {ref}`irqt` and {ref}`cpug`.
 
 (kcmd)=
-### kernel_cmdline
+## kernel_cmdline
 
 Type: `dict`
 
@@ -16,7 +14,7 @@ _Optional_
 {ref}`kernel-boot-parameters` that affects real-time behavior
 
 
-#### kernel_cmdline.isolcpus
+### kernel_cmdline.isolcpus
 
 Type: `string`
 
@@ -25,7 +23,7 @@ _Optional_
 A string formatted as {ref}`cpu-lists`. 
 Isolate CPUs from general execution.
 
-#### kernel_cmdline.nohz
+### kernel_cmdline.nohz
 
 Type: `enum`
 
@@ -37,7 +35,7 @@ Valid values are:
   * `on`: **Enables** dynamic ticks
   * `off`:**Disables** dynamic ticks
 
-#### kernel_cmdline.nohz_full
+### kernel_cmdline.nohz_full
 
 Type: `string`
 
@@ -47,7 +45,7 @@ A string formatted as {ref}`cpu-lists`.
 Specifies the adaptive-ticks cpus, which means the specified list of CPUs whose tick will be stopped whenever possible.
 The boot CPU will be forced outside the range to maintain the timekeeping.
 
-#### kernel_cmdline.kthread_cpus
+### kernel_cmdline.kthread_cpus
 
 Type: `string`
 
@@ -56,7 +54,7 @@ _Optional_
 A string formatted as {ref}`cpu-lists`. 
 Specifies the list of CPUs to be allocated for kernel threads.
 
-#### kernel_cmdline.irqaffinity
+### kernel_cmdline.irqaffinity
 
 Type: `string`
 
@@ -66,7 +64,7 @@ A string formatted as {ref}`cpu-lists`.
 Specifies the list of CPUs for IRQ handling.
 
 (irqt)=
-### irq_tuning 
+## irq_tuning 
 
 Type: `list[dict]`
 
@@ -87,7 +85,7 @@ irq_tuning:
       type: "edge"
 ```
 
-#### irq_tuning.[list item].cpus
+### irq_tuning.[list item].cpus
 
 Type `string`
 
@@ -97,14 +95,14 @@ A string formatted as {ref}`cpu-lists`.
 Specifies the list of CPUs which will handle the matched IRQs on the {ref}`filter <irqfilter>`.
 
 (irqfilter)=
-#### irq_tuning.[list item].filter
+### irq_tuning.[list item].filter
 Type: `dict`
 
 _Required_
 
 A dictionary with keys related to IRQ properties of `/sys/kernel/irq/<IRQ-num>/`.
 
-##### irq_tuning.[list item].filter.actions
+#### irq_tuning.[list item].filter.actions
 Type: `regex string`
 
 _Optional_
@@ -112,7 +110,7 @@ _Optional_
 The IRQ action chain. A comma-separated list of zero or more device names associated with this interrupt.
 For network related, generally is the name of the network interface shown in `ip link show`. 
 
-##### irq_tuning.[list item].filter.chip_name
+#### irq_tuning.[list item].filter.chip_name
 Type: `regex string`
 
 _Optional_
@@ -121,7 +119,7 @@ Chip name supplied by the associated device driver.
 
 Example: `IR-PCI-MSIX-0000:04:00.0`
 
-##### irq_tuning.[list item].filter.name
+#### irq_tuning.[list item].filter.name
 Type: `regex string`
 
 _Optional_
@@ -131,7 +129,7 @@ Example values are:
   * `edge`
   * `fasteoi`
 
-##### irq_tuning.[list item].filter.type
+#### irq_tuning.[list item].filter.type
 Type: `enum`
 
 _Optional_
@@ -142,7 +140,7 @@ Valid values:
   * `level` 
 
 (cpug)=
-### cpu_governance
+## cpu_governance
 
 Type: `list[dict]`
 
@@ -159,7 +157,7 @@ cpu_governance:
     scaling_governor: "performance"
 ```
 
-#### cpu_governance..cpus
+### cpu_governance..cpus
 
 Type: `string`
 
@@ -169,7 +167,7 @@ A string formatted as {ref}`cpu-lists`.
 Specifies which cpus are going to be configured with the scaling governor specified in the item.
 
 
-#### cpu_governance..cpus
+### cpu_governance..cpus
 
 Type: `string`
 
