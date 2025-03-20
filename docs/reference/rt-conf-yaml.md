@@ -172,7 +172,7 @@ A string formatted as {ref}`cpu-lists`.
 Specifies which cpus are going to be configured with the scaling governor specified in the item.
 
 
-### cpu_governancep[*].scaling_governor
+### cpu_governance[*].scaling_governor
 
 Type: `string`
 
