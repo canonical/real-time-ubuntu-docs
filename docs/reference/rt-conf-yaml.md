@@ -85,7 +85,7 @@ irq_tuning:
       type: "edge"
 ```
 
-### irq_tuning.[list item].cpus
+### irq_tuning[*].cpus
 
 Type `string`
 
@@ -95,7 +95,7 @@ A string formatted as {ref}`cpu-lists`.
 Specifies the list of CPUs which will handle the matched IRQs on the {ref}`filter <irqfilter>`.
 
 (irqfilter)=
-### irq_tuning.[list item].filter
+### irq_tuning[*].filter
 
 Type: `dict`
 
@@ -103,7 +103,7 @@ _Required_
 
 A dictionary with keys related to IRQ properties of `/sys/kernel/irq/<IRQ-num>/`.
 
-#### irq_tuning.[list item].filter.actions
+#### irq_tuning[*].filter.actions
 
 Type: `regex string`
 
@@ -112,7 +112,7 @@ _Optional_
 The IRQ action chain. A comma-separated list of zero or more device names associated with this interrupt.
 For network related, generally is the name of the network interface shown in `ip link show`. 
 
-#### irq_tuning.[list item].filter.chip_name
+#### irq_tuning[*].filter.chip_name
 
 Type: `regex string`
 
@@ -122,7 +122,7 @@ Chip name supplied by the associated device driver.
 
 Example: `IR-PCI-MSIX-0000:04:00.0`
 
-#### irq_tuning.[list item].filter.name
+#### irq_tuning.rules[*].filter.name
 
 Type: `regex string`
 
@@ -133,7 +133,7 @@ Example values are:
   * `edge`
   * `fasteoi`
 
-#### irq_tuning.[list item].filter.type
+#### irq_tuning.rules[*].filter.type
 
 Type: `enum`
 
@@ -162,7 +162,7 @@ cpu_governance:
     scaling_governor: "performance"
 ```
 
-### cpu_governance..cpus
+### cpu_governance[*].cpus
 
 Type: `string`
 
@@ -172,7 +172,7 @@ A string formatted as {ref}`cpu-lists`.
 Specifies which cpus are going to be configured with the scaling governor specified in the item.
 
 
-### cpu_governance..cpus
+### cpu_governancep[*].scaling_governor
 
 Type: `string`
 
