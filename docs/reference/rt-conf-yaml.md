@@ -1,8 +1,8 @@
-# rt-conf config.yaml schema
+# RT Conf YAML configuration schema
 
-The following schema reflects all configuration keys available in `config.yaml` for `rt-conf` tool
+The following schema reflects all settings available in the configuration file of the `rt-conf` tool
 
-There are three top-level dictionaries in `config.yaml`, {ref}`kcmd`, {ref}`irqt` and {ref}`cpug`.
+There are three top-level dictionaries in the configuration file:, {ref}`kcmd`, {ref}`irqt` and {ref}`cpug`.
 
 (kcmd)=
 ## kernel_cmdline
