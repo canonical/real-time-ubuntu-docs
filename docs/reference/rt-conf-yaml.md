@@ -16,7 +16,7 @@ _Optional_
 {ref}`kernel-boot-parameters` that affects real-time behavior
 
 
-#### isolcpus
+#### kernel_cmdline.isolcpus
 
 Type: `string`
 
@@ -25,7 +25,7 @@ _Optional_
 A string formatted as {ref}`cpu-lists`. 
 Isolate CPUs from general execution.
 
-#### nohz 
+#### kernel_cmdline.nohz
 
 Type: `enum`
 
@@ -37,7 +37,7 @@ Valid values are:
   * `on`: **Enables** dynamic ticks
   * `off`:**Disables** dynamic ticks
 
-#### nohz_full
+#### kernel_cmdline.nohz_full
 
 Type: `string`
 
@@ -47,7 +47,7 @@ A string formatted as {ref}`cpu-lists`.
 Specifies the adaptive-ticks cpus, which means the specified list of CPUs whose tick will be stopped whenever possible.
 The boot CPU will be forced outside the range to maintain the timekeeping.
 
-#### kthread_cpus
+#### kernel_cmdline.kthread_cpus
 
 Type: `string`
 
@@ -56,7 +56,7 @@ _Optional_
 A string formatted as {ref}`cpu-lists`. 
 Specifies the list of CPUs to be allocated for kernel threads.
 
-#### irqaffinity
+#### kernel_cmdline.irqaffinity
 
 Type: `string`
 
