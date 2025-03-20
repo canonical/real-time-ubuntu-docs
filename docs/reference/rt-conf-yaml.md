@@ -127,7 +127,7 @@ Type: `regex string`
 _Optional_
 
 Human-readable flow handler name as defined by the irq chip driver.
-Common values are:
+Example values are:
   * `edge`
   * `fasteoi`
 
