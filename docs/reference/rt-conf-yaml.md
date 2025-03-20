@@ -96,6 +96,7 @@ Specifies the list of CPUs which will handle the matched IRQs on the {ref}`filte
 
 (irqfilter)=
 ### irq_tuning.[list item].filter
+
 Type: `dict`
 
 _Required_
@@ -103,6 +104,7 @@ _Required_
 A dictionary with keys related to IRQ properties of `/sys/kernel/irq/<IRQ-num>/`.
 
 #### irq_tuning.[list item].filter.actions
+
 Type: `regex string`
 
 _Optional_
@@ -111,6 +113,7 @@ The IRQ action chain. A comma-separated list of zero or more device names associ
 For network related, generally is the name of the network interface shown in `ip link show`. 
 
 #### irq_tuning.[list item].filter.chip_name
+
 Type: `regex string`
 
 _Optional_
@@ -120,6 +123,7 @@ Chip name supplied by the associated device driver.
 Example: `IR-PCI-MSIX-0000:04:00.0`
 
 #### irq_tuning.[list item].filter.name
+
 Type: `regex string`
 
 _Optional_
@@ -130,6 +134,7 @@ Example values are:
   * `fasteoi`
 
 #### irq_tuning.[list item].filter.type
+
 Type: `enum`
 
 _Optional_
