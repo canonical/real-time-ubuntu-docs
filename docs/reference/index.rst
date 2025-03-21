@@ -8,3 +8,4 @@ Reference
    kernel-boot-parameters
    kernel-config-options
    releases
+   rt-conf-yaml
