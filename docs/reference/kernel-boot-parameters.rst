@@ -1,3 +1,5 @@
+.. _kernel-boot-parameters:
+
 Kernel boot parameters
 ======================
 
