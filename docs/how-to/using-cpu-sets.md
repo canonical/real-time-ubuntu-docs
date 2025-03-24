@@ -172,7 +172,6 @@ One good way of doing this in a persistent and reproducible way is by creating a
 
 Here is a simple sample of how this service could look like:
 ```toml
-:filename: customapp.service
 [Unit]
 Description=app demo service
 After=network.target
