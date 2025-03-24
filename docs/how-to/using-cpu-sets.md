@@ -40,15 +40,14 @@ Being the service manager the PID 1. It's active as long the system is running.
 It's possible to check that the properties are correctly set by fetching their values with `systemctl show`, providing the unit and the desired property (with parameter `-p`):
 
 ```console
-ubuntu@dt:~$ systemctl show custom-workload.slice -p AllowedCPUs
+$ systemctl show custom-workload.slice -p AllowedCPUs
 AllowedCPUs=11
-ubuntu@dt:~$ systemctl show init.scope -p AllowedCPUs
+$ systemctl show init.scope -p AllowedCPUs
 AllowedCPUs=0-10
-ubuntu@dt:~$ systemctl show system.slice -p AllowedCPUs
+$ systemctl show system.slice -p AllowedCPUs
 AllowedCPUs=0-10
-ubuntu@dt:~$ systemctl show user.slice -p AllowedCPUs
+$ systemctl show user.slice -p AllowedCPUs
 AllowedCPUs=0-10
-ubuntu@dt:~$
 ```
 
 Finally, we run our application inside our systemd scope:
@@ -63,32 +62,32 @@ To make sure that the application will run with proper root privileges.
 ```
 
 ```console
-ubuntu@dt:~$ sudo su
-root@dt:/home/ubuntu#
-root@dt:/home/ubuntu# systemd-run --scope -p Slice=custom-workload.slice /home/ubuntu/application
+$ sudo su
+#
+# systemd-run --scope -p Slice=custom-workload.slice /home/ubuntu/application
 Running as unit: run-rf31d22d4d34d4fdfbe0e87edf82e7621.scope; invocation ID: 91facec7c7a24c089a29d7a0080b4f1b
 ```
 
 After setting up the cpu shielding is possible to check with `nproc` that the online cpus changed:
 
 ```console
-ubuntu@dt:~$ nproc
+$ nproc
 11
-ubuntu@dt:~$ nproc --all
+$ nproc --all
 12
 ```
 
 We can confirm that our application is running on the designated cpus by checking with [ps][ps_manpage] command:
 
 ```console
-ubuntu@dt:~$ ps -eLo psr,comm,args,pid, | grep application
+$ ps -eLo psr,comm,args,pid, | grep application
  11 application     /bin/bash /home/ubuntu/appl    1590
 ```
 
 It's also possible to confirm using `ps` that our application is running isolated on the `cpu 11`:
 
 ```console
-ubuntu@dt:~$ ps -eLo psr,comm,args,ppid,pid, | grep '^ 11'
+$ ps -eLo psr,comm,args,ppid,pid, | grep '^ 11'
  11 cpuhp/11        [cpuhp/11]                        2      81
  11 idle_inject/11  [idle_inject/11]                  2      82
  11 migration/11    [migration/11]                    2      83
@@ -103,7 +102,6 @@ ubuntu@dt:~$ ps -eLo psr,comm,args,ppid,pid, | grep '^ 11'
  11 kworker/11:3-cg [kworker/11:3-cgroup_destro       2     441
  11 application     /bin/bash /home/ubuntu/appl    1576    1590
  11 sleep           sleep 5                        1590    1761
-ubuntu@dt:~$
 ```
 
 Our `application` with PID `1590` is there, and also an `sleep` which was a parent process id (PPID) equal to our `application`.
@@ -205,7 +203,7 @@ sudo systemctl enable customapp.service
 Then it's possible to check that our application is running on the designated cpu with it's PPID being `1`:
 
 ```bash
-ubuntu@dt:~$ ps -eLo psr,comm,args,ppid,pid, | grep application
+$ ps -eLo psr,comm,args,ppid,pid, | grep application
  11 application     /bin/bash /home/ubuntu/appl       1    2417
 ```
 
