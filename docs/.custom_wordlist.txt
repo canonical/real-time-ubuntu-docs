@@ -12,6 +12,9 @@ bootloader
 CAS
 cfs
 CFS's
+cgclassify
+cgcreate
+cgexec
 cgroup
 cgroups
 CGROUPs
@@ -68,6 +71,7 @@ hardirq
 HPC
 https
 Indri
+init
 intel
 invariance
 io
@@ -132,6 +136,7 @@ pid
 plantuml
 PMD
 posix
+PPID
 preemptible
 proc
 ps

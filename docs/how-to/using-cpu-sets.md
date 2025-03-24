@@ -19,7 +19,7 @@ The most recommended way of doing this, is by using a higher level tool, on Ubun
 It’s often useful to first test shield isolation at runtime to verify and debug its functionality before applying it persistently.
 
 First, it's necessary to define a `custom-workload.slice` which our application to be shielded will belong.
-On this property we're going to define the CPU's that are going to be isolated from general execution.
+On this property we're going to define the CPUs that are going to be isolated from general execution.
 
 ```bash
 sudo systemctl set-property --runtime custom-workload.scope AllowedCPUs=11
@@ -58,8 +58,8 @@ systemd-run --scope -p Slice=custom-workload.slice application arg1 ...
 ```
 
 ```{tip}
-Is usefull to run the systemd scope from a root shell session (with `sudo su`).
-To make sure that the application will run with proper root priviledges.
+Is useful to run the systemd scope from a root shell session (with `sudo su`).
+To make sure that the application will run with proper root privileges.
 ```
 
 ```console
@@ -78,7 +78,7 @@ ubuntu@dt:~$ nproc --all
 12
 ```
 
-We can confirm that our application is running on the designeted cpus by checking with [ps][ps_manpage] command:
+We can confirm that our application is running on the designated cpus by checking with [ps][ps_manpage] command:
 
 ```console
 ubuntu@dt:~$ ps -eLo psr,comm,args,pid, | grep application
@@ -108,11 +108,11 @@ ubuntu@dt:~$
 
 Our `application` with PID `1590` is there, and also an `sleep` which was a parent process id (PPID) equal to our `application`.
 This is because my application consists in a bash script with a sleep command.
-The other processes showing up there are kernel threads, unfortunatelly, cpusets doesn't isolate cpu's from running kthreads yet.
+The other processes showing up there are kernel threads, unfortunately, cpusets doesn't isolate cpus from running kthreads yet.
 
 ## Persistent shielding
 
-When it comes to persistency on settings applied to systemd, we're going to write our configurations to the `/etc/systemd/system` directory.
+When it comes to apply settings in a persistence way on systemd, we're going to write our configurations to the `/etc/systemd/system` directory.
 
 For persistent shielding, it's necessary to create the directories which will hold the system configurations:
 
@@ -168,7 +168,7 @@ Then after this setup, is possible to check the values using `systemctl show` in
 
 ### Creating the service
 
-One good way of doing this in a persistent and reproduceble way is by creating a systemd service unit, so we can atribuite the cpuset to it.
+One good way of doing this in a persistent and reproducible way is by creating a systemd service unit, so we can attribute the cpuset to it.
 
 Here is a simple sample of how this service could look like:
 ```conf
