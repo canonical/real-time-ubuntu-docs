@@ -1,4 +1,4 @@
-# Isolate workload using CPUsets
+# Shielding CPUs from general execution with CPUsets
 
 [CPUsets][kdocs_cpusets_v2] is a kernel feature that allow users to assign specific CPUs and memory nodes to a set of tasks, enabling fine-grained control over resource allocation.
 
