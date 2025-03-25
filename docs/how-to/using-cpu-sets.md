@@ -172,7 +172,7 @@ Then after this setup, is possible to check the values using `systemctl show` in
 
 One good way of doing this in a persistent and reproducible way is by creating a systemd service unit, so we can attribute the cpuset to it.
 
-Here is a simple sample of how this service could look like:
+Here is a simple example of how this service could look like:
 ```
 [Unit]
 Description=app demo service
