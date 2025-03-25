@@ -51,7 +51,7 @@ Finally, we run our application inside a new systemd scope and assign it to the 
 This is done by setting the scope Slice property to `custom-workload.slice`, ensuring that the application runs within the resource limits and constraints defined by that slice:
 
 ```bash
-systemd-run --scope -p Slice=custom-workload.slice <application arg1 ...>
+systemd-run --scope -p Slice=custom-workload.slice <my-app arg1 ...>
 ```
 
 ```{tip}
@@ -62,7 +62,7 @@ To make sure that the application will run with proper root privileges.
 ```console
 $ sudo su
 #
-# systemd-run --scope -p Slice=custom-workload.slice /home/ubuntu/application
+# systemd-run --scope -p Slice=custom-workload.slice /home/ubuntu/my-app
 Running as unit: run-rf31d22d4d34d4fdfbe0e87edf82e7621.scope; invocation ID: 91facec7c7a24c089a29d7a0080b4f1b
 ```
 
@@ -78,8 +78,8 @@ $ nproc --all
 We can confirm that our application is running on the designated cpus by checking with [ps][ps_manpage] command:
 
 ```console
-$ ps -eLo psr,comm,args,pid, | grep application
- 11 application     /bin/bash /home/ubuntu/appl    1590
+$ ps -eLo psr,comm,args,pid, | grep my-app
+ 11  my-app    /bin/bash /home/ubuntu/my-a    1590
 ```
 
 It's also possible to confirm using `ps` that our application is running isolated on the `cpu 11`:
@@ -98,12 +98,12 @@ $ ps -eLo psr,comm,args,ppid,pid, | grep '^ 11'
  11 kworker/11:1-mm [kworker/11:1-mm_percpu_wq]       2     188
  11 kworker/11:1H-k [kworker/11:1H-kblockd]           2     222
  11 kworker/11:3-cg [kworker/11:3-cgroup_destro       2     441
- 11 application     /bin/bash /home/ubuntu/appl    1576    1590
+ 11 my-app          /bin/bash /home/ubuntu/my-a    1576    1590
  11 sleep           sleep 5                        1590    1761
 ```
 
-Our `application` with PID `1590` is there, and also an `sleep` which was a parent process id (PPID) equal to our `application`.
-This is because my application consists in a bash script with a sleep command.
+Our application `my-app` with PID `1590` is there, and also an `sleep` which was a parent process id (PPID) equal to our application.
+This is because the application `my-app` consists in a bash script with a sleep command.
 The other processes showing up there are kernel threads, unfortunately, cpusets doesn't isolate cpus from running kthreads yet.
 
 ## Persistent shielding
@@ -183,28 +183,28 @@ Type=simple
 Restart=always
 RestartSec=1
 User=root
-ExecStart=/home/ubuntu/application
+ExecStart=/home/ubuntu/my-app
 
 [Install]
 WantedBy=multi-user.target
 ```
 The important part here is the `Slice=custom-workload.slice` which points our service to the `custom-workload.slice` that we created which has access to the isolated cpus.
 
-So I'm going to create a file on `/etc/systemd/system/custom.service.d/customapp.service`
+So I'm going to create a file on `/etc/systemd/system/my-app.service`
 
 Now we: reload the daemon, start and enable the service:
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl start customapp.service
-sudo systemctl enable customapp.service
+sudo systemctl start my-app.service
+sudo systemctl enable my-app.service
 ```
 
 Then it's possible to check that our application is running on the designated cpu with it's PPID being `1`:
 
 ```bash
-$ ps -eLo psr,comm,args,ppid,pid, | grep application
- 11 application     /bin/bash /home/ubuntu/appl       1    2417
+$ ps -eLo psr,comm,args,ppid,pid, | grep my-app
+ 11 my-app     /bin/bash /home/ubuntu/my-a       1    2417
 ```
 
 <!-- ```bash -->
