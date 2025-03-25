@@ -19,6 +19,6 @@ Real-time Ubuntu is available for install from the universe apt repository:
         sudo apt update
         sudo apt install ubuntu-realtime
 
-Refer to :doc:`../reference/releases` and `Ubuntu release`_ documentation for more information about Ubuntu releases and which support real-time. 
+Refer to :doc:`/reference/releases` and `Ubuntu release`_ documentation for more information about Ubuntu releases and which support real-time. 
 
 .. _Ubuntu release: https://ubuntu.com/about/release-cycle
