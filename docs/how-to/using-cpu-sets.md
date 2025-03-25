@@ -51,7 +51,7 @@ Finally, we run our application inside a new systemd scope and assign it to the 
 This is done by setting the scope Slice property to `custom-workload.slice`, ensuring that the application runs within the resource limits and constraints defined by that slice:
 
 ```bash
-systemd-run --scope -p Slice=custom-workload.slice application arg1 ...
+systemd-run --scope -p Slice=custom-workload.slice <application arg1 ...>
 ```
 
 ```{tip}
