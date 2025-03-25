@@ -108,7 +108,8 @@ The other processes showing up there are kernel threads, unfortunately, cpusets 
 
 ## Persistent shielding
 
-When it comes to apply settings in a persistence way on systemd, we're going to write our configurations to the `/etc/systemd/system` directory.
+The configuration set via the `systemctl set-property` command do not persist across reboots.
+To persist the, we have to write them as configuration files beneath the `/etc/systemd/system` directory.
 
 For persistent shielding, it's necessary to create the directories which will hold the system configurations:
 
