@@ -23,7 +23,7 @@ The application to be shielded will belong to this `systemd` slice.
 On this property we're going to define the CPUs that are going to be isolated from general execution.
 
 ```bash
-sudo systemctl set-property --runtime custom-workload.scope AllowedCPUs=11
+sudo systemctl set-property --runtime custom-workload.slice AllowedCPUs=11
 ```
 
 Then we restrict the system units and the init scope (created by default on systemd), to use the remaining CPUs:
