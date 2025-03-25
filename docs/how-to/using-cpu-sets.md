@@ -192,8 +192,6 @@ The important part here is the `Slice=custom-workload.slice` which points our se
 
 So I'm going to create a file on `/etc/systemd/system/custom.service.d/customapp.service`
 
-Creating the directory which will hold the configuration files for application service.
-
 Now we: reload the daemon, start and enable the service:
 
 ```bash
