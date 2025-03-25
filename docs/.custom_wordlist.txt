@@ -266,3 +266,8 @@ ww
 xetex
 xindy
 yaml
+rtla
+osnoise
+timerlat
+hwnoise
+maskable
