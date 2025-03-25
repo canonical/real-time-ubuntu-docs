@@ -14,7 +14,9 @@ The most recommended way of doing this, is by using a higher level tool, on Ubun
 
 It’s often useful to first test shield isolation at runtime to verify and debug its functionality before applying it persistently.
 
-First, it's necessary to define a `custom-workload.slice` which our application to be shielded will belong.
+First, it's necessary to define a slice, let's arbitrarily call it `custom-workload.slice`.
+Internally, `systemd` will translate this slice to a cgroup node on the unified hierarchy of cgroupv2.
+The application to be shielded will belong to this `systemd` slice.
 On this property we're going to define the CPUs that are going to be isolated from general execution.
 
 ```bash
