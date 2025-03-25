@@ -13,6 +13,11 @@ The most recommended way of doing this, is by using a higher level tool, on Ubun
 ## Runtime shielding
 
 Shielding settings primarily depend on the number of available CPU cores.  
+Before doing the shielding, let's check the number of online cpus for further comparison:
+```console
+$ nproc
+12
+```
 The machine used in this example has 12 cores, but you should adjust the CPU list based on your specific use case.
 
 It’s often useful to first test shield isolation at runtime to verify and debug its functionality before applying it persistently.
@@ -71,8 +76,6 @@ After setting up the cpu shielding, it is possible to check with `nproc` that th
 ```console
 $ nproc
 11
-$ nproc --all
-12
 ```
 
 We can confirm that our application is running on the designated cpus by checking with [ps][ps_manpage] command:
