@@ -121,6 +121,44 @@ where:
 
 This command runs the ``oslat`` test and then prints the results, which include latency measurements for each core.
 
+RTLA
+----
+`RTLA`_ provides a set of tools for the analysis of the kernel’s realtime behavior on specific hardware.
+
+RTLA comes pre-installed on Ubuntu 24.04 LTS (Noble Numbat) and later. 
+It does not support older versions of Ubuntu.
+
+RTLA comes with three tools to measure real-time characteristics: ``osnoise``, ``hwnoise``, and ``timerlat``.
+Each command has ``hist`` and ``top`` sub-commands, which output data in a histogram (log) format, or a GNU ``top``-like format, respectively.
+
+osnoise
+^^^^^^^
+See how operating sysem noise (preemption, IRQs/soft-irqs) affect kernel threads.
+
+Run ``rtla osnoise top`` for a top-like interface that shows the time each thread takes to read the current time.
+
+Run ``rtla osnoise hist`` for a histogram, which may be better suited for logging.
+
+For more information, see the `rtla-osnoise-top`_ and `rtla-osnoise-hist`_ documentation.
+
+hwnoise
+^^^^^^^
+
+hwnoise is similar to osnoise, except that it disables interrupts. Only non-maskable interrupts and hardware-related noise will affect the test.
+
+For more information, see the `rtla-hwnoise`_ documentation.
+
+
+timerlat
+^^^^^^^^
+
+timerlat runs threads which periodically wake up and sleep, and data is collected about how much latency overhead the operating system adds to them.
+
+Like osnoise, timerlat offers both a ``timerlat top`` and ``timerlat hist`` mode.
+
+For more information, see the `rtla-timerlat-top`_ and `rtla-timerlat-hist`_ documentation.
+
+
 ps
 ---
 
@@ -219,6 +257,14 @@ This could be used to monitor real-time observation of system activities such as
 .. _cyclictest: https://man.archlinux.org/man/cyclictest.8.en
 .. _dstat: https://manpages.ubuntu.com/manpages/jammy/man1/pcp-dstat.1.html
 .. _oslat: https://manpages.ubuntu.com/manpages/jammy/man8/oslat.8.html
+
+.. _rtla: https://docs.kernel.org/tools/rtla/index.html
+.. _rtla-osnoise-top: https://docs.kernel.org/tools/rtla/rtla-osnoise-top.html
+.. _rtla-osnoise-hist: https://docs.kernel.org/tools/rtla/rtla-osnoise-hist.html
+.. _rtla-hwnoise: https://docs.kernel.org/tools/rtla/rtla-hwnoise.html
+.. _rtla-timerlat-top: https://docs.kernel.org/tools/rtla/rtla-timerlat-top.html
+.. _rtla-timerlat-hist: https://docs.kernel.org/tools/rtla/rtla-timerlat-hist.html
+
 .. _ps: https://www.man7.org/linux/man-pages/man1/ps.1.html
 .. _perf: https://www.man7.org/linux/man-pages/man1/perf.1.html
 .. _stress-ng: https://manpages.ubuntu.com/manpages/noble/en/man1/stress-ng.1.html
