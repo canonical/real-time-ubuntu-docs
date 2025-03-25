@@ -133,7 +133,7 @@ Each command has ``hist`` and ``top`` sub-commands, which output data in a histo
 
 osnoise
 ^^^^^^^
-See how operating sysem noise (preemption, IRQs/soft-irqs) affect kernel threads.
+See how operating system noise (preemption, IRQs/soft-IRQs) affect kernel threads.
 
 Run ``rtla osnoise top`` for a top-like interface that shows the time each thread takes to read the current time.
 
