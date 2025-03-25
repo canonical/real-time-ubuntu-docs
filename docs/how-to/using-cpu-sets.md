@@ -3,11 +3,7 @@
 [CPUsets][kdocs_cpusets_v2] is a kernel feature that allow users to assign specific CPUs and memory nodes to a set of tasks, enabling fine-grained control over resource allocation.
 
 ```{warning}
-Previously, users could configure CPUsets by directly manipulating the cpuset pseudo-filesystem or using the Python-based utility [cset][cset_manpage].
-
-However, the cset tool is only compatible with legacy systems running cgroup v1.
-With the introduction of cgroup v2—adopted by Ubuntu 21.10 (Impish Indri) and latter versions, also by most other distributions around 2021, CPUset management is now handled within the unified cgroup v2 hierarchy.
-As a result, configuring CPUsets requires interacting with cgroup v2 instead of relying on cset.
+Managing cpusets on Ubuntu 21.10 (Impish Indri) and later is no longer possible with the [cset][cset_manpage] utility. This is because `cset` utilizes cgroups v1 which is no longer supported on Ubuntu.
 ```
 
 There are many ways to setup CPUsets, either by manually playing with the cgroup-v2 filesystem, or using tools like [cgcreate][manpage_cgcreate], [cgexec][manpage_cgexec] and [cgclassify][manpage_cgclassify].
