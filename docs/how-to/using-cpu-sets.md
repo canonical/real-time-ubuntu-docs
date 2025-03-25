@@ -123,34 +123,37 @@ So, prefixing files with numbers ensures a predictable loading sequence.
 This way, a file like `50-cpu-shielding.conf` will override settings from `10-defaults.conf` but can still be overridden by a file named `60-custom.conf`.
 ```
 
-```bash
-sudo tee /etc/systemd/system/init.scope.d/50-cpu-shielding.conf > /dev/null << 'EOF'
+Create the configuration file for the init scope:
+
+- `/etc/systemd/system/init.scope.d/50-cpu-shielding.conf`
+
+
+Then add the `AllowedCPUs` property to the configuration of this scope:
+```
 [Scope]
 AllowedCPUs=0-10
-EOF
 ```
 
-```bash
-sudo tee /etc/systemd/system/system.slice.d/50-cpu-shielding.conf > /dev/null << 'EOF'
+So, create the files:
+
+- `/etc/systemd/system/system.slice.d/50-cpu-shielding.conf`
+- `/etc/systemd/system/user.slice.d/50-cpu-shielding.conf`
+
+Add to the `AllowedCPUs` property to the configuration of these slices:
+
+```
 [Slice]
 AllowedCPUs=0-10
-EOF
 ```
 
-```bash
-sudo tee /etc/systemd/system/user.slice.d/50-cpu-shielding.conf > /dev/null << 'EOF'
-[Slice]
-AllowedCPUs=0-10
-EOF
+Then, we create a slice for the our workload, create the file:
+
+- `/etc/systemd/system/custom-workload.slice`
+
+Finaly, add the remaining cpu to the configuration of this slice:
 ```
-
-Then, we create a slice for the our workload:
-
-```bash
-sudo tee /etc/systemd/system/custom-workload.slice > /dev/null << 'EOF'
 [Slice]
 AllowedCPUs=11
-EOF
 ```
 
 After reloading the systemd daemon, the changes will take effect:
@@ -236,3 +239,4 @@ $ ps -eLo psr,comm,args,ppid,pid, | grep application
 % This commit introduced the 'isolated' option for cpusets v2
 [kcommit_cpuset]: https://github.com/torvalds/linux/commit/f28e22441f353aa2c954a1b1e29144f8841f1e8a
 
+[systemd.special]: https://manpages.ubuntu.com/manpages/noble/man7/systemd.special.7.html
