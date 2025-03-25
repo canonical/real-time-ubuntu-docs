@@ -7,7 +7,7 @@ This step describes how to package your real-time app as a [snap package][snapcr
 
 Some requiriments are needed when building snap packages:
 
-* Confirm that you have [snapd installed][install_snapd] by running `snap version`:
+* Confirm that you have [snapd][snapd] installed by running `snap version`:
   ```console
   $ snap version
     snap    2.67.1+24.04
@@ -16,7 +16,8 @@ Some requiriments are needed when building snap packages:
     ubuntu  24.04
     kernel  6.11.0-19-generic
   ```
-  If you're using Ubuntu, it must come pre-installed already.
+  If you're using Ubuntu, it must come pre-installed already. 
+  Otherwise, refer to the [snapd installation docs][install_snapd].
 
 * Install the [snapcraft snap][snapcraft_docs].
   ```shell
@@ -62,5 +63,8 @@ parts:
 
 % links
 [snapcraft.io]: https://snapcraft.io/docs
+[snapd]: https://snapcraft.io/snapd
 [install_snapd]: https://snapcraft.io/docs/installing-snapd
 [snapcraft_docs]: https://snapcraft.io/docs/snapcraft
+[snapcraft_build_cfg]: https://snapcraft.io/docs/build-configuration
+[snapcraft_yaml]: https://snapcraft.io/docs/snapcraft-yaml-schema
