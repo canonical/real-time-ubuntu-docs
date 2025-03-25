@@ -12,6 +12,9 @@ The most recommended way of doing this, is by using a higher level tool, on Ubun
 
 ## Runtime shielding
 
+Shielding settings primarily depend on the number of available CPU cores.  
+The machine used in this example has 12 cores, but you should adjust the CPU list based on your specific use case.
+
 It’s often useful to first test shield isolation at runtime to verify and debug its functionality before applying it persistently.
 
 First, it's necessary to define a slice, let's arbitrarily call it `custom-workload.slice`.
