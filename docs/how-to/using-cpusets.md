@@ -203,7 +203,7 @@ sudo systemctl start my-app.service
 sudo systemctl enable my-app.service
 ```
 
-Then it's possible to check that our application is running on the designated cpu with it's PPID being `1`:
+Then it's possible to check that our application is running on the designated CPU with it's PPID being `1`:
 
 ```bash
 $ ps -eLo psr,comm,args,ppid,pid, | grep my-app
