@@ -152,7 +152,7 @@ Then, we create a slice for the our workload, create the file:
 
 - `/etc/systemd/system/custom-workload.slice`
 
-Finaly, add the remaining cpu to the configuration of this slice:
+Finally, add the remaining cpu to the configuration of this slice:
 ```
 [Slice]
 AllowedCPUs=11
