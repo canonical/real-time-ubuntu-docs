@@ -169,9 +169,10 @@ sudo systemctl daemon-reload
 
 Afterwards, is possible to check the values using `systemctl show` in the same way as before.
 
-### Creating the service
+### Creating a Service
 
-One good way of doing this in a persistent and reproducible way is by creating a systemd service unit, so we can attribute the cpuset to it.
+A reliable and reproducible way to apply CPU shielding is by creating a systemd service unit.
+This allows you to assign the cpuset to the service, ensuring the application runs inside the isolated `custom-workload.slice` automatically on every reboot, without any manual intervention.
 
 Here is a simple example of how this service could look like:
 ```
