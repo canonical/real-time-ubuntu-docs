@@ -50,6 +50,7 @@ It's possible to check that the properties are correctly set by fetching their v
 ```console
 $ systemctl show custom-workload.slice -p AllowedCPUs
 AllowedCPUs=11
+
 $ systemctl show init.scope -p AllowedCPUs
 AllowedCPUs=0-10
 ```
