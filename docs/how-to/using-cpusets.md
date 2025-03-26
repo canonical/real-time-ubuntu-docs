@@ -146,7 +146,7 @@ Similarly, create these two files for the remaining default slices:
 - `/etc/systemd/system/system.slice.d/50-cpu-shielding.conf`
 - `/etc/systemd/system/user.slice.d/50-cpu-shielding.conf`
 
-Add to the `AllowedCPUs` property to the configuration of these slices:
+In both of them add the `AllowedCPUs` property:
 
 ```
 [Slice]
