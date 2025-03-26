@@ -42,7 +42,6 @@ sudo systemctl set-property --runtime user.slice AllowedCPUs=0-10
 ```
 
 - `init.scope`: unit where the system and the service manager itself resides.
-Being the service manager the PID 1. It's active as long the system is running.
 - `system.slice`: slice where all system services started by systemd are found.
 - `user.slice`: the place of all user processes and services started on behalf of the user.
 
