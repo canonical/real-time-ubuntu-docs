@@ -7,7 +7,7 @@ In other words excluding CPUs from use by general processes.
 This is called *shielding*, as it shields the CPU from being assigned work by the scheduler.
 
 ```{warning}
-Managing cpusets on Ubuntu 21.10 (Impish Indri) and later is no longer possible with the [cset][cset_manpage] utility. This is because `cset` utilizes cgroups v1 which is no longer supported on Ubuntu.
+Managing cpusets on Ubuntu 21.10 (Impish Indri) and later is not possible with the [cset][cset_manpage] utility. This is because `cset` utilizes cgroups v1 which is no longer supported on Ubuntu.
 ```
 
 There are many ways to setup cpusets, either by manually modifying the cgroup-v2 filesystem, or using tools like [cgcreate][manpage_cgcreate], [cgexec][manpage_cgexec] and [cgclassify][manpage_cgclassify].
