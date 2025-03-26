@@ -8,7 +8,7 @@ Managing cpusets on Ubuntu 21.10 (Impish Indri) and later is no longer possible 
 
 There are many ways to setup cpusets, either by manually modifying the cgroup-v2 filesystem, or using tools like [cgcreate][manpage_cgcreate], [cgexec][manpage_cgexec] and [cgclassify][manpage_cgclassify].
 
-The most recommended way of doing this, is by using a higher level tool, on Ubuntu, this tool is the [systemd][systemd.io] init system.
+On Ubuntu, cgroups are managed at a higher level by [systemd][systemd.io]. It is recommended to use this tool to configure cgroups, rather than doing it manually at a lower level.
 
 ## Runtime shielding
 
