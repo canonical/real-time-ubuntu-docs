@@ -141,7 +141,7 @@ Then add the `AllowedCPUs` property to the configuration of this scope:
 AllowedCPUs=0-10
 ```
 
-So, create the files:
+Similarly, create these two files for the remaining default slices:
 
 - `/etc/systemd/system/system.slice.d/50-cpu-shielding.conf`
 - `/etc/systemd/system/user.slice.d/50-cpu-shielding.conf`
