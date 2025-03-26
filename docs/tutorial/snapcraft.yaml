@@ -1,0 +1,14 @@
+name: rt-app
+base: core24
+version: '0.1'
+summary: Demo real time apps
+description: |
+  snap package with some demo real time applications
+
+grade: stable
+confinement: devmode
+
+parts:
+  src:
+    plugin: make
+    source: .
