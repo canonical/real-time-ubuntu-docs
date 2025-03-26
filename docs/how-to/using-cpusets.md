@@ -11,8 +11,8 @@ Managing cpusets on Ubuntu 21.10 (Impish Indri) and later is no longer possible 
 ```
 
 There are many ways to setup cpusets, either by manually modifying the cgroup-v2 filesystem, or using tools like [cgcreate][manpage_cgcreate], [cgexec][manpage_cgexec] and [cgclassify][manpage_cgclassify].
-On Ubuntu, cgroups are managed at a higher level by [systemd][systemd.io].
-It is recommended to use this tool to configure cgroups, rather than doing it manually at a lower level.
+
+On Ubuntu, cgroups are managed at a higher level by [systemd][systemd.io]. It is recommended to use this tool to configure cgroups, rather than doing it manually at a lower level.
 
 ## Runtime shielding
 
@@ -55,6 +55,13 @@ $ systemctl show init.scope -p AllowedCPUs
 AllowedCPUs=0-10
 ```
 
+After setting up the CPU shielding, it is possible to check with `nproc` that the online CPUs have changed:
+
+```console
+$ nproc
+11
+```
+
 Finally, we run our application inside a new systemd scope and assign it to the property defined earlier.
 This is done by setting the scope `Slice` property to `custom-workload.slice`, ensuring that the application runs within the resource limits and constraints defined by that slice:
 
@@ -71,13 +78,6 @@ $ sudo su
 #
 # systemd-run --scope -p Slice=custom-workload.slice /home/ubuntu/my-app
 Running as unit: run-rf31d22d4d34d4fdfbe0e87edf82e7621.scope; invocation ID: 91facec7c7a24c089a29d7a0080b4f1b
-```
-
-After setting up the CPU shielding, it is possible to check with `nproc` that the online CPUs have changed:
-
-```console
-$ nproc
-11
 ```
 
 We can confirm that our application is running on the designated cpus by checking with [ps][ps_manpage] command:
