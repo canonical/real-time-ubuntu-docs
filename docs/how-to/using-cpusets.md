@@ -138,34 +138,21 @@ Prefixing files with numbers ensures a predictable loading sequence.
 This way, a file like `50-cpu-shielding.conf` will override settings from `10-defaults.conf` but can still be overridden by a file named `60-custom.conf`.
 ```
 
-Create the configuration file for the init scope:
-
-- `/etc/systemd/system/init.scope.d/50-cpu-shielding.conf`
-
-
-Then add the `AllowedCPUs` property to the configuration of this scope:
+Now that the directories are available, create the following three configuration files:
+- `/etc/systemd/system/init.scope.d/50-cpu-shielding.conf` for the init scope with the following content:
 ```
 [Scope]
 AllowedCPUs=0-10
 ```
 
-Similarly, create these two files for the remaining default slices:
-
-- `/etc/systemd/system/system.slice.d/50-cpu-shielding.conf`
-- `/etc/systemd/system/user.slice.d/50-cpu-shielding.conf`
-
-In both of them add the `AllowedCPUs` property:
-
+- `/etc/systemd/system/system.slice.d/50-cpu-shielding.conf` and `/etc/systemd/system/user.slice.d/50-cpu-shielding.conf` with the following:
 ```
 [Slice]
 AllowedCPUs=0-10
 ```
 
-Then create a new config file for the slice that will be used by our workload:
+Finally, create a new config file for the slice that will be used by our workload, with remaining CPU. Add the following to `/etc/systemd/system/custom-workload.slice`:
 
-- `/etc/systemd/system/custom-workload.slice`
-
-Finally, add the remaining cpu to the configuration of this slice:
 ```
 [Slice]
 AllowedCPUs=11
