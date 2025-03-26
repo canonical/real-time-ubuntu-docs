@@ -153,7 +153,7 @@ In both of them add the `AllowedCPUs` property:
 AllowedCPUs=0-10
 ```
 
-Then, we create a slice for the our workload, create the file:
+Then create a new config file for the slice that will be used by our workload:
 
 - `/etc/systemd/system/custom-workload.slice`
 
