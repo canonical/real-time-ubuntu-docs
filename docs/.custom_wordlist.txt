@@ -162,6 +162,7 @@ SMIs
 smp
 SMT
 snapcraft
+snapd
 softirq
 softIRQ
 softIRQs
