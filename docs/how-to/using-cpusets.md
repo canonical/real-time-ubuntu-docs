@@ -168,7 +168,7 @@ After reloading the systemd daemon, the changes will take effect:
 sudo systemctl daemon-reload
 ```
 
-Afterwards, is possible to check the values using `systemctl show` in the same way as before.
+Afterwards, it is possible to check the values using `systemctl show` in the same way as before.
 
 ### Creating a Service
 
