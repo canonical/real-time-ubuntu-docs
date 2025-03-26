@@ -1,7 +1,7 @@
 .PHONY: all install uninstall clean
 
 CC := gcc
-CFLAGS := -Wall -Wextra -O2
+CFLAGS := -Wall -Wextra -Wno-unused-result -O2
 TARGETS := cfs edf fifo lock thread-affinity
 PREFIX ?= 
 BINDIR := $(PREFIX)/bin
