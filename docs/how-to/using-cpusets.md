@@ -212,10 +212,6 @@ $ ps -eLo psr,comm,args,ppid,pid, | grep my-app
  11 my-app     /bin/bash /home/ubuntu/my-a       1    2417
 ```
 
-<!-- ```bash -->
-<!-- # for dir in /proc/[0-9]*; do awk '{print $39}' $dir/stat; done  | grep 11 -->
-<!-- ``` -->
-
 % Links
 
 [ps_manpage]: https://manpages.ubuntu.com/manpages/noble/man1/ps.1.html
