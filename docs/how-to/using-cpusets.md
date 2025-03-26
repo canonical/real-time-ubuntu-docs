@@ -87,7 +87,7 @@ $ ps -eLo psr,comm,args,pid, | grep my-app
  11  my-app    /bin/bash /home/ubuntu/my-a    1590
 ```
 
-It's also possible to confirm using `ps` that our application is running isolated on the `cpu 11`:
+It's also possible to confirm using `ps` that our application is running isolated on CPU 11:
 
 ```console
 $ ps -eLo psr,comm,args,ppid,pid, | grep '^ 11'
