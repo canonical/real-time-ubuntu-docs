@@ -112,7 +112,7 @@ Our application `my-app` with PID `1590` is listed.
 We also see a `sleep` which has a parent process ID (PPID) equal to our application.
 This is because the application `my-app` consists of a bash script with a sleep command.
 The other processes listed here are kernel threads.
-`cpusets` doesn't currently isolate CPUs from running kthreads.
+Cpusets doesn't currently isolate CPUs from running kthreads.
 
 ## Persistent shielding
 
