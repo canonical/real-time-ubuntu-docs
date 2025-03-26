@@ -2,6 +2,10 @@
 
 [Cpusets][kdocs_cpusets_v2] is a kernel feature that allow users to assign specific CPUs and memory nodes to a set of tasks, enabling fine-grained control over resource allocation.
 
+It also allows to exclude certain CPUs from the system scheduler.
+In other words excluding CPUs from use by general processes.
+This is called *shielding*, as it shields the CPU from being assigned work by the scheduler.
+
 ```{warning}
 Managing cpusets on Ubuntu 21.10 (Impish Indri) and later is no longer possible with the [cset][cset_manpage] utility. This is because `cset` utilizes cgroups v1 which is no longer supported on Ubuntu.
 ```
