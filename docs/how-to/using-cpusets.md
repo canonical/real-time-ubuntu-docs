@@ -26,7 +26,7 @@ The machine used in this example has 12 cores, but you should adjust the CPU lis
 
 It’s often useful to first test shield isolation at runtime to verify and debug its functionality before applying it persistently.
 
-First, it's necessary to define a slice, let's arbitrarily call it `custom-workload.slice`.
+First, it's necessary to define a [slice][systemd_slice], let's arbitrarily call it `custom-workload.slice`.
 Internally, `systemd` will translate this slice to a cgroup node on the unified hierarchy of cgroup-v2.
 The application to be shielded will belong to this `systemd` slice.
 On this property we define the CPUs that should be isolated from general execution.
@@ -239,3 +239,5 @@ $ ps -eLo psr,comm,args,ppid,pid, | grep my-app
 [kcommit_cpuset]: https://github.com/torvalds/linux/commit/f28e22441f353aa2c954a1b1e29144f8841f1e8a
 
 [systemd.special]: https://manpages.ubuntu.com/manpages/noble/man7/systemd.special.7.html
+
+[systemd_slice]: https://www.freedesktop.org/software/systemd/man/latest/systemd.slice.html
