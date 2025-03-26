@@ -171,6 +171,7 @@ SPID
 spinlock
 spinlocks
 Spinlocks
+squashfs
 stress-ng
 stressor
 subdirectory
