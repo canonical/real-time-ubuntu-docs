@@ -55,7 +55,7 @@ $ systemctl show init.scope -p AllowedCPUs
 AllowedCPUs=0-10
 ```
 
-After setting up the CPU shielding, it is possible to check with `nproc` that the online CPUs have changed:
+After setting up the CPU shielding, it is possible to check with `nproc` that the total online CPUs have changed from 12 to 11:
 
 ```console
 $ nproc
