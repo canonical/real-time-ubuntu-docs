@@ -201,7 +201,7 @@ The important part here is the `Slice=custom-workload.slice` which points our se
 
 The service file should be created inside `/etc/systemd/system`.
 
-Now we: reload the daemon, start and enable the service:
+Now, reload the daemon, start and enable the service:
 
 ```bash
 sudo systemctl daemon-reload
