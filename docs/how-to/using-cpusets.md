@@ -6,7 +6,7 @@
 Managing cpusets on Ubuntu 21.10 (Impish Indri) and later is no longer possible with the [cset][cset_manpage] utility. This is because `cset` utilizes cgroups v1 which is no longer supported on Ubuntu.
 ```
 
-There are many ways to setup cpusets, either by manually playing with the cgroup-v2 filesystem, or using tools like [cgcreate][manpage_cgcreate], [cgexec][manpage_cgexec] and [cgclassify][manpage_cgclassify].
+There are many ways to setup cpusets, either by manually modifying the cgroup-v2 filesystem, or using tools like [cgcreate][manpage_cgcreate], [cgexec][manpage_cgexec] and [cgclassify][manpage_cgclassify].
 
 The most recommended way of doing this, is by using a higher level tool, on Ubuntu, this tool is the [systemd][systemd.io] init system.
 
