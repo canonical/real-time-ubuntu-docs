@@ -25,8 +25,7 @@ It’s often useful to first test shield isolation at runtime to verify and debu
 First, it's necessary to define a slice, let's arbitrarily call it `custom-workload.slice`.
 Internally, `systemd` will translate this slice to a cgroup node on the unified hierarchy of cgroup-v2.
 The application to be shielded will belong to this `systemd` slice.
-On this property we're going to define the CPUs that are going to be isolated from general execution.
-
+On this property we define the CPUs that should be isolated from general execution.
 ```bash
 sudo systemctl set-property --runtime custom-workload.slice AllowedCPUs=11
 ```
