@@ -183,19 +183,11 @@ Here is a simple example of how this service could look like:
 ```
 [Unit]
 Description=app demo service
-After=network.target
-StartLimitIntervalSec=0
 
 [Service]
 Slice=custom-workload.slice
-Type=simple
-Restart=always
-RestartSec=1
-User=root
 ExecStart=/home/ubuntu/my-app
 
-[Install]
-WantedBy=multi-user.target
 ```
 The important part here is the `Slice=custom-workload.slice` which points our service to the `custom-workload.slice` that we created which has access to the isolated cpus.
 
