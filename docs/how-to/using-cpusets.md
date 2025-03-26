@@ -59,9 +59,8 @@ systemd-run --scope -p Slice=custom-workload.slice <my-app arg1 ...>
 ```
 
 ```{tip}
-Is useful to run the systemd scope from a root shell session (with `sudo su`).
-To make sure that the application will run with proper root privileges.
-```
+It is useful to run the systemd scope from a root shell session (using `sudo su`).
+This makes sure that the application will run with proper root privileges.
 
 ```console
 $ sudo su
