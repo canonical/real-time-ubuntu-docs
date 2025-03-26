@@ -8,14 +8,6 @@ This step describes how to package your real-time app as a [snap package][snapcr
 Some requirements are needed when building snap packages:
 
 * Confirm that you have [snapd][snapd] installed by running `snap version`:
-  ```console
-  $ snap version
-    snap    2.67.1+24.04
-    snapd   2.67.1+24.04
-    series  16
-    ubuntu  24.04
-    kernel  6.11.0-19-generic
-  ```
   If you're using Ubuntu, it must come pre-installed already. 
   Otherwise, refer to the [snapd installation docs][install_snapd].
 
