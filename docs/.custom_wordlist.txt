@@ -26,9 +26,8 @@ cpu
 CPUAffinity
 cpus
 CPUs
-CPUset
+Cpusets
 cpuset
-CPUsets
 cpusets
 cryptographically
 cset
