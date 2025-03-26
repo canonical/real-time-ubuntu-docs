@@ -106,7 +106,8 @@ $ ps -eLo psr,comm,args,ppid,pid, | grep '^ 11'
 Our application `my-app` with PID `1590` is listed.
 We also see a `sleep` which has a parent process ID (PPID) equal to our application.
 This is because the application `my-app` consists of a bash script with a sleep command.
-The other processes showing up there are kernel threads, unfortunately, cpusets doesn't isolate cpus from running kthreads yet.
+The other processes listed here are kernel threads.
+`cpusets` doesn't currently isolate CPUs from running kthreads.
 
 ## Persistent shielding
 
