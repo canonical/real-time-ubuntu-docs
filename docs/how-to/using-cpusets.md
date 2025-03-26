@@ -69,7 +69,7 @@ $ sudo su
 Running as unit: run-rf31d22d4d34d4fdfbe0e87edf82e7621.scope; invocation ID: 91facec7c7a24c089a29d7a0080b4f1b
 ```
 
-After setting up the cpu shielding, it is possible to check with `nproc` that the online CPUs have changed:
+After setting up the CPU shielding, it is possible to check with `nproc` that the online CPUs have changed:
 
 ```console
 $ nproc
