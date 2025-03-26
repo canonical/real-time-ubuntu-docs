@@ -80,7 +80,7 @@ $ sudo su
 Running as unit: run-rf31d22d4d34d4fdfbe0e87edf82e7621.scope; invocation ID: 91facec7c7a24c089a29d7a0080b4f1b
 ```
 
-We can confirm that our application is running on the designated cpus by checking with [ps][ps_manpage] command:
+We can confirm that our application is running on CPU 11 by checking with [ps][ps_manpage] command:
 
 ```console
 $ ps -eLo psr,comm,args,pid, | grep my-app
@@ -201,7 +201,7 @@ sudo systemctl start my-app.service
 sudo systemctl enable my-app.service
 ```
 
-Then it's possible to check that our application is running on the designated CPU:
+Then it's possible to check that our application is running on CPU 11:
 
 ```bash
 $ ps -eLo psr,comm,args,ppid,pid, | grep my-app
