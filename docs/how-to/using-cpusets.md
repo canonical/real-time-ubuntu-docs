@@ -199,6 +199,18 @@ $ ps -eLo psr,comm,args,ppid,pid, | grep my-app
  11 my-app     /bin/bash /home/ubuntu/my-a       1    2417
 ```
 
+In the service report, you can verify that the service is running inside the designated cgroup created by the `custom-workload` slice.
+
+```console
+$ systemctl status my-app.service
+● my-app.service - app demo service
+   ...
+     CGroup: /custom.slice/custom-workload.slice/my-app.service
+             ├─ 855 /bin/bash /home/ubuntu/my-app
+             └─1323 sleep 5
+   ...
+```
+
 % Links
 
 [ps_manpage]: https://manpages.ubuntu.com/manpages/noble/man1/ps.1.html
