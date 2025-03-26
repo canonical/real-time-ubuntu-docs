@@ -195,7 +195,7 @@ WantedBy=multi-user.target
 ```
 The important part here is the `Slice=custom-workload.slice` which points our service to the `custom-workload.slice` that we created which has access to the isolated cpus.
 
-So I'm going to create a file on `/etc/systemd/system/my-app.service`
+The service file should be created inside `/etc/systemd/system`.
 
 Now we: reload the daemon, start and enable the service:
 
