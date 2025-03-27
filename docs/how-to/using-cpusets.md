@@ -1,6 +1,6 @@
 # Isolating CPUs from general execution with cpusets
 
-[Cpusets][kdocs_cpusets_v2] is a kernel feature that allow users to assign specific CPUs and memory nodes to a set of tasks, enabling fine-grained control over resource allocation.
+[Cpusets][kdocs_cpusets_v2] is a kernel feature that allows users to assign specific CPUs and memory nodes to a set of tasks, enabling fine-grained control over resource allocation.
 
 It also allows to exclude certain CPUs from the system scheduler.
 In other words excluding CPUs from use by general processes.
