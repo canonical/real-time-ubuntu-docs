@@ -151,7 +151,7 @@ AllowedCPUs=0-10
 AllowedCPUs=0-10
 ```
 
-Finally, create a new config file for the slice that will be used by our workload, with remaining CPU. Add the following to `/etc/systemd/system/custom-workload.slice`:
+Finally, create a new config file for the slice that will be used by our workload, with the remaining CPU. Add the following to `/etc/systemd/system/custom-workload.slice`:
 
 ```
 [Slice]
