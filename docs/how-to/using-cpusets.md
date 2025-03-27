@@ -1,10 +1,10 @@
-# Shielding CPUs from general execution with cpusets
+# Isolating CPUs from general execution with cpusets
 
 [Cpusets][kdocs_cpusets_v2] is a kernel feature that allow users to assign specific CPUs and memory nodes to a set of tasks, enabling fine-grained control over resource allocation.
 
 It also allows to exclude certain CPUs from the system scheduler.
 In other words excluding CPUs from use by general processes.
-This is called *shielding*, as it shields the CPU from being assigned work by the scheduler.
+This is called *cpu isolation*, as it **isolates** the CPU from being assigned work by the scheduler.
 
 ```{warning}
 Managing cpusets on Ubuntu 21.10 (Impish Indri) and later is not possible with the [cset][cset_manpage] utility. This is because `cset` utilizes cgroups v1 which is no longer supported on Ubuntu.
@@ -14,21 +14,21 @@ There are many ways to setup cpusets, either by manually modifying the cgroup-v2
 
 On Ubuntu, cgroups are managed at a higher level by [systemd][systemd.io]. It is recommended to use this tool to configure cgroups, rather than doing it manually at a lower level.
 
-## Runtime shielding
+## Runtime Isolation
 
-Shielding settings primarily depend on the number of available CPU cores.  
-Before doing the shielding, let's check the number of online cpus for further comparison:
+Isolation settings primarily depend on the number of available CPU cores.
+Before doing the isolation, let's check the number of online cpus for further comparison:
 ```console
 $ nproc
 12
 ```
 The machine used in this example has 12 cores, but you should adjust the CPU list based on your specific use case.
 
-It’s often useful to first test shield isolation at runtime to verify and debug its functionality before applying it persistently.
+It’s often useful to first test the isolation at runtime to verify and debug its functionality before applying it persistently.
 
 First, it's necessary to define a [slice][systemd_slice], let's arbitrarily call it `custom-workload.slice`.
 Internally, `systemd` will translate this slice to a cgroup node on the unified hierarchy of cgroup-v2.
-The application to be shielded will belong to this `systemd` slice.
+The application to be isolated will belong to this `systemd` slice.
 On this property we define the CPUs that should be isolated from general execution.
 ```bash
 sudo systemctl set-property --runtime custom-workload.slice AllowedCPUs=11
@@ -55,7 +55,7 @@ $ systemctl show init.scope -p AllowedCPUs
 AllowedCPUs=0-10
 ```
 
-After setting up the CPU shielding, it is possible to check with `nproc` that the total online CPUs have changed from 12 to 11:
+After setting up the CPU isolation, it is possible to check with `nproc` that the total online CPUs have changed from 12 to 11:
 
 ```console
 $ nproc
@@ -114,10 +114,10 @@ This is because the application `my-app` consists of a bash script with a sleep 
 The other processes listed here are kernel threads.
 
 ```{note}
-At the time of writing (Kernel v6.8.0), [cpusets' implementation][kcommit_cpuset] does not shield CPUs from running kernel threads.
+At the time of writing (Kernel v6.8.0), [cpusets' implementation][kcommit_cpuset] does not isolate CPUs from running kernel threads.
 ```
 
-## Persistent shielding
+## Persistent isolation
 
 The configuration set via the `systemctl set-property` command do not persist across reboots.
 To make them persistent, we need to add them as configuration files under the `/etc/systemd/system` directory.
@@ -135,17 +135,17 @@ Then we create the files for the `init.scope`, `system.slice` and `user.slice`:
 ```{note}
 We will prefix the name of the configuration files with `50-` because systemd processes the files in lexicographical order (sorted alphabetically).
 Prefixing files with numbers ensures a predictable loading sequence.
-This way, a file like `50-cpu-shielding.conf` will override settings from `10-defaults.conf` but can still be overridden by a file named `60-custom.conf`.
+This way, a file like `50-cpu-isolation.conf` will override settings from `10-defaults.conf` but can still be overridden by a file named `60-custom.conf`.
 ```
 
 Now that the directories are available, create the following three configuration files:
-- `/etc/systemd/system/init.scope.d/50-cpu-shielding.conf` for the init scope with the following content:
+- `/etc/systemd/system/init.scope.d/50-cpu-isolation.conf` for the init scope with the following content:
 ```
 [Scope]
 AllowedCPUs=0-10
 ```
 
-- `/etc/systemd/system/system.slice.d/50-cpu-shielding.conf` and `/etc/systemd/system/user.slice.d/50-cpu-shielding.conf` with the following:
+- `/etc/systemd/system/system.slice.d/50-cpu-isolation.conf` and `/etc/systemd/system/user.slice.d/50-cpu-isolation.conf` with the following:
 ```
 [Slice]
 AllowedCPUs=0-10
@@ -167,7 +167,7 @@ Afterwards, it is possible to check the values using `systemctl show` in the sam
 
 ### Creating a Service
 
-A reliable and reproducible way to apply CPU shielding is by creating a systemd service unit.
+A reliable and reproducible way to apply CPU isolation is by creating a systemd service unit.
 This allows you to assign the cpuset to the service, ensuring the application runs inside the isolated `custom-workload.slice` automatically on every reboot, without any manual intervention.
 
 Here is a simple example of how this service could look like:
