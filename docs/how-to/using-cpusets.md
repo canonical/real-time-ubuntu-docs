@@ -123,7 +123,7 @@ The configuration set via the `systemctl set-property` command do not persist ac
 To make them persistent, we need to add them as configuration files under the `/etc/systemd/system` directory.
 
 Configurations need to be in subdirectories, but these do not exist by default.
-They can be created with these commands:
+Create these subdirectories by running:
 
 ```bash
 sudo mkdir -p /etc/systemd/system/init.scope.d/
