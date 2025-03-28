@@ -30,9 +30,6 @@ Before doing the isolation, check the number of online cpus for further comparis
 
 12
 ```
-The machine used in this example has 12 cores, but you should adjust the CPU list based on your specific use case.
-
-It’s often useful to first test the isolation at runtime to verify and debug its functionality before applying it persistently.
 
 First, define a [slice][systemd_slice] and the CPU(s) that should be isolated from general execution -- the application to be isolated will belong to this `systemd` slice.
 Internally, `systemd` will translate this slice to a cgroup node on the unified hierarchy of cgroup-v2.
@@ -142,6 +139,12 @@ At the time of writing (Kernel v6.8.0), [cpusets' implementation][kcommit_cpuset
 ```
 
 ## Configure persistent CPU isolation
+
+```{warning}
+The machine used in this example has 12 cores, but you should adjust the CPU list based on your specific use case.
+
+It’s often useful to first test the isolation at runtime to verify and debug its functionality before applying it persistently.
+```
 
 The configuration set via the `systemctl set-property` command does not persist across reboots.
 To make them persistent, add them as configuration files under the {file}`/etc/systemd/system` directory.
