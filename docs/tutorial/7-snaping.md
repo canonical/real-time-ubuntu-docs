@@ -25,7 +25,7 @@ $ snapcraft init
 Go to https://docs.snapcraft.io/the-snapcraft-format/8337 for more information about the snapcraft.yaml format.
 Successfully initialised project.
 ```
-This command creates a snap directory containing the snapcraft.yaml file.
+This command creates a `snap` directory containing the `snapcraft.yaml` file.
 
 The output provides a link to the [build configuration][snapcraft_build_cfg] documentation.
 
