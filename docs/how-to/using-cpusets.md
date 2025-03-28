@@ -143,7 +143,7 @@ At the time of writing (Kernel v6.8.0), [cpusets' implementation][kcommit_cpuset
 ```{warning}
 The machine used in this example has 12 cores, but you should adjust the CPU list based on your specific use case.
 
-It’s often useful to first test the isolation at runtime to verify and debug its functionality before applying it persistently.
+**Disclaimer:** By following the next steps, the user is expected to have already tested and debug the settings at runtime and determined a configuration that best fits their needs.
 ```
 
 The configuration set via the `systemctl set-property` command does not persist across reboots.
