@@ -3,6 +3,10 @@
 [Cpusets][kdocs_cpusets_v2] is a kernel feature that allows users to assign specific CPUs and memory nodes to a set of tasks, enabling fine-grained control over resource allocation.
 
 It also allows to exclude certain CPUs from the system scheduler.
+Cpusets are particularly useful for Real-Time Ubuntu, as they enable the isolation of CPUs for time-sensitive workloads.
+By creating a cpuset partition without load balancing, cpusets prevent latency jitters caused by periodic load balancing to exceed the desired
+latency limit of a certain workload.
+This ensures that real-time tasks maintain predictable execution times, which is essential for workloads requiring low latency and precise, time-critical responses.
 In other words excluding CPUs from use by general processes.
 This is called *cpu isolation*, as it **isolates** the CPU from being assigned work by the scheduler.
 
