@@ -120,7 +120,7 @@ At the time of writing (Kernel v6.8.0), [cpusets' implementation][kcommit_cpuset
 ## Configure persistent CPU isolation
 
 The configuration set via the `systemctl set-property` command do not persist across reboots.
-To make them persistent, we need to add them as configuration files under the `/etc/systemd/system` directory.
+To make them persistent, add them as configuration files under the {file}`/etc/systemd/system` directory.
 
 Configurations need to be in subdirectories, but these do not exist by default.
 Create these subdirectories by running:
