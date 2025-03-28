@@ -45,7 +45,7 @@ sudo systemctl set-property --runtime user.slice AllowedCPUs=0-10
 - `system.slice`: slice where all system services started by systemd are found.
 - `user.slice`: the place of all user processes and services started on behalf of the user.
 
-It's possible to check that the properties are correctly set by fetching their values with `systemctl show`, providing the unit and the desired property (with parameter `-p`). For example:
+Check that the properties are correctly set by fetching their values with `systemctl show`, providing the unit and the desired property (with parameter `-p`).
 
 ```console
 $ systemctl show custom-workload.slice -p AllowedCPUs
