@@ -55,7 +55,7 @@ $ systemctl show init.scope -p AllowedCPUs
 AllowedCPUs=0-10
 ```
 
-After setting up the CPU isolation, it is possible to check with `nproc` that the total online CPUs have changed from 12 to 11:
+After setting up the CPU isolation, check with `nproc` that the total online CPUs have changed from 12 to 11:
 
 ```console
 $ nproc
