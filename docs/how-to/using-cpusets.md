@@ -81,7 +81,7 @@ $ sudo su
 Running as unit: run-rf31d22d4d34d4fdfbe0e87edf82e7621.scope; invocation ID: 91facec7c7a24c089a29d7a0080b4f1b
 ```
 
-We can confirm that our application is running on CPU 11 by checking with [ps][ps_manpage] command:
+Confirm that your application is running on CPU 11 by checking with [ps][ps_manpage] command:
 
 ```console
 $ ps -eLo psr,comm,args,pid, | grep my-app
