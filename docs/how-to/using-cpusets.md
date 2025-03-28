@@ -1,4 +1,4 @@
-# Isolating CPUs from general execution with cpusets
+# How to isolate CPUs from general execution with cpusets
 
 [Cpusets][kdocs_cpusets_v2] is a kernel feature that allows users to assign specific CPUs and memory nodes to a set of tasks, enabling fine-grained control over resource allocation.
 
