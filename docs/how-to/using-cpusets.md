@@ -17,7 +17,7 @@ On Ubuntu, cgroups are managed at a higher level by [systemd][systemd.io]. It is
 ## Configure runtime CPU isolation
 
 Isolation settings primarily depend on the number of available CPU cores.
-Before doing the isolation, let's check the number of online cpus for further comparison:
+Before doing the isolation, check the number of online cpus for further comparison:
 ```console
 $ nproc
 12
