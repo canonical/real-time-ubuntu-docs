@@ -22,8 +22,12 @@ On Ubuntu, cgroups are managed at a higher level by [systemd][systemd.io]. It is
 
 Isolation settings primarily depend on the number of available CPU cores.
 Before doing the isolation, check the number of online cpus for further comparison:
-```console
-$ nproc
+```{terminal}
+   :input: nproc
+   :user: ubuntu
+   :host: ubuntu
+   :dir: ~
+
 12
 ```
 The machine used in this example has 12 cores, but you should adjust the CPU list based on your specific use case.
@@ -51,18 +55,25 @@ sudo systemctl set-property --runtime user.slice AllowedCPUs=0-10
 
 Check that the properties are correctly set by fetching their values with `systemctl show`, providing the unit and the desired property (with parameter `-p`).
 
-```console
-$ systemctl show custom-workload.slice -p AllowedCPUs
-AllowedCPUs=11
+```{terminal}
+   :user: ubuntu
+   :host: ubuntu
+   :dir: ~
 
-$ systemctl show init.scope -p AllowedCPUs
+:input: systemctl show custom-workload.slice -p AllowedCPUs
+AllowedCPUs=11
+:input: systemctl show init.scope -p AllowedCPUs
 AllowedCPUs=0-10
 ```
 
 After setting up the CPU isolation, check with `nproc` that the total online CPUs have changed from 12 to 11:
 
-```console
-$ nproc
+```{terminal}
+   :input: nproc
+   :user: ubuntu
+   :host: ubuntu
+   :dir: ~
+
 11
 ```
 
@@ -78,38 +89,48 @@ It is useful to run the `systemd` scope from a root shell session (using `sudo s
 This makes sure that the application will run with proper root privileges.
 ```
 
-```console
-$ sudo su
-#
-# systemd-run --scope -p Slice=custom-workload.slice /home/ubuntu/my-app
+```{terminal}
+   :input: systemd-run --scope -p Slice=custom-workload.slice /home/ubuntu/my-app
+   :user: root
+   :host: ubuntu
+   :dir: /home/ubuntu
+
 Running as unit: run-rf31d22d4d34d4fdfbe0e87edf82e7621.scope; invocation ID: 91facec7c7a24c089a29d7a0080b4f1b
 ```
 
 Confirm that your application is running on CPU 11 by checking with [ps][ps_manpage] command:
 
-```console
-$ ps -eLo psr,comm,args,pid, | grep my-app
- 11  my-app    /bin/bash /home/ubuntu/my-a    1590
+```{terminal}
+   :input: ps -eLo psr,comm,args,pid, | grep my-app
+   :user: ubuntu
+   :host: ubuntu
+   :dir: ~
+
+11  my-app    /bin/bash /home/ubuntu/my-a    1590
 ```
 
 It's also possible to confirm using `ps` that your application is running isolated on CPU 11:
 
-```console
-$ ps -eLo psr,comm,args,ppid,pid, | grep '^ 11'
- 11 cpuhp/11        [cpuhp/11]                        2      81
- 11 idle_inject/11  [idle_inject/11]                  2      82
- 11 migration/11    [migration/11]                    2      83
- 11 ksoftirqd/11    [ksoftirqd/11]                    2      84
- 11 kworker/11:0H-e [kworker/11:0H-events_highp       2      86
- 11 ksmd            [ksmd]                            2      96
- 11 kworker/R-devfr [kworker/R-devfr]                 2     108
- 11 kworker/R-scsi_ [kworker/R-scsi_]                 2     120
- 11 kworker/u25:0   [kworker/u25:0]                   2     140
- 11 kworker/11:1-mm [kworker/11:1-mm_percpu_wq]       2     188
- 11 kworker/11:1H-k [kworker/11:1H-kblockd]           2     222
- 11 kworker/11:3-cg [kworker/11:3-cgroup_destro       2     441
- 11 my-app          /bin/bash /home/ubuntu/my-a    1576    1590
- 11 sleep           sleep 5                        1590    1761
+```{terminal}
+   :input: ps -eLo psr,comm,args,ppid,pid, | grep '^ 11'
+   :user: ubuntu
+   :host: ubuntu
+   :dir: ~
+
+11 cpuhp/11        [cpuhp/11]                        2      81
+11 idle_inject/11  [idle_inject/11]                  2      82
+11 migration/11    [migration/11]                    2      83
+11 ksoftirqd/11    [ksoftirqd/11]                    2      84
+11 kworker/11:0H-e [kworker/11:0H-events_highp       2      86
+11 ksmd            [ksmd]                            2      96
+11 kworker/R-devfr [kworker/R-devfr]                 2     108
+11 kworker/R-scsi_ [kworker/R-scsi_]                 2     120
+11 kworker/u25:0   [kworker/u25:0]                   2     140
+11 kworker/11:1-mm [kworker/11:1-mm_percpu_wq]       2     188
+11 kworker/11:1H-k [kworker/11:1H-kblockd]           2     222
+11 kworker/11:3-cg [kworker/11:3-cgroup_destro       2     441
+11 my-app          /bin/bash /home/ubuntu/my-a    1576    1590
+11 sleep           sleep 5                        1590    1761
 ```
 
 The application `my-app` with PID `1590` is listed.
@@ -197,15 +218,23 @@ sudo systemctl enable my-app.service
 
 Then it's possible to check that our application is running on CPU 11:
 
-```bash
-$ ps -eLo psr,comm,args,ppid,pid, | grep my-app
+```{terminal}
+   :input: ps -eLo psr,comm,args,pid, | grep my-app
+   :user: ubuntu
+   :host: ubuntu
+   :dir: ~
+
  11 my-app     /bin/bash /home/ubuntu/my-a       1    2417
 ```
 
 In the service report, you can verify that the service is running inside the designated cgroup created by the `custom-workload` slice.
 
-```console
-$ systemctl status my-app.service
+```{terminal}
+   :input: systemctl status my-app.service
+   :user: ubuntu
+   :host: ubuntu
+   :dir: ~
+
 ● my-app.service - app demo service
    ...
      CGroup: /custom.slice/custom-workload.slice/my-app.service
