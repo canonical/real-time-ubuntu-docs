@@ -177,7 +177,7 @@ Packed rt-app_0.1_amd64.snap
 ```
 
 The first time you build a snap, it may take longer because Snapcraft also downloads and installs a [build provider][build_provider] (as seen in the logs).
-It also provisions a [LXD container][lxd_container].
+It also provisions an [LXD container][lxd_container].
 
 The build generates an artifact named `rt-app_0.1_amd64.snap`.
 Each part of this name has a meaning:
@@ -257,7 +257,7 @@ apps:
 
 After defining the apps, we can rebuild the Snap by running `snapcraft -v` again.
 The second build is faster than the first one because the necessary dependencies are already available.
-As well the necessary resources already created by the build provider (which is a lxd container in this case).
+Also the necessary resources are already created by the build provider (which is a lxd container in this case).
 
 We can then install the Snap using:
 
@@ -341,7 +341,7 @@ INFO: $ sudo journalctl --output=short --follow --all | sudo snappy-debug
 ```
 
 To ensure no log messages are lost, it is recommended to use the suggested `journalctl` command.
-As well running with `sudo` since accessing system logs requires privileged access:
+It needs to be run with `sudo` since accessing system logs requires privileged access:
 
 ```shell
 sudo journalctl --output=short --follow --all | sudo snappy-debug
@@ -453,8 +453,8 @@ Suggestion:
 ```
 
 We see a seccomp report, but no suggested interface to use.
-Instead a message saying to just ignore the denial report.
-This happens because there are some denials coming the security policies defined in the snap sandboxing may not affect the functionality of an application.
+Instead there is a message suggesting to just ignore the denial report.
+This happens because there are some denials coming from the security policies defined in the snap sandboxing, which potentially does not affect the functionality of an application.
 This is the case for this app.
 
 
@@ -470,8 +470,8 @@ Then:
   - Build the snap like done before with `snapcraft`.
 
   - Install it. This time, since we aren't using `devmode` anymore, it's possible to install it in a confined way.
-    But because the snap isn't being installed from a snap store, there are no assertions files.
-    This means that it's necessary to acknowledge the **dangerous** nature of it.
+    Because the snap isn't being installed from a snap store, there is no way to fully trust it.
+    It is therefore necessary to acknowledge the **dangerous** nature of it.
     So we run our install command with the `--dangerous` flag.
 
     ```console
@@ -480,15 +480,16 @@ Then:
     ```
 
   - Connect the `process-control` interface as shown before.
-    It may be already connected if during the iterations the snap wasn't uninstalled.
+    It might still be connected if the snap wasn't uninstalled during the development steps.
 
   - Run all the applications.
     You may see some logs on the `snappy-debug` terminal.
-    It's necessary to pain attention on the field `profile=` for [AppArmor][apparmor] denials and `exe="` for Seccomp denials. 
+    It's necessary to pay attention to the field `profile=` for [AppArmor][apparmor] denials and `exe="` for Seccomp denials. 
     If it says: `profile="/usr/lib/snapd/snap-confine"`, it's related to the `snap-confine` component and not about the `rt-app` snap.
-    To know more about it, consider take a look on this reference about [the snap system architecture][snap_sys_arch].
+    To learn more about this, take a look at this reference of [the snap system architecture][snap_sys_arch].
 
-Then you've finished the development of your snap, you can now change the `grade` field to `stable`, so it can be published on the store.
+You have now finished the development of your snap.
+You can now change the `grade` field to `stable`, so it can be published on the Snap Store.
 
 ### Conclusion
 
