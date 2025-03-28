@@ -6,9 +6,27 @@ description: |
   snap package with some demo real time applications
 
 grade: stable
-confinement: devmode
+confinement: strict
 
 parts:
   src:
     plugin: make
     source: .
+
+apps:
+  cfs:
+    command: bin/cfs
+
+  edf:
+    command: bin/edf
+    plugs:
+      - process-control
+
+  fifo:
+    command: bin/fifo
+
+  lock:
+    command: bin/lock
+
+  thread-affinity:
+    command: bin/thread-affinity
