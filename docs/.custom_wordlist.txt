@@ -1,6 +1,9 @@
 # Leave a blank line at the end of this file to support concatenation
 aarch
 amd
+AppArmor
+apparmor
+autotools
 benchmarking
 bh
 bitmask
@@ -19,6 +22,7 @@ cjk
 cmdline
 conf
 config
+configfs
 cpu
 CPUAffinity
 cpus
@@ -89,6 +93,7 @@ latexmk
 linux
 Livepatch
 LTS
+lxd
 mantic
 mem
 memmove
@@ -128,6 +133,7 @@ PMD
 posix
 preemptible
 proc
+procfs
 ps
 psr
 punctuations
@@ -148,10 +154,14 @@ runtimes
 rw
 rwlock
 rwsem
+sandboxed
+sandboxing
 SBCs
 sched
 scheduler's
 Schedutil
+seccomp
+Seccomp
 seqlock
 Seqlocks
 setattr
@@ -180,6 +190,7 @@ sudo
 superset
 syscall
 syscalls
+sysfs
 systemd
 tasklets
 telco
@@ -200,6 +211,7 @@ typedef
 ubuntu
 UC
 unbootable
+unsquash
 userspace
 utils
 VIRT
