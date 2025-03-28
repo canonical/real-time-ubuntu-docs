@@ -62,7 +62,7 @@ $ nproc
 11
 ```
 
-Finally, we run our application inside a new systemd scope and assign it to the property defined earlier.
+Finally, run the application inside a new `systemd` scope and assign it to the property defined earlier.
 This is done by setting the scope `Slice` property to `custom-workload.slice`, ensuring that the application runs within the resource limits and constraints defined by that slice:
 
 ```bash
