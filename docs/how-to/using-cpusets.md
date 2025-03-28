@@ -154,7 +154,7 @@ sudo mkdir -p /etc/systemd/system/init.scope.d/
 sudo mkdir -p /etc/systemd/system/system.slice.d/
 sudo mkdir -p /etc/systemd/system/user.slice.d/
 ```
-Then we create the files for the `init.scope`, `system.slice` and `user.slice`:
+Then create the files for the `init.scope`, `system.slice` and `user.slice`:
 
 ```{note}
 We will prefix the name of the configuration files with `50-` because systemd processes the files in lexicographical order (sorted alphabetically).
