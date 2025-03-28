@@ -1,36 +1,35 @@
 # Snapping your real-time app
 
 Now that we have our real-time app working, it's time to package it.
-This step describes how to package your real-time app as a [snap package][snapcraft.io].
+This section describes how to package your real-time app as a [snap package][snapcraft.io].
 
 ## Installing requirements
 
-Some requirements are needed when building snap packages:
+Some dependencies are required when building snap packages:
 
-* Confirm that you have [snapd][snapd] installed by running `snap version`:
-  If you're using Ubuntu, it must come pre-installed already. 
+- Confirm that you have [snapd][snapd] installed by running snap version:
+  If you're using Ubuntu, it should come pre-installed. 
   Otherwise, refer to the [snapd installation docs][install_snapd].
 
-* Install the [snapcraft snap][snapcraft_docs].
+- Install the [snapcraft snap][snapcraft_docs]:
   ```shell
     sudo snap install --classic snapcraft
   ```
 
 ## Packaging
 
-The first step to do when starting to create a snap is to get the default template in place, this is done by running `snapcraft init`:
+The first step in creating a snap is to generate the default template by running `snapcraft init`:
 
 ```console
 $ snapcraft init
 Go to https://docs.snapcraft.io/the-snapcraft-format/8337 for more information about the snapcraft.yaml format.
 Successfully initialised project.
 ```
-By doing so, a directory called `snap` is created with the `snapcraft.yaml` file inside of it.
+This command creates a snap directory containing the snapcraft.yaml file.
 
-The command output gives you a link that points to the [build configuration][snapcraft_build_cfg] doc.
-You may also want to take a look on the [snapcraft.yaml schema][snapcraft_yaml], it's a good reference to understand what is possible on the `snapcraft.yaml` file.
+The output provides a link to the [build configuration][snapcraft_build_cfg] documentation.
 
-Let's have a look on this `snapcraft.yaml` file:
+Let's examine the `snapcraft.yaml` file:
 
 ```yaml
 name: demo # you probably want to 'snapcraft register <name>'
@@ -51,9 +50,10 @@ parts:
     # See 'snapcraft plugins'
     plugin: nil
 ```
-To understand better what each one of those fields mean, take a look into the [snapcraft.yaml schema][snapcraft_yaml] reference.
+You may also want to review the [snapcraft.yaml schema][snapcraft_yaml].
+Which serves as a reference for understanding what is possible in the `snapcraft.yaml` file.
 
-Our work directory should look like this:
+Your working directory should now look like this:
 
 ```console
 $ tree
@@ -69,29 +69,30 @@ $ tree
 2 directories, 6 files
 ```
 
-It would be great to have a Makefile so we can build our real-time apps more easily.
-This will also help us on packaging our apps.
+To streamline the build process for our real-time apps, we should create a Makefile.
+This will also help with packaging.
 
-So let's create one:
+Let's create one:
 
 ```{literalinclude} Makefile
 :language: make
 ```
 
-We're going to make some modifications to the yaml manifest file:
+We'll also make some modifications to the YAML manifest file:
 
-- modify the name from `demo` to `rt-app`.
-- Write a nice summary for your snap as well a description of what it does.
+- Change the name from **demo** to **rt-app**.
+- Provide a meaningful summary and description of what the snap does.
 
 ### Defining the snap parts
 
 Once the Snap metadata boilerplate is in place, it's time to define the [snapcraft parts][snapcraft_parts].
-In Snaps, `parts` are the building blocks of the package, similar to a recipe's list of ingredients and the steps to prepare them.
-Since we have five `.c` source files, one might assume we need five parts.
-While that approach is possible, it's much easier to use the `Makefile` we just created.
-Since building sources with a Makefile is a common operation, Snapcraft provides [built-in plugins][snap_plugins] to simplify the process.
+In Snaps, `parts` serve as the building blocks of the package, similar to a recipe's list of ingredients and preparation steps.
 
-You can list the available plugins for your chosen [Snap base][snap_base] (defined under `base:` in `snapcraft.yaml`) by running `snapcraft plugins`:
+Since we have five `.c` source files, we might assume that we need five separate parts.
+While that approach is possible, it's much easier to leverage the Makefile we just created.
+Because compiling sources with a Makefile is common, Snapcraft provides [built-in plugins][snap_plugins] to simplify the process.
+
+To list the available plugins for your chosen [Snap base][snap_base] (as defined in the `base:` field of `snapcraft.yaml`), run `snapcraft plugins`:
 
 ```console
 $ snapcraft plugins
@@ -118,18 +119,17 @@ conda
 flutter
 matter-sdk
 ```
-
-Since we build our `C` code using a `Makefile`, we can use the [make plugin][make_plugin].
+Since we build our `C` code using a Makefile, we can use the [make plugin][make_plugin].
 
 ```{tip}
-The make plugin relies on the Makefile had the `DESTDIR` variable as well on the possibility of that on to be overwritten.
-Since it uses it to correctly place the destination targets inside the snap squashfs file.
+The make plugin relies on the `DESTDIR` variable being available and configurable in the Makefile.
+It uses this variable to correctly place the built files inside the snap's SquashFS file.
 ```
 
-We're also going to rename our part to something more meaningful, like `src`.
-We need also to define the `source` from where the snapcraft tool will fetch the code.
-This could be from a remote git repository as well from the local files in the directory.
-Since we want all our `.c` files to be built into our realtime apps, our source will be defined as `.`.
+We're also going to rename our part to something more meaningful, such as `src`.
+Additionally, we need to specify the source location for snapcraft to fetch the code.
+This can be either a remote Git repository or local files within the project directory.
+Since we want all our `.c` files to be compiled into our real-time applications, we'll define our source as `.`:
 
 ```yaml
 parts:
@@ -137,8 +137,7 @@ parts:
     plugin: make
     source: .
 ```
-
-With this part defined, it's already possible to build the snap:
+With this part defined, we can now build the snap:
 
 ```console
 $ snapcraft -v
@@ -177,20 +176,20 @@ Creating snap package...
 Packed rt-app_0.1_amd64.snap
 ```
 
-The first time you build a snap it may take longer because snapcraft is also donwloading and installing a [build provider][build_provider] (as can be observed in the logs)
-It's also provisioning a [LXD container][lxd_container].
+The first time you build a snap, it may take longer because Snapcraft also downloads and installs a [build provider][build_provider] (as seen in the logs).
+It also provisions a [LXD container][lxd_container].
 
 The build generates an artifact named `rt-app_0.1_amd64.snap`.
 Each part of this name has a meaning:
-- `rt-app`: It's the name of the snap, as defined in the `name` field of `snapcraft.yaml`.
-- `0.1`: The version of the snap, as defined in the `version` field of `snapcraft.yaml`.
-  It can also be set dynamically based on a git tag or other information, as explained on [this document][using_craftctl_tool].
-- `amd64`: It's the architecture that the host builded from.
-  Since we're doing a native build, snapcraft detects the host architecture. 
-  It's also possible to do a [cross compile when using autotools][cross_compile_autotools].
+- `rt-app`: The snap's name, as defined in the `name` field of `snapcraft.yaml`.
+- `0.1`: The snap's version, as defined in the `version` field of `snapcraft.yaml`.
+  This can be set dynamically based on a git tag or other information, as explained in [this document][using_craftctl_tool].
+- `amd64`: The architecture of the build system.
+  Since we're doing a native build, Snapcraft detects the host architecture.
+  Cross-compilation is also possible, as described in [cross compiling with autotools][cross_compile_autotools].
 
-It's possible to look what is inside this `.snap` file.
-Since the snap is basically a SquashFS file as explained in the [snap format document][snap_format], it's possible to unsquash it:
+It's possible to inspect the contents of this `.snap` file.
+Since a Snap is a [SquashFS] file, as explained in the [Snap format document][snap_format], we can unsquash it:
 
 ```console
 $ unsquashfs rt-app_0.1_amd64.snap
@@ -208,7 +207,7 @@ created 0 sockets
 created 0 hardlinks
 ```
 
-This creates a `squashfs-root` directory with the following contents:
+This creates the `squashfs-root` directory with the following contents:
 
 ```console
 $ tree squashfs-root/
@@ -226,16 +225,16 @@ squashfs-root/
 4 directories, 6 files
 ```
 
-Now that it's confirmed that the real-time app binaries are there, it's time to define the apps.
+Now that we've confirmed that the real-time app binaries are present, it's time to define the apps.
 
 ### Defining snap apps
 
-A snap not necessarily needs to have apps defined, it can only provide files like libraries or binaries.
-Those snaps generally are called content snaps, because they make use of the [content interface][content_interface].
-That's why you can successfully build your snap without having defined any apps.
+A Snap doesn't necessarily need to have apps defined—it can provide only files such as libraries or binaries.
+These are generally referred to as content Snaps, as they use the [content interface][content_interface].
+That's why it's possible to build a Snap successfully without defining any apps.
 
-The simplest app definition includes the app name (which is the name of the object in the apps list) with the `command` property.
-Since the apps are inside the `bin` directory, it's necessary to define the path related to it.
+The simplest app definition includes the app name (which is the name of the object in the apps list) and the `command` property.
+Since the apps are inside the `bin` directory, we need to define the relative path to them:
 
 ```yaml
 apps:
@@ -256,25 +255,25 @@ apps:
 
 ```
 
-So, after defining the apps, it's possible to build again the snap file, by running `snapcraft -v` again. 
-The second time that the snap is build is faster than the first one because there are already a 
+After defining the apps, we can rebuild the Snap by running `snapcraft -v` again.
+The second build is faster than the first one because the necessary dependencies are already available.
+As well the necessary resources already created by the build provider (which is a lxd container in this case).
 
-Then we can install the snap by running the `snap install` command:
+We can then install the Snap using:
 
 ```console
 $ sudo snap install rt-app_0.1_amd64.snap
 error: cannot find signatures with metadata for snap "rt-app_0.1_amd64.snap"
 ```
 
-So, the command fails, this is because we're installing from an local build artifact.
-According with the [snap install modes document][snap_install_modes], when developing and testing a snap, it's recommended to install in `devmode`.
-Then installing it in `devmode`:
+The command fails because we're installing a locally built artifact.
+According to the [Snap install modes document][snap_install_modes], when developing and testing a Snap, it's recommended to install it in `devmode`:
 
 ```console
 $ sudo snap install ./rt-app_0.1_amd64.snap --devmode
 rt-app 0.1 installed
 ```
-Then we now have it in the list of installed snaps:
+Now, the Snap appears in the list of installed Snaps:
 
 ```console
 $ snap list rt-app
@@ -282,9 +281,9 @@ Name       Version         Rev    Tracking       Publisher    Notes
 rt-app     0.1             x1     -              -            devmode
 ```
 
-Finally, it's possible to run the the defined real-time applications.
-Inside a snap, the defined applications become [application commands][application_cmds].
-By typing the name of the installed snap and pressing the tab key twice it's possible to list the avaible commands: 
+Finally, we can run the defined real-time applications.
+Within a Snap, the defined applications become [application commands][application_cmds].
+By typing the name of the installed Snap and pressing the Tab key twice, we can list the available commands:
 
 ```console
 $ rt-app.
@@ -301,43 +300,39 @@ Calls made on thread2: 1
 
 ### Strictly confining the snap
 
-On the previous part, the snap package was put in shape in a way that it simply works when installed on `devmode`.
-But one of the greatest features of snap packages it's the possibility of running software in a secure way.
-The snap packaging provide some [security policies][security_policies] which create a sandboxing environment.
-Enabling the possibility of run software in a secure and confined way.
-In order to take advantage of those security policies it's necessary to [confine the snap][snap_confinement], so it can be installed in a strictly confined way.
+In the previous section, we created a Snap that works when installed in `devmode`.
+However, one of the key benefits of Snap packages is their ability to run software securely.
+Snap packaging provides various [security policies][security_policies] that create a sandboxed environment, enabling software to run in a confined and secure manner.
+To take advantage of these security policies, we must [confine the Snap][snap_confinement] so that it can be installed in a strictly confined manner.
 
-The first step of the confinement it's to understand what resources the applications require to access on the system.
-For that, [snap interfaces][snap_interfaces] exists to provide narrow access to system resources.
+The first step in confinement is understanding which system resources the applications need access to.
+[Snap interfaces][snap_interfaces] provide a mechanism to grant narrow access to specific system resources.
 
-For identifyng those resources we can go in two ways: 
+To identify these required resources, we can take two approaches:
 
-- By doing an extensive source code analysis, identifying the used files, directories and [syscalls]. 
-  Also maybe some linux internal resouces like the [procfs], [sysfs], [configfs] and so on.
+- Perform an extensive source code analysis to identify required files, directories, and [syscalls].
+  This may also include analyzing the access to Linux-specific resources such as [procfs], [sysfs], and [configfs].
 
-- By running debug tools and idenfifying the accesses that the application do at runtime.
+- Use debugging tools to identify runtime accesses made by the application.
 
-Although, the first way it's more recommended, resulting in a more complete and accurate result.
-The second way it's bettter when starting to confine the app.
+While the first approach is recommended for completeness and accuracy, the second approach is useful when initially confining the application.
 
-It's important to consider that this may depends on the complexity of the application being confined.
-If the application has multiple configurations, each one, triggering a different path in the source code.
-Then, a complete source code analysis is recommeded.
-Otherwise, if the application only does one thing, not being configurable.
-Then using the debugging resources it's enough.
+The complexity of the application determines the best approach.
+If the application has multiple configurations, each triggering different execution paths, a full source code analysis is preferable.
+However, if the application has a single, fixed execution path, debugging tools alone may be sufficient.
 
-There are many resources and tooling when it commes to [debugging snaps][debug_snaps]. 
-The recommended tool for debbugging and starting to confine the app is the [snappy-debug].
+A variety of resources and tools exist for [debugging Snaps][debug_snaps].
+The recommended tool for debugging and initial confinement is [snappy-debug].
 
-The tool is also a snap to be installed:
+To install it:
 
 ```console
 $ sudo snap install snappy-debug
 snappy-debug 0.36-snapd2.59.4 from Canonical✓ installed
 ```
 
-Now it's necessary to use two terminals, one for running the `snappy-debug`, and the other for running the rt-app snap applications.
-When running `snappy-debug` we're going to face an attached terminal with this message:
+Now, we need two terminals: one to run `snappy-debug` and another to execute the `rt-app` Snap applications.
+Running `snappy-debug` presents the following message:
 
 ```console
 $ snappy-debug
@@ -345,11 +340,12 @@ INFO: Following '/var/log/syslog'. If have dropped messages, use:
 INFO: $ sudo journalctl --output=short --follow --all | sudo snappy-debug
 ```
 
-To make sure that no message logs were dropped it's a good move to run the snap in the suggested form, by pipping it from the `journalctl`.
-Also, because since we're accesing the system logs, priviledge access is necessary.
-We're going to run the `sudo journalctl --output=short --follow --all | sudo snappy-debug`
+To ensure no log messages are lost, it is recommended to use the suggested `journalctl` command.
+As well running with `sudo` since accessing system logs requires privileged access:
 
-Then running the while running the `snappy-debug` we run the first app:
+```shell
+sudo journalctl --output=short --follow --all | sudo snappy-debug
+``` 
 
 #### Analyzing `cfs` application
 
@@ -362,13 +358,11 @@ Calls made on thread2: 1
 - Debug output:
 
 ```console
-$ sudo journalctl --output=short --follow --all | sudo snappy-debug
 
 
 ```
 
-Nothing is seeing on the output of `snappy-debug`.
-This means that the `cfs` application doesn't needs any aditional permission. 
+No output from snappy-debug indicates that the `cfs` application does not require additional permissions
 
 #### Analyzing `edf` application
 
@@ -396,12 +390,12 @@ Suggestion:
 * add 'process-control' to 'plugs'
 ```
 
-There is a [seccomp] message regarding the application doing a [sched_setattr] system call. 
-Which in fact the application does by looking at the source code inside the `thread_start` function.
-The debugger tool also suggests which interface should we use. 
-To understand better about interfaces, plugs and slots checkout this [interfaces management document][iface_mgmt].
+The [seccomp] message indicates that the application makes a [sched_setattr] system call.
+As confirmed in the source code, this occurs inside the `thread_start` function.
+The debug tool suggests adding the [process-control interface][proc_ctr_iface].
+To understand interfaces, plugs, and slots, refer to the [interface management document][iface_mgmt].
 
-So, it's necessary to add the `process-control` interface to the field `plugs` under the `edf` app:
+To grant the necessary permission, add `process-control` to the `plugs` field under the `edf` app definition:
 
 ```yaml
   edf:
@@ -409,28 +403,18 @@ So, it's necessary to add the `process-control` interface to the field `plugs` u
     plugs:
       - process-control
 ```
-Now: 
-  - compile again the snap;
-  - install the snap;
-  - run again the `edf` application.
 
+Rebuild and reinstall the Snap, then connect the interface:
+
+```{note}
 You may see some logs on the `snappy-debug` terminal regarding `lxd` during the `snapcraft` build, those can be safely ignored.
-Listing the avaible plug connections for the `rt-app` snap it's possible to see the new plug for `process-control` interface it's there: 
-
-```console
-$ snap connections rt-app
-Interface        Plug                    Slot  Notes
-process-control  rt-app:process-control  -     -
 ```
-
-If you run again the app `edf`, the same seccomp report will show-up.
-In order to give the permission, it's necessary to connect the snap interface.
 
 ```shell
 sudo snap connect rt-app:process-control
 ```
 
-Now listing again it's possible to see that it reports that the interface was manually connected:
+Listing Snap connections confirms the manual connection:
 
 ```console
 $ snap connections rt-app
@@ -447,7 +431,7 @@ The same happens for the `lock` application, no reports were generated.
 
 #### Analyzing `thread-affinity` application
 
-When repeating the proccess for `thread-affinity` something different happens on the logs:
+Repeating the proccess for `thread-affinity` something different happens on the logs:
 
 - Application output:
 ```console
@@ -476,8 +460,7 @@ This is the case for this app.
 
 ### Concluding the strict confinement
 
-Now that the needed interfaces are defined, it's necessary to change the `confinement` property on out manifest file.  
-Change the confinement to `strict`:
+Now that the required interfaces are defined, change the `confinement` property to `strict`:
 
 ```yaml
 confinement: strict
@@ -554,3 +537,5 @@ The next steps that you may consider to do:
 [snap_sys_arch]: https://snapcraft.io/docs/system-architecture
 [publish_snap]: https://snapcraft.io/docs/releasing-to-the-snap-store
 [brandstore]: https://ubuntu.com/core/docs/dedicated-snap-stores
+[SquashFS]: https://en.wikipedia.org/wiki/SquashFS
+[proc_ctr_iface]: https://snapcraft.io/docs/process-control-interface
