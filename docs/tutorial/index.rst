@@ -12,5 +12,5 @@ Tutorials provide a learning experience as you begin using Real-time Ubuntu.
    4-schedulers
    5-cpu-affinity
    6-locks
-   7-snaping
+   7-snapping
 
