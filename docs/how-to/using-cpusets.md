@@ -108,9 +108,8 @@ $ ps -eLo psr,comm,args,ppid,pid, | grep '^ 11'
  11 sleep           sleep 5                        1590    1761
 ```
 
-Our application `my-app` with PID `1590` is listed.
-We also see a `sleep` which has a parent process ID (PPID) equal to our application.
-This is because the application `my-app` consists of a bash script with a sleep command.
+The application `my-app` with PID `1590` is listed.
+The is also an entry for `sleep` which has a parent process ID (PPID) equal to our application -- this is because the application `my-app` consists of a bash script with a sleep command.
 The other processes listed here are kernel threads.
 
 ```{note}
