@@ -12,6 +12,9 @@ bootloader
 CAS
 cfs
 CFS's
+cgclassify
+cgcreate
+cgexec
 cgroup
 cgroups
 CGROUPs
@@ -23,7 +26,11 @@ cpu
 CPUAffinity
 cpus
 CPUs
+Cpusets
+cpuset
+cpusets
 cryptographically
+cset
 Ctrl
 cyclictest
 dev
@@ -62,6 +69,8 @@ gyre
 hardirq
 HPC
 https
+Indri
+init
 intel
 invariance
 io
@@ -126,6 +135,7 @@ pid
 plantuml
 PMD
 posix
+PPID
 preemptible
 proc
 ps
