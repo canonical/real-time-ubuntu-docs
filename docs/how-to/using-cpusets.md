@@ -117,7 +117,7 @@ The other processes listed here are kernel threads.
 At the time of writing (Kernel v6.8.0), [cpusets' implementation][kcommit_cpuset] does not isolate CPUs from running kernel threads.
 ```
 
-## Persistent isolation
+## Configure persistent CPU isolation
 
 The configuration set via the `systemctl set-property` command do not persist across reboots.
 To make them persistent, we need to add them as configuration files under the `/etc/systemd/system` directory.
