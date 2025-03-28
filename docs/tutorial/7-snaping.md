@@ -85,7 +85,7 @@ We're going to make some modifications to the yaml manifest file:
 
 ### Defining the snap parts
 
-Once the Snap metadata boilerplate is in place, it's time to define the parts.
+Once the Snap metadata boilerplate is in place, it's time to define the [snapcraft parts][snapcraft_parts].
 In Snaps, `parts` are the building blocks of the package, similar to a recipe's list of ingredients and the steps to prepare them.
 Since we have five `.c` source files, one might assume we need five parts.
 While that approach is possible, it's much easier to use the `Makefile` we just created.
@@ -234,10 +234,290 @@ A snap not necessarily needs to have apps defined, it can only provide files lik
 Those snaps generally are called content snaps, because they make use of the [content interface][content_interface].
 That's why you can successfully build your snap without having defined any apps.
 
+The simplest app definition includes the app name (which is the name of the object in the apps list) with the `command` property.
+Since the apps are inside the `bin` directory, it's necessary to define the path related to it.
 
+```yaml
+apps:
+  cfs:
+    command: bin/cfs
+
+  edf:
+    command: bin/edf
+
+  fifo:
+    command: bin/fifo
+
+  lock:
+    command: bin/lock
+
+  thread-affinity:
+    command: bin/thread-affinity
+
+```
+
+So, after defining the apps, it's possible to build again the snap file, by running `snapcraft -v` again. 
+The second time that the snap is build is faster than the first one because there are already a 
+
+Then we can install the snap by running the `snap install` command:
+
+```console
+$ sudo snap install rt-app_0.1_amd64.snap
+error: cannot find signatures with metadata for snap "rt-app_0.1_amd64.snap"
+```
+
+So, the command fails, this is because we're installing from an local build artifact.
+According with the [snap install modes document][snap_install_modes], when developing and testing a snap, it's recommended to install in `devmode`.
+Then installing it in `devmode`:
+
+```console
+$ sudo snap install ./rt-app_0.1_amd64.snap --devmode
+rt-app 0.1 installed
+```
+Then we now have it in the list of installed snaps:
+
+```console
+$ snap list rt-app
+Name       Version         Rev    Tracking       Publisher    Notes
+rt-app     0.1             x1     -              -            devmode
+```
+
+Finally, it's possible to run the the defined real-time applications.
+Inside a snap, the defined applications become [application commands][application_cmds].
+By typing the name of the installed snap and pressing the tab key twice it's possible to list the avaible commands: 
+
+```console
+$ rt-app.
+rt-app.cfs              rt-app.edf              rt-app.fifo             rt-app.lock             rt-app.thread-affinity
+```
+
+Running the `cfs` program:
+
+```console
+$ rt-app.cfs
+Calls made on thread1: 100000
+Calls made on thread2: 1
+```
 
 ### Strictly confining the snap
 
+On the previous part, the snap package was put in shape in a way that it simply works when installed on `devmode`.
+But one of the greatest features of snap packages it's the possibility of running software in a secure way.
+The snap packaging provide some [security policies][security_policies] which create a sandboxing environment.
+Enabling the possibility of run software in a secure and confined way.
+In order to take advantage of those security policies it's necessary to [confine the snap][snap_confinement], so it can be installed in a strictly confined way.
+
+The first step of the confinement it's to understand what resources the applications require to access on the system.
+For that, [snap interfaces][snap_interfaces] exists to provide narrow access to system resources.
+
+For identifyng those resources we can go in two ways: 
+
+- By doing an extensive source code analysis, identifying the used files, directories and [syscalls]. 
+  Also maybe some linux internal resouces like the [procfs], [sysfs], [configfs] and so on.
+
+- By running debug tools and idenfifying the accesses that the application do at runtime.
+
+Although, the first way it's more recommended, resulting in a more complete and accurate result.
+The second way it's bettter when starting to confine the app.
+
+It's important to consider that this may depends on the complexity of the application being confined.
+If the application has multiple configurations, each one, triggering a different path in the source code.
+Then, a complete source code analysis is recommeded.
+Otherwise, if the application only does one thing, not being configurable.
+Then using the debugging resources it's enough.
+
+There are many resources and tooling when it commes to [debugging snaps][debug_snaps]. 
+The recommended tool for debbugging and starting to confine the app is the [snappy-debug].
+
+The tool is also a snap to be installed:
+
+```console
+$ sudo snap install snappy-debug
+snappy-debug 0.36-snapd2.59.4 from Canonical✓ installed
+```
+
+Now it's necessary to use two terminals, one for running the `snappy-debug`, and the other for running the rt-app snap applications.
+When running `snappy-debug` we're going to face an attached terminal with this message:
+
+```console
+$ snappy-debug
+INFO: Following '/var/log/syslog'. If have dropped messages, use:
+INFO: $ sudo journalctl --output=short --follow --all | sudo snappy-debug
+```
+
+To make sure that no message logs were dropped it's a good move to run the snap in the suggested form, by pipping it from the `journalctl`.
+Also, because since we're accesing the system logs, priviledge access is necessary.
+We're going to run the `sudo journalctl --output=short --follow --all | sudo snappy-debug`
+
+Then running the while running the `snappy-debug` we run the first app:
+
+#### Analyzing `cfs` application
+
+- Application output:
+```console
+$ rt-app.cfs
+Calls made on thread1: 100000
+Calls made on thread2: 1
+```
+- Debug output:
+
+```console
+$ sudo journalctl --output=short --follow --all | sudo snappy-debug
+
+
+```
+
+Nothing is seeing on the output of `snappy-debug`.
+This means that the `cfs` application doesn't needs any aditional permission. 
+
+#### Analyzing `edf` application
+
+- Application output:
+```console
+$ rt-app.edf
+thread1:   period =  2 s
+          runtime = 10 ms
+         deadline = 11 ms
+thread2:   period =  2 s
+          runtime = 10 ms
+         deadline = 11 ms
+
+Calls made on thread1: 100000
+Calls made on thread2: 1
+```
+
+- Debug output:
+```
+= Seccomp =
+Time: Mar 27 20:29:40
+Log: auid=1000 uid=1000 gid=1000 ses=119 subj=snap.rt-app.edf pid=37555 comm="edf" exe="/snap/rt-app/x1/bin/edf" sig=0 arch=c000003e 314(sched_setattr) compat=0 ip=0x78846c90325d code=0x7ffc0000
+Syscall: sched_setattr
+Suggestion:
+* add 'process-control' to 'plugs'
+```
+
+There is a [seccomp] message regarding the application doing a [sched_setattr] system call. 
+Which in fact the application does by looking at the source code inside the `thread_start` function.
+The debugger tool also suggests which interface should we use. 
+To understand better about interfaces, plugs and slots checkout this [interfaces management document][iface_mgmt].
+
+So, it's necessary to add the `process-control` interface to the field `plugs` under the `edf` app:
+
+```yaml
+  edf:
+    command: bin/edf
+    plugs:
+      - process-control
+```
+Now: 
+  - compile again the snap;
+  - install the snap;
+  - run again the `edf` application.
+
+You may see some logs on the `snappy-debug` terminal regarding `lxd` during the `snapcraft` build, those can be safely ignored.
+Listing the avaible plug connections for the `rt-app` snap it's possible to see the new plug for `process-control` interface it's there: 
+
+```console
+$ snap connections rt-app
+Interface        Plug                    Slot  Notes
+process-control  rt-app:process-control  -     -
+```
+
+If you run again the app `edf`, the same seccomp report will show-up.
+In order to give the permission, it's necessary to connect the snap interface.
+
+```shell
+sudo snap connect rt-app:process-control
+```
+
+Now listing again it's possible to see that it reports that the interface was manually connected:
+
+```console
+$ snap connections rt-app
+Interface        Plug                    Slot              Notes
+process-control  rt-app:process-control  :process-control  manual
+```
+
+#### Analyzing `fifo` and `lock` applications
+
+Repeat the same process done for `cfs` and `edf` applications on this one. 
+Like occured for `cfs`, when running `fifo` application no reports were generated by `snappy-conf`.
+The same happens for the `lock` application, no reports were generated.
+
+
+#### Analyzing `thread-affinity` application
+
+When repeating the proccess for `thread-affinity` something different happens on the logs:
+
+- Application output:
+```console
+$ rt-app.thread-affinity
+thread1 priority: 0
+thread2 priority: 0
+Calls made on thread1: 100000
+Calls made on thread2: 1
+```
+
+- Debug output:
+```
+= Seccomp =
+Time: Mar 27 21:04:22
+Log: auid=1000 uid=1000 gid=1000 ses=119 subj=snap.rt-app.thread-affinity pid=40684 comm="thread-affinity" exe="/snap/rt-app/x2/bin/thread-affinity" sig=0 arch=c000003e 203(sched_setaffinity) compat=0 ip=0x733af5a4d6e1 code=0x7ffc0000
+Syscall: sched_setaffinity
+Suggestion:
+* ignore the denial if the program otherwise works correctly (unconditional sched_setaffinity is often just noise)
+```
+
+We see a seccomp report, but no suggested interface to use.
+Instead a message saying to just ignore the denial report.
+This happens because there are some denials comming the security policies defined in the snap sandboxing may not affect the functionality of an application.
+This is the case for this app.
+
+
+### Concluding the strict confinement
+
+Now that the needed interfaces are defined, it's necessary to change the `confinement` property on out manifest file.  
+Change the confinement to `strict`:
+
+```yaml
+confinement: strict
+```
+
+Then:
+  - Build the snap like done before with `snapcraft`.
+
+  - Install it. This time, since we aren't using `devmode` anymore, it's possible to install it in a confined way.
+    But because the snap isn't being installed from a snap store, there are no assertions files.
+    This means that it's necessary to acknowleadge the **dangerous** nature of it.
+    So we run our install command with the `--dangerous` flag.
+
+    ```console
+    $ sudo snap install ./rt-app_0.1_amd64.snap --dangerous
+    rt-app 0.1 installed
+    ```
+
+  - Connect the `process-control` interface as shown before.
+    It may be already connected if during the iterations the snap wasn't unninstaled.
+
+  - Run all the applications.
+    You may see some logs on the `snappy-debug` terminal.
+    It's necessary to pain attention on the field `profile=` for [AppArmor][apparmor] denials and `exe="` for Seccomp denials. 
+    If it says: `profile="/usr/lib/snapd/snap-confine"`, it's related to the `snap-confine` component and not about the `rt-app` snap.
+    To know more about it, consider take a look on this reference about [the snap system architecture][snap_sys_arch].
+
+Then you've finished the development of your snap, you can now change the `grade` field to `stable`, so it can be published on the store.
+
+### Conclussion
+
+The final `snapcraft.yaml` manifest file should look like this:
+
+```{literalinclude} snapcraft.yaml
+:language: yaml
+```
+
+The next steps that you may consider to do:
+- [Release the snap to Snap Store][publish_snap]
+- [Create a dedicated Snap Store for your company][brandstore]
 
 % links
 [snapcraft.io]: https://snapcraft.io/docs
@@ -246,7 +526,6 @@ That's why you can successfully build your snap without having defined any apps.
 [snapcraft_docs]: https://snapcraft.io/docs/snapcraft
 [snapcraft_build_cfg]: https://snapcraft.io/docs/build-configuration
 [snapcraft_yaml]: https://snapcraft.io/docs/snapcraft-yaml-schema
-[brandstore]: https://ubuntu.com/core/docs/dedicated-snap-stores
 [snap_plugins]: https://snapcraft.io/docs/snapcraft-plugins
 [snap_base]: https://snapcraft.io/docs/base-snaps
 [make_plugin]: https://snapcraft.io/docs/make-plugin
@@ -256,3 +535,22 @@ That's why you can successfully build your snap without having defined any apps.
 [using_craftctl_tool]: https://snapcraft.io/docs/using-craftctl
 [cross_compile_autotools]: https://snapcraft.io/docs/cross-compile-an-autotools-project
 [snap_format]: https://snapcraft.io/docs/the-snap-format
+[snapcraft_parts]: https://canonical-snapcraft.readthedocs-hosted.com/en/stable/explanation/parts.html
+[snap_install_modes]: https://snapcraft.io/docs/install-modes
+[application_cmds]: https://snapcraft.io/docs/commands-and-aliases#p-19557-application-commands
+[security_policies]: https://snapcraft.io/docs/security-policies
+[snap_confinement]: https://snapcraft.io/docs/snap-confinement
+[snap_interfaces]: https://snapcraft.io/docs/supported-interfaces
+[syscalls]: https://manpages.ubuntu.com/manpages/noble/en/man2/syscalls.2.html
+[procfs]: https://manpages.ubuntu.com/manpages/noble/man5/procfs.5.html
+[sysfs]: https://manpages.ubuntu.com/manpages/noble/man5/sysfs.5.html
+[configfs]: https://docs.kernel.org/filesystems/configfs.html
+[debug_snaps]: https://snapcraft.io/docs/debug-snaps
+[snappy-debug]: https://snapcraft.io/snappy-debug
+[seccomp]: https://manpages.ubuntu.com/manpages/noble/man2/seccomp.2.html
+[sched_setattr]: https://manpages.ubuntu.com/manpages/noble/man2/sched_setattr.2.html
+[iface_mgmt]: https://snapcraft.io/docs/interface-management
+[apparmor]: https://apparmor.net/
+[snap_sys_arch]: https://snapcraft.io/docs/system-architecture
+[publish_snap]: https://snapcraft.io/docs/releasing-to-the-snap-store
+[brandstore]: https://ubuntu.com/core/docs/dedicated-snap-stores
