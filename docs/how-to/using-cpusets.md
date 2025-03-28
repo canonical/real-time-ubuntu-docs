@@ -26,10 +26,10 @@ The machine used in this example has 12 cores, but you should adjust the CPU lis
 
 It’s often useful to first test the isolation at runtime to verify and debug its functionality before applying it persistently.
 
-First, it's necessary to define a [slice][systemd_slice], let's arbitrarily call it `custom-workload.slice`.
+First, define a [slice][systemd_slice] and the CPU(s) that should be isolated from general execution -- the application to be isolated will belong to this `systemd` slice.
 Internally, `systemd` will translate this slice to a cgroup node on the unified hierarchy of cgroup-v2.
-The application to be isolated will belong to this `systemd` slice.
-On this property we define the CPUs that should be isolated from general execution.
+
+For example, to define a `systemd` slice named `custom-workload.slice` that is restricted to run only on CPU 11, run:
 ```bash
 sudo systemctl set-property --runtime custom-workload.slice AllowedCPUs=11
 ```
