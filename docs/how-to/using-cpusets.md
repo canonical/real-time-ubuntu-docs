@@ -34,7 +34,7 @@ On this property we define the CPUs that should be isolated from general executi
 sudo systemctl set-property --runtime custom-workload.slice AllowedCPUs=11
 ```
 
-Then we restrict the system units and the init scope (created by default on systemd), to use the remaining CPUs:
+Then restrict the system units and the init scope (created by default on `systemd`), to use the remaining CPUs:
 ```bash
 sudo systemctl set-property --runtime init.scope AllowedCPUs=0-10
 sudo systemctl set-property --runtime system.slice AllowedCPUs=0-10
