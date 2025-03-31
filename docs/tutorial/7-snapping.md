@@ -290,7 +290,7 @@ Calls made on thread2: 1
 
 ### Strictly confining the snap
 
-In the previous section, we created a Snap that works when installed in `devmode`.
+In the previous section, we created a Snap that works when installed in the Developer Mode.
 However, one of the key benefits of Snap packages is their ability to run software securely.
 Snap packaging provides various [security policies][security_policies] that create a sandboxed environment, enabling software to run in a confined and secure manner.
 To take advantage of these security policies, we must [confine the Snap][snap_confinement] so that it can be installed in a strictly confined manner.
