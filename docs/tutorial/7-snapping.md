@@ -104,7 +104,7 @@ It uses this variable to correctly place the built files inside the snap's squas
 We're also going to rename the part add in the template from `my-part` to something more meaningful, such as `src`.
 Additionally, we need to specify the source location for snapcraft to fetch the code.
 This can be either a remote Git repository or local files within the project directory.
-Since we want all our `.c` files to be compiled into our real-time applications, we'll define our source as `.`:
+Since we want to build the `.c` files that in root of the project directory, we'll set the `source` to `.`:
 
 ```yaml
 parts:
