@@ -317,12 +317,14 @@ INFO: Following '/var/log/syslog'. If have dropped messages, use:
 INFO: $ sudo journalctl --output=short --follow --all | sudo snappy-debug
 ```
 
+````{tip}
 To ensure no log messages are lost, it is recommended to use the suggested `journalctl` command.
 It needs to be run with `sudo` since accessing system logs requires privileged access:
 
 ```shell
 sudo journalctl --output=short --follow --all | sudo snappy-debug
 ``` 
+````
 
 #### Analyzing `cfs` application
 
