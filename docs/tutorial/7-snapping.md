@@ -68,8 +68,7 @@ $ tree
 2 directories, 6 files
 ```
 
-To streamline the build process for our real-time apps, we should create a Makefile.
-This will also help with packaging.
+Let's create a Makefile for our real-time apps. Adding the build logic to a Makefile simplifies the packaging.
 
 Let's create one:
 
