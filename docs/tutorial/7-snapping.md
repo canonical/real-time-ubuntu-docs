@@ -187,7 +187,7 @@ Each part of this name has a meaning:
   This can be set dynamically based on a git tag or other information, as explained in [this document][using_craftctl_tool].
 - `amd64`: The architecture of the build system.
   Since we're doing a native build, Snapcraft detects the host architecture.
-  Cross-compilation is also possible, as described in [cross compiling with autotools][cross_compile_autotools].
+  The C programs and the snap can also be built for other architectures, for example using the [Canonical build farm](https://snapcraft.io/docs/remote-build) or by cross compiling the sources and manually setting the target snap architecture. It is also possible to cross compile using a plugin if the project used [ autotools][cross_compile_autotools].
 
 It's possible to inspect the contents of this `.snap` file.
 Since a Snap is a [squashfs] file, as explained in the [Snap format document][snap_format], we can unsquash it:
