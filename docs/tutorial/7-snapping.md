@@ -474,9 +474,9 @@ The final `snapcraft.yaml` file should look like this:
 :language: yaml
 ```
 
-The next steps that you may consider to do:
-- [Release the snap to Snap Store][publish_snap]
-- [Create a dedicated Snap Store for your company][brandstore]
+A good next step is to distribute this snap via a store:
+- [Publish to the global Snap Store][publish_snap]
+- [Publish to a dedicated Snap Store][brandstore]
 
 % links
 [snapcraft.io]: https://snapcraft.io/docs
