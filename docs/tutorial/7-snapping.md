@@ -205,9 +205,13 @@ Now that we've confirmed that the real-time app binaries are present, it's time 
 
 ### Defining snap apps
 
+We created the snap but installing it will not expose any of the programs on the host.
+This is because we haven't specified the apps within the snap.
+```{note}
 A Snap doesn't necessarily need to have apps defined—it can provide only files such as libraries or binaries.
 These are generally referred to as content Snaps, as they use the [content interface][content_interface].
 That's why it's possible to build a Snap successfully without defining any apps.
+```
 
 Create an `apps` section with one entry per app: `cfs`, `edf`, etc. These are the names given to the apps, exposed on the system when installing this snap.
 
