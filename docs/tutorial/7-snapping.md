@@ -83,33 +83,7 @@ Since we have five `.c` source files, we might assume that we need five separate
 While that approach is possible, it's much easier to leverage the Makefile we just created.
 Because compiling sources with a Makefile is common, Snapcraft provides [built-in plugins][snap_plugins] to simplify the process.
 
-To list the available plugins for your chosen [Snap base][snap_base] (as defined in the `base:` field of `snapcraft.yaml`), run `snapcraft plugins`:
-
-```console
-$ snapcraft plugins
-Displaying plugins available to the current base 'core24' project
-ant
-autotools
-cmake
-dump
-go
-go-use
-make
-maven
-meson
-nil
-npm
-poetry
-python
-qmake
-rust
-scons
-uv
-colcon
-conda
-flutter
-matter-sdk
-```
+To list the available plugins for your chosen [Snap base][snap_base] (as defined in the `base:` field of `snapcraft.yaml`), run `snapcraft plugins`.
 
 Let's create a Makefile for our real-time apps.
 Adding the build logic to a Makefile simplifies the packaging.
