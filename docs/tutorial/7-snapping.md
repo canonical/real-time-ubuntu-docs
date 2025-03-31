@@ -18,7 +18,8 @@ Some dependencies are required when building snap packages:
 
 ## Packaging
 
-The first step in creating a snap is to generate the default template by running `snapcraft init`:
+It is easier to create the snap by starting from a template.
+Run the following command from the same directory where the source `.c` files reside:
 
 ```console
 $ snapcraft init
