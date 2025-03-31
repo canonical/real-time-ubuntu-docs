@@ -257,9 +257,21 @@ rt-app 0.1 installed
 Now, the Snap appears in the list of installed Snaps:
 
 ```console
-$ snap list rt-app
-Name       Version         Rev    Tracking       Publisher    Notes
-rt-app     0.1             x1     -              -            devmode
+$ snap info rt-app
+name:      rt-app
+summary:   Demo real time apps
+publisher: –
+license:   unset
+description: |
+  Package of a demo real time applications
+commands:
+  - rt-app.cfs
+  - rt-app.edf
+  - rt-app.fifo
+  - rt-app.lock
+  - rt-app.thread-affinity
+refresh-date: 4 days ago, at 21:33 -03
+installed:    0.1 (x1) 16kB -
 ```
 
 Finally, we can run the defined real-time applications.
