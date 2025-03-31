@@ -159,9 +159,10 @@ Each part of this name has a meaning:
 - `rt-app`: The snap's name, as defined in the `name` field of `snapcraft.yaml`.
 - `0.1`: The snap's version, as defined in the `version` field of `snapcraft.yaml`.
   This can be set dynamically based on a git tag or other information, as explained in [this document][using_craftctl_tool].
-- `amd64`: The architecture of the build system.
-  Since we're doing a native build, Snapcraft detects the host architecture.
-  The C programs and the snap can also be built for other architectures, for example using the [Canonical build farm](https://snapcraft.io/docs/remote-build) or by cross compiling the sources and manually setting the target snap architecture. It is also possible to cross compile using a plugin if the project used [ autotools][cross_compile_autotools].
+- `amd64`: The architecture of the built snap.
+  This matches the host's architecture when doing a native build.
+  The C programs and the snap can also be built for other architectures, for example using the [Canonical build farm][remote_build] or by cross compiling the sources and manually setting the target snap architecture.
+  It is also possible to cross compile using a plugin if the project used [ autotools][cross_compile_autotools].
 
 It's possible to inspect the contents of this `.snap` file.
 Since a Snap is a [squashfs] file, as explained in the [Snap format document][snap_format], we can unsquash it:
@@ -516,3 +517,4 @@ A good next step is to distribute this snap via a store:
 [brandstore]: https://ubuntu.com/core/docs/dedicated-snap-stores
 [squashfs]: https://en.wikipedia.org/wiki/SquashFS
 [proc_ctr_iface]: https://snapcraft.io/docs/process-control-interface
+[remote_build]: https://snapcraft.io/docs/remote-build
