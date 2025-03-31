@@ -244,7 +244,7 @@ error: cannot find signatures with metadata for snap "rt-app_0.1_amd64.snap"
 ```
 
 The command fails because we're installing a locally built artifact.
-According to the [Snap install modes document][snap_install_modes], when developing and testing a Snap, it's recommended to install it in `devmode`:
+Normally, we'd bypass the signature check by installing in [Dangerous Mode](snap_install_modes), but because the snap has `confinement: devmode` we must install in Developer Mode. That mode not only bypasses the signature verification, but also allows installing snaps with the [Developer Mode confinement](snap_confinement).
 
 ```console
 $ sudo snap install ./rt-app_0.1_amd64.snap --devmode
