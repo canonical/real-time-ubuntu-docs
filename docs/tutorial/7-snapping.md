@@ -28,7 +28,6 @@ Successfully initialised project.
 ```
 This command creates a `snap` directory containing the `snapcraft.yaml` file.
 
-The output provides a link to the [build configuration][snapcraft_build_cfg] documentation.
 
 Let's examine the `snapcraft.yaml` file:
 
