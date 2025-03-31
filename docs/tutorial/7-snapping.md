@@ -7,7 +7,7 @@ This section describes how to package your real-time app as a [snap package][sna
 
 Some dependencies are required when building snap packages:
 
-- Confirm that you have [snapd][snapd] installed by running snap version:
+- Confirm that you have [snapd][snapd] installed by running the `snap version` command.
   If you're using Ubuntu, it should come pre-installed. 
   Otherwise, refer to the [snapd installation docs][install_snapd].
 
