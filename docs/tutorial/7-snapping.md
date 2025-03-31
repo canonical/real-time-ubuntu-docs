@@ -50,8 +50,7 @@ parts:
     # See 'snapcraft plugins'
     plugin: nil
 ```
-You may also want to review the [snapcraft.yaml schema][snapcraft_yaml].
-Which serves as a reference for understanding what is possible in the `snapcraft.yaml` file.
+You may also want to review the [snapcraft.yaml schema][snapcraft_yaml], which is the reference for all the possible configuration keys for the `snapcraft.yaml` file.
 
 Your working directory should now look like this:
 
