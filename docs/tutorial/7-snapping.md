@@ -208,8 +208,9 @@ A Snap doesn't necessarily need to have apps defined—it can provide only files
 These are generally referred to as content Snaps, as they use the [content interface][content_interface].
 That's why it's possible to build a Snap successfully without defining any apps.
 
-The simplest app definition includes the app name (which is the name of the object in the apps list) and the `command` property.
-Since the apps are inside the `bin` directory, we need to define the relative path to them:
+Create an `apps` section with one entry per app: `cfs`, `edf`, etc. These are the names given to the apps, exposed on the system when installing this snap.
+
+Each app requires a `command`. The programs are inside the `bin` directory and we can define the relative path to them:
 
 ```yaml
 apps:
