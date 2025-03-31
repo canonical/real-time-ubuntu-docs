@@ -3,6 +3,13 @@
 RT-conf is an application that helps users tune their system for real-time responsiveness.  
 This guide provides usage instructions for its command-line interface.
 
+## Running in Terminal UI mode
+
+The `rt-conf` also provides a [terminal UI interface][tui_wikipedia], for iterative configuration.
+To be activated, it's only necessary to run the `rt-conf` tool, without any flags or arguments:
+```shell
+rt-conf
+```
 
 ## Getting help
 
@@ -46,3 +53,4 @@ export DEBUG=true
 
 % Links
 [snap_env_variables]: https://snapcraft.io/docs/environment-variables
+[tui_wikipedia]: https://en.wikipedia.org/wiki/Text-based_user_interface
