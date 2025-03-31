@@ -76,7 +76,7 @@ Let's create one:
 :language: make
 ```
 
-We'll also make some modifications to the YAML manifest file:
+We'll also make some modifications to the `snapcraft.yaml` file:
 
 - Change the name from **demo** to **rt-app**.
 - Provide a meaningful summary and description of what the snap does.
