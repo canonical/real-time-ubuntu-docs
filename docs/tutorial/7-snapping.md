@@ -68,13 +68,6 @@ $ tree
 2 directories, 6 files
 ```
 
-Let's create a Makefile for our real-time apps. Adding the build logic to a Makefile simplifies the packaging.
-
-Let's create one:
-
-```{literalinclude} Makefile
-:language: make
-```
 
 We'll also make some modifications to the `snapcraft.yaml` file:
 
@@ -117,6 +110,16 @@ conda
 flutter
 matter-sdk
 ```
+
+Let's create a Makefile for our real-time apps.
+Adding the build logic to a Makefile simplifies the packaging.
+
+Let's create one:
+
+```{literalinclude} Makefile
+:language: make
+```
+
 Since we build our `C` code using a Makefile, we can use the [make plugin][make_plugin].
 
 ```{tip}
