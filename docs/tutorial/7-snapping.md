@@ -494,7 +494,7 @@ You can now change the `grade` field to `stable`, so it can be published on the 
 
 ### Conclusion
 
-The final `snapcraft.yaml` manifest file should look like this:
+The final `snapcraft.yaml` file should look like this:
 
 ```{literalinclude} snapcraft.yaml
 :language: yaml
