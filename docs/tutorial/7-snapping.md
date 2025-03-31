@@ -231,9 +231,11 @@ These are generally referred to as content Snaps, as they use the [content inter
 That's why it's possible to build a Snap successfully without defining any apps.
 ```
 
-Create an `apps` section with one entry per app: `cfs`, `edf`, etc. These are the names given to the apps, exposed on the system when installing this snap.
+Create an `apps` section with one entry per app: `cfs`, `edf`, etc.
+These are the names given to the apps, exposed on the system when installing this snap.
 
-Each app requires a `command`. The programs are inside the `bin` directory and we can define the relative path to them:
+Each app requires a `command`.
+The programs are inside the `bin` directory and we can define the relative path to them:
 
 ```yaml
 apps:
@@ -270,7 +272,8 @@ error: cannot find signatures with metadata for snap "rt-app_0.1_amd64.snap"
 ```
 
 The command fails because we're installing a locally built artifact.
-Normally, we'd bypass the signature check by installing in [Dangerous Mode](snap_install_modes), but because the snap has `confinement: devmode` we must install in Developer Mode. That mode not only bypasses the signature verification, but also allows installing snaps with the [Developer Mode confinement](snap_confinement).
+Normally, we'd bypass the signature check by installing in [Dangerous Mode](snap_install_modes), but because the snap has `confinement: devmode` we must install in Developer Mode.
+That mode not only bypasses the signature verification, but also allows installing snaps with the [Developer Mode confinement](snap_confinement).
 
 ```{terminal}
    :input: sudo snap install rt-app_0.1_amd64.snap --devmode
