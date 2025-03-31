@@ -80,20 +80,17 @@ Once the Snap metadata boilerplate is in place, it's time to define the [snapcra
 In Snaps, `parts` serve as the building blocks of the package, similar to a recipe's list of ingredients and preparation steps.
 
 Since we have five `.c` source files, we might assume that we need five separate parts.
-While that approach is possible, it's much easier to leverage the Makefile we just created.
-Because compiling sources with a Makefile is common, Snapcraft provides [built-in plugins][snap_plugins] to simplify the process.
-
-To list the available plugins for your chosen [Snap base][snap_base] (as defined in the `base:` field of `snapcraft.yaml`), run `snapcraft plugins`.
-
+While that approach is possible, it's much easier to create a Makefile and use that to build all the program.
 Let's create a Makefile for our real-time apps.
 Adding the build logic to a Makefile simplifies the packaging.
-
 Let's create one:
 
 ```{literalinclude} Makefile
 :language: make
 ```
 
+Because compiling sources with a Makefile is common, Snapcraft provides [built-in plugins][snap_plugins] to simplify the process.
+To list the available plugins for your chosen [Snap base][snap_base] (as defined in the `base:` field of `snapcraft.yaml`), run `snapcraft plugins`.
 Since we build our `C` code using a Makefile, we can use the [make plugin][make_plugin].
 
 ```{tip}
