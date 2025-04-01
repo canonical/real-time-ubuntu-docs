@@ -172,10 +172,10 @@ Now that the directories are available, create the following three configuration
   ```
 
 - `/etc/systemd/system/system.slice.d/50-cpu-isolation.conf` and `/etc/systemd/system/user.slice.d/50-cpu-isolation.conf` with the following:
-```
-[Slice]
-AllowedCPUs=0-10
-```
+  ```
+  [Slice]
+  AllowedCPUs=0-10
+  ```
 
 Finally, create a new config file for the slice that will be used by our workload, with the remaining CPU. Add the following to `/etc/systemd/system/custom-workload.slice`:
 
