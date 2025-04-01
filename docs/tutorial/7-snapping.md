@@ -401,13 +401,7 @@ Calls made on thread1: 100000
 Calls made on thread2: 1
 ```
 - Debug output:
-
-```{terminal}
-   :input: rt-app.cfs
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~/tutorial
-
+```
 
 ```
 
