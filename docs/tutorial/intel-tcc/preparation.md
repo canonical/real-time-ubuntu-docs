@@ -3,8 +3,7 @@
 This sections outlines the preparation steps for following this tutorial.
 It explains which software components are required and how to set it up.
 
-
-## Install real-time Ubuntu
+## Install Real-time Ubuntu
 
 1. Install the latest [Ubuntu 24.04 LTS](https://releases.ubuntu.com/noble/) Desktop or Server.
    Refer to [Ubuntu Desktop installation tutorial](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview) if needed.
@@ -19,10 +18,9 @@ It explains which software components are required and how to set it up.
    ```
 
    For the real-time kernel to be used, a reboot is required.
-   We will anyway reboot in a following step.
+   We will anyway reboot when we [add kernel command-line parameters](kernel-parameters).
 
    Refer to [How to enable Real-time Ubuntu](https://canonical-ubuntu-pro-client.readthedocs-hosted.com/en/latest/howtoguides/enable_realtime_kernel/) for more details.
-
 
 ## Other required software
 
@@ -31,8 +29,7 @@ Install required tools:
 sudo apt install msr-tools stress-ng mosquitto-clients
 ```
 
-Download the example code archive [here](tutorial-intel-tcc-code.tar.gz).
-Then extract it.
+Download the example code archive [here](tutorial-intel-tcc-code.tar.gz) and extract it.
 
 ```bash
 tar -xvf tutorial-intel-tcc-code.tar.gz --one-top-level
@@ -41,7 +38,7 @@ tar -xvf tutorial-intel-tcc-code.tar.gz --one-top-level
 ## Statistics infrastructure
 
 This tutorial uses Mosquitto MQTT, Telegraf, InfluxDB and Grafana to capture and visualize the statistics obtained from the test application.
-These tools can be run as Docker containers, making the installation quicker and easier.
+For this tutorial we will run these tools as Docker containers.
 
 ### Install Docker and Docker Compose
 
@@ -49,7 +46,7 @@ These tools can be run as Docker containers, making the installation quicker and
 Docker may also be installed by following the [official instructions](https://docs.docker.com/engine/install/ubuntu/).
 ```
 
-Docker and Compose can be installed as a snap by running:
+Install Docker and Compose as a snap by running:
 
 ```
 sudo snap install docker
@@ -86,7 +83,7 @@ docker compose up -d
 ```
 
 Verify that the Grafana, InfluxDB, Mosquitto and Telegraf containers are up and running.
-Make sure it says *Up* in the status column.
+Make sure it says "Up" in the status column.
 
 ```
 docker compose ps
@@ -102,5 +99,5 @@ If everything is running, you can connect to Grafana by following these steps:
   - Username: admin
   - Password: admin1
 
-Browse to the statistics dashboard by going to *Dashboards* > *Provisioned Dashboards* > *rt_linux_tutorial*.
-The dashboard has three panels which will show *No data* at this stage.
+Browse to the statistics dashboard by going to {guilabel}`Dashboards` > {guilabel}`Provisioned Dashboards` > {guilabel}`rt_linux_tutorial`.
+The dashboard has three panels which will show "No data" at this stage.
