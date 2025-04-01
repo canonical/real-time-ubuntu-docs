@@ -24,6 +24,8 @@ build:
       then
         exit 183;
       fi
+    post_install:
+      - cd docs && make code-archives
 
 # Build documentation in the docs/ directory with Sphinx
 sphinx:
