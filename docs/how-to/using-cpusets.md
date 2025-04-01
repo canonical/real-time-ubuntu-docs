@@ -63,7 +63,7 @@ AllowedCPUs=11
 AllowedCPUs=0-10
 ```
 
-After setting up the CPU isolation, check with `nproc` that the total online CPUs have changed from 12 to 11:
+After setting up the CPU isolation, check with `nproc` that the total online CPUs have changed based on your settings (e.g. from 12 to 11):
 
 ```{terminal}
    :input: nproc
