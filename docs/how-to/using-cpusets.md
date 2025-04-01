@@ -2,7 +2,7 @@
 
 [Cpusets][kdocs_cpusets_v2] is a kernel feature that allows users to assign specific CPUs and memory nodes to a set of tasks, enabling fine-grained control over resource allocation.
 It also allows you to exclude certain CPUs from the system scheduler.
-This is called *cpu isolation*, as it **isolates** the CPU from being assigned work by the scheduler.
+This is called *CPU isolation*, as it **isolates** the CPU from being assigned work by the scheduler.
 In other words excluding CPUs from use by general processes.
 
 Cpusets are particularly useful for Real-time Ubuntu, as they enable the isolation of CPUs for time-sensitive workloads.
@@ -20,7 +20,8 @@ On Ubuntu, cgroups are managed at a higher level by [systemd][systemd.io]. It is
 ## Configure runtime CPU isolation
 
 Isolation settings primarily depend on the number of available CPU cores.
-Before doing the isolation, check the number of online cpus for further comparison by running `nproc`. For example, the output below shows the system has 12 CPU cores.
+Before doing the isolation, check the number of online CPUs for further comparison by running `nproc`.
+For example, the output below shows the system has 12 CPU cores.
 ```{terminal}
    :input: nproc
    :user: ubuntu
@@ -30,7 +31,7 @@ Before doing the isolation, check the number of online cpus for further comparis
 12
 ```
 
-First, define a [slice][systemd_slice] and the CPU(s) that should be isolated from general execution -- the application to be isolated will belong to this `systemd` slice.
+First, define a [slice][systemd_slice] and the CPUs that should be isolated from general execution -- the application to be isolated will belong to this `systemd` slice.
 Internally, `systemd` will translate this slice to a cgroup node on the unified hierarchy of cgroup-v2.
 
 For example, to define a `systemd` slice named `custom-workload.slice` that is restricted to run only on CPU 11, run:
@@ -177,7 +178,8 @@ Now that the directories are available, create the following three configuration
   AllowedCPUs=0-10
   ```
 
-Finally, create a new config file for the slice that will be used by your workload, with the remaining CPU. Add the following to `/etc/systemd/system/custom-workload.slice`:
+Finally, create a new config file for the slice that will be used by your workload, with the remaining CPU.
+Add the following to `/etc/systemd/system/custom-workload.slice`:
 
 ```
 [Slice]
