@@ -554,7 +554,7 @@ Then:
     To learn more about this, take a look at this reference of [the snap system architecture][snap_sys_arch].
 
 You have now finished the development of your snap.
-You can change the `grade` field to `stable` if you consider it so. Snaps with `devel` grade cannot be promoted to lower risk level. This is related to the concept of [snap channels](https://snapcraft.io/docs/channels), only relevant when publishing a snap.
+You can change the `grade` field to `stable` if you consider it so. Snaps with the `devel` grade cannot be promoted to a lower risk level. This is related to the concept of [snap channels](https://snapcraft.io/docs/channels), important when publishing a snap.
 
 ### Conclusion
 
