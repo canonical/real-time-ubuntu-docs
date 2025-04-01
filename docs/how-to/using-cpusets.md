@@ -191,7 +191,7 @@ sudo systemctl daemon-reload
 
 Afterwards, it is possible to check the values using `systemctl show` in the same way as before.
 
-### Creating a Service
+### Create a service
 
 A reliable and reproducible way to apply CPU isolation is by creating a systemd service unit.
 This allows you to assign the cpuset to the service, ensuring the application runs inside the isolated `custom-workload.slice` automatically on every reboot, without any manual intervention.
