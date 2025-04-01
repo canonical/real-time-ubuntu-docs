@@ -85,8 +85,8 @@ You'll also make some modifications to the `snapcraft.yaml` file:
 
 ### Defining the snap parts
 
-Once the Snap metadata boilerplate is in place, it's time to define the [snapcraft parts][snapcraft_parts].
-In Snaps, `parts` serve as the building blocks of the package, similar to a recipe's list of ingredients and preparation steps.
+Once the snap metadata boilerplate is in place, it's time to define the [snapcraft parts][snapcraft_parts].
+In snaps, `parts` serve as the building blocks of the package, similar to a recipe's list of ingredients and preparation steps.
 
 Since you have five `.c` source files, you might assume that you need five separate parts.
 While that approach is possible, it's much easier to create a Makefile and use that to build all the programs.
@@ -97,7 +97,7 @@ Let's create a Makefile for our real-time apps:
 ```
 
 Because compiling sources with a Makefile is common, Snapcraft provides [built-in plugins][snap_plugins] to simplify the process.
-To list the available plugins for your chosen [Snap base][snap_base] (as defined in the `base:` field of `snapcraft.yaml`), run `snapcraft plugins`.
+To list the available plugins for your chosen [snap base][snap_base] (as defined in the `base:` field of `snapcraft.yaml`), run `snapcraft plugins`.
 Since you build our `C` code using a Makefile, you can use the [make plugin][make_plugin].
 
 ```{tip}
@@ -173,7 +173,7 @@ Each part of this name has a meaning:
   It is also possible to cross compile using a plugin if the project used [ autotools][cross_compile_autotools].
 
 It's possible to inspect the contents of this `.snap` file.
-Since a Snap is a [squashfs] file, as explained in the [Snap format document][snap_format], you can unsquash it:
+Since a snap is a [squashfs] file, as explained in the [snap format document][snap_format], you can unsquash it:
 
 ```{terminal}
    :input: unsquashfs rt-app_0.1_amd64.snap
@@ -224,9 +224,9 @@ Now that you've confirmed that the real-time app binaries are present, it's time
 You created the snap but installing it will not expose any of the programs on the host.
 This is because you haven't specified the apps within the snap.
 ```{note}
-A Snap doesn't necessarily need to have apps defined—it can provide only files such as libraries or binaries.
-These are generally referred to as content Snaps, as they use the [content interface][content_interface].
-That's why it's possible to build a Snap successfully without defining any apps.
+A snap doesn't necessarily need to have apps defined—it can provide only files such as libraries or binaries.
+These are generally referred to as content snaps, as they use the [content interface][content_interface].
+That's why it's possible to build a snap successfully without defining any apps.
 ```
 
 Create an `apps` section with one entry per app: `cfs`, `edf`, etc.
@@ -254,11 +254,11 @@ apps:
 
 ```
 
-After defining the apps, you can rebuild the Snap by running `snapcraft -v` again.
+After defining the apps, you can rebuild the snap by running `snapcraft -v` again.
 The second build is faster than the first one because the necessary dependencies are already available.
 Also the necessary resources are already created by the build provider (which is a lxd container in this case).
 
-You can then install the Snap using:
+You can then install the snap using:
 
 ```{terminal}
    :input: sudo snap install rt-app_0.1_amd64.snap
@@ -281,7 +281,7 @@ That mode not only bypasses the signature verification, but also allows installi
 
 rt-app 0.1 installed
 ```
-Now, the Snap appears in the list of installed Snaps:
+Now, the snap appears in the list of installed snaps:
 
 ```{terminal}
    :input: snap info rt-app
@@ -306,8 +306,8 @@ installed:    0.1 (x1) 16kB -
 ```
 
 Finally, you can run the defined real-time applications.
-Within a Snap, the defined applications become [application commands][application_cmds].
-By typing the name of the installed Snap and pressing the Tab key twice, you can list the available commands:
+Within a snap, the defined applications become [application commands][application_cmds].
+By typing the name of the installed snap and pressing the Tab key twice, you can list the available commands:
 
 ```{terminal}
    :input: rt-app.
@@ -332,13 +332,13 @@ Calls made on thread2: 1
 
 ### Strictly confining the snap
 
-In the previous section, you created a Snap that works when installed in the Developer Mode.
-However, one of the key benefits of Snap packages is their ability to run software securely.
-Snap packaging provides various [security policies][security_policies] that create a sandboxed environment, enabling software to run in a confined and secure manner.
-To take advantage of these security policies, you must [confine the Snap][snap_confinement] so that it can be installed in a strictly confined manner.
+In the previous section, you created a snap that works when installed in the Developer Mode.
+However, one of the key benefits of snap packages is their ability to run software securely.
+snap packaging provides various [security policies][security_policies] that create a sandboxed environment, enabling software to run in a confined and secure manner.
+To take advantage of these security policies, you must [confine the snap][snap_confinement] so that it can be installed in a strictly confined manner.
 
 The first step in confinement is understanding which system resources the applications need access to.
-[Snap interfaces][snap_interfaces] provide a mechanism to grant narrow access to specific system resources.
+[snap interfaces][snap_interfaces] provide a mechanism to grant narrow access to specific system resources.
 
 To identify these required resources, you can take two approaches:
 
@@ -353,7 +353,7 @@ The complexity of the application determines the best approach.
 If the application has multiple configurations, each triggering different execution paths, a full source code analysis is preferable.
 However, if the application has a single, fixed execution path, debugging tools alone may be sufficient.
 
-A variety of resources and tools exist for [debugging Snaps][debug_snaps].
+A variety of resources and tools exist for [debugging snaps][debug_snaps].
 The recommended tool for debugging and initial confinement is [snappy-debug].
 
 To install it:
@@ -366,7 +366,7 @@ To install it:
 snappy-debug 0.36-snapd2.59.4 from Canonical✓ installed
 ```
 
-Now, you need two terminals: one to run `snappy-debug` and another to execute the `rt-app` Snap applications.
+Now, you need two terminals: one to run `snappy-debug` and another to execute the `rt-app` snap applications.
 Running `snappy-debug` presents the following message:
 
 ```{terminal}
@@ -457,7 +457,7 @@ To grant the necessary permission, add `process-control` to the `plugs` field un
       - process-control
 ```
 
-Rebuild and reinstall the Snap, then connect the interface:
+Rebuild and reinstall the snap, then connect the interface:
 
 ```{note}
 You may see some logs on the `snappy-debug` terminal regarding `lxd` during the `snapcraft` build, those can be safely ignored.
@@ -467,7 +467,7 @@ You may see some logs on the `snappy-debug` terminal regarding `lxd` during the 
 sudo snap connect rt-app:process-control
 ```
 
-Listing Snap connections confirms the manual connection:
+Listing snap connections confirms the manual connection:
 
 ```{terminal}
    :input: snap connections rt-app
@@ -554,7 +554,7 @@ Then:
     To learn more about this, take a look at this reference of [the snap system architecture][snap_sys_arch].
 
 You have now finished the development of your snap.
-You can change the `grade` field to `stable` if you consider it so. Snaps with the `devel` grade cannot be promoted to a lower risk level. This is related to the concept of [snap channels](https://snapcraft.io/docs/channels), important when publishing a snap.
+You can change the `grade` field to `stable` if you consider it so. snaps with the `devel` grade cannot be promoted to a lower risk level. This is related to the concept of [snap channels](https://snapcraft.io/docs/channels), important when publishing a snap.
 
 ### Conclusion
 
