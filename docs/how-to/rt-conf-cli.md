@@ -36,12 +36,6 @@ rt-conf --conf
 rt-conf --conf=<custom-config>.yaml
 ```
 
-- Overriding the `DEFAULT_CONF` environment variable
-```shell
-export DEFAULT_CONF=~/<custom-config>.yaml
-
-rt-conf --conf
-```
 
 ## Debug mode
 
