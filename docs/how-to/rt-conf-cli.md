@@ -1,4 +1,4 @@
-# How-to use RT-conf command line interface
+# How-to tune Real-Time Ubuntu using rt-conf
 
 RT-conf is an application that helps users tune their system for real-time responsiveness.  
 This guide provides usage instructions for its command-line interface.
