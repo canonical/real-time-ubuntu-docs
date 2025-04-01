@@ -515,7 +515,7 @@ Suggestion:
 
 We see a seccomp report, but no suggested interface to use.
 Instead there is a message suggesting to just ignore the denial report.
-This happens because there are some denials coming from the security policies defined in the snap sandboxing, which potentially does not affect the functionality of an application.
+This happens because there are some denials coming from the security policies defined in the snap sandboxing, which potentially do not affect the functionality of an application.
 This is the case for this app.
 
 
