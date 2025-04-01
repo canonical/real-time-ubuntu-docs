@@ -177,7 +177,7 @@ Now that the directories are available, create the following three configuration
   AllowedCPUs=0-10
   ```
 
-Finally, create a new config file for the slice that will be used by our workload, with the remaining CPU. Add the following to `/etc/systemd/system/custom-workload.slice`:
+Finally, create a new config file for the slice that will be used by your workload, with the remaining CPU. Add the following to `/etc/systemd/system/custom-workload.slice`:
 
 ```
 [Slice]
