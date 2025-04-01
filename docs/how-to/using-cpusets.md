@@ -159,7 +159,7 @@ sudo mkdir -p /etc/systemd/system/user.slice.d/
 Then create the files for the `init.scope`, `system.slice` and `user.slice`:
 
 ```{note}
-We will prefix the name of the configuration files with `50-` because systemd processes the files in lexicographical order (sorted alphabetically).
+In the examples here, we prefix the name of the configuration files with `50-` because systemd processes the files in lexicographical order (sorted alphabetically).
 Prefixing files with numbers ensures a predictable loading sequence.
 This way, a file like `50-cpu-isolation.conf` will override settings from `10-defaults.conf` but can still be overridden by a file named `60-custom.conf`.
 ```
