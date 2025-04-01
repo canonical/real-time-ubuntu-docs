@@ -89,10 +89,8 @@ Once the Snap metadata boilerplate is in place, it's time to define the [snapcra
 In Snaps, `parts` serve as the building blocks of the package, similar to a recipe's list of ingredients and preparation steps.
 
 Since we have five `.c` source files, we might assume that we need five separate parts.
-While that approach is possible, it's much easier to create a Makefile and use that to build all the program.
-Let's create a Makefile for our real-time apps.
-Adding the build logic to a Makefile simplifies the packaging.
-Let's create one:
+While that approach is possible, it's much easier to create a Makefile and use that to build all the programs.
+Let's create a Makefile for our real-time apps:
 
 ```{literalinclude} Makefile
 :language: make
