@@ -45,10 +45,10 @@ rt-conf --conf
 
 ## Debug mode
 
-To enable debug logging set the `DEBUG` environment variable to `true`.
+To enable debug logging set the `DEBUG` environment variable to `true`. For example:
 
 ```shell
-export DEBUG=true
+DEBUG=true rt-conf
 ```
 
 % Links
