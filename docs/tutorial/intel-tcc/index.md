@@ -23,16 +23,16 @@ Some of the things that will be discussed include:
 
 - [Linux kernel command-line parameters](kernel-parameters)
 - [Intel® TCC Mode in BIOS/SBL](tcc-mode)
-- [Cache Partitioning using Intel® CAT](intel-cat)
-- [Boost RT Performance using Intel® Speed Shift for Edge](speed-shift)
+- [Cache partitioning using Intel® CAT](intel-cat)
+- [Boost RT performance using Intel® Speed Shift for Edge](speed-shift)
 
-An example C program is provided to demonstrate the possible optimization steps to increase temporal isolation between best effort and real time workloads on Linux systems. 
+An example C program is provided to demonstrate the possible optimization steps to increase temporal isolation between best effort and real-time workloads on Linux systems.
 This test application creates a synthetic real-time load, and captures statistics on its performance.
 
 ## Required hardware
 
 Any 13th and 14th generation Intel CPUs that support *Intel Time Coordinated Computing* (TCC) should work.
-See [this list](https://cdrdv2.intel.com/v1/dl/getContent/831868?explicitVersion=true) (slide 41), or check on [Intel ARK](https://www.intel.com/content/www/us/en/ark/featurefilter.html?productType=873&0_TimeCoordinatedComputing=True).
+See [the list in the Real-time at the Edge Gold Deck](https://cdrdv2.intel.com/v1/dl/getContent/831868?explicitVersion=true) (slide 41), or check on [Intel ARK](https://www.intel.com/content/www/us/en/ark/featurefilter.html?productType=873&0_TimeCoordinatedComputing=True).
 
 Ideally your system BIOS should have the *Intel® TCC Mode* setting, but this is not a hard requirement for following this tutorial.
 
