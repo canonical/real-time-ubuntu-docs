@@ -37,6 +37,9 @@ continuous production, the most exacting applications run on Real-time Ubuntu.
 ```{grid-item-card} [Tutorials](/tutorial/index)
 
 **Start here**: a hands-on introduction to Real-time Ubuntu for new users.
+
+- {doc}`/tutorial/first-rt-app/index`
+- {doc}`/tutorial/intel-tcc/index`
 ```
 
 ```{grid-item-card} [How-to guides](/how-to/index)
