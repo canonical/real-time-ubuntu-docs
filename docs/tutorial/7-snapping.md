@@ -1,6 +1,6 @@
 # Snapping your real-time app
 
-Now that we have our real-time app working, it's time to package it.
+Now that you have our real-time app working, it's time to package it.
 This section describes how to package your real-time app as a [snap package][snapcraft.io].
 
 ## Installing requirements
@@ -78,7 +78,7 @@ Your working directory should now look like this:
 
 
 
-We'll also make some modifications to the `snapcraft.yaml` file:
+You'll also make some modifications to the `snapcraft.yaml` file:
 
 - Change the name from **demo** to **rt-app**.
 - Provide a meaningful summary and description of what the snap does.
@@ -88,7 +88,7 @@ We'll also make some modifications to the `snapcraft.yaml` file:
 Once the Snap metadata boilerplate is in place, it's time to define the [snapcraft parts][snapcraft_parts].
 In Snaps, `parts` serve as the building blocks of the package, similar to a recipe's list of ingredients and preparation steps.
 
-Since we have five `.c` source files, we might assume that we need five separate parts.
+Since you have five `.c` source files, you might assume that you need five separate parts.
 While that approach is possible, it's much easier to create a Makefile and use that to build all the programs.
 Let's create a Makefile for our real-time apps:
 
@@ -98,7 +98,7 @@ Let's create a Makefile for our real-time apps:
 
 Because compiling sources with a Makefile is common, Snapcraft provides [built-in plugins][snap_plugins] to simplify the process.
 To list the available plugins for your chosen [Snap base][snap_base] (as defined in the `base:` field of `snapcraft.yaml`), run `snapcraft plugins`.
-Since we build our `C` code using a Makefile, we can use the [make plugin][make_plugin].
+Since you build our `C` code using a Makefile, you can use the [make plugin][make_plugin].
 
 ```{tip}
 The make plugin relies on the `DESTDIR` variable being available and configurable in the Makefile.
@@ -106,9 +106,9 @@ It uses this variable to correctly place the built files inside the snap's squas
 ```
 
 We're also going to rename the part in the template from `my-part` to something more meaningful, such as `src`.
-Additionally, we need to specify the source location for snapcraft to fetch the code.
+Additionally, you need to specify the source location for snapcraft to fetch the code.
 This can be either a remote Git repository or local files within the project directory.
-Since we want to build the `.c` files that in root of the project directory, we'll set the `source` to `.`:
+Since you want to build the `.c` files that in root of the project directory, you'll set the `source` to `.`:
 
 ```yaml
 parts:
@@ -116,7 +116,7 @@ parts:
     plugin: make
     source: .
 ```
-With this part defined, we can now build the snap:
+With this part defined, you can now build the snap:
 
 ```{terminal}
    :input: snapcraft -v
@@ -173,7 +173,7 @@ Each part of this name has a meaning:
   It is also possible to cross compile using a plugin if the project used [ autotools][cross_compile_autotools].
 
 It's possible to inspect the contents of this `.snap` file.
-Since a Snap is a [squashfs] file, as explained in the [Snap format document][snap_format], we can unsquash it:
+Since a Snap is a [squashfs] file, as explained in the [Snap format document][snap_format], you can unsquash it:
 
 ```{terminal}
    :input: unsquashfs rt-app_0.1_amd64.snap
@@ -217,12 +217,12 @@ squashfs-root/
 4 directories, 6 files
 ```
 
-Now that we've confirmed that the real-time app binaries are present, it's time to define the apps.
+Now that you've confirmed that the real-time app binaries are present, it's time to define the apps.
 
 ### Defining snap apps
 
-We created the snap but installing it will not expose any of the programs on the host.
-This is because we haven't specified the apps within the snap.
+You created the snap but installing it will not expose any of the programs on the host.
+This is because you haven't specified the apps within the snap.
 ```{note}
 A Snap doesn't necessarily need to have apps defined—it can provide only files such as libraries or binaries.
 These are generally referred to as content Snaps, as they use the [content interface][content_interface].
@@ -233,7 +233,7 @@ Create an `apps` section with one entry per app: `cfs`, `edf`, etc.
 These are the names given to the apps, exposed on the system when installing this snap.
 
 Each app requires a `command`.
-The programs are inside the `bin` directory and we can define the relative path to them:
+The programs are inside the `bin` directory and you can define the relative path to them:
 
 ```yaml
 apps:
@@ -254,11 +254,11 @@ apps:
 
 ```
 
-After defining the apps, we can rebuild the Snap by running `snapcraft -v` again.
+After defining the apps, you can rebuild the Snap by running `snapcraft -v` again.
 The second build is faster than the first one because the necessary dependencies are already available.
 Also the necessary resources are already created by the build provider (which is a lxd container in this case).
 
-We can then install the Snap using:
+You can then install the Snap using:
 
 ```{terminal}
    :input: sudo snap install rt-app_0.1_amd64.snap
@@ -269,8 +269,8 @@ We can then install the Snap using:
 error: cannot find signatures with metadata for snap "rt-app_0.1_amd64.snap"
 ```
 
-The command fails because we're installing a locally built artifact.
-Normally, we'd bypass the signature check by installing in [Dangerous Mode][snap_install_modes], but because the snap has `confinement: devmode` we must install in Developer Mode.
+The command fails because you're installing a locally built artifact.
+Normally, you'd bypass the signature check by installing in [Dangerous Mode][snap_install_modes], but because the snap has `confinement: devmode` it must be installed in Developer Mode.
 That mode not only bypasses the signature verification, but also allows installing snaps with the [Developer Mode confinement][snap_confinement].
 
 ```{terminal}
@@ -305,9 +305,9 @@ refresh-date: 4 days ago, at 21:33 -03
 installed:    0.1 (x1) 16kB -
 ```
 
-Finally, we can run the defined real-time applications.
+Finally, you can run the defined real-time applications.
 Within a Snap, the defined applications become [application commands][application_cmds].
-By typing the name of the installed Snap and pressing the Tab key twice, we can list the available commands:
+By typing the name of the installed Snap and pressing the Tab key twice, you can list the available commands:
 
 ```{terminal}
    :input: rt-app.
@@ -332,15 +332,15 @@ Calls made on thread2: 1
 
 ### Strictly confining the snap
 
-In the previous section, we created a Snap that works when installed in the Developer Mode.
+In the previous section, you created a Snap that works when installed in the Developer Mode.
 However, one of the key benefits of Snap packages is their ability to run software securely.
 Snap packaging provides various [security policies][security_policies] that create a sandboxed environment, enabling software to run in a confined and secure manner.
-To take advantage of these security policies, we must [confine the Snap][snap_confinement] so that it can be installed in a strictly confined manner.
+To take advantage of these security policies, you must [confine the Snap][snap_confinement] so that it can be installed in a strictly confined manner.
 
 The first step in confinement is understanding which system resources the applications need access to.
 [Snap interfaces][snap_interfaces] provide a mechanism to grant narrow access to specific system resources.
 
-To identify these required resources, we can take two approaches:
+To identify these required resources, you can take two approaches:
 
 - Perform an extensive source code analysis to identify required files, directories, and [syscalls].
   This may also include analyzing the access to Linux-specific resources such as [procfs], [sysfs], and [configfs].
@@ -366,7 +366,7 @@ To install it:
 snappy-debug 0.36-snapd2.59.4 from Canonical✓ installed
 ```
 
-Now, we need two terminals: one to run `snappy-debug` and another to execute the `rt-app` Snap applications.
+Now, you need two terminals: one to run `snappy-debug` and another to execute the `rt-app` Snap applications.
 Running `snappy-debug` presents the following message:
 
 ```{terminal}
@@ -513,7 +513,7 @@ Suggestion:
 * ignore the denial if the program otherwise works correctly (unconditional sched_setaffinity is often just noise)
 ```
 
-We see a seccomp report, but no suggested interface to use.
+You see a seccomp report, but no suggested interface to use.
 Instead there is a message suggesting to just ignore the denial report.
 This happens because there are some denials coming from the security policies defined in the snap sandboxing, which potentially do not affect the functionality of an application.
 This is the case for this app.
@@ -530,10 +530,10 @@ confinement: strict
 Then:
   - Build the snap like done before with `snapcraft`.
 
-  - Install it. This time, since we aren't using `devmode` anymore, it's possible to install it in a confined way.
+  - Install it. This time, since you aren't using `devmode` anymore, it's possible to install it in a confined way.
     Because the snap isn't being installed from a snap store, there is no way to fully trust it.
     It is therefore necessary to acknowledge the **dangerous** nature of it.
-    So we run our install command with the `--dangerous` flag.
+    So you run our install command with the `--dangerous` flag.
 
     ```{terminal}
       :input: sudo snap install ./rt-app_0.1_amd64.snap --dangerous
