@@ -105,7 +105,7 @@ The make plugin relies on the `DESTDIR` variable being available and configurabl
 It uses this variable to correctly place the built files inside the snap's squashfs file.
 ```
 
-We're also going to rename the part add in the template from `my-part` to something more meaningful, such as `src`.
+We're also going to rename the part in the template from `my-part` to something more meaningful, such as `src`.
 Additionally, we need to specify the source location for snapcraft to fetch the code.
 This can be either a remote Git repository or local files within the project directory.
 Since we want to build the `.c` files that in root of the project directory, we'll set the `source` to `.`:
