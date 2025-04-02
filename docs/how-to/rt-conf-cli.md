@@ -10,9 +10,7 @@ The `rt-conf` application is available as a snap and can be installed with:
 ```shell
 sudo snap install rt-conf
 ```
-<!-- TODO: Complement this information once the tool is in a stable state -->
-The Snap is supported on `amd64` systems using the [GRUB] bootloader.
-It works on both Ubuntu Classic ([Ubuntu Desktop][ubuntu_desktop] and [Ubuntu Server][ubuntu_server]) and [Ubuntu Core][uc].
+<!-- TODO: Complement information with supported systems once the tool is in a stable state -->
 
 ## Run in Terminal UI mode
 
