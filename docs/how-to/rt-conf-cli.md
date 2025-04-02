@@ -169,4 +169,4 @@ to apply the changes to your bootloader.
 [uc]: https://ubuntu.com/core
 
 [config_yaml]: https://documentation.ubuntu.com/real-time/en/rt-conf/reference/rt-conf-yaml/
-[sysfs-abi]: https://github.com/torvalds/linux/blob/master/Documentation/ABI/testing/sysfs-kernel-ir
+[sysfs-abi]: https://github.com/torvalds/linux/blob/master/Documentation/ABI/testing/sysfs-kernel-irq
