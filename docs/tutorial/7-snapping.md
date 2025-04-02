@@ -334,11 +334,11 @@ Calls made on thread2: 1
 
 In the previous section, you created a snap that works when installed in the Developer Mode.
 However, one of the key benefits of snap packages is their ability to run software securely.
-snap packaging provides various [security policies][security_policies] that create a sandboxed environment, enabling software to run in a confined and secure manner.
+Snap packaging provides various [security policies][security_policies] that create a sandboxed environment, enabling software to run in a confined and secure manner.
 To take advantage of these security policies, you must [confine the snap][snap_confinement] so that it can be installed in a strictly confined manner.
 
 The first step in confinement is understanding which system resources the applications need access to.
-[snap interfaces][snap_interfaces] provide a mechanism to grant narrow access to specific system resources.
+[Snap interfaces][snap_interfaces] provide a mechanism to grant narrow access to specific system resources.
 
 To identify these required resources, you can take two approaches:
 
@@ -548,7 +548,9 @@ Then:
     To learn more about this, take a look at this reference of [the snap system architecture][snap_sys_arch].
 
 You have now finished the development of your snap.
-You can change the `grade` field to `stable` if you consider it so. snaps with the `devel` grade cannot be promoted to a lower risk level. This is related to the concept of [snap channels](https://snapcraft.io/docs/channels), important when publishing a snap.
+You can change the `grade` field to `stable` if you consider it so.
+Snaps with the `devel` grade cannot be promoted to a lower risk level.
+This is related to the concept of [snap channels](https://snapcraft.io/docs/channels), important when publishing a snap.
 
 ### Conclusion
 
