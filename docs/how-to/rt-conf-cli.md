@@ -3,7 +3,7 @@
 RT-conf is an application that helps users tune their system for real-time responsiveness.  
 This guide provides usage instructions for its command-line interface.
 
-## Running in Terminal UI mode
+## Run in Terminal UI mode
 
 The `rt-conf` also provides a [terminal UI interface][tui_wikipedia], for iterative configuration.
 To be activated, it's only necessary to run the `rt-conf` tool, without any flags or arguments:
@@ -11,7 +11,7 @@ To be activated, it's only necessary to run the `rt-conf` tool, without any flag
 rt-conf
 ```
 
-## Getting help
+## Get help
 
 To print help information regarding the usage info, use `-h` or `--help` flag.
 
@@ -19,7 +19,7 @@ To print help information regarding the usage info, use `-h` or `--help` flag.
 rt-conf --help
 ```
 
-## Defining configuration file
+## Define configuration file
 
 There are three ways to define the YAML configuration file:
 
