@@ -45,6 +45,71 @@ rt-conf --conf
 rt-conf --conf=<custom-config>.yaml
 ```
 
+## Edit configuration file
+
+The actions made by the `rt-conf` tool are mainly driven by the options set in the YAML configuration file.
+Checkout the [configuration schema][config_yaml] for all the possible configuration keys on the YAML configuration file.
+
+### Configure kernel command line args
+
+Kernel command line are used to tune the system in a static way.
+Every change needs a reboot, to take effect.
+After boot, to revert the change, it's necessary to change back and reboot again.
+Here are some examples of useful configurations.
+
+  - CPU isolation with `isolcpus`.
+    Useful to run real-time workloads on the isolated CPUs.
+    ```yaml
+    kernel_cmdline:
+      isolcpus: "3-4"
+    ```
+
+  - Disable dynamic ticks on given CPUs to reduce OS jitter:
+    ```yaml
+    kernel_cmdline:
+      nohz: "on"
+      nohz_full: "3-4"
+    ```
+
+  - Allocate IRQ affinity to CPUs not used by the real-time workloads:
+    ```yaml
+    kernel_cmdline:
+      irqaffinity: "0-2,5-n"
+    ```
+
+### Fine tune IRQ affinity
+
+Some workloads may require specific IRQ affinity tuning.
+Like being able to handle IRQs coming from a specific network card interface on an isolated CPU running a real-time workload.
+For that, the `irq_tunning` top level field configuration can be set.
+
+Examples:
+
+- Handle IRQs coming from wifi interface on specific CPUs:
+  ```yaml
+  irq_tuning:
+    - cpus: "3-4"
+      filter:
+        actions: "iwlwifi"
+  ```
+
+```{note}
+The matching filters names are the same as you can found on the [sysfs ABI for kernel/irq directory][sysfs-abi] (excluding `hwirq` and `wakeup`).
+```
+
+### Fine tune CPU frequency scaling
+
+Some heavy real-time workloads may benefit from being handle on CPUs with higher frequencies.
+Doing do by running them in `performance` mode.
+
+The CPU scaling governor can be set using `cpu_governance` top level field configuration.
+The specified CPUs are the ones which will receive the set scaling governor.
+
+```yaml
+cpu_governance: 
+  - cpus: "3-4"
+    scaling_governor: "performance"
+```
 
 ## Debug mode
 
