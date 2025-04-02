@@ -1,6 +1,8 @@
 # Leave a blank line at the end of this file to support concatenation
 aarch
+ABI
 amd
+args
 benchmarking
 bh
 bitmask
@@ -178,6 +180,7 @@ sudo
 superset
 syscall
 syscalls
+sysfs
 systemd
 tasklets
 telco
@@ -202,6 +205,7 @@ userspace
 utils
 VIRT
 WCAG
+wifi
 wordlist
 ww
 xetex
