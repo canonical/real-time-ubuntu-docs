@@ -113,7 +113,7 @@ cpu_governance:
 
 ## Debug mode
 
-To enable debug logging set the `DEBUG` environment variable to `true`. For example:
+To enable debug logging set the `DEBUG` environment variable to `true`:
 
 ```shell
 DEBUG=true rt-conf --conf
