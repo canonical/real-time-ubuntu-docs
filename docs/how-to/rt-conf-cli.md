@@ -140,7 +140,7 @@ irq_tuning:
       actions: "acpi"
 ```
 
-Executign `rt-conf` from configuration file located ate home directory:
+Executing `rt-conf` from configuration file located at home directory:
 
 ```{terminal}
    :input: sudo rt-conf --config=$HOME/config.yaml
