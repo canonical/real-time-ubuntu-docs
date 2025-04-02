@@ -3,6 +3,17 @@
 RT-conf is an application that helps users tune their system for real-time responsiveness.  
 This guide provides usage instructions for its command-line interface.
 
+## Install `rt-conf` snap
+
+The `rt-conf` application is available as a snap and can be installed with:
+
+```shell
+sudo snap install rt-conf
+```
+<!-- TODO: Complement this information once the tool is in a stable state -->
+The Snap is supported on `amd64` systems using the [GRUB] bootloader.
+It works on both Ubuntu Classic ([Ubuntu Desktop][ubuntu_desktop] and [Ubuntu Server][ubuntu_server]) and [Ubuntu Core][uc].
+
 ## Run in Terminal UI mode
 
 The `rt-conf` also provides a [terminal UI interface][tui_wikipedia], for iterative configuration.
@@ -48,3 +59,7 @@ DEBUG=true rt-conf
 % Links
 [snap_env_variables]: https://snapcraft.io/docs/environment-variables
 [tui_wikipedia]: https://en.wikipedia.org/wiki/Text-based_user_interface
+[GRUB]: https://www.gnu.org/software/grub/
+[ubuntu_desktop]: https://ubuntu.com/download/desktop
+[ubuntu_server]: https://ubuntu.com/download/server
+[uc]: https://ubuntu.com/core
