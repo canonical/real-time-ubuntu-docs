@@ -208,7 +208,7 @@ Slice=custom-workload.slice
 ExecStart=/home/ubuntu/my-app
 
 ```
-The important part here is the `Slice=custom-workload.slice` which points your service to the `custom-workload.slice` that you created which has access to the isolated cpus.
+The important part here is the `Slice=custom-workload.slice` which points your service to the `custom-workload.slice` that you created which has access to the isolated CPUs.
 
 The service file should be created inside the `/etc/systemd/system` directory, for example at `/etc/systemd/system/my-app.service`.
 
