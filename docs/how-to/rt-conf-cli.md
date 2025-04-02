@@ -116,7 +116,48 @@ cpu_governance:
 To enable debug logging set the `DEBUG` environment variable to `true`. For example:
 
 ```shell
-DEBUG=true rt-conf
+DEBUG=true rt-conf --conf
+```
+
+<!-- TODO: necessary to add session reagarding connection of snap interfaces. -->
+
+## Execute application
+
+Example of `rt-conf` execution, with kernel command line and IRQ affinity tuning settings.
+
+Used configuration YAML:
+```yaml
+kernel_cmdline:
+  isolcpus: "1-2"
+  nohz: "on"
+  nohz_full: "1-2"
+  kthread_cpus: "0,3"
+  irqaffinity: "0,3"
+
+irq_tuning:
+  - cpus: "2"
+    filter:
+      actions: "acpi"
+```
+
+Executign `rt-conf` from configuration file located ate home directory:
+
+```{terminal}
+   :input: sudo rt-conf --config=$HOME/config.yaml
+   :user: ubuntu
+   :host: ubuntu
+   :dir: ~
+
+2025/04/02 14:44:59 Final kcmdline: nohz_full=1-2 kthread_cpus=0,3 irqaffinity=0,3 isolcpus=1-2 nohz=on
+Detected bootloader: GRUB
+Updated default grub file: /etc/default/grub
+
+Please run:
+
+	sudo update-grub
+
+to apply the changes to your bootloader.
+2025/04/02 14:44:59 Set /proc/irq/9/smp_affinity_list to 2
 ```
 
 % Links
@@ -126,3 +167,6 @@ DEBUG=true rt-conf
 [ubuntu_desktop]: https://ubuntu.com/download/desktop
 [ubuntu_server]: https://ubuntu.com/download/server
 [uc]: https://ubuntu.com/core
+
+[config_yaml]: https://documentation.ubuntu.com/real-time/en/rt-conf/reference/rt-conf-yaml/
+[sysfs-abi]: https://github.com/torvalds/linux/blob/master/Documentation/ABI/testing/sysfs-kernel-ir
