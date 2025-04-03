@@ -172,7 +172,7 @@ This tool may be installed with the ``stress-ng`` Debian package.
         Install the ``stress-ng`` Debian package.
 
     .. group-tab:: Ubuntu Core
-        Install the `stress-ng-dev snap`_ in developer mode:
+        Install the ``stress-ng-dev`` snap in developer mode:
 
         .. code-block:: shell
 
@@ -235,4 +235,3 @@ This could be used to monitor real-time observation of system activities such as
 
 .. _channel: https://snapcraft.io/docs/channels
 .. _rt-tests snap: https://snapcraft.io/rt-tests
-.. _stress-ng-dev snap: https://snapcraft.io/stress-ng-dev
