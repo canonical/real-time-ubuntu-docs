@@ -1,6 +1,6 @@
 # Snapping your real-time app
 
-Now that you have our real-time app working, it's time to package it.
+Now that you have your real-time app working, it's time to package it.
 This section describes how to package your real-time app as a [snap package][snapcraft.io].
 
 ## Installing requirements
