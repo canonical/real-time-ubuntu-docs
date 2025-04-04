@@ -12,13 +12,6 @@ sudo snap install rt-conf
 ```
 <!-- TODO: Complement information with supported systems once the tool is in a stable state -->
 
-## Run in Terminal UI mode
-
-The `rt-conf` also provides a [terminal UI interface][tui_wikipedia], for iterative configuration.
-To be activated, it's only necessary to run the `rt-conf` tool, without any flags or arguments:
-```shell
-rt-conf
-```
 
 ## Get help
 
