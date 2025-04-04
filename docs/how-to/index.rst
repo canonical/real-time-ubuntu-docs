@@ -26,7 +26,7 @@ Tune performance for real-time processing:
    Configure CPUs for real-time processing <cpu-boot-configs>
    Tune IRQ affinity <tune-irq-affinity>
    Isolate CPUs from general execution with cpusets <isolate-workload-cpusets>
-   Use RT-conf command line interface <rt-conf-cli>
+   Tune Real-Time Ubuntu using rt-conf <rt-conf-cli>
 
 Configure Real-time Ubuntu Core:
 
