@@ -580,7 +580,7 @@ A good next step is to distribute this snap via a store:
 [using_craftctl_tool]: https://snapcraft.io/docs/using-craftctl
 [cross_compile_autotools]: https://snapcraft.io/docs/cross-compile-an-autotools-project
 [snap_format]: https://snapcraft.io/docs/the-snap-format
-[snapcraft_parts]: https://canonical-snapcraft.readthedocs-hosted.com/en/stable/explanation/parts.html
+[snapcraft_parts]: https://canonical-snapcraft.readthedocs-hosted.com/en/stable/explanation/parts/
 [snap_install_modes]: https://snapcraft.io/docs/install-modes
 [application_cmds]: https://snapcraft.io/docs/commands-and-aliases#p-19557-application-commands
 [security_policies]: https://snapcraft.io/docs/security-policies
