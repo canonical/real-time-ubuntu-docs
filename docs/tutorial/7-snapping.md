@@ -3,7 +3,7 @@
 Now that you have your real-time app working, it's time to package it.
 This section describes how to package your real-time app as a [snap package][snapcraft.io].
 
-## Installing requirements
+## Install requirements
 
 Some dependencies are required when building snap packages:
 
