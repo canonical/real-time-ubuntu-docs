@@ -21,12 +21,16 @@ To print help information regarding the usage info, use `-h` or `--help` flag.
 rt-conf --help
 ```
 
-## Define configuration file
+## Configuration file
 
-There are three ways to define the YAML configuration file:
+The actions made by the `rt-conf` tool are mainly driven by the options set in the YAML configuration file.
+Checkout the [configuration schema][config_yaml] for all the possible configuration keys on the YAML configuration file.
 
-- Relying on the defined by `DEFAULT_CONF` environment variable.
-  Which defaults to `$SNAP_COMMON/config.yaml`. 
+### Set configuration file
+
+There are two ways to pass the YAML configuration file:
+
+- Relying on the default location, set to `$SNAP_COMMON/config.yaml`.
   Checkout [snap environment variables documentation][snap_env_variables].
 
 ```shell
@@ -37,11 +41,6 @@ rt-conf --conf
 ```shell
 rt-conf --conf=<custom-config>.yaml
 ```
-
-## Edit configuration file
-
-The actions made by the `rt-conf` tool are mainly driven by the options set in the YAML configuration file.
-Checkout the [configuration schema][config_yaml] for all the possible configuration keys on the YAML configuration file.
 
 ### Configure kernel command line args
 
