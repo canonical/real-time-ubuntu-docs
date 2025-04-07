@@ -536,7 +536,7 @@ You can change the `grade` field to `stable` if you consider it so.
 Snaps with the `devel` grade cannot be promoted to a lower risk level.
 This is related to the concept of [snap channels](https://snapcraft.io/docs/channels), important when publishing a snap.
 
-### Conclusion
+## Conclusion
 
 The final :file:`snapcraft.yaml` file should look like this:
 
