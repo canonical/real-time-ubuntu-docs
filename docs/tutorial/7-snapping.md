@@ -76,7 +76,7 @@ Your working directory should now look like this:
 2 directories, 6 files
 ```
 
-You'll also make some modifications to the :file:`snapcraft.yaml` file:
+You'll need to make some modifications to the :file:`snapcraft.yaml` file:
 
 - Change the name from **demo** to **rt-app**.
 - Provide a meaningful summary and description of what the snap does.
