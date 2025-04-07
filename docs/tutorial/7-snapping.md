@@ -170,7 +170,7 @@ Each part of this name has a meaning:
   The C programs and the snap can also be built for other architectures, for example using the [Canonical build farm][remote_build] or by cross compiling the sources and manually setting the target snap architecture.
   It is also possible to cross compile using a plugin if the project used [ autotools][cross_compile_autotools].
 
-It's possible to inspect the contents of this `.snap` file.
+Now you verify that the real-time applications are pack into the snap, by to inspecting the contents of this `.snap` file.
 Since a snap is a [squashfs] file, as explained in the [snap format document][snap_format], you can unsquash it:
 
 ```{terminal}
