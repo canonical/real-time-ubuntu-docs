@@ -253,8 +253,6 @@ apps:
 ```
 
 After defining the apps, you can rebuild the snap by running `snapcraft -v` again.
-The second build is faster than the first one because the necessary dependencies are already available.
-Also the necessary resources are already created by the build provider (which is a lxd container in this case).
 
 You can then install the snap using:
 
