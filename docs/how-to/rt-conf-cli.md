@@ -12,27 +12,10 @@ sudo snap install rt-conf
 ```
 <!-- TODO: Complement information with supported systems once the tool is in a stable state -->
 
-
-## Configuration file
+## Edit Configuration file
 
 The actions made by the `rt-conf` tool are mainly driven by the options set in the YAML configuration file.
 Checkout the [configuration schema][config_yaml] for all the possible configuration keys on the YAML configuration file.
-
-### Set configuration file
-
-There are two ways to pass the YAML configuration file:
-
-- Relying on the default location, set to `$SNAP_COMMON/config.yaml`.
-  Checkout [snap environment variables documentation][snap_env_variables].
-
-```shell
-rt-conf --conf
-```
-
-- Pass using the `--conf` flag:
-```shell
-rt-conf --conf=<custom-config>.yaml
-```
 
 ### Configure kernel command line args
 
@@ -93,6 +76,22 @@ The specified CPUs are the ones which will receive the set scaling governor.
 cpu_governance: 
   - cpus: "3-4"
     scaling_governor: "performance"
+```
+
+## Set configuration file
+
+There are two ways to pass the YAML configuration file:
+
+- Relying on the default location, set to `$SNAP_COMMON/config.yaml`.
+  Checkout [snap environment variables documentation][snap_env_variables].
+
+```shell
+rt-conf --conf
+```
+
+- Pass using the `--conf` flag:
+```shell
+rt-conf --conf=<custom-config>.yaml
 ```
 
 ## Debug mode
