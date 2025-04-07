@@ -257,19 +257,6 @@ After defining the apps, you can rebuild the snap by running `snapcraft -v` agai
 You can then install the snap using:
 
 ```{terminal}
-   :input: sudo snap install rt-app_0.1_amd64.snap
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~/tutorial
-
-error: cannot find signatures with metadata for snap "rt-app_0.1_amd64.snap"
-```
-
-The command fails because you're installing a locally built artifact.
-Normally, you'd bypass the signature check by installing in [Dangerous Mode][snap_install_modes], but because the snap has `confinement: devmode` it must be installed in Developer Mode.
-That mode not only bypasses the signature verification, but also allows installing snaps with the [Developer Mode confinement][snap_confinement].
-
-```{terminal}
    :input: sudo snap install rt-app_0.1_amd64.snap --devmode
    :user: ubuntu
    :host: ubuntu
@@ -277,6 +264,13 @@ That mode not only bypasses the signature verification, but also allows installi
 
 rt-app 0.1 installed
 ```
+
+```{note}
+Since the snap is being installed from a local snap bundle, you would typically install it in [Dangerous Mode][snap_install_modes] to bypass signature verification.
+However, because the snap uses `confinement: devmode`, it must be installed using Developer Mode (--devmode).
+This mode not only skips signature checks, but also allows installing snaps that use [Developer Mode confinement][snap_confinement].
+```
+
 Now, the snap appears in the list of installed snaps:
 
 ```{terminal}
