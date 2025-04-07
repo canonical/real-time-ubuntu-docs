@@ -13,14 +13,6 @@ sudo snap install rt-conf
 <!-- TODO: Complement information with supported systems once the tool is in a stable state -->
 
 
-## Get help
-
-To print help information regarding the usage info, use `-h` or `--help` flag.
-
-```shell
-rt-conf --help
-```
-
 ## Configuration file
 
 The actions made by the `rt-conf` tool are mainly driven by the options set in the YAML configuration file.
