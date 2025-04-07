@@ -14,10 +14,9 @@ Intel® TCC Mode includes a wide range of real-time optimizations including the 
   - Limiting amount of cache available to the GPU.
   - Setting up virtual channels for VC-capable endpoints.
 
-
 ```{note}
-If your system does not have the *Intel® TCC Mode* option it its BIOS, you can still continue this tutorial.
-Just skip the rest of this page and continue with [Cache partitioning using Intel CAT](intel-cat).
+If your system does not have the *Intel® TCC Mode* option it its BIOS, you can still continue with this tutorial.
+Just skip ahead to {doc}`Cache partitioning using Intel CAT </tutorial/intel-tcc/intel-cat>`.
 ```
 
 Now, let's take a concrete example and see how the Intel® TCC Mode optimizes power states for low latency.
