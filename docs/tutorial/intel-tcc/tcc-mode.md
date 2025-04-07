@@ -3,7 +3,7 @@
 Let's take a look at the *Intel® TCC Mode* and how this single UEFI BIOS/Slim Bootloader (SBL) knob can help to quickly optimize firmware settings for low latency.
 The *Intel® TCC Mode* should be available on all *Intel® TCC* enabled platforms.
 
-With the Intel® reference BIOS, you can enable *Intel® TCC Mode* by navigating to *Intel® Advanced Menu > Time Coordinated Computing*. 
+With the Intel® reference BIOS, you can enable *Intel® TCC Mode* by navigating to {menuselection}`Intel® Advanced Menu --> Time Coordinated Computing`. 
 If *Intel® TCC Mode* is not visible, consult your board vendor or follow the steps listed in the *Intel® Core Processors Firmware Configuration* section of [TCC User Guide](https://cdrdv2.intel.com/v1/dl/getContent/831868?explicitVersion=true) to set the options manually.
 
 Intel® TCC Mode includes a wide range of real-time optimizations including the following:
@@ -53,7 +53,7 @@ The block diagram below illustrates the setup used for the *Intel® TCC Mode* an
    TCC Mode results
 ```
 
-Looking at the performance metrics of the real-time application - execution time, scheduling jitter, and cache misses - shows that, in general, all three are still a bit noisy.
+Looking at the performance metrics of the real-time application -- execution time, scheduling jitter, and cache misses -- shows that, in general, all three are still a bit noisy.
 The most significant change can be observed in the scheduling jitter of the real-time thread.
 With *Intel® TCC Mode* disabled, the average scheduling jitter is around 100µs, while with *Intel® TCC Mode* enabled, the jitter is in the sub-10µs range.
 

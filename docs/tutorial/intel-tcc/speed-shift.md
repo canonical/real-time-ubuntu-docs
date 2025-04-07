@@ -16,7 +16,7 @@ First we lock the core frequency of all cores to the base frequency.
 Then we boost the frequency of the real-time core to a value within the turbo frequency range to leverage higher single-threaded performance.
 We follow the recommendations for the enveloping frequency configurations which are listed in the [TCC User Guide](https://cdrdv2.intel.com/v1/dl/getContent/831067) for the specific processor SKU.
 
-More information about HWP and the MSR can be found in the Intel® 64 and IA-32 Architectures Software Developer's Manual Vol3 section "Power and Thermal Management-Hardware Controlled Performance States" - RDC#[671200](https://cdrdv2.intel.com/v1/dl/getContent/671200)
+More information about HWP and the MSR can be found in the [Intel® 64 and IA-32 Architectures Software Developer's Manual Vol3 - RDC #671200](https://cdrdv2.intel.com/v1/dl/getContent/671200) section *Power and Thermal Management-Hardware Controlled Performance States*.
 
 ```{figure} images/tcc_setup_CAT_isol_boost.svg
    :width: 100%
@@ -25,7 +25,7 @@ More information about HWP and the MSR can be found in the Intel® 64 and IA-32 
    Speed Shift system setup
 ```
 
-## Run the experiment
+## Run experiment
 
 1. Start the real-time application if it is not already running, and output the statistics to the Grafana dashboard.
    ```bash
@@ -42,7 +42,7 @@ More information about HWP and the MSR can be found in the Intel® 64 and IA-32 
    sudo ./setCacheAllocation.sh rt_optimized
    ```
 
-2. Lock the core frequency of all cores to base frequency of the core and tune the Energy Performance Preferences (EPP) towards `performance`.
+1. Lock the core frequency of all cores to base frequency of the core and tune the Energy Performance Preferences (EPP) towards `performance`.
    This complies with disabling DVFS features in BIOS.
    
    Here is an example of how you can use the `sysfs` entries of `intel_pstate` driver:
@@ -63,7 +63,7 @@ More information about HWP and the MSR can be found in the Intel® 64 and IA-32 
     ```
     ````
 
-3. Boost the frequency of the core running the real-time application as described in the enveloping configuration in the TCC User Guide.
+1. Boost the frequency of the core running the real-time application as described in the enveloping configuration in the TCC User Guide.
    In this configuration, the maximum allowed frequency of all best-effort cores is limited to the base frequency, and the Energy Performance Preferences (EPP) is set to power.
    This setup allows the best-effort cores to scale their frequency between the minimum and base frequency depending on core utilization.
    For the real-time core, the frequency is boosted to 3.1 GHz, and the EPP is set to performance to ensure Quality of Service (QoS) in case of power limit throttling.
@@ -77,7 +77,7 @@ More information about HWP and the MSR can be found in the Intel® 64 and IA-32 
    Note: The script and the specified frequencies are examples tailored for this tutorial and the Intel® Core™ i5-1350PE processor. You may need to adapt them to match your processor and use case.
    ```
 
-For more information on directly accessing the HWP MSR instead of using the `sysfs` entries of the `intel_pstate driver`, please refer to the [TCC User Guide](https://cdrdv2.intel.com/v1/dl/getContent/831067) and in the Intel® 64 and IA-32 Architectures Software Developer's Manual Vol3 section "Power and Thermal Management-Hardware Controlled Performance States" - RDC#[671200](https://cdrdv2.intel.com/v1/dl/getContent/671200)
+For more information on directly accessing the HWP MSR instead of using the `sysfs` entries of the `intel_pstate driver`, please refer to the [TCC User Guide](https://cdrdv2.intel.com/v1/dl/getContent/831067) and in the [Intel® 64 and IA-32 Architectures Software Developer's Manual Vol3 - RDC #671200](https://cdrdv2.intel.com/v1/dl/getContent/671200), section *Power and Thermal Management-Hardware Controlled Performance States*.
 
 
 ## Results
