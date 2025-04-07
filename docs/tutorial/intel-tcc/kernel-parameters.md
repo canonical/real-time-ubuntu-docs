@@ -15,21 +15,25 @@ For this tutorial we add a couple of Linux Kernel command line parameters for re
 These parameters need to be applied by GRUB during boot.
 To do this:
 
-- Edit `/etc/default/grub` and append the following to `GRUB_CMDLINE_LINUX_DEFAULT`.
+1. Edit `/etc/default/grub` and append the following to `GRUB_CMDLINE_LINUX_DEFAULT`.
   
-  ```text
-  clocksource=tsc tsc=reliable nmi_watchdog=0 nosoftlockup isolcpus=3 rcu_nocbs=3 nohz_full=3 irqaffinity=0
-  ```
+   ```text
+   clocksource=tsc tsc=reliable nmi_watchdog=0 nosoftlockup isolcpus=3 rcu_nocbs=3 nohz_full=3 irqaffinity=0
+   ```
   
-  The result should look similar to this:
+   The result should look similar to this:
   
-  ```bash
-  GRUB_CMDLINE_LINUX_DEFAULT="quiet splash clocksource=tsc tsc=reliable nmi_watchdog=0 nosoftlockup isolcpus=3 rcu_nocbs=3 nohz_full=3 irqaffinity=0"
-  ```
+   ```bash
+   GRUB_CMDLINE_LINUX_DEFAULT="quiet splash clocksource=tsc tsc=reliable nmi_watchdog=0 nosoftlockup isolcpus=3 rcu_nocbs=3 nohz_full=3 irqaffinity=0"
+   ```
 
-- Update grub and reboot the system to apply the optimizations.
+1. Update grub and reboot the system to apply the optimizations.
   
-  ```bash
-  sudo update-grub
-  sudo reboot
-  ``` 
+   ```bash
+   sudo update-grub
+   sudo reboot
+   ``` 
+
+## Related topics
+
+- {doc}`/how-to/modify-kernel-boot-parameters`

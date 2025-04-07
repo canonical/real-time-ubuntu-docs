@@ -18,7 +18,7 @@ It explains which software components are required and how to set it up.
    ```
 
    For the real-time kernel to be used, a reboot is required.
-   We will anyway reboot when we [add kernel command-line parameters](kernel-parameters).
+   We will reboot when we [add kernel command-line parameters](kernel-parameters).
 
    Refer to [How to enable Real-time Ubuntu](https://canonical-ubuntu-pro-client.readthedocs-hosted.com/en/latest/howtoguides/enable_realtime_kernel/) for more details.
 
@@ -90,14 +90,14 @@ docker compose ps
 ```
 
 If everything is running, you can connect to Grafana by following these steps:
-- Open your preferred web browser.
-- Enter the following URL in the address bar: [http://localhost:3000/](http://localhost:3000/)
-  - If you are running Docker on a remote server, replace `localhost` with the server's IP address or domain name.
-    Also make sure port 3000 is exposed through your firewall.
+1. Open your preferred web browser.
+1. Enter the following URL in the address bar: [http://localhost:3000/](http://localhost:3000/)
+   - If you are running Docker on a remote server, replace `localhost` with the server's IP address or domain name.
+     Also make sure port 3000 is exposed through your firewall.
 
-- Log In to Grafana: You will be prompted to log in. Use the following credentials:
-  - Username: admin
-  - Password: admin1
+1. Log In to Grafana: You will be prompted to log in. Use the following credentials:
+   - Username: admin
+   - Password: admin1
 
-Browse to the statistics dashboard by going to {guilabel}`Dashboards` > {guilabel}`Provisioned Dashboards` > {guilabel}`rt_linux_tutorial`.
+Browse to the statistics dashboard by going to {menuselection}`Dashboards --> Provisioned Dashboards --> rt_linux_tutorial`.
 The dashboard has three panels which will show "No data" at this stage.

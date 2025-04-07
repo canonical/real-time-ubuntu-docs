@@ -26,7 +26,7 @@ In both scenarios, a memory-centric workload on the best-effort cores is simulat
    ./rt_linux_tutorial -i 1000 -s 1
    ```
  
-2. In a second terminal start *stress-ng* with a memory-centric stressor.
+2. In a second terminal start stress-ng with a memory-centric stressor.
 
    ```bash
    stress-ng --vm 8 --vm-bytes 128M --fork 4
@@ -55,13 +55,14 @@ In both scenarios, a memory-centric workload on the best-effort cores is simulat
    #There is also the pqos Linux command-line utility which is part of the intel-cmt-cat package which can be used.
    ```
   
-  ````{note}
-Alternatively, you can use the script with the `rt_optimized` option to partition the cache as demonstrated above, or with the `default` option for flat partitioning.
-  ```sh
-  sudo ./setCacheAllocation.sh rt_optimized
-  ```  
-  
-  The script and the masks defined above are examples tailored for the cache topology of the Intel® Core™ i5-1350PE processor and the specific use-case. You may need to adapt them to match the cache topology of your processor and use-case.
+   ````{note}
+   Alternatively, you can use the script with the `rt_optimized` option to partition the cache as demonstrated above, or with the `default` option for flat partitioning.
+
+   ```sh
+   sudo ./setCacheAllocation.sh rt_optimized
+   ```  
+
+   The script and the masks defined above are examples tailored for the cache topology of the Intel® Core™ i5-1350PE processor and the specific use-case. You may need to adapt them to match the cache topology of your processor and use-case.
    ````
 
 ## Results
@@ -85,8 +86,10 @@ This is just an example, and the configuration needs to be adjusted to your spec
 You can determine the cache topology, including the size and number of ways supported for a particular processor, by using the `CPUID` leaf "Deterministic Cache Parameters Leaf - 0x4".
 Additionally, Linux utilities like `lstopo` are very useful for getting an overview of the cache topology of a processor.
 
+## Related topics
+
 Here are some references if you need more information about CAT:
     
-  - Public Intel® Time Coordinated Computing (TCC) User Guide - RDC #[831067](https://cdrdv2.intel.com/v1/dl/getContent/831067?fileName=Public+TCC+User+Guide+-+September+2024+-+RDC-831067.pdf)
-  - Intel® Resource Director Technology (Intel® RDT) Architecture Specification - RDC #[789566](https://cdrdv2.intel.com/v1/dl/getContent/789566?fileName=356688-intel-rdt-arch-spec.pdf)
-  - Intel® 64 and IA-32 Architectures Software Developer’s Manual - RDC#[671200](https://cdrdv2.intel.com/v1/dl/getContent/671200)
+  - [Public Intel® Time Coordinated Computing (TCC) User Guide - RDC #831067](https://cdrdv2.intel.com/v1/dl/getContent/831067?fileName=Public+TCC+User+Guide+-+September+2024+-+RDC-831067.pdf)
+  - [Intel® Resource Director Technology (Intel® RDT) Architecture Specification - RDC #789566](https://cdrdv2.intel.com/v1/dl/getContent/789566?fileName=356688-intel-rdt-arch-spec.pdf)
+  - [Intel® 64 and IA-32 Architectures Software Developer’s Manual - RDC #671200](https://cdrdv2.intel.com/v1/dl/getContent/671200)
