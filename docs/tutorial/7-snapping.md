@@ -85,7 +85,7 @@ You'll also make some modifications to the `snapcraft.yaml` file:
 
 ### Defining the snap parts
 
-Once the snap metadata boilerplate is in place, it's time to define the [snapcraft parts][snapcraft_parts].
+Once the snap metadata boilerplate is in place, it's time to define the [Snapcraft parts][snapcraft_parts].
 In snaps, `parts` serve as the building blocks of the package, similar to a recipe's list of ingredients and preparation steps.
 
 Since you have five `.c` source files, you might assume that you need five separate parts.
@@ -106,7 +106,7 @@ It uses this variable to correctly place the built files inside the snap's squas
 ```
 
 We're also going to rename the part in the template from `my-part` to something more meaningful, such as `src`.
-Additionally, you need to specify the source location for snapcraft to fetch the code.
+Additionally, you need to specify the source location for Snapcraft to fetch the code.
 This can be either a remote Git repository or local files within the project directory.
 Since you want to build the `.c` files that in root of the project directory, you'll set the `source` to `.`:
 
