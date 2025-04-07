@@ -203,10 +203,14 @@ redirects = {}
 
 linkcheck_ignore = [
     "http://127.0.0.1:8000",
+    "http://localhost:3000/",
     "https://github.com/canonical/real-time-ubuntu-docs/*",
 
     # Working, accessible, but misinterpreted as broken
-    'https://www.digikey.com/en/maker/projects/introduction-to-rtos-solution-to-part-11-priority-inversion/abf4b8f7cd4a4c70bece35678d178321', # 403 via linkcheck and CI
+    "https://www.digikey.com/en/maker/projects/introduction-to-rtos-solution-to-part-11-priority-inversion/abf4b8f7cd4a4c70bece35678d178321", # 403 via linkcheck and CI
+    "https://www.intel.com/content/www/us/en/ark/featurefilter.html*",
+    "https://www.intel.com/content/www/us/en/content-details/831067/public-intel-time-coordinated-compute-tcc-user-guide.html",
+    "https://www.intel.com/PerformanceIndex",
     ]
 
 
@@ -214,7 +218,8 @@ linkcheck_ignore = [
 
 linkcheck_anchors_ignore_for_url = [
     r"https://github\.com/.*",
-    r"https://snapcraft\.io/docs/.*"
+    r"https://snapcraft\.io/docs/.*",
+    r"https://git.kernel.org/.*"
     ]
 
 # give linkcheck multiple tries on failure
