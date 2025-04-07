@@ -305,7 +305,7 @@ installed:    0.1 (x1) 16kB -
 
 Finally, you can run the defined real-time applications.
 Within a snap, the defined applications become [application commands][application_cmds].
-By typing the name of the installed snap and pressing the Tab key twice, you can list the available commands:
+Type the name of the installed snap and press the {kbd}`Tab` key twice to list the available commands:
 
 ```{terminal}
    :input: rt-app.
