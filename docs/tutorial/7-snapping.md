@@ -30,10 +30,10 @@ Run the following command from the same directory where the source `.c` files re
 Go to https://docs.snapcraft.io/the-snapcraft-format/8337 for more information about the snapcraft.yaml format.
 Successfully initialised project.
 ```
-This command creates a `snap` directory containing the `snapcraft.yaml` file.
+This command creates a `snap` directory containing the :file:`snapcraft.yaml` file.
 
 
-Let's examine the `snapcraft.yaml` file:
+Let's examine the :file:`snapcraft.yaml` file:
 
 ```yaml
 name: demo # you probably want to 'snapcraft register <name>'
@@ -54,7 +54,7 @@ parts:
     # See 'snapcraft plugins'
     plugin: nil
 ```
-You may also want to review the [snapcraft.yaml schema][snapcraft_yaml], which is the reference for all the possible configuration keys for the `snapcraft.yaml` file.
+You may also want to review the [snapcraft.yaml schema][snapcraft_yaml], which is the reference for all the possible configuration keys for the :file:`snapcraft.yaml` file.
 
 Your working directory should now look like this:
 
@@ -76,7 +76,7 @@ Your working directory should now look like this:
 2 directories, 6 files
 ```
 
-You'll also make some modifications to the `snapcraft.yaml` file:
+You'll also make some modifications to the :file:`snapcraft.yaml` file:
 
 - Change the name from **demo** to **rt-app**.
 - Provide a meaningful summary and description of what the snap does.
@@ -95,7 +95,7 @@ Let's create a Makefile for our real-time apps:
 ```
 
 Because compiling sources with a Makefile is common, Snapcraft provides [built-in plugins][snap_plugins] to simplify the process.
-To list the available plugins for your chosen [snap base][snap_base] (as defined in the `base:` field of `snapcraft.yaml`), run `snapcraft plugins`.
+To list the available plugins for your chosen [snap base][snap_base] (as defined in the `base:` field of :file:`snapcraft.yaml`), run `snapcraft plugins`.
 Since you build our `C` code using a Makefile, you can use the [make plugin][make_plugin].
 
 ```{tip}
@@ -162,8 +162,8 @@ It also provisions an [LXD container][lxd_container].
 
 The build generates an artifact named `rt-app_0.1_amd64.snap`.
 Each part of this name has a meaning:
-- `rt-app`: The snap's name, as defined in the `name` field of `snapcraft.yaml`.
-- `0.1`: The snap's version, as defined in the `version` field of `snapcraft.yaml`.
+- `rt-app`: The snap's name, as defined in the `name` field of :file:`snapcraft.yaml`.
+- `0.1`: The snap's version, as defined in the `version` field of :file:`snapcraft.yaml`.
   This can be set dynamically based on a git tag or other information, as explained in [this document][using_craftctl_tool].
 - `amd64`: The architecture of the built snap.
   This matches the host's architecture when doing a native build.
@@ -552,7 +552,7 @@ This is related to the concept of [snap channels](https://snapcraft.io/docs/chan
 
 ### Conclusion
 
-The final `snapcraft.yaml` file should look like this:
+The final :file:`snapcraft.yaml` file should look like this:
 
 ```{literalinclude} snapcraft.yaml
 :language: yaml
