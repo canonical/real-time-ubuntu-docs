@@ -329,21 +329,9 @@ To take advantage of these security policies, you must [confine the snap][snap_c
 The first step in confinement is understanding which system resources the applications need access to.
 [Snap interfaces][snap_interfaces] provide a mechanism to grant narrow access to specific system resources.
 
-To identify these required resources, you can take two approaches:
 
-- Perform an extensive source code analysis to identify required files, directories, and [syscalls].
-  This may also include analyzing the access to Linux-specific resources such as [procfs], [sysfs], and [configfs].
 
-- Use debugging tools to identify runtime accesses made by the application.
-
-While the first approach is recommended for completeness and accuracy, the second approach is useful when initially confining the application.
-
-The complexity of the application determines the best approach.
-If the application has multiple configurations, each triggering different execution paths, a full source code analysis is preferable.
-However, if the application has a single, fixed execution path, debugging tools alone may be sufficient.
-
-A variety of resources and tools exist for [debugging snaps][debug_snaps].
-The recommended tool for debugging and initial confinement is [snappy-debug].
+While there are a variety of resources and tools that exist for [debugging snaps][debug_snaps], we can identify these required resources needed for initial confinement with [snappy-debug].
 
 To install it:
 
@@ -508,6 +496,16 @@ Now that the required interfaces are defined, change the `confinement` property 
 
 ```yaml
 confinement: strict
+```
+
+```{tip}
+During the confinement process for your real-time applications, you used [snappy-debug] to identify the necessary security policies.
+This approach is especially effective for smaller applications or when you do not have access to the source code.
+If your application follows a single, fixed execution path, debugging tools alone may suffice.
+However, if it supports multiple configurations, each triggering different execution paths, a comprehensive source code analysis is preferable.
+Such analysis should identify all required files, directories, and [syscalls] and may include reviewing access to Linux-specific resources such as [procfs], [sysfs], and [configfs].
+
+The optimal approach depends on your application's complexity and whether you have access to its source code.
 ```
 
 Then:
