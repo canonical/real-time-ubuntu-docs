@@ -90,6 +90,6 @@ Additionally, Linux utilities like `lstopo` are very useful for getting an overv
 
 Here are some references if you need more information about CAT:
     
-  - [Public Intel® Time Coordinated Computing (TCC) User Guide - RDC #831067](https://cdrdv2.intel.com/v1/dl/getContent/831067?fileName=Public+TCC+User+Guide+-+September+2024+-+RDC-831067.pdf)
-  - [Intel® Resource Director Technology (Intel® RDT) Architecture Specification - RDC #789566](https://cdrdv2.intel.com/v1/dl/getContent/789566?fileName=356688-intel-rdt-arch-spec.pdf)
+  - [Public Intel® Time Coordinated Computing (TCC) User Guide - RDC #831067](https://cdrdv2.intel.com/v1/dl/getContent/831067?fileName=Public+TCC+User+Guide+-+Aug+2024+-+8-28-2024+-+RDC-831067.pdf)
+  - [Intel® Resource Director Technology (Intel® RDT) Architecture Specification - RDC #789566](https://cdrdv2.intel.com/v1/dl/getContent/789566)
   - [Intel® 64 and IA-32 Architectures Software Developer’s Manual - RDC #671200](https://cdrdv2.intel.com/v1/dl/getContent/671200)
