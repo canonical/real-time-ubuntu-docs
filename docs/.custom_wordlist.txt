@@ -31,6 +31,7 @@ cryptographically
 Ctrl
 cyclictest
 dev
+devmode
 DigiKey
 dispatchable
 dstat
