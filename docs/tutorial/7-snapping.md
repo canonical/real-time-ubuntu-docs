@@ -582,6 +582,5 @@ A good next step is to distribute this snap via a store:
 [snap_sys_arch]: https://snapcraft.io/docs/system-architecture
 [publish_snap]: https://snapcraft.io/docs/releasing-to-the-snap-store
 [brandstore]: https://ubuntu.com/core/docs/dedicated-snap-stores
-[squashfs]: https://en.wikipedia.org/wiki/SquashFS
 [proc_ctr_iface]: https://snapcraft.io/docs/process-control-interface
 [remote_build]: https://snapcraft.io/docs/remote-build
