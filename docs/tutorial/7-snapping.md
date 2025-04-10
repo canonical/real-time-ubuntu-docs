@@ -171,7 +171,7 @@ Each part of this name has a meaning:
   It is also possible to cross compile using a plugin if the project used [ autotools][cross_compile_autotools].
 
 Now you verify that the real-time applications are packed into the snap by inspecting the contents of this `.snap` file.
-Since a snap is a [SquashFS file][snap_format] file, you can unsquash it:
+Since a snap is a [{spellexception}`SquashFS` file][snap_format] file, you can unsquash it:
 
 ```{terminal}
    :input: unsquashfs rt-app_0.1_amd64.snap
