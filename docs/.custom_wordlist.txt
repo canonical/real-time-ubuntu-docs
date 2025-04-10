@@ -1,6 +1,9 @@
 # Leave a blank line at the end of this file to support concatenation
 aarch
 amd
+AppArmor
+apparmor
+autotools
 benchmarking
 bh
 bitmask
@@ -22,6 +25,7 @@ cjk
 cmdline
 conf
 config
+configfs
 cpu
 CPUAffinity
 cpus
@@ -34,6 +38,7 @@ cset
 Ctrl
 cyclictest
 dev
+devmode
 DigiKey
 dispatchable
 dstat
@@ -98,6 +103,7 @@ latexmk
 linux
 Livepatch
 LTS
+lxd
 mantic
 mem
 memmove
@@ -138,6 +144,7 @@ posix
 PPID
 preemptible
 proc
+procfs
 ps
 psr
 punctuations
@@ -158,10 +165,14 @@ runtimes
 rw
 rwlock
 rwsem
+sandboxed
+sandboxing
 SBCs
 sched
 scheduler's
 Schedutil
+seccomp
+Seccomp
 seqlock
 Seqlocks
 setattr
@@ -172,6 +183,7 @@ SMIs
 smp
 SMT
 snapcraft
+snapd
 softirq
 softIRQ
 softIRQs
@@ -180,6 +192,7 @@ SPID
 spinlock
 spinlocks
 Spinlocks
+squashfs
 stress-ng
 stressor
 subdirectory
@@ -188,6 +201,7 @@ sudo
 superset
 syscall
 syscalls
+sysfs
 systemd
 tasklets
 telco
@@ -208,6 +222,7 @@ typedef
 ubuntu
 UC
 unbootable
+unsquash
 userspace
 utils
 VIRT
