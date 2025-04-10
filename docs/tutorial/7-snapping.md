@@ -267,7 +267,7 @@ rt-app 0.1 installed
 
 ```{note}
 Since the snap is being installed from a local snap bundle, you would typically install it in [Dangerous Mode][snap_install_modes] to bypass signature verification.
-However, because the snap uses `confinement: devmode`, it must be installed using Developer Mode (--devmode).
+However, because the snap uses `confinement: devmode`, it must be installed using Developer Mode (\-\-devmode).
 This mode not only skips signature checks, but also allows installing snaps that use [Developer Mode confinement][snap_confinement].
 ```
 
