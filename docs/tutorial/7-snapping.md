@@ -486,15 +486,6 @@ Instead there is a message suggesting to just ignore the denial report.
 This happens because there are some denials coming from the security policies defined in the snap sandboxing, which potentially do not affect the functionality of an application.
 This is the case for this app.
 
-
-### Conclude strict confinement
-
-Now that the required interfaces are defined, change the `confinement` property to `strict`:
-
-```yaml
-confinement: strict
-```
-
 ```{tip}
 During the confinement process for your real-time applications, you used [snappy-debug] to identify the necessary security policies.
 This approach is especially effective for smaller applications or when you do not have access to the source code.
@@ -503,6 +494,14 @@ However, if it supports multiple configurations, each triggering different execu
 Such analysis should identify all required files, directories, and [syscalls] and may include reviewing access to Linux-specific resources such as [procfs], [sysfs], and [configfs].
 
 The optimal approach depends on your application's complexity and whether you have access to its source code.
+```
+
+### Conclude strict confinement
+
+Now that the required interfaces are defined, change the `confinement` property to `strict`:
+
+```yaml
+confinement: strict
 ```
 
 Then:
