@@ -528,29 +528,29 @@ void control_task(long cycle_time_ns, cache_line_node_t* workload_pointer_chasin
     cpu_core = sched_getcpu();
     if (cpu_core == -1) {
         fprintf(stderr,"sched_getcpu() failed\n");
-        goto end;
+        exit(EXIT_FAILURE);
     }
 
     fprintf(stdout,"Control thread is running on CPU core: %d\n", cpu_core);
     
     if (init_cache_miss_counter(cpu_core) != 0) {
         fprintf(stderr, "Failed to initialize cache miss counter\n");
-        goto end;
+        exit(EXIT_FAILURE);
     }
         
     if (init_insRetired_counter(cpu_core) != 0) {
         fprintf(stderr, "Failed to initialize instructions retired counter\n");
-        goto end;
+        exit(EXIT_FAILURE);
     }
 
     if (init_unHaltedCoreCycles_counter(cpu_core) != 0) {
         fprintf(stderr, "Failed to initialize unhalted Core cycles counter\n");
-        goto end;
+        exit(EXIT_FAILURE);
     }
 
     if (init_rdpmc() != 0) {
         fprintf(stderr, "Initialization of rdpmc failed\n");
-        goto end;
+        exit(EXIT_FAILURE);
     }
 
     clock_gettime(CLOCK_MONOTONIC, &next_wake_time);
@@ -594,8 +594,6 @@ void control_task(long cycle_time_ns, cache_line_node_t* workload_pointer_chasin
                 cache_misses_end - cache_misses_start, \
                 (float)((float)(ins_retired_end-ins_retired_start)/(float)(unhalted_core_cycles_end-unhalted_core_cycles_start)));
     }
-end:
-
 }
 
 // Thread function for the control loop
@@ -655,7 +653,7 @@ void *statistics_handler(void *arg) {
     int cpu_core = sched_getcpu();
     if (cpu_core == -1) {
         fprintf(stderr,"sched_getcpu() failed\n");
-        goto end;
+        exit(EXIT_FAILURE);
     }
 
     fprintf(stdout,"Statistic thread is running on CPU core: %d\n", cpu_core);
@@ -692,7 +690,6 @@ void *statistics_handler(void *arg) {
         MQTTClient_destroy(&client);
     }
 
-end:
     return NULL;
 }
 
