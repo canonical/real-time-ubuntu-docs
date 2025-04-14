@@ -1,7 +1,8 @@
 Tutorial: Your first Real-time Ubuntu application
 =================================================
 
-Tutorials provide a learning experience as you begin using Real-time Ubuntu.
+In this tutorial we will build a simple C program for a real-time workload.
+We will tune the system's real-time parameters and observe the benefits Real-time Ubuntu provides.
 
 .. toctree::
    :maxdepth: 1
