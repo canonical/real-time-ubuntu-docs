@@ -1,4 +1,4 @@
-Tutorial: Your first Real-time Ubuntu application
+Your first Real-time Ubuntu application
 =================================================
 
 In this tutorial we will build a simple C program for a real-time workload.
