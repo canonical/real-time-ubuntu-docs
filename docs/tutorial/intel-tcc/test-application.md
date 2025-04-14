@@ -17,38 +17,34 @@ The pointer chasing buffer size should exceed the L2 cache size of your processo
 You can change the buffer size in `rt_linux_tutorial.c` by editing the `WORKLOAD_BUFFER_SIZE` definition.
 ```
 
-## Build the docker image for the test application
+## Build the test application
+
+To build the application, you need Makefile support, the GCC compiler, the Paho MQTT library, and the cJSON library:
+
+```bash
+sudo apt install make gcc libpaho-mqtt-dev libcjson-dev
+```
 
 The source code for the test application is available in the code archive you downloaded earlier.
-
-First make any required changes to the C program code, like modifying the `WORKLOAD_BUFFER_SIZE`.
-Then build the Docker image by running the following command in the directory containing {file}`Dockerfile`:
-
-```bash
-cd tutorial-intel-tcc-code
-docker build -t intel_tcc_tutorial_image .
-```
-
-To verify that the image was built successfully, list all Docker images:
-
-```bash
-docker images
-```
-
-You should see `intel_tcc_tutorial_image` listed among the images.
-
-Run a new interactive container using this image:
-
-```bash
-docker run -it --privileged --rm --network docker-compose_stats intel_tcc_tutorial_image
-```
-
-Inside the container the `rt_linux_tutorial` application can be started:
+Make any required changes to the C program code, like modifying the `WORKLOAD_BUFFER_SIZE`.
+Then compile the application using the provided Makefile:
 
 ```{terminal}
-:user: root
-:host: container
-:dir: ~
+:user: ubuntu
+:host: ubuntu
+:dir: ~/tutorial-intel-tcc-code
+:input: make
+gcc -Wall -Wextra -O2 -I/usr/local/include   -c -o rt_linux_tutorial.o rt_linux_tutorial.c
+gcc -Wall -Wextra -O2 -I/usr/local/include -c pointer_chasing.c
+gcc -Wall -Wextra -O2 -I/usr/local/include -o rt_linux_tutorial rt_linux_tutorial.o pointer_chasing.o -L/usr/local/lib -lpaho-mqtt3c -lcjson
+```
+
+The resulting binary can be run with the `-h` flag to see a summary of options:
+
+```{terminal}
+:user: ubuntu
+:host: ubuntu
+:dir: ~/tutorial-intel-tcc-code
 :input: ./rt_linux_tutorial -h
 Usage: rt_linux_tutorial [OPTIONS]
 Options:
@@ -60,7 +56,7 @@ Options:
 Run it with MQTT support.
 
 ```bash
-./rt_linux_tutorial -i 1000 -s 1
+sudo ./rt_linux_tutorial -i 1000 -s 1
 ```
 
 Data should start appearing on the Grafana dashboard.

@@ -32,12 +32,12 @@ The block diagram below illustrates the setup used for the *Intel® TCC Mode* an
  
 ## Run experiment
 
-1. Boot the system with the default BIOS options, and start the `intel_tcc_tutorial_image` Docker container.
-   Inside it start the real-time application with a cycle time of 1ms, and output the statistics to the Grafana dashboard.
+1. Boot the system with the default BIOS options.
+   Start the real-time application with a cycle time of 1ms, and output the statistics to the Grafana dashboard.
    Let the test application run for some seconds and monitor the statistics.
 
    ```sh
-   ./rt_linux_tutorial -i 1000 -s 1
+   sudo ./rt_linux_tutorial -i 1000 -s 1
    ```
 
 2. Reboot the system and enable *Intel® TCC Mode* in the BIOS.

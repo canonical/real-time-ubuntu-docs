@@ -59,17 +59,17 @@ sudo addgroup --system docker
 sudo adduser $USER docker
 ```
 
+Apply the group permissions to your current session, or log out and log back in.
+
+```
+newgrp docker
+```
+
 Restart the docker service for it to be aware of the new group.
 
 ```
 sudo snap disable docker
 sudo snap enable docker
-```
-
-Apply the group permissions to your current session, or log out and log back in.
-
-```
-newgrp docker
 ```
 
 ### Start the services
@@ -88,6 +88,8 @@ Make sure it says "Up" in the status column.
 ```
 docker compose ps
 ```
+
+<!-- Grafana can take a minute or two to process all the database migrations when it starts up for the first time -->
 
 If everything is running, you can connect to Grafana by following these steps:
 1. Open your preferred web browser.
