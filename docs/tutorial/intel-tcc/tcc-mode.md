@@ -4,7 +4,7 @@ Let's take a look at the *Intel® TCC Mode* and how this single UEFI BIOS/Slim B
 The *Intel® TCC Mode* should be available on all *Intel® TCC* enabled platforms.
 
 With the Intel® reference BIOS, you can enable *Intel® TCC Mode* by navigating to {menuselection}`Intel® Advanced Menu --> Time Coordinated Computing`. 
-If *Intel® TCC Mode* is not visible, consult your board vendor or follow the steps listed in the *Intel® Core Processors Firmware Configuration* section of [TCC User Guide](https://cdrdv2.intel.com/v1/dl/getContent/831868?explicitVersion=true) to set the options manually.
+If *Intel® TCC Mode* is not visible, consult your board vendor or follow the steps listed in the *Firmware Configuration* section of [TCC User Guide](https://www.intel.com/content/www/us/en/content-details/851159/public-intel-time-coordinated-compute-tcc-user-guide.html?wapkw=831067) to set the options manually.
 
 Intel® TCC Mode includes a wide range of real-time optimizations including the following:
 - Power Management, for example:

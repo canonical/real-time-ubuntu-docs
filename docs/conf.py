@@ -209,7 +209,7 @@ linkcheck_ignore = [
     # Working, accessible, but misinterpreted as broken
     "https://www.digikey.com/en/maker/projects/introduction-to-rtos-solution-to-part-11-priority-inversion/abf4b8f7cd4a4c70bece35678d178321", # 403 via linkcheck and CI
     "https://www.intel.com/content/www/us/en/ark/featurefilter.html*",
-    "https://www.intel.com/content/www/us/en/content-details/831067/public-intel-time-coordinated-compute-tcc-user-guide.html",
+    "https://www.intel.com/content/www/us/en/content-details/*",
     "https://www.intel.com/PerformanceIndex",
     ]
 

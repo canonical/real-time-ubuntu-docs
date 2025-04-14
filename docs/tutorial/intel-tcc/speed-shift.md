@@ -14,9 +14,9 @@ You still have the option to lock core frequency during runtime using the HWP MS
 With this knowledge, let's revisit the performance metrics.
 First we lock the core frequency of all cores to the base frequency.
 Then we boost the frequency of the real-time core to a value within the turbo frequency range to leverage higher single-threaded performance.
-We follow the recommendations for the enveloping frequency configurations which are listed in the [TCC User Guide](https://cdrdv2.intel.com/v1/dl/getContent/831067) for the specific processor SKU.
+We follow the recommendations for the enveloping frequency configurations which are listed in the [TCC User Guide](https://www.intel.com/content/www/us/en/content-details/851159/public-intel-time-coordinated-compute-tcc-user-guide.html?wapkw=831067) for the specific processor SKU.
 
-More information about HWP and the MSR can be found in the [Intel® 64 and IA-32 Architectures Software Developer's Manual Vol3 - RDC #671200](https://cdrdv2.intel.com/v1/dl/getContent/671200) section *Power and Thermal Management-Hardware Controlled Performance States*.
+More information about HWP and the MSR can be found in the [Intel® 64 and IA-32 Architectures Software Developer's Manual Vol3 - RDC #671200](https://www.intel.com/content/www/us/en/content-details/851038/intel-64-and-ia-32-architectures-software-developer-s-manual-combined-volumes-1-2a-2b-2c-2d-3a-3b-3c-3d-and-4.html?wapkw=671200) section *Power and Thermal Management-Hardware Controlled Performance States*.
 
 ```{figure} images/tcc_setup_CAT_isol_boost.svg
    :width: 100%
@@ -77,7 +77,7 @@ More information about HWP and the MSR can be found in the [Intel® 64 and IA-32
    Note: The script and the specified frequencies are examples tailored for this tutorial and the Intel® Core™ i5-1350PE processor. You may need to adapt them to match your processor and use case.
    ```
 
-For more information on directly accessing the HWP MSR instead of using the `sysfs` entries of the `intel_pstate driver`, please refer to the [TCC User Guide](https://cdrdv2.intel.com/v1/dl/getContent/831067) and in the [Intel® 64 and IA-32 Architectures Software Developer's Manual Vol3 - RDC #671200](https://cdrdv2.intel.com/v1/dl/getContent/671200), section *Power and Thermal Management-Hardware Controlled Performance States*.
+For more information on directly accessing the HWP MSR instead of using the `sysfs` entries of the `intel_pstate driver`, please refer to the [TCC User Guide](https://www.intel.com/content/www/us/en/content-details/851159/public-intel-time-coordinated-compute-tcc-user-guide.html?wapkw=831067) and in the [Intel® 64 and IA-32 Architectures Software Developer's Manual Vol3 - RDC #671200](https://www.intel.com/content/www/us/en/content-details/851038/intel-64-and-ia-32-architectures-software-developer-s-manual-combined-volumes-1-2a-2b-2c-2d-3a-3b-3c-3d-and-4.html?wapkw=671200), section *Power and Thermal Management-Hardware Controlled Performance States*.
 
 
 ## Results
