@@ -21,10 +21,10 @@ All instructions and source code are provided and released under the [3-Clause B
 In this tutorial we will run through a number of configuration options to improve the real-time performance of a system that uses Intel CPUs.
 Some of the things that will be discussed include:
 
-- [Linux kernel command-line parameters](kernel-parameters)
-- [Intel® TCC Mode in BIOS/SBL](tcc-mode)
-- [Cache partitioning using Intel® CAT](intel-cat)
-- [Boost RT performance using Intel® Speed Shift for Edge](speed-shift)
+- {doc}`Linux kernel command-line parameters </tutorial/intel-tcc/kernel-parameters>`
+- {doc}`Intel® TCC Mode in BIOS/SBL </tutorial/intel-tcc/tcc-mode>`
+- {doc}`Cache partitioning using Intel® CAT </tutorial/intel-tcc/intel-cat>`
+- {doc}`Boost RT performance using Intel® Speed Shift for Edge </tutorial/intel-tcc/speed-shift>`
 
 An example C program is provided to demonstrate the possible optimization steps to increase temporal isolation between best effort and real-time workloads on Linux systems.
 This test application creates a synthetic real-time load, and captures statistics on its performance.
