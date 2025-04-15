@@ -89,7 +89,10 @@ Make sure it says "Up" in the status column.
 docker compose ps
 ```
 
-<!-- Grafana can take a minute or two to process all the database migrations when it starts up for the first time -->
+```{note}
+After the Grafana container is up, it still takes a bit of time to create its internal database and completely start up.
+If the web interface is not immediately available, wait a minute and try again.
+```
 
 If everything is running, you can connect to Grafana by following these steps:
 1. Open your preferred web browser.
