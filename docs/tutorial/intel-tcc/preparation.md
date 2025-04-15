@@ -94,7 +94,7 @@ It may take a few minutes until Grafana starts up for the first time.
 If the web interface is not immediately available, wait a minute and try again.
 ```
 
-When everything is ready, you can access Grafana's web interface by following these steps:
+When everything is ready, you can access {spellexception}`Grafana's` web interface by following these steps:
 1. Open your preferred web browser.
 1. Enter the following URL in the address bar: [http://localhost:3000/](http://localhost:3000/)
    - If you are running Docker on a remote server, replace `localhost` with the server's IP address or domain name.
