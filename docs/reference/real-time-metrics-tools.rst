@@ -86,21 +86,48 @@ where:
 
 This command displays system resource statistics with timestamps and shows most frequent interrupts.
 
-hwnoise
--------
+rtla
+-----
 
+`RTLA`_ provides a set of tools for the analysis of the kernel's realtime behavior on specific hardware.
+
+RTLA comes pre-installed on Ubuntu 24.04 LTS (Noble Numbat) and later. 
+It is not available as a package on Ubuntu Core.
+
+hwnoise
+^^^^^^^
 See how hardware noise affects kernel threads.
 
 hwnoise is similar to osnoise, except that it disables interrupts. Only non-maskable interrupts and hardware-related noise will affect the test.
-
-hwnoise is part of the `rtla`_ suite, which comes pre-installed on Ubuntu 24.04 LTS (Noble Numbat) and later. 
-It does not support Ubuntu Core or older versions of Ubuntu.
 
 Run ``rtla hwnoise top`` for a top-like interface that shows the time each thread takes to read the current time.
 
 Run ``rtla hwnoise hist`` for a histogram, which may be better suited for logging.
 
 For more information, see the `rtla-hwnoise`_ documentation.
+
+osnoise
+^^^^^^^
+See how operating system noise (preemption, IRQs/soft-IRQs) affect kernel threads.
+
+osnoise is part of the `rtla`_ suite, which comes pre-installed on Ubuntu 24.04 LTS (Noble Numbat) and later. 
+It does not support older versions of Ubuntu.
+
+Run ``rtla osnoise top`` for a top-like interface that shows the time each thread takes to read the current time.
+
+Run ``rtla osnoise hist`` for a histogram, which may be better suited for logging.
+
+For more information, see the `rtla-osnoise-top`_ and `rtla-osnoise-hist`_ documentation.
+
+
+timerlat
+^^^^^^^^
+timerlat runs threads which periodically wake up and sleep, and data is collected about how much latency overhead the operating system adds to them.
+
+Like osnoise, timerlat offers both a ``timerlat top`` and ``timerlat hist`` mode.
+
+For more information, see the `rtla-timerlat-top`_ and `rtla-timerlat-hist`_ documentation.
+
 
 oslat
 -----
@@ -137,18 +164,6 @@ where:
 
 This command runs the ``oslat`` test and then prints the results, which include latency measurements for each core.
 
-osnoise
--------
-See how operating system noise (preemption, IRQs/soft-IRQs) affect kernel threads.
-
-osnoise is part of the `rtla`_ suite, which comes pre-installed on Ubuntu 24.04 LTS (Noble Numbat) and later. 
-It does not support Ubuntu Core or older versions of Ubuntu.
-
-Run ``rtla osnoise top`` for a top-like interface that shows the time each thread takes to read the current time.
-
-Run ``rtla osnoise hist`` for a histogram, which may be better suited for logging.
-
-For more information, see the `rtla-osnoise-top`_ and `rtla-osnoise-hist`_ documentation.
 
 
 ps
@@ -230,18 +245,6 @@ where:
 This command runs the specified workload and 
 prints measurements including the real time spent executing the stressor, 
 numbers of bogo operations and CPU usage.
-
-timerlat
---------
-
-timerlat runs threads which periodically wake up and sleep, and data is collected about how much latency overhead the operating system adds to them.
-
-timerlat is part of the `rtla`_ suite, which comes pre-installed on Ubuntu 24.04 LTS (Noble Numbat) and later. 
-It does not support Ubuntu Core or older versions of Ubuntu.
-
-Like osnoise, timerlat offers both a ``timerlat top`` and ``timerlat hist`` mode.
-
-For more information, see the `rtla-timerlat-top`_ and `rtla-timerlat-hist`_ documentation.
 
 watch
 -----
