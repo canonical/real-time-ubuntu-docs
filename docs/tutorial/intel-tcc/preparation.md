@@ -59,13 +59,13 @@ sudo addgroup --system docker
 sudo adduser $USER docker
 ```
 
-Apply the group permissions to your current session, or log out and log back in.
+Apply the group changes to your current session:
 
 ```
 newgrp docker
 ```
 
-Restart the docker service for it to be aware of the new group.
+Restart the docker service for it to be aware of the new group:
 
 ```
 sudo snap disable docker
@@ -90,11 +90,11 @@ docker compose ps
 ```
 
 ```{note}
-After the Grafana container is up, it still takes a bit of time to create its internal database and completely start up.
+It may take a few minutes until Grafana starts up for the first time.
 If the web interface is not immediately available, wait a minute and try again.
 ```
 
-If everything is running, you can connect to Grafana by following these steps:
+When everything is ready, you can access Grafana's web interface by following these steps:
 1. Open your preferred web browser.
 1. Enter the following URL in the address bar: [http://localhost:3000/](http://localhost:3000/)
    - If you are running Docker on a remote server, replace `localhost` with the server's IP address or domain name.

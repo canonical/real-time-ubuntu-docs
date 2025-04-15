@@ -26,7 +26,7 @@ sudo apt install make gcc libpaho-mqtt-dev libcjson-dev
 ```
 
 The source code for the test application is available in the code archive you downloaded earlier.
-Make any required changes to the C program code, like modifying the `WORKLOAD_BUFFER_SIZE`.
+Make any required changes to the C program code, such as modifying the `WORKLOAD_BUFFER_SIZE`.
 Then compile the application using the provided Makefile:
 
 ```{terminal}
@@ -39,7 +39,7 @@ gcc -Wall -Wextra -O2 -I/usr/local/include -c pointer_chasing.c
 gcc -Wall -Wextra -O2 -I/usr/local/include -o rt_linux_tutorial rt_linux_tutorial.o pointer_chasing.o -L/usr/local/lib -lpaho-mqtt3c -lcjson
 ```
 
-The resulting binary can be run with the `-h` flag to see a summary of options:
+Run the resulting binary with the `-h` flag to see a summary of options:
 
 ```{terminal}
 :user: ubuntu
