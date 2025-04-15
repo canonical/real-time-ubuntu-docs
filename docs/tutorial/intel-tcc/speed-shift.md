@@ -29,7 +29,7 @@ More information about HWP and the MSR can be found in the [Intel® 64 and IA-32
 
 1. Start the real-time application if it is not already running, and output the statistics to the Grafana dashboard.
    ```bash
-   ./rt_linux_tutorial -i 1000 -s 1
+   sudo ./rt_linux_tutorial -i 1000 -s 1
    ```
 
    Monitor the statistics and in a second terminal start *stress-ng* with a memory-centric stressor.
