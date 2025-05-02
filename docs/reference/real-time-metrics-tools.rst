@@ -86,6 +86,51 @@ where:
 
 This command displays system resource statistics with timestamps and shows most frequent interrupts.
 
+rtla
+-----
+
+`RTLA`_ provides a set of tools for the analysis of the kernel's real-time behavior on specific hardware.
+
+RTLA comes pre-installed on Ubuntu 24.04 LTS (Noble Numbat) and later. 
+It is not available as a package on Ubuntu Core.
+
+hwnoise
+^^^^^^^
+
+See how hardware noise affects kernel threads.
+
+``hwnoise`` is similar to ``osnoise``, except that it disables interrupts.
+Only non-maskable interrupts and hardware-related noise will affect the test.
+
+Run ``rtla hwnoise top`` for a top-like interface that shows the time each thread takes to read the current time.
+
+Run ``rtla hwnoise hist`` for a histogram, which may be better suited for logging.
+
+For more information, see the `rtla-hwnoise`_ documentation.
+
+osnoise
+^^^^^^^
+
+See how operating system noise (preemption, IRQs/soft-IRQs) affect kernel threads.
+
+``osnoise`` is part of the `rtla`_ suite, which comes pre-installed on Ubuntu 24.04 LTS (Noble Numbat) and later. 
+It does not support older versions of Ubuntu.
+
+Run ``rtla osnoise top`` for a top-like interface that shows the time each thread takes to read the current time.
+
+Run ``rtla osnoise hist`` for a histogram, which may be better suited for logging.
+
+For more information, see the `rtla-osnoise-top`_ and `rtla-osnoise-hist`_ documentation.
+
+timerlat
+^^^^^^^^
+
+``timerlat`` runs threads which periodically wake up and sleep, and data is collected about how much latency overhead the operating system adds to them.
+
+Like ``osnoise``, ``timerlat`` offers both a ``timerlat top`` and ``timerlat hist`` mode.
+
+For more information, see the `rtla-timerlat-top`_ and `rtla-timerlat-hist`_ documentation.
+
 oslat
 -----
 
@@ -120,6 +165,7 @@ where:
 * ``--workload memmove``: Specifies the type of workload. Options: ``no``, ``memmove``.
 
 This command runs the ``oslat`` test and then prints the results, which include latency measurements for each core.
+
 
 ps
 ---
@@ -219,6 +265,14 @@ This could be used to monitor real-time observation of system activities such as
 .. _cyclictest: https://man.archlinux.org/man/cyclictest.8.en
 .. _dstat: https://manpages.ubuntu.com/manpages/jammy/man1/pcp-dstat.1.html
 .. _oslat: https://manpages.ubuntu.com/manpages/jammy/man8/oslat.8.html
+
+.. _rtla: https://docs.kernel.org/tools/rtla/index.html
+.. _rtla-osnoise-top: https://docs.kernel.org/tools/rtla/rtla-osnoise-top.html
+.. _rtla-osnoise-hist: https://docs.kernel.org/tools/rtla/rtla-osnoise-hist.html
+.. _rtla-hwnoise: https://docs.kernel.org/tools/rtla/rtla-hwnoise.html
+.. _rtla-timerlat-top: https://docs.kernel.org/tools/rtla/rtla-timerlat-top.html
+.. _rtla-timerlat-hist: https://docs.kernel.org/tools/rtla/rtla-timerlat-hist.html
+
 .. _ps: https://www.man7.org/linux/man-pages/man1/ps.1.html
 .. _perf: https://www.man7.org/linux/man-pages/man1/perf.1.html
 .. _stress-ng: https://manpages.ubuntu.com/manpages/noble/en/man1/stress-ng.1.html
