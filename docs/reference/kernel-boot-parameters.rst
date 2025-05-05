@@ -19,6 +19,13 @@ For example, ``isolcpus=1,2,10-20`` isolates CPUs 1, 2, and 10 through 20.
 
 For further details, please refer to `kernel's command-line parameters`_ documentation.
 
+kthread_cpus
+------------
+
+The ``kthread_cpus`` parameter refers to the list of CPUs specifically allocated for kernel usage.
+
+For instance, specifying ``kthread_cpus=0-3`` means that the kernel is allowed to run kernel threads on CPUs 0 through 3.
+
 nohz
 ----
 
@@ -30,12 +37,6 @@ When ``nohz=on`` is set, it enables dynamic ticks, enabling the kernel to functi
 
 Read more on `kernel's command-line parameters`_ documentation.
 
-kthread_cpus
-------------
-
-The ``kthread_cpus`` parameter refers to the list of CPUs specifically allocated for kernel usage.
-
-For instance, specifying ``kthread_cpus=0-3`` means that the kernel is allowed to run kernel threads on CPUs 0 through 3.
 
 .. LINKS
 
