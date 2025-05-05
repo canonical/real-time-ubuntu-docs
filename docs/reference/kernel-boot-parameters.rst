@@ -3,6 +3,19 @@ Kernel boot parameters
 
 This document lists several kernel boot parameters that are useful for tuning Real-time Ubuntu.
 
+irqaffinity
+-----------
+
+The ``irqaffinity`` kernel parameter sets the default IRQ affinity mask, which defines the CPUs responsible for handling interrupt requests.
+It requires a `cpu-list`_ formatted value.
+
+For example, ``irqaffinity=0-3`` means that interrupts will be handled by CPUs 0 through 3.
+
+The current default IRQ affinity mask can be checked in the ``/proc/irq/default_smp_affinity`` file.
+The information in this file is presented in a hexadecimal representation of the binary CPU mask.
+
+Note that ``irqaffinity`` is a `symmetric multiprocessing`_ (SMP) parameter, and therefore it does not apply to systems with only one CPU.
+
 isolcpus
 --------
 
