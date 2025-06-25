@@ -34,6 +34,7 @@ Configure Real-time Ubuntu Core:
    :maxdepth: 1
 
    Create a Real-time Ubuntu Core image <uc-image-creation>
+   Install real-time kernel on Ubuntu Core <uc-install-real-time-kernel>
 
 For tuning an existing Ubuntu Core system, refer to :ref:`ubuntu-core-kernel-cmdline`.
 
