@@ -560,7 +560,7 @@ A good next step is to distribute this snap via a store:
 [content_interface]: https://snapcraft.io/docs/content-interface
 [build_provider]: https://snapcraft.io/docs/build-providers
 [lxd_container]: https://documentation.ubuntu.com/server/how-to/containers/lxd-containers/
-[using_craftctl_tool]: https://snapcraft.io/docs/using-craftctl
+[using_craftctl_tool]: https://documentation.ubuntu.com/snapcraft/stable/how-to/crafting/customize-lifecycle-steps-and-part-variables/#override-project-variables
 [cross_compile_autotools]: https://snapcraft.io/docs/cross-compile-an-autotools-project
 [snap_format]: https://snapcraft.io/docs/the-snap-format
 <!-- NOTE: Use this once this doc set is stable enough:  -->
