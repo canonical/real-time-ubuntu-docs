@@ -35,7 +35,7 @@ Examples:
 * `24-rt/stable:        6.8.1-1023.24` refers to the real-time kernel that is based on Ubuntu 24.04 LTS. The release is stable. The kernel version is 6.8.1.
 * `24-rt-hwe/candidate: 6.11.0-1011.11~24.04.1` is a Hardware Enablement (HWE) kernel for Ubuntu 24.04 LTS. This release is on the candidate risk level. The kernel version is 6.11.0.
 
-Read more about [Ubuntu kernel lifecycle][kernel-lifecycle] and [HWE kernels][kwe-kernels].
+Read more about [Ubuntu kernel life cycle][kernel-lifecycle] and [HWE kernels][kwe-kernels].
 
 Once you identify a suitable channel, switch to that channel and refresh the snap.
 
