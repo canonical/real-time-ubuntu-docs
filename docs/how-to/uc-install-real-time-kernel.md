@@ -11,7 +11,7 @@ snap info pc-kernel
 ```
 For other architectures, refer to the [pc-kernel](https://snapcraft.io/pc-kernel) Snap Store web page.
 
-Under `channels`, look for entries including `-rt` as part of the track.
+Under `channels`, look for entries including `-rt`.
 
 We can filter the results with `grep`:
 ```{terminal}
@@ -27,13 +27,13 @@ We can filter the results with `grep`:
   ...
 ```
 
-The above output has been truncated for readability/
-It shows various [channels] and versions.
-Each channel consists of a track followed by the risk level.
+The above output has been truncated for readability.
+Each row shows a snap channel, version, date, revision, and size.
+Each [channel][channels] consists of a track followed by the risk level.
 
 Examples:
-* `24-rt/stable:        6.8.1-1023.24` refers to the real-time kernel that is based on Ubuntu 24.04 LTS. The release is stable. The kernel version is 6.8.1.
-* `24-rt-hwe/candidate: 6.11.0-1011.11~24.04.1` is a Hardware Enablement (HWE) kernel for Ubuntu 24.04 LTS. This release is on the candidate risk level. The kernel version is 6.11.0.
+* `24-rt/stable` refers to the real-time kernel that is based on Ubuntu 24.04 LTS. The release is stable. The snap version `6.8.1-1023.24` indicates that the kernel version is 6.8.1.
+* `24-rt-hwe/candidate` is a Hardware Enablement (HWE) kernel for Ubuntu 24.04 LTS. This release is on the candidate risk level. The snap version `6.11.0-1011.11~24.04.1` includes the kernel version.
 
 Read more about [Ubuntu kernel life cycle][kernel-lifecycle] and [HWE kernels][kwe-kernels].
 
