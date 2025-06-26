@@ -29,7 +29,9 @@ Ubuntu Server / Desktop
      - 6.14
      - generic
 
-The LTS versions of Ubuntu support newer kernel versions. Those are available as Hardware Enablement (HWE) kernels.
+.. note::
+
+  The LTS versions of Ubuntu support newer kernel versions. Those are available as Hardware Enablement (HWE) kernels; see `Ubuntu kernel lifecycle`_.
 
 Refer to :doc:`../how-to/enable-real-time-ubuntu` to set up a supported Ubuntu version.
 
@@ -47,12 +49,15 @@ Ubuntu Core
    * - Ubuntu Core 24
      - 6.8
 
-Newer kernel versions are available for `Ubuntu Core`_. Those are based on interim Ubuntu or Hardware Enablement (HWE) kernels. 
+.. note::
+
+  Newer kernels (6.11, etc) can be installed on Ubuntu Core via interim or Hardware Enablement (HWE) kernel snaps. 
+  The list of publicly available kernel snaps can be found in the `pc-kernel`_ Snap Store page.
 
 To install the real-time kernel on an instance of Ubuntu Core, refer to :doc:`../how-to/uc-install-real-time-kernel`.
 
 To create an Ubuntu Core image with the real-time kernel, refer to :doc:`../how-to/uc-image-creation`.
 
 
-
-.. _Ubuntu Core: https://ubuntu.com/core
+.. _Ubuntu kernel lifecycle: https://ubuntu.com/kernel/lifecycle
+.. _pc-kernel: https://snapcraft.io/pc-kernel

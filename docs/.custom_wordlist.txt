@@ -176,6 +176,7 @@ kustom
 lang
 latencies
 latexmk
+lifecycle
 linux
 localhost
 lxd

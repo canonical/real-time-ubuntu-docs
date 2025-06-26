@@ -5,11 +5,15 @@ The Linux kernel on Ubuntu Core is a snap. Because of that, switching to another
 This guide assumes you have booted into Ubuntu Core, using for example one of the [pre-built images published by Canonical][pre-built-uc].
 If you intend to build an image that includes a real-time kernel, refer to {doc}`uc-image-creation` instead.
 
-First, find the desired kernel by running the following command on the same Ubuntu Core host, or another system with the same architecture:
+## Find available kernels
+Run the following command on the same Ubuntu Core host, or on another system with the same architecture:
 ```shell
 snap info pc-kernel
 ```
-For other architectures, refer to the [pc-kernel](https://snapcraft.io/pc-kernel) Snap Store web page.
+
+```{tip}
+For the list of kernel snaps for other architectures, refer to the [pc-kernel](https://snapcraft.io/pc-kernel) Snap Store page.
+```
 
 Under `channels`, look for entries including `-rt`.
 
@@ -35,7 +39,9 @@ Examples:
 * `24-rt/stable` refers to the real-time kernel that is based on Ubuntu 24.04 LTS. The release is stable. The snap version `6.8.1-1023.24` indicates that the kernel version is 6.8.1.
 * `24-rt-hwe/candidate` is a Hardware Enablement (HWE) kernel for Ubuntu 24.04 LTS. This release is on the candidate risk level. The snap version `6.11.0-1011.11~24.04.1` includes the kernel version.
 
-Read more about [Ubuntu kernel life cycle][kernel-lifecycle] and [HWE kernels][kwe-kernels].
+Read more about [Ubuntu kernel lifecycle][kernel-lifecycle] and [HWE kernels][kwe-kernels].
+
+## Switch to another kernel
 
 Once you identify a suitable channel, switch to that channel and refresh the snap.
 
