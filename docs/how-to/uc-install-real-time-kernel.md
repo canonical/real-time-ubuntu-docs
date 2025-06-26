@@ -36,8 +36,9 @@ Each row shows a snap channel, version, date, revision, and size.
 Each [channel][channels] consists of a track followed by the risk level.
 
 Examples:
-* `24-rt/stable` refers to the real-time kernel that is based on Ubuntu 24.04 LTS. The release is stable. The snap version `6.8.1-1023.24` indicates that the kernel version is 6.8.1.
-* `24-rt-hwe/candidate` is a Hardware Enablement (HWE) kernel for Ubuntu 24.04 LTS. This release is on the candidate risk level. The snap version `6.11.0-1011.11~24.04.1` includes the kernel version.
+* `24-rt/stable` channel contains the real-time kernel that is based on Ubuntu 24.04 LTS. The release is stable. The snap version `6.8.1-1023.24` indicates that the kernel version is 6.8.1.
+* `24-rt-hwe/candidate` contains the Hardware Enablement (HWE) real-time kernel for Ubuntu 24.04 LTS. This release is on the candidate risk level. The snap version `6.11.0-1011.11~24.04.1` includes the kernel version.
+* `25.04-rt/stable` provides the real-time kernel based on Ubuntu 25.04 interim release. This is stable. The kernel version is 6.14.0.
 
 Read more about [Ubuntu kernel lifecycle][kernel-lifecycle] and [HWE kernels][kwe-kernels].
 
