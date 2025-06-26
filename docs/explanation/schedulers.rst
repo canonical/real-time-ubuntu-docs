@@ -160,7 +160,7 @@ scheduled to run in the following order:
    | Pe           | 210          | 130            |            
    +--------------+--------------+----------------+
 
-Note that in the picture bellow, the tasks index represents the remaining time in
+Note that in the picture below, the tasks index represents the remaining time in
 milliseconds for each task to finish its execution.
 
 .. image:: rr_scheduler.svg
