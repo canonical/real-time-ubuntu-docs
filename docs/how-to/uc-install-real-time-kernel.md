@@ -1,6 +1,6 @@
 # How to install the real-time kernel on Ubuntu Core
 
-The Linux kernel on Ubuntu Core is a snap. Because of that, switching to another compatible kernel is fairly straight forward.
+The Linux kernel on Ubuntu Core is a snap. Because of that, switching to another compatible kernel is fairly straightforward.
 
 This guide assumes you have booted into Ubuntu Core, using for example one of the [pre-built images published by Canonical][pre-built-uc].
 If you intend to build an image that includes a real-time kernel, refer to {doc}`uc-image-creation` instead.
@@ -36,7 +36,7 @@ Each row shows a snap channel, version, date, revision, and size.
 Each [channel][channels] consists of a track followed by the risk level.
 
 Examples:
-* `24-rt/stable` channel contains the real-time kernel that is based on Ubuntu 24.04 LTS. The release is stable. The snap version `6.8.1-1023.24` indicates that the kernel version is 6.8.1.
+* `24-rt/stable` channel contains the real-time kernel for Ubuntu 24.04 LTS. The release is stable. The snap version `6.8.1-1023.24` indicates that the kernel version is 6.8.1.
 * `24-rt-hwe/candidate` contains the Hardware Enablement (HWE) real-time kernel for Ubuntu 24.04 LTS. This release is on the candidate risk level. The snap version `6.11.0-1011.11~24.04.1` includes the kernel version.
 * `25.04-rt/stable` provides the real-time kernel based on Ubuntu 25.04 interim release. This is stable. The kernel version is 6.14.0.
 

@@ -31,7 +31,7 @@ Ubuntu Server / Desktop
 
 .. note::
 
-  The LTS versions of Ubuntu support newer kernel versions. Those are available as Hardware Enablement (HWE) kernels; see `Ubuntu kernel lifecycle`_.
+  The LTS releases of Ubuntu support newer kernel versions. Those are available as Hardware Enablement (HWE) kernels; see `Ubuntu kernel lifecycle`_.
 
 Refer to :doc:`../how-to/enable-real-time-ubuntu` to set up a supported Ubuntu version.
 
