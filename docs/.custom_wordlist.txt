@@ -25,6 +25,7 @@ GPG
 GPIO
 GRUB's
 HPC
+HWE
 HWP
 IOLATENCY
 IRQs
@@ -175,6 +176,7 @@ kustom
 lang
 latencies
 latexmk
+lifecycle
 linux
 localhost
 lxd
