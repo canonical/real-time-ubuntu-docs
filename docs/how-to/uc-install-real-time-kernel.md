@@ -2,10 +2,11 @@
 
 The Linux kernel on Ubuntu Core is a snap. Because of that, switching to another compatible kernel is fairly straightforward.
 
-This guide assumes you have booted into Ubuntu Core, using for example one of the [pre-built images published by Canonical][pre-built-uc].
+This guide assumes you have booted into Ubuntu Core, using one of the [pre-built images published by Canonical][pre-built-uc].
 If you intend to build an image that includes a real-time kernel, refer to {doc}`uc-image-creation` instead.
 
 ## Find available kernels
+
 Run the following command on the same Ubuntu Core host, or on another system with the same architecture:
 ```shell
 snap info pc-kernel
@@ -15,9 +16,9 @@ snap info pc-kernel
 For the list of kernel snaps for other architectures, refer to the [pc-kernel](https://snapcraft.io/pc-kernel) Snap Store page.
 ```
 
-Under `channels`, look for entries including `-rt`.
+Under `channels`, look for entries that contain `-rt`.
 
-We can filter the results with `grep`:
+The results can be filtered with `grep`: 
 ```{terminal}
    :input: snap info pc-kernel | grep -e "-rt"
    :user: ubuntu
