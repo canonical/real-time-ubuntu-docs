@@ -41,7 +41,9 @@ Examples:
 * `24-rt-hwe/candidate` contains the Hardware Enablement (HWE) real-time kernel for Ubuntu 24.04 LTS. This release is on the candidate risk level. The snap version `6.11.0-1011.11~24.04.1` includes the kernel version.
 * `25.04-rt/stable` provides the real-time kernel based on Ubuntu 25.04 interim release. This is stable. The kernel version is 6.14.0.
 
-Read more about [Ubuntu kernel lifecycle][kernel-lifecycle] and [HWE kernels][kwe-kernels].
+```{seealso}
+Read more about the [Ubuntu kernel lifecycle][kernel-lifecycle] and [HWE kernels][hwe-kernels].
+```
 
 ## Switch to another kernel
 
@@ -86,4 +88,4 @@ Refer to {doc}`../reference/real-time-metrics-tools` for more.
 [pre-built-uc]: https://documentation.ubuntu.com/core/tutorials/try-pre-built-images/index.html
 [channels]: https://snapcraft.io/docs/channels
 [kernel-lifecycle]: https://ubuntu.com/kernel/lifecycle
-[kwe-kernels]: https://canonical-kernel-docs.readthedocs-hosted.com/latest/reference/hwe-kernels/
+[hwe-kernels]: https://canonical-kernel-docs.readthedocs-hosted.com/latest/reference/hwe-kernels/
