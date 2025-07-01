@@ -5,7 +5,7 @@ deterministic response times.
 
 ## Project and community
 
-The Real-time Ubuntu project welcomes community contributions, suggestions,
+The Real-time Ubuntu documentation project welcomes community contributions, suggestions,
 fixes and constructive feedback. If you wish to contribute to Real-time Ubuntu,
 please follow [the guide][contribute].
 

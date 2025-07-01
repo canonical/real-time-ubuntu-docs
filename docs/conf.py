@@ -1,5 +1,6 @@
 import datetime
 import ast
+import os
 
 # Configuration for the Sphinx documentation builder.
 # All configuration specific to your project should be done in this file.
@@ -203,10 +204,14 @@ redirects = {}
 
 linkcheck_ignore = [
     "http://127.0.0.1:8000",
+    "http://localhost:3000/",
     "https://github.com/canonical/real-time-ubuntu-docs/*",
 
     # Working, accessible, but misinterpreted as broken
-    'https://www.digikey.com/en/maker/projects/introduction-to-rtos-solution-to-part-11-priority-inversion/abf4b8f7cd4a4c70bece35678d178321', # 403 via linkcheck and CI
+    "https://www.digikey.com/en/maker/projects/introduction-to-rtos-solution-to-part-11-priority-inversion/abf4b8f7cd4a4c70bece35678d178321", # 403 via linkcheck and CI
+    "https://www.intel.com/content/www/us/en/ark/featurefilter.html*",
+    "https://www.intel.com/content/www/us/en/content-details/*",
+    "https://www.intel.com/PerformanceIndex",
     ]
 
 
@@ -259,6 +264,7 @@ extensions = [
     "sphinx_last_updated_by_git",
     "myst_parser",
     'sphinx.ext.todo',
+    'sphinx_sitemap',
 ]
 
 # Excludes files or directories from processing
@@ -326,3 +332,13 @@ myst_substitutions = {
   "C_CLA": "[Canonical contributor license agreement](https://ubuntu.com/legal/contributors)",
   "PROJNAME_FULL": "Real-time Ubuntu documentation",
 }
+
+# Sitemap configuration
+
+html_baseurl = "https://documentation.ubuntu.com/real-time/"
+
+if 'READTHEDOCS_VERSION' in os.environ:
+    version = os.environ["READTHEDOCS_VERSION"]
+    sitemap_url_scheme = '{version}{link}'
+else:
+    sitemap_url_scheme = '{link}'

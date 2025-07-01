@@ -1,0 +1,6 @@
+The files in this directory have been sourced from
+https://github.com/intel/edge-developer-kit-reference-scripts/tree/bf65c7d8dc1bd987ca8f0c429ddf82840f28e734/usecases/real-time/tcc_tutorial
+
+The licensing has been added to LICENSE.txt.
+
+The images directory has been removed as it is not used.
