@@ -1,4 +1,4 @@
-# RT Conf YAML configuration schema
+# rt-conf YAML configuration schema
 
 The following schema reflects all settings available in the configuration file of the `rt-conf` tool
 
@@ -188,3 +188,21 @@ Valid values:
   * `conservative`: Scales the frequency dynamically according to current load (more gradually than ondemand).
   * `schedutil`: [Scheduler-driven](https://lwn.net/Articles/682391/) CPU frequency selection.
 
+
+
+### cpu_governance[*].min_freq
+
+Type: `string`
+
+_Optional_
+
+The minimum CPU scaling frequency in hertz, with one of `Hz`, `KHz`, `MHz`, or `GHz` as suffix.
+
+
+### cpu_governance[*].max_freq
+
+Type: `string`
+
+_Optional_
+
+The maximum CPU scaling frequency in hertz, with one of `Hz`, `KHz`, `MHz`, or `GHz` as suffix.
