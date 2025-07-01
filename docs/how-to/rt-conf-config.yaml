@@ -1,0 +1,47 @@
+# Several fields use the CPU Lists format. 
+# For the CPU Lists spec, refer to
+# https://docs.kernel.org/admin-guide/kernel-parameters.html#cpu-lists
+
+# Kernel command line parameters
+kernel_cmdline:
+  # Isolate CPUs from general execution
+  # Format: CPU Lists
+  # isolcpus: "2-3"
+
+  # Enable/disable dynamic ticks during idle time
+  # Supported values: on | off
+  # nohz: "on"
+
+  # Enable/disable full dynamic ticks
+  # Format: CPU Lists
+  # nohz_full: "2-3"
+
+  # Allocated CPUs for kernel threads
+  # Format: CPU Lists
+  # kthread_cpus: "0-1"
+
+  # Allocate CPUs for IRQ handling
+  # Format: CPU Lists
+  # irqaffinity: "0-1"
+
+# Runtime options for IRQ affinity
+irq_tuning:
+  # - # CPUs to which the IRQs are to be moved
+  #   # Format: range, e.g. 0-2
+  #   cpus: "2-3"
+  #   # Arguments used to filter IRQs
+  #   filter:
+  #     actions: "iwlwifi"
+  #     chip_name: "IR-PCI"
+  #     name: "edge"
+  #     type: "edge"
+
+# Runtime options for CPU frequency scaling
+cpu_governance: 
+  # - # CPUs to which the scaling_governor options are to be applied
+  #   # Format: CPU Lists
+  #   cpus: "0-1"
+  #   scaling_governor: "performance"
+  #   min_frequency: "1.2GHz"
+  #   max_frequency: "2.5GHz"
+
