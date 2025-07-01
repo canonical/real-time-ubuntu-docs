@@ -5,7 +5,7 @@ Real-time Ubuntu kernel configuration options are crucial for achieving low-late
 This document outlines various kernel config options, that Real Time Ubuntu uses on it's real-time kernel.
 These options enable and optimize preemption, manage IRQs, and control block I/O latency, among other features, that make Ubuntu real-time capable.
 
-All the configurations bellow are kernel config options, that begin with **CONFIG_**, but this prefix is omitted in the following sections for brevity.
+All the configurations below are kernel config options, that begin with **CONFIG_**, but this prefix is omitted in the following sections for brevity.
 
 
 >>>>
