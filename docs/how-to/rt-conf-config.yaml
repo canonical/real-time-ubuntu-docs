@@ -47,7 +47,7 @@ cpu_governance:
   #    scaling_governor: "performance"
   #    # Minimum CPU frequency
   #    # Format: frequency with unit, one of "GHz", "MHz", "kHz", "Hz"
-  #    min_frequency: "1GHz"
+  #    min_freq: "1GHz"
   #    # Maximum CPU frequency
   #    # Format: same as min_frequency
-  #    max_frequency: "5.2gHz"
+  #    max_freq: "5.2gHz"
