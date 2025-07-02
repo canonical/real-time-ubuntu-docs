@@ -1,6 +1,7 @@
 # How-to tune Real-Time Ubuntu using rt-conf
 
-rt-conf is an application that helps users tune their system for real-time responsiveness.  
+*rt-conf* is a tool that helps users tune their system for real-time responsiveness. 
+This guide describes how to install and use it on Ubuntu. 
 
 ## Install
 
@@ -15,7 +16,7 @@ The snap must be installed with `--devmode` to allow IRQ configuration.
 This is due to issue [#67](https://github.com/canonical/rt-conf/issues/67). 
 
 When installed in developer mode, the snap will not update automatically.
-For force an update:
+To force an update:
 ```shell
 sudo snap refresh rt-conf
 ```
@@ -23,17 +24,17 @@ sudo snap refresh rt-conf
 
 ## Configure
 
-The default configuration file is located at `/var/snap/rt-conf/config.yaml`:
+The default configuration file is located at `/var/snap/rt-conf/common/config.yaml`:
 
 ```{literalinclude} rt-conf-config.yaml
 :language: yaml
 ```
 
 The configuration file includes several examples.
-If a configuration is commented out, rt-conf will not perform any operations. 
-Hence, anything that is set on your system remains untouched.
-
 Uncomment useful examples and modify them to meet the tuning requirements.
+
+If a configuration is commented out, rt-conf will not perform any operations. 
+Anything that is set on your system remains untouched.
 
 Refer to the {doc}`../reference/rt-conf-yaml` for more details.
 
@@ -45,26 +46,34 @@ Once ready with the configurations, run rt-conf:
 sudo rt-conf
 ```
 
-```{important}
+```{admonition} Kernel command line parameters
 Pay attention to the output as it shows platform-specific instructions to complete kernel command line configurations.
+
+Setting kernel command line via rt-conf is not supported on Ubuntu Core. 
+Instead, refer to {ref}`ubuntu-core-kernel-cmdline`.
 ```
 
-The kernel command lines are persisted on the system, but this is not the case for other configurations.
+The kernel command line parameters are persisted on the system, but this is not the case for other configurations.
 The IRQ and CPU governance are reset to the system defaults after a reboot.
+The rt-conf snap has a oneshot service which runs on every boot to re-apply the non-persistent configurations. 
+This service runs only once and stops immediately after setting the configurations.
 
-To automatically set non-persistent configurations on system startup, enable {spellexception}`rt-conf's` oneshot service:
+If re-applying non-persistent configurations on boot is not wanted, disable the service:
 ```shell
-sudo snap start --enable rt-conf
+sudo snap stop --disable rt-conf
 ```
-
-With the above command, rt-conf applies the configuration once and again on every boot.
-The service stops after applying the configurations.
 
 ### Change configuration path
 
 The configuration file path can be changed with `snap set`. For example:
 ```shell
 sudo snap set rt-conf config-file=/home/ubuntu/rt-conf/config.yaml
+```
+
+```{note}
+The configuration file must be in a location accessible to the snap, such as a user home directory.
+
+The file must be owned by and writable to root only.
 ```
 
 To revert to the default path:
