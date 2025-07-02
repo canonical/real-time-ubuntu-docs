@@ -3,6 +3,7 @@
 # https://docs.kernel.org/admin-guide/kernel-parameters.html#cpu-lists
 
 # Kernel command line parameters
+# TODO add reboot requirement
 kernel_cmdline:
   # Isolate CPUs from general execution
   # Format: CPU Lists
@@ -38,10 +39,15 @@ irq_tuning:
 
 # Runtime options for CPU frequency scaling
 cpu_governance: 
-  # - # CPUs to which the scaling_governor options are to be applied
-  #   # Format: CPU Lists
-  #   cpus: "0-1"
-  #   scaling_governor: "performance"
-  #   min_frequency: "1.2GHz"
-  #   max_frequency: "2.5GHz"
-
+  #  - # CPUs to which the scaling_governor options are to be applied
+  #    # Format: CPU Lists
+  #    cpus: "0-1"
+  #    # CPU frequency scaling governor
+  #    # Supported values depends on the system, typically: performance, powersave
+  #    scaling_governor: "performance"
+  #    # Minimum CPU frequency
+  #    # Format: frequency with unit, one of "GHz", "MHz", "kHz", "Hz"
+  #    min_frequency: "1GHz"
+  #    # Maximum CPU frequency
+  #    # Format: same as min_frequency
+  #    max_frequency: "5.2gHz"
