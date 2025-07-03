@@ -11,6 +11,7 @@ Install rt-conf as a snap:
 sudo snap install rt-conf --beta --devmode
 ```
 
+
 ````{admonition} Developer mode
 The snap must be installed with `--devmode` to allow IRQ configuration.
 This is due to issue [#67](https://github.com/canonical/rt-conf/issues/67). 
@@ -21,6 +22,11 @@ To force an update:
 sudo snap refresh rt-conf
 ```
 ````
+
+To allow GRUB configuration on a system that supports it, grant rt-conf access to create a drop-in GRUB config file:
+```shell
+sudo snap connect rt-conf:etc-default-grub
+```
 
 ## Configure
 
@@ -49,7 +55,7 @@ sudo rt-conf
 ```{admonition} Kernel command line parameters
 Pay attention to the output as it shows platform-specific instructions to complete kernel command line configurations.
 
-Setting kernel command line via rt-conf is not supported on Ubuntu Core. 
+Setting kernel command line via rt-conf is not supported on [Ubuntu Core][UC]. 
 Instead, refer to {ref}`ubuntu-core-kernel-cmdline`.
 ```
 
@@ -65,7 +71,8 @@ sudo snap stop --disable rt-conf
 
 ### Change configuration path
 
-The configuration file path can be changed with `snap set`. For example:
+The configuration file path can be changed with [snap configurations][snap-config].
+For example:
 ```shell
 sudo snap set rt-conf config-file=/home/ubuntu/rt-conf/config.yaml
 ```
@@ -87,3 +94,8 @@ To enable debug logging set:
 ```shell
 sudo snap set rt-conf verbose=true
 ```
+
+
+% Links
+[UC]: https://ubuntu.com/core
+[snap-config]: https://snapcraft.io/docs/configuration-in-snaps
