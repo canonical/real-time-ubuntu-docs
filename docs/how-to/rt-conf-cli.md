@@ -23,10 +23,12 @@ sudo snap refresh rt-conf
 ```
 ````
 
-To allow GRUB configuration on a system that supports it, grant rt-conf access to create a drop-in GRUB config file:
+Grant access to allow GRUB configuration on a system that supports it:
 ```shell
 sudo snap connect rt-conf:etc-default-grub
 ```
+rt-conf uses this access to write a drop-in GRUB config file at `/etc/default/grub.d/60_rt-conf.cfg`.
+This file is removed when uninstalling the rt-conf snap.
 
 ## Configure
 
