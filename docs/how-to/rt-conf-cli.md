@@ -1,155 +1,103 @@
 # How-to tune Real-Time Ubuntu using rt-conf
 
-RT-conf is an application that helps users tune their system for real-time responsiveness.  
-This guide provides usage instructions for its command-line interface.
+*rt-conf* is a tool that helps users tune their system for real-time responsiveness. 
+This guide describes how to install and use it on Ubuntu. 
 
-## Install `rt-conf` snap
+## Install
 
-The `rt-conf` application is available as a snap and can be installed with:
+Install rt-conf as a snap:
 
 ```shell
-sudo snap install rt-conf
+sudo snap install rt-conf --beta --devmode
 ```
-<!-- TODO: Complement information with supported systems once the tool is in a stable state -->
 
-## Edit Configuration file
 
-The actions made by the `rt-conf` tool are mainly driven by the options set in the YAML configuration file.
-Checkout the [configuration schema][config_yaml] for all the possible configuration keys on the YAML configuration file.
+````{admonition} Developer mode
+The snap must be installed with `--devmode` to allow IRQ configuration.
+This is due to issue [#67](https://github.com/canonical/rt-conf/issues/67). 
 
-### Configure kernel command line args
+When installed in developer mode, the snap will not update automatically.
+To force an update:
+```shell
+sudo snap refresh rt-conf
+```
+````
 
-Kernel command line are used to tune the system in a static way.
-Every change needs a reboot, to take effect.
-After boot, to revert the change, it's necessary to change back and reboot again.
-Here are some examples of useful configurations.
+Grant access to allow GRUB configuration on a system that supports it:
+```shell
+sudo snap connect rt-conf:etc-default-grub
+```
+rt-conf uses this access to write a drop-in GRUB config file at `/etc/default/grub.d/60_rt-conf.cfg`.
+This file is removed when uninstalling the rt-conf snap.
 
-  - CPU isolation with `isolcpus`.
-    Useful to run real-time workloads on the isolated CPUs.
-    ```yaml
-    kernel_cmdline:
-      isolcpus: "3-4"
-    ```
+## Configure
 
-  - Disable dynamic ticks on given CPUs to reduce OS jitter:
-    ```yaml
-    kernel_cmdline:
-      nohz: "on"
-      nohz_full: "3-4"
-    ```
+The default configuration file is located at `/var/snap/rt-conf/common/config.yaml`:
 
-  - Allocate IRQ affinity to CPUs not used by the real-time workloads:
-    ```yaml
-    kernel_cmdline:
-      irqaffinity: "0-2,5-n"
-    ```
+```{literalinclude} rt-conf-config.yaml
+:language: yaml
+```
 
-### Fine tune IRQ affinity
+The configuration file includes several examples.
+Uncomment useful examples and modify them to meet the tuning requirements.
 
-Some workloads may require specific IRQ affinity tuning.
-Like being able to handle IRQs coming from a specific network card interface on an isolated CPU running a real-time workload.
-For that, the `irq_tunning` top level field configuration can be set.
+If a configuration is commented out, rt-conf will not perform any operations. 
+Anything that is set on your system remains untouched.
 
-Examples:
+Refer to the {doc}`../reference/rt-conf-yaml` for more details.
 
-- Handle IRQs coming from wifi interface on specific CPUs:
-  ```yaml
-  irq_tuning:
-    - cpus: "3-4"
-      filter:
-        actions: "iwlwifi"
-  ```
+
+## Run
+
+Once ready with the configurations, run rt-conf:
+```shell
+sudo rt-conf
+```
+
+```{admonition} Kernel command line parameters
+Pay attention to the output as it shows platform-specific instructions to complete kernel command line configurations.
+
+Setting kernel command line via rt-conf is not supported on [Ubuntu Core][UC]. 
+Instead, refer to {ref}`ubuntu-core-kernel-cmdline`.
+```
+
+The kernel command line parameters are persisted on the system, but this is not the case for other configurations.
+The IRQ and CPU governance are reset to the system defaults after a reboot.
+The rt-conf snap has a oneshot service which runs on every boot to re-apply the non-persistent configurations. 
+This service runs only once and stops immediately after setting the configurations.
+
+If re-applying non-persistent configurations on boot is not wanted, disable the service:
+```shell
+sudo snap stop --disable rt-conf
+```
+
+### Change configuration path
+
+The configuration file path can be changed with [snap configurations][snap-config].
+For example:
+```shell
+sudo snap set rt-conf config-file=/home/ubuntu/rt-conf/config.yaml
+```
 
 ```{note}
-The matching filters names are the same as you can found on the [sysfs ABI for kernel/irq directory][sysfs-abi] (excluding `hwirq` and `wakeup`).
+The configuration file must be in a location accessible to the snap, such as a user home directory.
+
+The file must be owned by and writable to root only.
 ```
 
-### Fine tune CPU frequency scaling
-
-Some heavy real-time workloads may benefit from being handle on CPUs with higher frequencies.
-Doing do by running them in `performance` mode.
-
-The CPU scaling governor can be set using `cpu_governance` top level field configuration.
-The specified CPUs are the ones which will receive the set scaling governor.
-
-```yaml
-cpu_governance: 
-  - cpus: "3-4"
-    scaling_governor: "performance"
-```
-
-## Set configuration file
-
-There are two ways to pass the YAML configuration file:
-
-- Relying on the default location, set to `$SNAP_COMMON/config.yaml`.
-  Checkout [snap environment variables documentation][snap_env_variables].
-
+To revert to the default path:
 ```shell
-rt-conf --conf
+sudo snap unset rt-conf config-file
 ```
 
-- Pass using the `--conf` flag:
+### Verbose logging
+
+To enable debug logging set:
 ```shell
-rt-conf --conf=<custom-config>.yaml
+sudo snap set rt-conf verbose=true
 ```
 
-## Debug mode
-
-To enable debug logging set the `DEBUG` environment variable to `true`:
-
-```shell
-DEBUG=true rt-conf --conf
-```
-
-<!-- TODO: necessary to add session reagarding connection of snap interfaces. -->
-
-## Execute application
-
-Example of `rt-conf` execution, with kernel command line and IRQ affinity tuning settings.
-
-Used configuration YAML:
-```yaml
-kernel_cmdline:
-  isolcpus: "1-2"
-  nohz: "on"
-  nohz_full: "1-2"
-  kthread_cpus: "0,3"
-  irqaffinity: "0,3"
-
-irq_tuning:
-  - cpus: "2"
-    filter:
-      actions: "acpi"
-```
-
-Executing `rt-conf` from configuration file located at home directory:
-
-```{terminal}
-   :input: sudo rt-conf --config=$HOME/config.yaml
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~
-
-2025/04/02 14:44:59 Final kcmdline: nohz_full=1-2 kthread_cpus=0,3 irqaffinity=0,3 isolcpus=1-2 nohz=on
-Detected bootloader: GRUB
-Updated default grub file: /etc/default/grub
-
-Please run:
-
-	sudo update-grub
-
-to apply the changes to your bootloader.
-2025/04/02 14:44:59 Set /proc/irq/9/smp_affinity_list to 2
-```
 
 % Links
-[snap_env_variables]: https://snapcraft.io/docs/environment-variables
-[tui_wikipedia]: https://en.wikipedia.org/wiki/Text-based_user_interface
-[GRUB]: https://www.gnu.org/software/grub/
-[ubuntu_desktop]: https://ubuntu.com/download/desktop
-[ubuntu_server]: https://ubuntu.com/download/server
-[uc]: https://ubuntu.com/core
-
-[config_yaml]: https://documentation.ubuntu.com/real-time/en/rt-conf/reference/rt-conf-yaml/
-[sysfs-abi]: https://github.com/torvalds/linux/blob/master/Documentation/ABI/testing/sysfs-kernel-irq
+[UC]: https://ubuntu.com/core
+[snap-config]: https://snapcraft.io/docs/configuration-in-snaps

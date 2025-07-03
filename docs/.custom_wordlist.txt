@@ -91,6 +91,7 @@ Telegraf
 Tickless
 Timerlat
 UC
+Uncomment
 UEFI
 VC
 VIRT
@@ -98,12 +99,9 @@ WCAG
 aarch
 ABI
 amd
-<<<<<<< HEAD
 args
-=======
 apparmor
 autotools
->>>>>>> origin/main
 benchmarking
 bh
 bitmask
@@ -197,6 +195,7 @@ mutexes
 ng
 nohz
 ondemand
+oneshot
 optimization
 oslat
 osnoise
