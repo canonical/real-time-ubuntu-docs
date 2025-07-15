@@ -62,7 +62,7 @@ From the list, choose a package whose description format is:
 ``````
 
 ```{danger}
-Before proceeding, ensure that the installation of the generic kernel was perfomed (or checked that there was already one installed).
+Before proceeding, ensure that the installation of the generic kernel was performed (or checked that there was already one installed).
 If no other kernel is installed and the real-time kernel got removed, the system will become unbootable.
 ```
 
