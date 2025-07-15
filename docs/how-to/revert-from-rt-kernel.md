@@ -95,7 +95,7 @@ Removing APT access to Real-time kernel
 Updating package lists
 ```
 
-Now check your kernel version using the `uname -r` command:
+Check your kernel version using the `uname -r` command:
 
 ```{terminal}
     :input: uname -r
