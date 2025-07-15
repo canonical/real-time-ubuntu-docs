@@ -69,7 +69,7 @@ If no other kernel is installed and the real-time kernel got removed, the system
 (disable-rt-on-pro)=
 ## Disable the real-time service on Pro
 
-Disable the real-time kernel service of Ubuntu Pro using the `pro` command.
+Disable the real-time kernel service on Ubuntu Pro using the `pro` command.
 
 On the "Are you sure?" prompt, type `y`.
 
