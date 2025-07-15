@@ -84,8 +84,8 @@ On the "Are you sure?" prompt, type `y`.
    :user: ubuntu
    :host: ubuntu
 
-This will remove the boot order preference for the Real-time kernel and
-disable updates to the Real-time kernel.
+This will remove the boot order preference for the real-time kernel and
+disable updates to the real-time kernel.
 
 This will NOT fully remove the kernel from your system.
 
