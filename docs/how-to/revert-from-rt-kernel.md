@@ -69,10 +69,7 @@ If no other kernel is installed and you remove the real-time kernel, the system 
 (disable-rt-on-pro)=
 ## Disable the real-time service on Pro
 
-Once a machine attached to Ubuntu Pro enables the real-time kernel, reverting to the generic kernel requires a manual procedure.
-This how-to guide documents the necessary steps to perform the reversion.
-
-First, disable the real-time kernel service of Ubuntu Pro using the `pro` command:
+Disable the real-time kernel service of Ubuntu Pro using the `pro` command.
 
 On the "Are you sure?" prompt, type `y`.
 
