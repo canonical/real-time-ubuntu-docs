@@ -62,8 +62,8 @@ From the list, choose a package whose description format is:
 ``````
 
 ```{danger}
-Before proceeding, ensure that you’ve selected the correct tab based on your system's and performed the installation of the generic kernel(or checked that there is already one installed).  
-If no other kernel is installed and you remove the real-time kernel, the system will become unbootable.
+Before proceeding, ensure that the installation of the generic kernel was perfomed (or checked that there was already one installed).
+If no other kernel is installed and the real-time kernel got removed, the system will become unbootable.
 ```
 
 (disable-rt-on-pro)=
@@ -95,7 +95,7 @@ Removing APT access to Real-time kernel
 Updating package lists
 ```
 
-Check your kernel version using the `uname -r` command:
+Check the kernel version using the `uname -r` command:
 
 ```{terminal}
     :input: uname -r
@@ -105,13 +105,13 @@ Check your kernel version using the `uname -r` command:
 6.8.1-1024-realtime
 ```
 
-If it ends with `-realtime`, it means you're still running the real-time kernel.
+If it ends with `-realtime`, it means the system still running with the real-time kernel.
 You must manually remove the corresponding packages.
 
 
 ## Removing the real-time kernel
 
-Once you’ve confirmed that another kernel is installed, you can remove the real-time kernel:
+Once confirmed that another kernel is installed, remove the real-time kernel:
 
 ```shell
 sudo apt remove linux*realtime*
@@ -124,4 +124,4 @@ If everything looks good, press "Y" to proceed.
 An expected warning may appear during the removal.
 On the warning screen, select `<No>` to avoid aborting the removal, then press {kbd}`Enter`.
 
-After that, reboot your system.
+After that, reboot the system.
