@@ -2,7 +2,7 @@
 
 Reverting from the real-time kernel to the generic kernel requires manual intervention.
 This guide provides step-by-step instructions for properly disabling the real-time kernel and restoring the system to a generic kernel configuration.
-It applies to both GRUB-based systems and Raspberry Pi devices.
+It applies to both **GRUB-based systems** and **Raspberry Pi** devices.
 
 ## Ensure the presence of other kernels
 
