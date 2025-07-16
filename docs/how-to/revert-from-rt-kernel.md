@@ -2,7 +2,11 @@
 
 Reverting from the real-time kernel to the generic kernel requires manual intervention.
 This guide provides step-by-step instructions for properly disabling the real-time kernel and restoring the system to a generic kernel configuration.
-It applies to both **GRUB-based systems** and **Raspberry Pi** devices.
+It applies to both **GRUB-based systems** and **Raspberry Pi** devices running Ubuntu Server or Ubuntu Desktop.
+
+```{warning}
+This guide does not apply to Ubuntu Core systems
+```
 
 ## Ensure the presence of other kernels
 
@@ -35,7 +39,7 @@ sudo apt install linux-image-generic
 ````{note}
 The previous command will install an older kernel, if you wish to install a newer one, first, search for `linux-image` using `apt-cache` to see the available options:
 ```shell
-apt-cache search linux-image-generic
+apt search Complete Generic Linux kernel and headers
 ```
 From the list, choose a package whose description is: "Generic Linux kernel image"
 ````
