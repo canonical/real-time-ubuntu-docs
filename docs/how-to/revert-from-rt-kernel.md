@@ -7,7 +7,7 @@ It applies to both **GRUB-based systems** and **Raspberry Pi** devices running U
 ```{warning}
 This guide does not apply to Ubuntu Core systems
 ```
-
+(ensure-the-presence-of-other-kernels)=
 ## Ensure the presence of other kernels
 
 Before removing the real-time kernel, check whether other kernel versions are already installed.
@@ -55,11 +55,6 @@ sudo apt install linux-raspi
 `````
 ``````
 
-```{danger}
-Before proceeding, ensure that the installation of the generic kernel was performed (or checked that there was already one installed).
-If no other kernel is installed and the real-time kernel got removed, the system will become unbootable.
-```
-
 (disable-rt-on-pro)=
 ## Disable the real-time service on Pro
 
@@ -104,6 +99,11 @@ You must manually remove the corresponding packages.
 
 
 ## Removing the real-time kernel
+
+```{danger}
+Before proceeding, ensure that you have [another kernel installed](#ensure-the-presence-of-other-kernels).
+The system will become unbootable if the real-time kernel is removed and no other kernels are present.
+```
 
 Once confirmed that another kernel is installed, remove the real-time kernel:
 
