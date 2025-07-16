@@ -33,7 +33,7 @@ sudo apt install linux-image-generic
 ```
 
 ````{note}
-The previous command will install an older kernel, if you wish to install a newer one search for `linux-image` using `apt-cache` to see the available options:
+The previous command will install an older kernel, if you wish to install a newer one, first, search for `linux-image` using `apt-cache` to see the available options:
 ```shell
 apt-cache search linux-image-generic
 ```
@@ -49,7 +49,7 @@ sudo apt install linux-image-raspi
 ```
 
 ````{note}
-The previous command will install an older kernel, if you wish to install a newer one search for `linux-image raspi` using `apt-cache` to see the available options:
+The previous command will install an older kernel, if you wish to install a newer one, first, search for `linux-image raspi` using `apt-cache` to see the available options:
 ```shell
 apt-cache search linux-image raspi
 ```
