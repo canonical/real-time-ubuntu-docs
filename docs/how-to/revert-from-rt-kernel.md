@@ -20,7 +20,7 @@ linux-image-6.11.0-29-generic/noble-updates,noble-security,now 6.11.0-29.29~24.0
 linux-image-generic-hwe-24.04/noble-updates,noble-security,now 6.11.0-29.29~24.04.1 amd64 [installed,automatic]
 ```
 
-In case that other kernels are already installed, as shown in the example above, proceed to the [next step](#disable-rt-on-pro).
+In case that other kernels are already installed, as shown in the example above, proceed to [disabling real-time Pro service](#disable-rt-on-pro).
 If the system has no kernels installed other than the real-time ones, you must install a generic kernel first:
 
 ``````{tabs}
