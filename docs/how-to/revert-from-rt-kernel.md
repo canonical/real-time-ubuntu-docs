@@ -30,38 +30,28 @@ If the system has no kernels installed other than the real-time ones, you must i
 ``````{tabs}
 `````{group-tab} GRUB system
 
-For grub systems, install the `linux-image-generic` package.
+For GRUB systems, search using `apt` for generic Linux kernels:
 
-```shell
-sudo apt install linux-image-generic
-```
-
-````{note}
-The previous command will install an older kernel, if you wish to install a newer one, first, search for `linux-image` using `apt-cache` to see the available options:
 ```shell
 apt search Complete Generic Linux kernel and headers
 ```
-From the list, choose a package whose description is: "Generic Linux kernel image"
-````
+From the list, choose a package whose description is: "Complete Generic Linux kernel and headers"
+
+Then install the selected one using `apt`:
+
+```shell
+sudo apt install <package-name>
+```
 
 `````
 `````{group-tab} Raspberry Pi
 
-For Raspberry Pi install the `linux-image-raspi` package.
+For Raspberry Pi install the `linux-raspi` package.
+
 ```shell
-sudo apt install linux-image-raspi
+sudo apt install linux-raspi
 ```
 
-````{note}
-The previous command will install an older kernel, if you wish to install a newer one, first, search for `linux-image raspi` using `apt-cache` to see the available options:
-```shell
-apt-cache search linux-image raspi
-```
-From the list, choose a package whose description format is:
-
-"Linux kernel image for version <`kernel-version`> on <`raspberry-pi-arch`> SMP"
-
-````
 `````
 ``````
 
