@@ -15,16 +15,32 @@ The Raspberry Pis kernel packages don't have the `-generic` suffix in their name
 Before removing the real-time kernel, check whether other kernel versions are already installed.
 List the installed kernels:
 
+
+``````{tabs}
+`````{group-tab} GRUB system
+
 ```{terminal}
-    :input: apt list linux-image* --installed
+    :input: apt list linux-image*generic* --installed
     :user: ubuntu
     :host: ubuntu
 Listing... Done
 linux-image-6.14.0-24-generic/noble-updates,noble-security,now 6.14.0-24.24~24.04.3 amd64 [installed,automatic]
-linux-image-6.8.1-1025-realtime/noble,now 6.8.1-1025.26 amd64 [installed,automatic]
 linux-image-generic-hwe-24.04/noble-updates,noble-security,now 6.14.0-24.24~24.04.3 amd64 [installed,automatic]
-linux-image-realtime/noble,now 6.8.1-1025.26 amd64 [installed,automatic]
 ```
+
+`````
+`````{group-tab} Raspberry Pi
+
+```{terminal}
+    :input: apt list linux-image*raspi --installed
+    :user: ubuntu
+    :host: ubuntu
+Listing... Done
+linux-image-6.8.0-1030-raspi/noble-updates,noble-security,now 6.8.0-1030.34 arm64 [installed,automatic]
+linux-image-raspi/noble-updates,noble-security,now 6.8.0-1030.34 arm64 [installed,automatic]
+```
+`````
+``````
 
 In case non-real-time kernels are already installed, proceed to [disabling real-time Pro service](#disable-rt-on-pro).
 Otherwise, install a generic kernel first:
