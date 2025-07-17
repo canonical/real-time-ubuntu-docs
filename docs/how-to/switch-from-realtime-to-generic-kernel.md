@@ -106,10 +106,9 @@ sudo apt remove linux*realtime*
 ```
 
 All packages matching the wildcard will be selected.
-Review the list and confirm that no unintended packages are being removed.
-If everything looks good, press "Y" to proceed.
+Review the list and confirm.
 
-An expected warning may appear during the removal.
-On the warning screen, select `<No>` to avoid aborting the removal, then press {kbd}`Enter`.
+An warning may appear during the removal.
+Select `<No>` to continue the removal.
 
 After that, reboot the system.
