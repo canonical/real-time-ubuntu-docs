@@ -88,7 +88,7 @@ Check the kernel version using the `uname -r` command:
 6.8.1-1024-realtime
 ```
 
-If it ends with `-realtime`, it means the system still running with the real-time kernel.
+If it ends with `-realtime`, it means the system still uses the real-time kernel.
 You must manually remove the corresponding packages.
 
 
