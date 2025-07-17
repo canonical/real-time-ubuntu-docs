@@ -3,6 +3,7 @@
 Switching from the real-time kernel back to the generic kernel requires manual configuration
 This guide provides step-by-step instructions for disabling the real-time kernel Pro service and restoring the system to a generic kernel configuration.
 It applies to both **GRUB-based systems** and **Raspberry Pi** devices running Ubuntu Server or Ubuntu Desktop.
+For switching the kernel on Ubuntu Core, refer to [this document](#uc-install-real-time-kernel).
 
 (ensure-the-presence-of-other-kernels)=
 ## Ensure the presence of other kernels
