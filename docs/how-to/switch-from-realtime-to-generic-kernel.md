@@ -111,4 +111,15 @@ Review the list and confirm.
 An warning may appear during the removal.
 Select `<No>` to continue the removal.
 
-After that, reboot the system.
+Finally, reboot the system.
+It should start with the generic kernel.
+
+You may use `uname -r` to verify:
+
+```{terminal}
+    :input: uname -r
+    :user: ubuntu
+    :host: ubuntu
+
+6.14.0-24-generic
+```
