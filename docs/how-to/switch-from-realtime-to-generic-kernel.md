@@ -1,6 +1,6 @@
 # Switch from real-time to generic kernel
 
-Reverting from the real-time kernel to the generic kernel requires manual intervention.
+Switching from the real-time kernel back to the generic kernel requires manual configuration
 This guide provides step-by-step instructions for properly disabling the real-time kernel and restoring the system to a generic kernel configuration.
 It applies to both **GRUB-based systems** and **Raspberry Pi** devices running Ubuntu Server or Ubuntu Desktop.
 
