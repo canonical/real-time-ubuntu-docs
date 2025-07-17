@@ -5,6 +5,10 @@ This guide provides step-by-step instructions for disabling the real-time kernel
 It applies to both **GRUB-based systems** and **Raspberry Pi** devices running Ubuntu Server or Ubuntu Desktop.
 For switching the kernel on Ubuntu Core, refer to [this document](#uc-install-real-time-kernel).
 
+```{note}
+The Raspberry Pis kernel packages don't have the `-generic` suffix in their name, but `-raspi` instead .
+```
+
 (ensure-the-presence-of-other-kernels)=
 ## Ensure the presence of other kernels
 
