@@ -8,17 +8,17 @@ It applies to both **GRUB-based systems** and **Raspberry Pi** devices running U
 ## Ensure the presence of other kernels
 
 Before removing the real-time kernel, check whether other kernel versions are already installed.
-Search for installed kernels excluding the real-time ones:
+List the installed kernels:
 
 ```{terminal}
-    :input: apt list --installed | grep -v realtime | grep linux-image
+    :input: apt list linux-image* --installed
     :user: ubuntu
     :host: ubuntu
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-linux-image-6.11.0-29-generic/noble-updates,noble-security,now 6.11.0-29.29~24.04.1 amd64 [installed,automatic]
-linux-image-generic-hwe-24.04/noble-updates,noble-security,now 6.11.0-29.29~24.04.1 amd64 [installed,automatic]
+Listing... Done
+linux-image-6.14.0-24-generic/noble-updates,noble-security,now 6.14.0-24.24~24.04.3 amd64 [installed,automatic]
+linux-image-6.8.1-1025-realtime/noble,now 6.8.1-1025.26 amd64 [installed,automatic]
+linux-image-generic-hwe-24.04/noble-updates,noble-security,now 6.14.0-24.24~24.04.3 amd64 [installed,automatic]
+linux-image-realtime/noble,now 6.8.1-1025.26 amd64 [installed,automatic]
 ```
 
 In case that other kernels are already installed, as shown in the example above, proceed to [disabling real-time Pro service](#disable-rt-on-pro).
