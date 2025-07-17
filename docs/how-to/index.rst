@@ -9,7 +9,7 @@ Get started with Real-time Ubuntu:
    :maxdepth: 1
 
    Enable Real-time Ubuntu <enable-real-time-ubuntu>
-   Revert from Real-time Ubuntu to Generic Ubuntu <revert-from-rt-kernel>
+   Switch from real-time to generic kernel <switch-from-realtime-to-generic-kernel>
 
 Measure important metrics to determine system performance:
 
