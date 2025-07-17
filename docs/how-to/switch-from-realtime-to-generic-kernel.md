@@ -42,7 +42,7 @@ sudo apt install <package-name>
 `````
 `````{group-tab} Raspberry Pi
 
-For Raspberry Pi install the `linux-raspi` package.
+For Raspberry Pi, install the `linux-raspi` package:
 
 ```shell
 sudo apt install linux-raspi
