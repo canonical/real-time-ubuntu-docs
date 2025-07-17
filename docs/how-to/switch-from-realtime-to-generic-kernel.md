@@ -54,9 +54,7 @@ sudo apt install linux-raspi
 (disable-rt-on-pro)=
 ## Disable the real-time service on Pro
 
-Disable the real-time kernel service on Ubuntu Pro using the `pro` command.
-
-On the "Are you sure?" prompt, type `y`.
+Disable the `realtime-kernel` Pro service:
 
 ```{terminal}
    :input: sudo pro disable realtime-kernel
