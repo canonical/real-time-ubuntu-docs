@@ -89,7 +89,7 @@ Check the kernel version using the `uname -r` command:
 ```
 
 If it ends with `-realtime`, it means the system still uses the real-time kernel.
-You must manually remove the corresponding packages.
+You must manually remove the real-time kernel package.
 
 
 ## Removing the real-time kernel
