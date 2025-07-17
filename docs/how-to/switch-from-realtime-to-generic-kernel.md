@@ -99,7 +99,7 @@ Before proceeding, ensure that you have [another kernel installed](#ensure-the-p
 The system will become unbootable if the real-time kernel is removed and no other kernels are present.
 ```
 
-Once confirmed that another kernel is installed, remove the real-time kernel:
+Remove real-time kernel packages:
 
 ```shell
 sudo apt remove linux*realtime*
