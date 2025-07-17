@@ -18,9 +18,9 @@ For the list of kernel snaps for other architectures, refer to the [pc-kernel](h
 
 Under `channels`, look for entries that contain `<version>-rt` as prefix. 
 Each [channel][channels] consists of a track followed by the risk level.
-In general, look at the `stable` risk level to find the most reliable revisions.
+In general, look at the `stable` risk level to find the most reliable [revisions](https://snapcraft.io/docs/revisions).
 
-Filter results with `grep`. For example, here are the real-time Ubuntu Core 24 kernels that are stable:
+Filter results with `grep`. For example, here are the stable real-time kernels compatible with Ubuntu Core 24:
 ```{terminal}
    :input: snap info pc-kernel | grep 24-rt | grep stable
    :user: ubuntu
