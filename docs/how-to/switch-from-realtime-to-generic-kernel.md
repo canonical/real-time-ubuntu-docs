@@ -30,11 +30,10 @@ Otherwise, install a generic kernel first:
 For GRUB systems, search using `apt` for generic Linux kernels:
 
 ```shell
-apt search Complete Generic Linux kernel and headers
+apt list linux-generic*
 ```
-From the list, choose a package whose description is: "Complete Generic Linux kernel and headers"
 
-Then install the selected one using `apt`:
+Install the required kernel package:
 
 ```shell
 sudo apt install <package-name>
