@@ -54,6 +54,12 @@ For GRUB systems, search using `apt` for generic Linux kernels:
 apt list linux-generic*
 ```
 
+Install the required kernel package:
+
+```shell
+sudo apt install <package-name>
+```
+
 `````
 `````{group-tab} Raspberry Pi
 
@@ -65,12 +71,6 @@ sudo apt install linux-raspi
 
 `````
 ``````
-
-Install the required kernel package:
-
-```shell
-sudo apt install <package-name>
-```
 
 (disable-rt-on-pro)=
 ## Disable the real-time service on Pro
