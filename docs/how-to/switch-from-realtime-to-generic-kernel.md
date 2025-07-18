@@ -20,19 +20,19 @@ List the installed kernels:
 `````{group-tab} GRUB system
 
 ```{terminal}
-    :input: apt list linux-image*generic* --installed
+    :input: apt list linux-generic* --installed
     :user: ubuntu
     :host: ubuntu
-Listing... Done
-linux-image-6.14.0-24-generic/noble-updates,noble-security,now 6.14.0-24.24~24.04.3 amd64 [installed,automatic]
-linux-image-generic-hwe-24.04/noble-updates,noble-security,now 6.14.0-24.24~24.04.3 amd64 [installed,automatic]
+linux-generic-6.11/noble-updates,noble-security,now 6.11.0-29.29~24.04.1 amd64 [installed]
+linux-generic-6.14/noble-updates,noble-security,now 6.14.0-24.24~24.04.3 amd64 [installed]
+linux-generic-hwe-24.04/noble-updates,noble-security,now 6.14.0-24.24~24.04.3 amd64 [installed]
 ```
 
 `````
 `````{group-tab} Raspberry Pi
 
 ```{terminal}
-    :input: apt list linux-image*raspi --installed
+    :input: apt list linux-raspi* --installed
     :user: ubuntu
     :host: ubuntu
 Listing... Done
@@ -54,12 +54,6 @@ For GRUB systems, search using `apt` for generic Linux kernels:
 apt list linux-generic*
 ```
 
-Install the required kernel package:
-
-```shell
-sudo apt install <package-name>
-```
-
 `````
 `````{group-tab} Raspberry Pi
 
@@ -71,6 +65,12 @@ sudo apt install linux-raspi
 
 `````
 ``````
+
+Install the required kernel package:
+
+```shell
+sudo apt install <package-name>
+```
 
 (disable-rt-on-pro)=
 ## Disable the real-time service on Pro
