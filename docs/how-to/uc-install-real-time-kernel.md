@@ -16,30 +16,25 @@ snap info pc-kernel
 For the list of kernel snaps for other architectures, refer to the [pc-kernel](https://snapcraft.io/pc-kernel) Snap Store page.
 ```
 
-Under `channels`, look for entries that contain `-rt`.
+Under `channels`, look for entries that contain `<version>-rt` as prefix. 
+Each [channel][channels] consists of a track followed by the risk level.
+In general, look at the `stable` risk level to find the most reliable [revisions](https://snapcraft.io/docs/revisions).
 
-The results can be filtered with `grep`: 
+Filter results with `grep`. For example, here are the stable real-time kernels compatible with Ubuntu Core 24:
 ```{terminal}
-   :input: snap info pc-kernel | grep -e "-rt"
+   :input: snap info pc-kernel | grep 24-rt | grep stable
    :user: ubuntu
    :host: machine-amd64
 
-  25.04-rt/stable:          6.14.0-1004.4               2025-06-19 (2511) 368MB -
-  ...
-  24-rt-hwe/candidate:      6.11.0-1011.11~24.04.1      2025-06-12 (2551) 363MB -
-  ...
+  24-rt-hwe-edge/stable:    6.14.0-1003.3~24.04.3       2025-06-17 (2558) 370MB -
+  24-rt-hwe/stable:         6.11.0-1011.11~24.04.1      2025-06-26 (2551) 363MB -
   24-rt/stable:             6.8.1-1023.24               2025-06-19 (2550) 351MB -
-  ...
 ```
 
-The above output has been truncated for readability.
-Each row shows a snap channel, version, date, revision, and size.
-Each [channel][channels] consists of a track followed by the risk level.
-
-Examples:
+Each row shows a snap channel, version, date, revision, and size. In reverse order:
 * `24-rt/stable` channel contains the real-time kernel for Ubuntu 24.04 LTS. The release is stable. The snap version `6.8.1-1023.24` indicates that the kernel version is 6.8.1.
-* `24-rt-hwe/candidate` contains the Hardware Enablement (HWE) real-time kernel for Ubuntu 24.04 LTS. This release is on the candidate risk level. The snap version `6.11.0-1011.11~24.04.1` includes the kernel version.
-* `25.04-rt/stable` provides the real-time kernel based on Ubuntu 25.04 interim release. This is stable. The kernel version is 6.14.0.
+* `24-rt-hwe/stable` contains the real-time [Hardware Enablement (HWE)][HWE] kernel for Ubuntu 24.04 LTS. The kernel version is 6.11.0.
+* `24-rt-hwe-edge/stable` provides the most recent kernel version. The `-edge` suffix in the track indicates that this is an [edge kernel][edge-kernel] published for early access to the 6.14 kernel.
 
 ```{seealso}
 Read more about the [Ubuntu kernel lifecycle][kernel-lifecycle] and [HWE kernels][hwe-kernels].
@@ -89,3 +84,5 @@ Refer to {doc}`../reference/real-time-metrics-tools` for more.
 [channels]: https://snapcraft.io/docs/channels
 [kernel-lifecycle]: https://ubuntu.com/kernel/lifecycle
 [hwe-kernels]: https://canonical-kernel-docs.readthedocs-hosted.com/latest/reference/hwe-kernels/
+[edge-kernel]: https://canonical-kernel-docs.readthedocs-hosted.com/latest/reference/glossary/#term-edge-kernel
+[HWE]: https://canonical-kernel-docs.readthedocs-hosted.com/latest/reference/glossary/#term-HWE
