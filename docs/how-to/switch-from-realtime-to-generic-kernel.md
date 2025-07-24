@@ -1,23 +1,25 @@
 # Switch from real-time to generic kernel
 
 Switching from the real-time kernel back to the generic kernel requires manual configuration.
-This guide provides step-by-step instructions for disabling the real-time kernel Pro service and restoring the system to a generic kernel configuration.
+This guide describes how to disable the real-time kernel Pro service and restore the system to a generic kernel configuration.
 It applies to both **GRUB-based systems** and **Raspberry Pi** devices running Ubuntu Server or Ubuntu Desktop.
-For switching the kernel on Ubuntu Core, refer to [this document](#uc-install-real-time-kernel).
 
-```{note}
-The Raspberry Pis kernel packages don't have the `-generic` suffix in their name, but `-raspi` instead .
-```
+For switching between kernel versions on Ubuntu Core, refer to [this document](uc-install-real-time-kernel).
 
-(ensure-the-presence-of-other-kernels)=
-## Ensure the presence of other kernels
+(check-installed-kernels)=
+## Check if other kernels are installed
 
 Before removing the real-time kernel, check whether other kernel versions are already installed.
+
+```{note}
+Raspberry Pi kernel packages use the `-raspi` suffix instead of `-generic`.
+```
+
 List the installed kernels:
 
 
-``````{tabs}
-`````{group-tab} GRUB system
+`````{tabs}
+````{group-tab} GRUB system
 
 ```{terminal}
     :input: apt list linux-generic* --installed
@@ -28,8 +30,8 @@ linux-generic-6.14/noble-updates,noble-security,now 6.14.0-24.24~24.04.3 amd64 [
 linux-generic-hwe-24.04/noble-updates,noble-security,now 6.14.0-24.24~24.04.3 amd64 [installed]
 ```
 
-`````
-`````{group-tab} Raspberry Pi
+````
+````{group-tab} Raspberry Pi
 
 ```{terminal}
     :input: apt list linux-raspi* --installed
@@ -39,14 +41,16 @@ Listing... Done
 linux-image-6.8.0-1030-raspi/noble-updates,noble-security,now 6.8.0-1030.34 arm64 [installed,automatic]
 linux-image-raspi/noble-updates,noble-security,now 6.8.0-1030.34 arm64 [installed,automatic]
 ```
-`````
-``````
 
-In case non-real-time kernels are already installed, proceed to [disabling real-time Pro service](#disable-rt-on-pro).
+````
+`````
+
+If non-real-time kernels are already installed, proceed to [disable the real-time Pro service](#disable-rt-on-pro).
+
 Otherwise, install a generic kernel first:
 
-``````{tabs}
-`````{group-tab} GRUB system
+`````{tabs}
+````{group-tab} GRUB system
 
 For GRUB systems, search using `apt` for generic Linux kernels:
 
@@ -60,8 +64,8 @@ Install the required kernel package:
 sudo apt install <package-name>
 ```
 
-`````
-`````{group-tab} Raspberry Pi
+````
+````{group-tab} Raspberry Pi
 
 For Raspberry Pi, install the `linux-raspi` package:
 
@@ -69,8 +73,8 @@ For Raspberry Pi, install the `linux-raspi` package:
 sudo apt install linux-raspi
 ```
 
+````
 `````
-``````
 
 (disable-rt-on-pro)=
 ## Disable the real-time service on Pro
@@ -112,11 +116,10 @@ Check the kernel version using the `uname -r` command:
 If it ends with `-realtime`, it means the system still uses the real-time kernel.
 You must manually remove the real-time kernel package.
 
-
-## Removing the real-time kernel
+## Remove the real-time kernel
 
 ```{danger}
-Before proceeding, ensure that you have [another kernel installed](#ensure-the-presence-of-other-kernels).
+Before proceeding, confirm that you have [another kernel installed](#check-installed-kernels).
 The system will become unbootable if the real-time kernel is removed and no other kernels are present.
 ```
 
@@ -129,13 +132,13 @@ sudo apt remove linux*realtime*
 All packages matching the wildcard will be selected.
 Review the list and confirm.
 
-An warning may appear during the removal.
+A warning may appear during the removal.
 Select `<No>` to continue the removal.
 
 Finally, reboot the system.
 It should start with the generic kernel.
 
-You may use `uname -r` to verify:
+Verify that by running `uname -r`:
 
 ```{terminal}
     :input: uname -r
