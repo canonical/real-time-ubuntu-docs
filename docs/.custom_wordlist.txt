@@ -91,12 +91,15 @@ Telegraf
 Tickless
 Timerlat
 UC
+Uncomment
 UEFI
 VC
 VIRT
 WCAG
 aarch
+ABI
 amd
+args
 apparmor
 autotools
 benchmarking
@@ -191,6 +194,8 @@ mutex
 mutexes
 ng
 nohz
+ondemand
+oneshot
 optimization
 oslat
 osnoise
@@ -268,6 +273,9 @@ unbootable
 unsquash
 userspace
 utils
+VIRT
+WCAG
+wifi
 wordlist
 ww
 xetex
