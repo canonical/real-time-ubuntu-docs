@@ -194,7 +194,7 @@ The x-axis was adjusted for better visualization.
 .. _gnuplot: http://www.gnuplot.info/
 .. _stress-ng: https://manpages.ubuntu.com/manpages/jammy/man1/stress-ng.1.html
 
-.. Tests perfomed in testflinger machine: 
+.. Tests performed in testflinger machine: 
 .. queue 202008-28173
 .. description:
 .. 	HP Z2 Tower G5 Workstation - Islands, i9-10900K CPU
