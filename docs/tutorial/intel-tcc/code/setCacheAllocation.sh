@@ -56,7 +56,7 @@ rt_optimized() {
 # Function for Script 2
 default() {
     info
-    # reset LLC partitions entire LLC is shared by all avialable cores
+    # reset LLC partitions entire LLC is shared by all available cores
     wrmsr 0xc90 0xff # best effort
     #reset LLC GT Masks
     wrmsr 0x18b0 0xff
