@@ -250,9 +250,9 @@ Now, build the gadget snap:
 
 .. code-block:: console
 
-    $ snapcraft --verbose
+    $ snapcraft pack --verbose
     ...
-    Created snap package realtime-pc_example_amd64.snap
+    Packed realtime-pc_example_amd64.snap
 
 
 .. tip::
