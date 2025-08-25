@@ -316,17 +316,15 @@ Build with the following command:
 
         .. code-block:: console
 
-            $ UBUNTU_STORE_AUTH_DATA_FILENAME=credentials.txt \
-                    ubuntu-image snap model.signed.yaml  --verbose --validation=enforce \
-                    --snap pc-gadget/realtime-pc_example_amd64.snap
+            $ ubuntu-image snap model.signed.yaml  --verbose --validation=enforce \
+              --snap pc-gadget/realtime-pc_example_amd64.snap
             [0] prepare_image
-            Fetching snapd (21759)
-            Fetching realtime-kernel (153)
-            Fetching core24 (490)
-            Fetching console-conf (40)
-            WARNING: the kernel for the specified UC20+ model does not carry assertion max formats information, assuming possibly incorrectly the kernel revision can use the same formats as snapd
+            Fetching snapd (25202)
+            Fetching pc-kernel (2760)
+            Fetching core24 (1055)
+            Fetching console-conf (71)
             WARNING: "realtime-pc" installed from local snaps disconnected from a store cannot be refreshed subsequently!
-            Copying "pc-gadget/realtime-pc_example_amd64.snap" (realtime-pc)
+            Copying "realtime-pc_24-0.2_amd64.snap" (realtime-pc)
             [1] load_gadget_yaml
             [2] set_artifact_names
             [3] populate_rootfs_contents
@@ -338,22 +336,19 @@ Build with the following command:
             [9] generate_snap_manifest
             Build successful
 
-        The warning about assertion max formats can be safely ignored; see `ubuntu-image assertion warning`_.
-
     .. group-tab:: Ubuntu Core 22
 
         .. code-block:: console
 
-            $ UBUNTU_STORE_AUTH_DATA_FILENAME=credentials.txt \
-                ubuntu-image snap model.signed.yaml  --verbose --validation=enforce \
-                --snap pc-gadget/realtime-pc_example_amd64.snap
-            
+            $ ubuntu-image snap model.signed.yaml  --verbose --validation=enforce \
+              --snap pc-gadget/realtime-pc_example_amd64.snap
             [0] prepare_image
-            Fetching snapd (21759)
-            Fetching realtime-kernel (134)
-            Fetching core22 (1380)
+            Fetching snapd (25202)
+            Fetching pc-kernel (2734)
+            Fetching core22 (2082)
+            Fetching pc (194)
             WARNING: "realtime-pc" installed from local snaps disconnected from a store cannot be refreshed subsequently!
-            Copying "pc-gadget/realtime-pc_example_amd64.snap" (realtime-pc)
+            Copying "realtime-pc_example_amd64.snap" (realtime-pc)
             [1] load_gadget_yaml
             [2] set_artifact_names
             [3] populate_rootfs_contents
