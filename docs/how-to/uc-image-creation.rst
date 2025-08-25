@@ -36,7 +36,7 @@ Below are example model assertions, describing the Ubuntu Core image content for
 
         .. literalinclude:: uc-image-creation/model-core24.json
             :language: json
-            :emphasize-lines: 4, 8-11, 19-24, 37-42
+            :emphasize-lines: 4, 8-10, 18-23, 36-41
 
         The ``console-conf`` snap added here is only to allow interactive user and network configuration.
         An image created for deployment at scale should not include that.
@@ -45,7 +45,7 @@ Below are example model assertions, describing the Ubuntu Core image content for
 
         .. literalinclude:: uc-image-creation/model-core22.json
             :language: json
-            :emphasize-lines: 4, 8-11, 19-24
+            :emphasize-lines: 4, 8-10, 18-23
 
 
 Inside an empty directory, create a file named ``model.json`` with the above content.
