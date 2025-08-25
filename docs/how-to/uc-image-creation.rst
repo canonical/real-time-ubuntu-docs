@@ -127,8 +127,7 @@ Then build the image:
 
         .. code-block:: console
 
-            $ SNAPCRAFT_STORE_CREDENTIALS=$(cat credentials.txt) \
-                ubuntu-image snap model.signed.yaml --verbose --validation=enforce
+            $ ubuntu-image snap model.signed.yaml --verbose --validation=enforce
             [0] prepare_image
             Fetching snapd (25202)
             Fetching pc-kernel (2760)
@@ -152,8 +151,7 @@ Then build the image:
 
         .. code-block:: console
 
-            $ SNAPCRAFT_STORE_CREDENTIALS=$(cat credentials.txt) \
-                ubuntu-image snap model.signed.yaml --verbose --validation=enforce
+            $ ubuntu-image snap model.signed.yaml --verbose --validation=enforce
             [0] prepare_image
             Fetching snapd (25202)
             Fetching pc-kernel (2734)
