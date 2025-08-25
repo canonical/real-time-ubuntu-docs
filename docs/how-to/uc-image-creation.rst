@@ -145,8 +145,6 @@ Then build the image:
             [9] generate_snap_manifest
             Build successful
 
-        The warning about assertion max formats can be safely ignored; see `ubuntu-image assertion warning`_.
-
     .. group-tab:: Ubuntu Core 22
 
         .. code-block:: console
