@@ -224,7 +224,7 @@ void free_queue(LockFreeQueue* queue) {
 }
 
 ////////////////////////////
-// Helper funtions 
+// Helper functions 
 ////////////////////////////
 
 int init_cache_miss_counter(int cpu) {
@@ -506,11 +506,11 @@ void plot_statistics(statistics_t* stats_batch, int batch_size, glb_statistics_t
 }
 
 ////////////////////////////
-// Main funtions 
+// Main functions 
 ////////////////////////////
 
 // Function to perform the control task
-//TODO: Check if we need to reset PMU counter at the begining of every cycle to avoid overflows
+//TODO: Check if we need to reset PMU counter at the beginning of every cycle to avoid overflows
 void control_task(long cycle_time_ns, cache_line_node_t* workload_pointer_chasing, LockFreeQueue *lf_queue) {
     struct timespec next_wake_time;
     struct timespec actual_wake_time;
