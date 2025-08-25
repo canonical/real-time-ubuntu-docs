@@ -55,7 +55,15 @@ Change the following:
 - ``model`` to a name that accurately represents your device(s).
 - ``authority-id``, ``brand-id`` to your developer ID, since this is custom model. Use ``snapcraft whoami`` command to get your developer ID.
 - ``timestamp`` to an RFC3339 formatted time set after the registration of your signing key. If you already have a registered key, use ``date -Iseconds --utc`` command to generate the current time. If not, do this in the next steps after registering your key.
-- ``store`` to your dedicated Snap Store ID.
+
+.. hint::
+
+  The **<uc-version>-rt/stable** channel provides the real-time variant of pc-kernel, but other channels are available:
+
+  .. code-block:: shell
+
+    snap info pc-kernel | grep rt
+
 
 The ``snaps`` array is a list of snaps that get included in the image.
 In that list, the ``realtime-kernel`` snap contains the realtime Linux kernel.
@@ -119,15 +127,14 @@ Then build the image:
 
         .. code-block:: console
 
-            $ UBUNTU_STORE_AUTH_DATA_FILENAME=credentials.txt \
+            $ SNAPCRAFT_STORE_CREDENTIALS=$(cat credentials.txt) \
                 ubuntu-image snap model.signed.yaml --verbose --validation=enforce
             [0] prepare_image
-            Fetching snapd (21759)
-            Fetching realtime-kernel (153)
-            Fetching core24 (490)
-            Fetching pc (178)
-            Fetching console-conf (40)
-            WARNING: the kernel for the specified UC20+ model does not carry assertion max formats information, assuming possibly incorrectly the kernel revision can use the same formats as snapd
+            Fetching snapd (25202)
+            Fetching pc-kernel (2760)
+            Fetching core24 (1055)
+            Fetching pc (196)
+            Fetching console-conf (71)
             [1] load_gadget_yaml
             [2] set_artifact_names
             [3] populate_rootfs_contents
@@ -145,13 +152,13 @@ Then build the image:
 
         .. code-block:: console
 
-            $ UBUNTU_STORE_AUTH_DATA_FILENAME=credentials.txt \
+            $ SNAPCRAFT_STORE_CREDENTIALS=$(cat credentials.txt) \
                 ubuntu-image snap model.signed.yaml --verbose --validation=enforce
             [0] prepare_image
-            Fetching snapd (21759)
-            Fetching realtime-kernel (149)
-            Fetching core22 (1586)
-            Fetching pc (146)
+            Fetching snapd (25202)
+            Fetching pc-kernel (2734)
+            Fetching core22 (2082)
+            Fetching pc (194)
             [1] load_gadget_yaml
             [2] set_artifact_names
             [3] populate_rootfs_contents
@@ -165,9 +172,7 @@ Then build the image:
 
     This downloads all the snaps specified in the model assertion and builds an image file called ``pc.img``.
 
-.. hint::
 
-    To fetch the ``realtime-kernel`` snap for this image build, it should be included explicitly in your dedicated Snap Store.
 
 .. code-block:: console
 
