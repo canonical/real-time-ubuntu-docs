@@ -35,6 +35,8 @@ Indri
 InfluxDB
 IoT
 KPIs
+KVM
+KVMs
 LLC
 LTS
 Livepatch
@@ -53,6 +55,7 @@ OSNOISE
 OSS
 PCI
 PMD
+PMU
 PPID
 Pa
 Paho
@@ -61,6 +64,7 @@ Pc
 Pd
 Pe
 Permalink
+QEMU
 QoS
 RDC
 RDT
@@ -94,7 +98,9 @@ UC
 UEFI
 VC
 VIRT
+VMs
 WCAG
+Xen
 aarch
 amd
 apparmor
@@ -153,6 +159,7 @@ github
 gnuplot
 gyre
 hardirq
+hostname
 http
 https
 hwnoise
@@ -176,6 +183,7 @@ kustom
 lang
 latencies
 latexmk
+libvirt
 lifecycle
 linux
 localhost
@@ -195,6 +203,7 @@ optimization
 oslat
 osnoise
 otf
+passthrough
 patchset
 patchsets
 pc
@@ -268,6 +277,10 @@ unbootable
 unsquash
 userspace
 utils
+vCPU
+vCPUs
+virsh
+virtualized
 wordlist
 ww
 xetex
