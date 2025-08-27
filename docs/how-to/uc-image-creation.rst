@@ -59,7 +59,7 @@ Change the following:
 
 The ``snaps`` array is a list of snaps that get included in the image.
 In that list, the ``pc-kernel`` snap, when using the channel ``24-rt/stable``, contains the realtime Linux kernel.
-Check out :doc:`../reference/releases` to understand about the releases and their support status.
+Refer to :doc:`../reference/releases` to decide the right channel for ``pc-kernel`` and understand about the releases and their support status.
 Here you can add any other snaps, including for example your real-time applications.
 
 Sign the model assertion
