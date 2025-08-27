@@ -108,18 +108,7 @@ Build the image
 
 First, get familiar with the tooling by referring to the guide on `building Ubuntu Core images`_.
 
-We use ``ubuntu-image`` and need to set the paths to the following as input:
-
-- Exported store credentials
-- Signed model assertion YAML file
-
-Export the store credentials to a file:
-
-.. code-block:: shell
-
-    snapcraft export-login credentials.txt
-
-Then build the image:
+Having the signed model assertion YAML file, use ``ubuntu-image`` to build the image:
 
 .. tabs::
 
@@ -300,7 +289,6 @@ Similar to before, we use ``ubuntu-image`` to build the image.
 This time we also need to provide the path to the custom gadget snap file.
 We therefore need:
 
-- Exported store credentials
 - Signed model assertion YAML file
 - **Locally built gadget snap**
 
