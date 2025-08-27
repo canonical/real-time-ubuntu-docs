@@ -48,6 +48,7 @@ Mutexes
 NMI
 NMIs
 NOCB
+nocbs
 OSAL
 OSNOISE
 OSS
