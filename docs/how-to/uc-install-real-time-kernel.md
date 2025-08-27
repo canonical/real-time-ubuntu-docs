@@ -26,9 +26,9 @@ Filter results with `grep`. For example, here are the stable real-time kernels c
    :user: ubuntu
    :host: machine-amd64
 
-  24-rt-hwe-edge/stable:    6.14.0-1003.3~24.04.3       2025-06-17 (2558) 370MB -
-  24-rt-hwe/stable:         6.11.0-1011.11~24.04.1      2025-06-26 (2551) 363MB -
-  24-rt/stable:             6.8.1-1023.24               2025-06-19 (2550) 351MB -
+  24-rt-hwe-edge/stable:    6.14.0-1010.10~24.04.1      2025-08-14 (2736) 377MB -
+  24-rt-hwe/stable:         6.14.0-1010.10~24.04.1      2025-08-14 (2736) 377MB -
+  24-rt/stable:             6.8.1-1030.31               2025-08-18 (2760) 360MB -
 ```
 
 Each row shows a snap channel, version, date, revision, and size. In reverse order:
@@ -46,7 +46,7 @@ Once you identify a suitable channel, switch to that channel and refresh the sna
 
 For example:
 ```{terminal}
-   :input: sudo snap refresh pc-kernel --channel=25.04-rt/stable
+   :input: sudo snap refresh pc-kernel --channel=24-rt/stable
    :user: ubuntu
    :host: machine-amd64
 
@@ -65,7 +65,7 @@ After the installation, the system will reboot automatically and boot with the n
    :user: ubuntu
    :host: machine-amd64
 
-Linux uc-rt 6.14.0-1004-realtime #4-Ubuntu SMP PREEMPT_RT Fri May 23 22:22:42 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+Linux localhost 6.8.1-1030-realtime #31-Ubuntu SMP PREEMPT_RT Thu Aug 14 03:10:52 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
 ```
 
 ````{tip}
