@@ -11,23 +11,27 @@ Type: `dict`
 
 _Optional_
 
+### kernel_cmdline.append
+
+Type: `list`
+
 {ref}`kernel-boot-parameters` that affects real-time behavior
 
+#### **Known parameters**
 
-### kernel_cmdline.isolcpus
+Some parameters are well-known to be valuable for real-time tuning.
+So in case of present on the `kernel_cmdline.append` list, their values are also validated.
+
+##### isolcpus
 
 Type: `string`
 
-_Optional_
-
-A string formatted as {ref}`cpu-lists`. 
+A string formatted as {ref}`cpu-lists`.
 Isolate CPUs from general execution.
 
-### kernel_cmdline.nohz
+##### nohz
 
 Type: `enum`
-
-_Optional_
 
 Enable/disable dynamic ticks during idle time.
 
@@ -35,33 +39,35 @@ Valid values are:
   * `on`: **Enables** dynamic ticks
   * `off`:**Disables** dynamic ticks
 
-### kernel_cmdline.nohz_full
+##### nohz_full
 
 Type: `string`
-
-_Optional_
 
 A string formatted as {ref}`cpu-lists`. 
 Specifies the adaptive-ticks cpus, which means the specified list of CPUs whose tick will be stopped whenever possible.
 The boot CPU will be forced outside the range to maintain the timekeeping.
 
-### kernel_cmdline.kthread_cpus
+##### kthread_cpus
 
 Type: `string`
-
-_Optional_
 
 A string formatted as {ref}`cpu-lists`. 
 Specifies the list of CPUs to be allocated for kernel threads.
 
-### kernel_cmdline.irqaffinity
+##### irqaffinity
 
 Type: `string`
 
-_Optional_
-
-A string formatted as {ref}`cpu-lists`. 
+A string formatted as {ref}`cpu-lists`.
 Specifies the list of CPUs for IRQ handling.
+
+
+##### rcu_nocbs
+
+Type: `string`
+
+A string formatted as {ref}`cpu-lists`.
+Enables the no-callback CPU mode, which prevents such CPUs from executing [RCU callbacks][rcu_callbacks].
 
 (irqt)=
 ## irq_tuning 
@@ -187,4 +193,8 @@ Valid values:
   * `ondemand`: Scales the frequency dynamically according to current load. Jumps to the highest frequency and then possibly back off as the idle time increases.
   * `conservative`: Scales the frequency dynamically according to current load (more gradually than ondemand).
   * `schedutil`: [Scheduler-driven](https://lwn.net/Articles/682391/) CPU frequency selection.
+
+
+<!-- Links -->
+[rcu_callbacks]: https://wiki.linuxfoundation.org/realtime/documentation/technical_details/rcu
 
