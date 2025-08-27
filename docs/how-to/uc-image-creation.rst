@@ -56,17 +56,10 @@ Change the following:
 - ``authority-id``, ``brand-id`` to your developer ID, since this is custom model. Use ``snapcraft whoami`` command to get your developer ID.
 - ``timestamp`` to an RFC3339 formatted time set after the registration of your signing key. If you already have a registered key, use ``date -Iseconds --utc`` command to generate the current time. If not, do this in the next steps after registering your key.
 
-.. hint::
-
-  The **<uc-version>-rt/stable** channel provides the real-time variant of pc-kernel, but other channels are available:
-
-  .. code-block:: shell
-
-    snap info pc-kernel | grep rt
-
 
 The ``snaps`` array is a list of snaps that get included in the image.
-In that list, the ``realtime-kernel`` snap contains the realtime Linux kernel.
+In that list, the ``pc-kernel`` snap, when using the channel ``24-rt/stable``, contains the realtime Linux kernel.
+Check out :doc:`../reference/releases` to understand about the releases and their support status.
 Here you can add any other snaps, including for example your real-time applications.
 
 Sign the model assertion
