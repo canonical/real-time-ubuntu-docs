@@ -17,57 +17,20 @@ Type: `list`
 
 {ref}`kernel-boot-parameters` that affects real-time behavior
 
-#### **Known parameters**
+```{admonition} Validated parameters
 
 Some parameters are well-known to be valuable for real-time tuning.
-So in case of present on the `kernel_cmdline.append` list, their values are also validated.
+So in case of present on the `kernel_cmdline.parameters` list, their **values** are also validated.
 
-##### isolcpus
-
-Type: `string`
-
-A string formatted as {ref}`cpu-lists`.
-Isolate CPUs from general execution.
-
-##### nohz
-
-Type: `enum`
-
-Enable/disable dynamic ticks during idle time.
-
-Valid values are:
-  * `on`: **Enables** dynamic ticks
-  * `off`:**Disables** dynamic ticks
-
-##### nohz_full
-
-Type: `string`
-
-A string formatted as {ref}`cpu-lists`. 
-Specifies the adaptive-ticks cpus, which means the specified list of CPUs whose tick will be stopped whenever possible.
-The boot CPU will be forced outside the range to maintain the timekeeping.
-
-##### kthread_cpus
-
-Type: `string`
-
-A string formatted as {ref}`cpu-lists`. 
-Specifies the list of CPUs to be allocated for kernel threads.
-
-##### irqaffinity
-
-Type: `string`
-
-A string formatted as {ref}`cpu-lists`.
-Specifies the list of CPUs for IRQ handling.
-
-
-##### rcu_nocbs
-
-Type: `string`
-
-A string formatted as {ref}`cpu-lists`.
-Enables the no-callback CPU mode, which prevents such CPUs from executing [RCU callbacks][rcu_callbacks].
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| isolcpus | `string` | A string formatted as {ref}`cpu-lists`. Isolate CPUs from general execution. |
+| nohz | `enum` | Enable/disable dynamic ticks during idle time. Valid values are: `on` (**Enables** dynamic ticks), `off` (**Disables** dynamic ticks) |
+| nohz_full | `string` | A string formatted as {ref}`cpu-lists`. Specifies the adaptive-ticks cpus, which means the specified list of CPUs whose tick will be stopped whenever possible. The boot CPU will be forced outside the range to maintain the timekeeping. |
+| kthread_cpus | `string` | A string formatted as {ref}`cpu-lists`. Specifies the list of CPUs to be allocated for kernel threads. |
+| irqaffinity | `string` | A string formatted as {ref}`cpu-lists`. Specifies the list of CPUs for IRQ handling. |
+| rcu_nocbs | `string` | A string formatted as {ref}`cpu-lists`. Enables the no-callback CPU mode, which prevents such CPUs from executing [RCU callbacks][rcu_callbacks]. |
+```
 
 (irqt)=
 ## irq_tuning 
