@@ -13,7 +13,7 @@ _Optional_
 
 ### kernel_cmdline.parameters
 
-Type: `list`
+Type: `list[string]`
 
 {ref}`kernel-boot-parameters` that affects real-time behavior
 
