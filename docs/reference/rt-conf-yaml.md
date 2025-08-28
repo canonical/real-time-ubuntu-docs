@@ -11,7 +11,7 @@ Type: `dict`
 
 _Optional_
 
-### kernel_cmdline.append
+### kernel_cmdline.parameters
 
 Type: `list`
 
