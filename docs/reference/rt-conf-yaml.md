@@ -29,7 +29,7 @@ In addition, `rt-conf` carries out syntax validation on values of the parameters
 | nohz_full | `string` | A string formatted as {ref}`cpu-lists`. Specifies the adaptive-ticks cpus, which means the specified list of CPUs whose tick will be stopped whenever possible. The boot CPU will be forced outside the range to maintain the timekeeping. |
 | kthread_cpus | `string` | A string formatted as {ref}`cpu-lists`. Specifies the list of CPUs to be allocated for kernel threads. |
 | irqaffinity | `string` | A string formatted as {ref}`cpu-lists`. Specifies the list of CPUs for IRQ handling. |
-| rcu_nocbs | `string` | A string formatted as {ref}`cpu-lists`. Enables the no-callback CPU mode, which prevents such CPUs from executing [RCU callbacks][rcu_callbacks]. |
+| rcu_nocbs | `string` | A string formatted as {ref}`cpu-lists`. Enables the no-callback CPU mode, which prevents such CPUs from executing RCU callbacks. |
 ```
 
 (irqt)=
@@ -157,7 +157,4 @@ Valid values:
   * `conservative`: Scales the frequency dynamically according to current load (more gradually than ondemand).
   * `schedutil`: [Scheduler-driven](https://lwn.net/Articles/682391/) CPU frequency selection.
 
-
-<!-- Links -->
-[rcu_callbacks]: https://wiki.linuxfoundation.org/realtime/documentation/technical_details/rcu
 
