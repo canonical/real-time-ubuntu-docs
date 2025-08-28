@@ -15,7 +15,7 @@ _Optional_
 
 Type: `list[string]`
 
-{ref}`kernel-boot-parameters` that affects real-time behavior
+{ref}`kernel-boot-parameters` that affects real-time behavior.
 
 ```{admonition} Validated parameters
 
