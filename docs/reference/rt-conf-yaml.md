@@ -19,8 +19,8 @@ Type: `list`
 
 ```{admonition} Validated parameters
 
-Some parameters are well-known to be valuable for real-time tuning.
-So in case of present on the `kernel_cmdline.parameters` list, their **values** are also validated.
+`rt-conf` performs syntax validation on all parameters names. 
+In addition, `rt-conf` carries out syntax validation on values of the parameters which are common for real-time tuning. The table below lists such parameters:
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
