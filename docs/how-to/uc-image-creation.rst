@@ -101,7 +101,7 @@ Build the image
 
 First, get familiar with the tooling by referring to the guide on `building Ubuntu Core images`_.
 
-Having the signed model assertion YAML file, use ``ubuntu-image`` to build the image:
+Use ``ubuntu-image`` and the signed model assertion to build an image:
 
 .. tabs::
 
