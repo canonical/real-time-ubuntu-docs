@@ -22,16 +22,16 @@ _Optional_
 ```{admonition} Validated parameters
 
 `rt-conf` performs syntax validation on all parameters names. 
-In addition, `rt-conf` carries out syntax validation on values of the parameters which are common for real-time tuning. The table below lists such parameters:
+In addition, `rt-conf` carries out syntax validation on values of the parameters which are common for real-time tuning. These parameters are:
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| isolcpus | `string` | A string formatted as {ref}`cpu-lists`. Isolate CPUs from general execution. |
-| nohz | `enum` | Enable/disable dynamic ticks during idle time. Valid values are: `on` (**Enables** dynamic ticks), `off` (**Disables** dynamic ticks) |
-| nohz_full | `string` | A string formatted as {ref}`cpu-lists`. Specifies the adaptive-ticks cpus, which means the specified list of CPUs whose tick will be stopped whenever possible. The boot CPU will be forced outside the range to maintain the timekeeping. |
-| kthread_cpus | `string` | A string formatted as {ref}`cpu-lists`. Specifies the list of CPUs to be allocated for kernel threads. |
-| irqaffinity | `string` | A string formatted as {ref}`cpu-lists`. Specifies the list of CPUs for IRQ handling. |
-| rcu_nocbs | `string` | A string formatted as {ref}`cpu-lists`. Enables the no-callback CPU mode, which prevents such CPUs from executing RCU callbacks. |
+- {ref}`irqaffinity <reference-irqaffinity>`
+- {ref}`isolcpus <reference-isolcpus>`
+- {ref}`kthread_cpus <reference-kthread_cpus>`
+- {ref}`nohz <reference-nohz>`
+- nohz_full
+- rcu_nocbs
+
+<!-- TODO: add references for nohz_full and rcu_nocbs -->
 ```
 
 (irqt)=
