@@ -11,57 +11,28 @@ Type: `dict`
 
 _Optional_
 
-{ref}`kernel-boot-parameters` that affects real-time behavior
+### kernel_cmdline.parameters
 
-
-### kernel_cmdline.isolcpus
-
-Type: `string`
+Type: `list[string]`
 
 _Optional_
 
-A string formatted as {ref}`cpu-lists`. 
-Isolate CPUs from general execution.
+{ref}`kernel-boot-parameters` that affects real-time behavior.
 
-### kernel_cmdline.nohz
+```{admonition} Validated parameters
 
-Type: `enum`
+`rt-conf` performs syntax validation on all parameters names. 
+In addition, `rt-conf` carries out syntax validation on values of the parameters which are common for real-time tuning. These parameters are:
 
-_Optional_
+- {ref}`irqaffinity <reference-irqaffinity>`
+- {ref}`isolcpus <reference-isolcpus>`
+- {ref}`kthread_cpus <reference-kthread_cpus>`
+- {ref}`nohz <reference-nohz>`
+- nohz_full
+- rcu_nocbs
 
-Enable/disable dynamic ticks during idle time.
-
-Valid values are:
-  * `on`: **Enables** dynamic ticks
-  * `off`:**Disables** dynamic ticks
-
-### kernel_cmdline.nohz_full
-
-Type: `string`
-
-_Optional_
-
-A string formatted as {ref}`cpu-lists`. 
-Specifies the adaptive-ticks cpus, which means the specified list of CPUs whose tick will be stopped whenever possible.
-The boot CPU will be forced outside the range to maintain the timekeeping.
-
-### kernel_cmdline.kthread_cpus
-
-Type: `string`
-
-_Optional_
-
-A string formatted as {ref}`cpu-lists`. 
-Specifies the list of CPUs to be allocated for kernel threads.
-
-### kernel_cmdline.irqaffinity
-
-Type: `string`
-
-_Optional_
-
-A string formatted as {ref}`cpu-lists`. 
-Specifies the list of CPUs for IRQ handling.
+<!-- TODO: add references for nohz_full and rcu_nocbs -->
+```
 
 (irqt)=
 ## irq_tuning 
@@ -187,4 +158,5 @@ Valid values:
   * `ondemand`: Scales the frequency dynamically according to current load. Jumps to the highest frequency and then possibly back off as the idle time increases.
   * `conservative`: Scales the frequency dynamically according to current load (more gradually than ondemand).
   * `schedutil`: [Scheduler-driven](https://lwn.net/Articles/682391/) CPU frequency selection.
+
 
