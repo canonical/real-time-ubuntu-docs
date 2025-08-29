@@ -97,7 +97,7 @@ The ``semaphore`` (defined in `include/linux/semaphore.h`_) structure discussed 
 It's a foundational implementation intended for use within other kernel lock structures.
 Internally, it relies on a :ref:`raw_spinlock_t` and a counter.
 Their primary use cases involve serialization and waiting.
-It’s important to note that newer mechanisms, such as mutexes for serialization and `completions`_ for waiting, are generally preferable to traditional semaphores.
+It's important to note that newer mechanisms, such as mutexes for serialization and `completions`_ for waiting, are generally preferable to traditional semaphores.
 
 
 rw_semaphore
