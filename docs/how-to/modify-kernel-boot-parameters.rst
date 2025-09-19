@@ -205,7 +205,7 @@ Read more on :doc:`../how-to/uc-image-creation`.
 .. LINKS
 .. _/boot/firmware/cmdline.txt: https://www.raspberrypi.com/documentation/computers/configuration.html#kernel-command-line-cmdline-txt
 .. _Ubuntu Core: https://ubuntu.com/core
-.. _update-grub: https://manpages.ubuntu.com/manpages/questing/en/man8/update-grub.8.html
+.. _update-grub: https://manpages.ubuntu.com/manpages/noble/en/man8/update-grub.8.html
 .. _snap set: https://ubuntu.com/core/docs/modify-kernel-options
 .. _system.kernel.cmdline-append: https://snapcraft.io/docs/system-options#heading--kernel-cmdline-append
 .. _system.kernel.dangerous-cmdline-append: https://snapcraft.io/docs/system-options#heading--kernel-dangerous-cmdline-append
