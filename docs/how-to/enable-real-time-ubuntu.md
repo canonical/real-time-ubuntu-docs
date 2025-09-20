@@ -5,7 +5,7 @@ Follow the instructions that match your edition to ensure a correct installation
 
 ## Ubuntu Classic
 
-To enable Real-time Ubuntu on a supported LTS release, follow the instructions in the [Ubuntu Pro Client - How to enable Real-time Ubuntu](https://canonical-ubuntu-pro-client.readthedocs-hosted.com/en/latest/howtoguides/enable_realtime_kernel/) guide.
+To enable Real-time Ubuntu on a supported LTS release, follow the instructions in the {doc}`Ubuntu Pro Client - How to enable Real-time Ubuntu <ubu-pro-client:howtoguides/enable_realtime_kernel>` guide.
 
 If you are running an interim release, Real-time Ubuntu can instead be installed from the universe apt repository:
 

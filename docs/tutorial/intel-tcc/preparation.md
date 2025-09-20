@@ -20,7 +20,7 @@ It explains which software components are required and how to set it up.
    For the real-time kernel to be used, a reboot is required.
    We will reboot when we [add kernel command-line parameters](kernel-parameters).
 
-   Refer to [How to enable Real-time Ubuntu](https://canonical-ubuntu-pro-client.readthedocs-hosted.com/en/latest/howtoguides/enable_realtime_kernel/) for more details.
+   Refer to {doc}`Ubuntu Pro Client - How to enable Real-time Ubuntu <ubu-pro-client:howtoguides/enable_realtime_kernel>` for more details.
 
 ## Other required software
 

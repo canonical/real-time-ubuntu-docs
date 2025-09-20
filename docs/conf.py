@@ -266,6 +266,7 @@ extensions = [
     "myst_parser",
     'sphinx.ext.todo',
     'sphinx_sitemap',
+    "sphinx.ext.intersphinx",
 ]
 
 # Excludes files or directories from processing
@@ -343,3 +344,8 @@ if 'READTHEDOCS_VERSION' in os.environ:
     sitemap_url_scheme = '{version}{link}'
 else:
     sitemap_url_scheme = '{link}'
+
+# Intersphinx mapping for other Canonical Sphinx projects
+intersphinx_mapping = {
+    "ubu-pro-client": ("https://documentation.ubuntu.com/pro-client/en/latest/", None),
+}
