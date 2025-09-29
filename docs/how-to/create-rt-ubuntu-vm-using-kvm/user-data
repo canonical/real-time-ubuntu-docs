@@ -1,0 +1,25 @@
+#cloud-config
+users:
+  - name: ubuntu
+    plain_text_passwd: 'ubuntu'
+    lock_passwd: false
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    shell: /bin/bash
+ssh_pwauth: true
+
+packages:
+  - stress-ng
+  - rt-tests
+
+write_files:
+  - path: /etc/default/grub.d/99-rt-vm.cfg
+    permissions: '0644'
+    content: |
+      GRUB_CMDLINE_LINUX_DEFAULT="\${GRUB_CMDLINE_LINUX_DEFAULT} kthread_cpus=0 irqaffinity=0 isolcpus=domain,managed_irq,1-7 rcu_nocb_poll rcu_nocbs=1-7 nohz=on nohz_full=1-7"
+
+runcmd:
+  - add-apt-repository -y universe
+  - apt update
+  - apt install -y ubuntu-realtime
+  - update-grub
+  - reboot
