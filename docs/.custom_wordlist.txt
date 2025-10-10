@@ -48,6 +48,7 @@ Mutexes
 NMI
 NMIs
 NOCB
+nocbs
 OSAL
 OSNOISE
 OSS
@@ -192,6 +193,7 @@ mutex
 mutexes
 ng
 nohz
+ondemand
 optimization
 oslat
 osnoise
