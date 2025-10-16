@@ -1,6 +1,6 @@
 # How to create a Real-time Ubuntu VM using KVM
 
-This guide outlines the process and considerations for setting up a virtual machine (VM) to handle real-time workloads, drawing upon various resources to ensure optimal performance and minimal latency.
+This guide outlines the process and considerations for setting up a virtual machine (VM) to handle real-time (RT) workloads, drawing upon various resources to ensure optimal performance and minimal latency.
 
 ## Overview of real-time workloads in VMs
 
@@ -11,14 +11,14 @@ Achieving this within a virtualized environment presents unique challenges, prim
 
 -   Scheduling: A single scheduler must manage tasks across all VMs, which can lead to a lack of isolation and one VM affecting another.
 -   Latency: System Management Interrupts (SMIs) from the BIOS can introduce millisecond latencies, interrupting the RT OS. Hardware that allows disabling or modifying SMIs is crucial.
--   Virtualization Type: Hardware virtualization (KVM) generally performs much better than OS-level virtualization or full emulation (QEMU).
+-   Virtualization type: Hardware virtualization (KVM) generally performs much better than OS-level virtualization or full emulation (QEMU).
 
 ### Performance considerations
 
 KVM (Kernel-based Virtual Machine) is a popular choice for running real-time workloads due to its performance advantages over other virtualization technologies like Xen or QEMU.
 
 -   KVM vs. Xen: KVM outperforms Xen in real-time scenarios.
--   QEMU Emulation: Using QEMU for full emulation is not recommended for real-time applications due to poor performance.
+-   QEMU emulation: Using QEMU for full emulation is not recommended for real-time applications due to poor performance.
 
 The guide will assume the use of kernel-based virtual machines (KVMs) due to its popularity and advantages over other virtualization technologies like Xen or QEMU.
 
@@ -161,8 +161,7 @@ virsh net-start default || true
 
 ## Create VM image
 
-This section describes how to create a new real-time VM image using
-virsh and cloud-init.
+To create a new real-time VM image, `vish` and `cloud-init` will be used.
 
 Create the base image directory if it doesn't exist and navigate to that directory:
 
@@ -188,19 +187,11 @@ Using cloud images makes it straightforward to automate the initial configuratio
 Create a `20GB` size `qcow2` disk based on the downloaded base image:
 
 ```{terminal}
-    :input: sudo qemu-img create -f qcow2 -F qcow2 -o backing_file=ubuntu-cloud.img ubuntu-rt-vm.qcow2
+    :input: sudo qemu-img create -f qcow2 -F qcow2 -o backing_file=ubuntu-cloud.img ubuntu-rt-vm.qcow2 20G
     :user: ubuntu
     :host: ubuntu
     :dir: /var/lib/libvirt/images/ubuntu-rt-vm
 Formatting 'ubuntu-rt-vm.qcow2', fmt=qcow2 cluster_size=65536 extended_l2=off compression_type=zlib size=3758096384 backing_file=ubuntu-cloud.img backing_fmt=qcow2 lazy_refcounts=off refcount_bits=16
-```
-
-```{terminal}
-    :input: sudo qemu-img resize ubuntu-rt-vm.qcow2 20G
-    :user: ubuntu
-    :host: ubuntu
-    :dir: /var/lib/libvirt/images/ubuntu-rt-vm
-Image resized.
 ```
 
 ### Create `cloud-init` image
@@ -278,7 +269,7 @@ The VM is defined meaning its configuration (the XML definition) is registered w
 
 ### Apply real-time tuning
 
-In this section, real-time tuning will be applied by mapping the host's isolated CPUs directly to the VM virtual CPUs, ensuring that the VM has dedicated processing resources.
+To ensure that the VM has dedicated processing resources, apply real-time tuning by mapping the host's isolated CPUs directly to the VM virtual CPUs.
 
 Edit VM configuration:
 
@@ -292,7 +283,7 @@ Determine how many vCPU to assign to the real-time VM:
 <vcpu placement='static'>8</vcpu>
 ```
 
-The `<cputune>` section assigns specific host CPUs to the VM vCPUs and applies real-time scheduling policies.
+Add the `<cputune>` section and configure it to assign specific host CPUs to the VM vCPUs and apply real-time scheduling policies.
 
 Configure `<cputune>` section:
 
@@ -393,7 +384,7 @@ Domain 'ubuntu-rt-vm' started
  1    ubuntu-rt-vm    running
 ```
 
-Connect to the VM console and login using `ubuntu` as user and `ubuntu` as password
+Connect to the VM console and login using `ubuntu` as user and `ubuntu` as password.
 
 ```{warning}
 The VM will reboot after booting first time to install real-time kernel, make sure to let some time before logging in.
@@ -432,4 +423,4 @@ Check isolated CPUs (`1-7`):
 
 ## Benchmark the VM
 
-Refer to [How to measure maximum latency in a real-time system](measure-maximum-latency)
+Refer to [How to measure maximum latency in a real-time system](measure-maximum-latency).
