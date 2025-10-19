@@ -91,6 +91,7 @@ TSC
 Telegraf
 Tickless
 Timerlat
+uc
 UC
 UEFI
 VC
