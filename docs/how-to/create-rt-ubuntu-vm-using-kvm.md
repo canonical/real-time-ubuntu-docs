@@ -87,6 +87,8 @@ NUMA:
 [...]
 ```
 
+Use the [`lstopo`(1)][lstopo_man_page] command to view the CPU topology and select CPUs that share the same memory node, cache levels, or physical core, each CPU is labeled as `P#<cpu-number>`.
+
 ### Configure kernel boot parameters
 
 Kernel settings should ensure that real-time workloads are bound to CPUs sharing the same memory and cache hierarchy.
@@ -171,6 +173,11 @@ cd /var/lib/libvirt/images/ubuntu-rt-vm
 ```
 
 Download the Ubuntu 24.04 LTS cloud image:
+
+```{note}
+We’ll use the Ubuntu 24.04 LTS cloud image as the base for the real-time VM.
+Other Ubuntu versions may require adjustments due to differences in `cloud-init` configuration and real-time kernel package availability.
+```
 
 ```{terminal}
     :input: sudo wget -q --show-progress -O ubuntu-cloud.img https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img
@@ -424,3 +431,6 @@ Check isolated CPUs (`1-7`):
 ## Benchmark the VM
 
 Refer to [How to measure maximum latency in a real-time system](measure-maximum-latency).
+
+<!-- Links -->
+[lstopo_man_page]: https://manpages.ubuntu.com/manpages/noble/en/man1/lstopo.1.html
