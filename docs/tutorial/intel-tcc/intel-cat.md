@@ -92,4 +92,4 @@ Here are some references if you need more information about CAT:
     
   - [Public Intel® Time Coordinated Computing (TCC) User Guide - RDC #831067](https://www.intel.com/content/www/us/en/content-details/851159/public-intel-time-coordinated-compute-tcc-user-guide.html?wapkw=831067)
   - [Intel® Resource Director Technology (Intel® RDT) Architecture Specification - RDC #789566](https://www.intel.com/content/www/us/en/content-details/851356/intel-resource-director-technology-intel-rdt-architecture-specification.html?wapkw=789566)
-  - [Intel® 64 and IA-32 Architectures Software Developer’s Manual - RDC #671200](https://www.intel.com/content/www/us/en/content-details/851038/intel-64-and-ia-32-architectures-software-developer-s-manual-combined-volumes-1-2a-2b-2c-2d-3a-3b-3c-3d-and-4.html?wapkw=671200)
+  - [Intel® 64 and IA-32 Architectures Software Developer's Manual - RDC #671200](https://www.intel.com/content/www/us/en/content-details/851038/intel-64-and-ia-32-architectures-software-developer-s-manual-combined-volumes-1-2a-2b-2c-2d-3a-3b-3c-3d-and-4.html?wapkw=671200)

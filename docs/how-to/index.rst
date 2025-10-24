@@ -1,6 +1,6 @@
-How-to guides                                                                                                       
-=============                                                                                                       
-                                                                                                                    
+How-to guides
+=============
+
 How-to guides cover key operations and processes for using Real-time Ubuntu.
 
 Get started with Real-time Ubuntu:
@@ -10,6 +10,7 @@ Get started with Real-time Ubuntu:
 
    Enable Real-time Ubuntu <enable-real-time-ubuntu>
    Switch from real-time to generic kernel <switch-from-realtime-to-generic-kernel>
+   Create a Real-time Ubuntu VM using KVM <create-rt-ubuntu-vm-using-kvm>
 
 Measure important metrics to determine system performance:
 
@@ -22,7 +23,7 @@ Tune performance for real-time processing:
 
 .. toctree::
    :maxdepth: 1
-   
+
    Modify kernel boot parameters <modify-kernel-boot-parameters>
    Configure CPUs for real-time processing <cpu-boot-configs>
    Tune IRQ affinity <tune-irq-affinity>
