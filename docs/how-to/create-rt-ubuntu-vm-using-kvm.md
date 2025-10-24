@@ -175,7 +175,7 @@ cd /var/lib/libvirt/images/ubuntu-rt-vm
 Download the Ubuntu 24.04 LTS cloud image:
 
 ```{note}
-We’ll use the Ubuntu 24.04 LTS cloud image as the base for the real-time VM.
+This guide uses the Ubuntu 24.04 LTS cloud image as the base for the real-time VM.
 Other Ubuntu versions may require adjustments due to differences in `cloud-init` configuration and real-time kernel package availability.
 ```
 
