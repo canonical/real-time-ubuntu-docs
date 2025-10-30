@@ -5,6 +5,15 @@ coder, a writer, or a tester.
 
 The guidelines below will help keep your contributions effective and meaningful.
 
+## Good first issues
+
+If you are looking to contribute but unsure where to start, take a look at the
+open Real-time Ubuntu documentation issues in:
+
+- [Canonical Open Documentation Academy]
+- [Real-time Ubuntu documentation repository]
+
+
 ## Code of conduct
 
 When contributing, you must abide by the [Ubuntu Code of Conduct].
@@ -31,15 +40,13 @@ Find the list of releases here: [Real-time Ubuntu release].
 
 ## Environment setup
 
-<!-- TODO: Update with your prerequisites or drop if excessive -->
-
 Real-time Ubuntu documentation is built on top of [Canonical's Sphinx starter
 pack] and hosted on [Read the Docs].
 It is written in reStructuredText or MyST Markdown and built with [Sphinx].
 
 - For general guidance, refer to the [starter pack guide]
 - For syntax help and guidelines, refer to the [Canonical style guides]
-- In structuring, the documentation employs the [Diátaxis] approach
+- In structuring content, the documentation employs the [Diátaxis] approach
 
 ### Fork and download the documentation repository
 
@@ -83,18 +90,17 @@ make linkcheck
 make woke       # to check for non-inclusive language
 ```
 
-For more information about the inclusive language check, see [woke].
+For more information about the inclusive language check, see the [inclusive
+language guidelines].
 
 ## Propose changes
 
-Submit your documentation changes via a pull request on GitHub.
+Submit your documentation changes via a [pull request on GitHub].
 
 Your changes will be reviewed in due time; if approved, they will eventually be
 merged.
 
 ### Describing pull requests
-
-<!-- TODO: Update with your own checklist or drop if excessive -->
 
 To be properly considered, reviewed, and merged, your pull request must provide
 the following details:
@@ -140,20 +146,22 @@ For example:
 git commit -m "docs(ref/kernel-boot): Add example for nohz parameter" -s
 ```
 
-
 <!-- LINKS -->
 
-[Ubuntu Code of Conduct]: https://ubuntu.com/community/ethos/code-of-conduct
+[Canonical Open Documentation Academy]: https://github.com/canonical/open-documentation-academy/issues?q=state%3Aopen%20label%3A%22rtu%22
+[Real-time Ubuntu documentation repository]: https://github.com/canonical/real-time-ubuntu-docs/issues
+[Ubuntu Code of Conduct]: https://ubuntu.com/community/docs/ethos/code-of-conduct
 [Canonical contributor license agreement]: https://ubuntu.com/legal/contributors
-[Real-time Ubuntu releases]: https://documentation.ubuntu.com/real-time/en/latest/reference/releases/
+[Real-time Ubuntu releases]: https://documentation.ubuntu.com/real-time/latest/reference/releases/
 [Canonical's Sphinx starter pack]: https://github.com/canonical/sphinx-docs-starter-pack
 [Read the Docs]: https://about.readthedocs.com/
 [Sphinx]: https://www.sphinx-doc.org/
 [reStructuredText]: https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html
 [MyST Markdown]: https://myst-parser.readthedocs.io/en/latest/
 [starter pack guide]: https://canonical-starter-pack.readthedocs-hosted.com/latest/
-[Canonical style guides]: https://canonical-documentation-with-sphinx-and-readthedocscom.readthedocs-hosted.com/#style-guides
+[Canonical style guides]: https://docs.ubuntu.com/styleguide/en/
 [Diátaxis]: https://diataxis.fr/
-[woke]: https://github.com/get-woke/woke
+[inclusive language guidelines]: https://github.com/canonical/Inclusive-naming/blob/main/config.yml
 [related issues, pull requests, and repositories]: https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/autolinked-references-and-urls
+[pull request on GitHub]: https://github.com/canonical/real-time-ubuntu-docs/pulls
 [conventional commits]: https://www.conventionalcommits.org/
