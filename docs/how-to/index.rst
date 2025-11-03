@@ -37,6 +37,7 @@ Configure Real-time Ubuntu Core:
 
    Create a Real-time Ubuntu Core image <uc-image-creation>
    Install real-time kernel on Ubuntu Core <uc-install-real-time-kernel>
+   Tune Real-Time Ubuntu using rt-conf <rt-conf-cli>
 
 For tuning an existing Ubuntu Core system, refer to :ref:`ubuntu-core-kernel-cmdline`.
 
