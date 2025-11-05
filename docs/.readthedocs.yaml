@@ -35,7 +35,7 @@ sphinx:
 
 # If using Sphinx, optionally build your docs in additional formats such as PDF
 # formats:
-# - pdf
+# - pdf # Disable pdf because it fails to compile with the SVGs in the docs: https://github.com/canonical/real-time-ubuntu-docs/issues/84
 
 # Optionally declare the Python requirements required to build your docs
 python:
