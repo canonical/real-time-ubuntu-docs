@@ -28,6 +28,10 @@ Ubuntu Server / Desktop
      - Plucky Puffin
      - 6.14
      - generic
+   * - Ubuntu 25.10
+     - Questing Quokka
+     - 6.17
+     - generic
 
 .. note::
 
