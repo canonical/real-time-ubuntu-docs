@@ -412,7 +412,7 @@ Suggestion:
 * add 'process-control' to 'plugs'
 ```
 
-The [seccomp] message indicates that the application makes a [sched_setattr] system call.
+The {manpage}`seccomp(2)` message indicates that the application makes a {manpage}`sched_setattr(2)` system call.
 As confirmed in the source code, this occurs inside the `thread_start` function.
 The debug tool suggests adding the [process-control interface][proc_ctr_iface].
 To understand interfaces, plugs, and slots, refer to the [interface management document][iface_mgmt].
@@ -491,7 +491,7 @@ During the confinement process for your real-time applications, you used [snappy
 This approach is especially effective for smaller applications or when you do not have access to the source code.
 If your application follows a single, fixed execution path, debugging tools alone may suffice.
 However, if it supports multiple configurations, each triggering different execution paths, a comprehensive source code analysis is preferable.
-Such analysis should identify all required files, directories, and [syscalls] and may include reviewing access to Linux-specific resources such as [procfs], [sysfs], and [configfs].
+Such analysis should identify all required files, directories, and {manpage}`syscalls(2)` and may include reviewing access to Linux-specific resources such as {manpage}`procfs(5)`, {manpage}`sysfs(5)`, and [configfs].
 
 The optimal approach depends on your application's complexity and whether you have access to its source code.
 ```
@@ -571,14 +571,9 @@ A good next step is to distribute this snap via a store:
 [security_policies]: https://snapcraft.io/docs/security-policies
 [snap_confinement]: https://snapcraft.io/docs/snap-confinement
 [snap_interfaces]: https://snapcraft.io/docs/supported-interfaces
-[syscalls]: https://manpages.ubuntu.com/manpages/noble/en/man2/syscalls.2.html
-[procfs]: https://manpages.ubuntu.com/manpages/noble/man5/procfs.5.html
-[sysfs]: https://manpages.ubuntu.com/manpages/noble/man5/sysfs.5.html
 [configfs]: https://docs.kernel.org/filesystems/configfs.html
 [debug_snaps]: https://snapcraft.io/docs/debug-snaps
 [snappy-debug]: https://snapcraft.io/snappy-debug
-[seccomp]: https://manpages.ubuntu.com/manpages/noble/man2/seccomp.2.html
-[sched_setattr]: https://manpages.ubuntu.com/manpages/noble/man2/sched_setattr.2.html
 [iface_mgmt]: https://snapcraft.io/docs/interface-management
 [apparmor]: https://apparmor.net/
 [snap_sys_arch]: https://snapcraft.io/docs/system-architecture

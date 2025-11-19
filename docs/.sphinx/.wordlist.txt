@@ -27,6 +27,7 @@ Kubeflow
 Kubernetes
 Launchpad
 linter
+lstopo
 LTS
 LXD
 Makefile
@@ -47,6 +48,7 @@ OLM
 Permalink
 pre
 Quickstart
+Quokka
 ReadMe
 reST
 reStructuredText
