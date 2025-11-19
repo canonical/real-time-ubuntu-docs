@@ -87,7 +87,7 @@ NUMA:
 [...]
 ```
 
-Use the [`lstopo`(1)][lstopo_man_page] command to view the CPU topology and select CPUs that share the same memory node, cache levels, or physical core, each CPU is labeled as `P#<cpu-number>`.
+Use the {manpage}`lstopo(1)` command to view the CPU topology and select CPUs that share the same memory node, cache levels, or physical core, each CPU is labeled as `P#<cpu-number>`.
 
 ### Configure kernel boot parameters
 
@@ -433,4 +433,3 @@ Check isolated CPUs (`1-7`):
 Refer to [How to measure maximum latency in a real-time system](measure-maximum-latency).
 
 <!-- Links -->
-[lstopo_man_page]: https://manpages.ubuntu.com/manpages/noble/en/man1/lstopo.1.html

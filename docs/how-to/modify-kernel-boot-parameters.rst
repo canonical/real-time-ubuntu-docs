@@ -145,7 +145,7 @@ Modify boot parameters on Ubuntu Core
 
     This section assumes access to features currently available exclusively to `dedicated Snap Store`_ users.
 
-Ubuntu Core doesn't have the :code:`/etc/default/grub` file mapped for the kernel parameters, nor the `update-grub`_ utility.
+Ubuntu Core doesn't have the :code:`/etc/default/grub` file mapped for the kernel parameters, nor the :manpage:`update-grub(8)` utility.
 On Ubuntu Core, the kernel parameters can be modified statically or dynamically.
 Static configurations are added during the image build.
 On the other hand, dynamic configurations are set using `snap options`_ on a running system.
@@ -205,7 +205,6 @@ Read more on :doc:`../how-to/uc-image-creation`.
 .. LINKS
 .. _/boot/firmware/cmdline.txt: https://www.raspberrypi.com/documentation/computers/configuration.html#kernel-command-line-cmdline-txt
 .. _Ubuntu Core: https://ubuntu.com/core
-.. _update-grub: https://manpages.ubuntu.com/manpages/noble/en/man8/update-grub.8.html
 .. _snap set: https://ubuntu.com/core/docs/modify-kernel-options
 .. _system.kernel.cmdline-append: https://snapcraft.io/docs/system-options#heading--kernel-cmdline-append
 .. _system.kernel.dangerous-cmdline-append: https://snapcraft.io/docs/system-options#heading--kernel-dangerous-cmdline-append

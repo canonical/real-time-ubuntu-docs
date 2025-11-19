@@ -308,6 +308,10 @@ rst_epilog = """
 # manpages_url = f'https://manpages.ubuntu.com/manpages/{codename}/en/' + \
 #     f'man{section}/{page}.{section}.html'
 
+# codename points to the latest LTS release
+manpages_url = (
+    "https://manpages.ubuntu.com/manpages/resolute/en/man{section}/{page}.{section}.html"
+) 
 
 # Specifies a reST snippet to be prepended to each .rst file
 # This defines a :center: role that centers table cell content.

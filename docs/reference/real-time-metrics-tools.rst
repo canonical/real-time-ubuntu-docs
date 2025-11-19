@@ -67,7 +67,7 @@ This command runs a test case that is relevant for most Symmetric Multiprocessin
 dstat
 -----
 
-`dstat`_ is a versatile tool for generating system resource statistics.
+:manpage:`pcp-dstat(1)` is a versatile tool for generating system resource statistics.
 The tool can be installed with the ``dstat`` Debian package on Ubuntu.
 It is not available as a package on Ubuntu Core.
 
@@ -134,7 +134,7 @@ For more information, see the `rtla-timerlat-top`_ and `rtla-timerlat-hist`_ doc
 oslat
 -----
 
-The `oslat`_ program is designed to identify thread latency at the
+The :manpage:`oslat(8)` program is designed to identify thread latency at the
 OS level caused by unexpected system scheduling or interruptions such as system ticks.
 
 .. tabs::
@@ -208,7 +208,7 @@ This command can be utilized for measuring latency during disk operations.
 stress-ng
 ---------
 
-The `stress-ng`_ is a tool to load and stress a computer system.
+The :manpage:`stress-ng(1)` is a tool to load and stress a computer system.
 It was designed to exercise various physical subsystems of a computer 
 as well as the various operating system kernel interfaces.
 This tool may be installed with the ``stress-ng`` Debian package.
@@ -237,7 +237,7 @@ This tool may be installed with the ``stress-ng`` Debian package.
 where:
 
 * ``--cpu 4``: Starts 4 workers exercising the CPU by sequentially working through all the different CPU stress methods.
-* ``--vm 2``: Starts 2 workers continuously calling `mmap`_ (2)/ `munmap`_ (2) and writing to the allocated memory.
+* ``--vm 2``: Starts 2 workers continuously calling :manpage:`mmap(2)` / :manpage:`munmap(2)` and writing to the allocated memory.
 * ``--hdd 1``: Starts 1 worker continually writing, reading and removing temporary files.
 * ``--fork 8``: Starts 8 workers continually forking children that immediately exit.
 * ``--timeout 2m``: Runs each stress test for at least 2 minutes.
@@ -263,8 +263,6 @@ This could be used to monitor real-time observation of system activities such as
 .. LINKS
 
 .. _cyclictest: https://man.archlinux.org/man/cyclictest.8.en
-.. _dstat: https://manpages.ubuntu.com/manpages/jammy/man1/pcp-dstat.1.html
-.. _oslat: https://manpages.ubuntu.com/manpages/jammy/man8/oslat.8.html
 
 .. _rtla: https://docs.kernel.org/tools/rtla/index.html
 .. _rtla-osnoise-top: https://docs.kernel.org/tools/rtla/rtla-osnoise-top.html
@@ -275,13 +273,10 @@ This could be used to monitor real-time observation of system activities such as
 
 .. _ps: https://www.man7.org/linux/man-pages/man1/ps.1.html
 .. _perf: https://www.man7.org/linux/man-pages/man1/perf.1.html
-.. _stress-ng: https://manpages.ubuntu.com/manpages/noble/en/man1/stress-ng.1.html
 .. _watch: https://www.man7.org/linux/man-pages/man1/watch.1.html
 
 .. _nice: https://www.man7.org/linux/man-pages/man1/nice.1.html
 .. _SCHED_FIFO: https://man7.org/linux/man-pages/man7/sched.7.html
-.. _mmap: https://manpages.ubuntu.com/manpages/noble/en/man2/mmap.2.html
-.. _munmap: https://manpages.ubuntu.com/manpages/noble/en/man2/munmap.2.html
 
 .. _interrupt requests: https://en.wikipedia.org/wiki/Interrupt_request
 .. _/dev/zero: https://en.wikipedia.org/wiki//dev/zero

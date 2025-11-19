@@ -10,10 +10,10 @@ By creating a cpuset partition without load balancing, cpusets prevent latency j
 This ensures that real-time tasks maintain predictable execution times, which is essential for workloads requiring low latency and precise, time-critical responses.
 
 ```{warning}
-Managing cpusets on Ubuntu 21.10 (Impish Indri) and later is not possible with the [cset][cset_manpage] utility. This is because `cset` utilizes cgroups v1 which is no longer supported on Ubuntu.
+Managing cpusets on Ubuntu 21.10 (Impish Indri) and later is not possible with the {manpage}`cset(1)` utility. This is because `cset` utilizes cgroups v1 which is no longer supported on Ubuntu.
 ```
 
-There are many ways to setup cpusets, either by manually modifying the cgroup-v2 filesystem, or using tools like [cgcreate][manpage_cgcreate], [cgexec][manpage_cgexec] and [cgclassify][manpage_cgclassify].
+There are many ways to setup cpusets, either by manually modifying the cgroup-v2 filesystem, or using tools like {manpage}`cgcreate(1)`, {manpage}`cgexec(1)` and, {manpage}`cgclassify(1)`.
 
 On Ubuntu, cgroups are managed at a higher level by [systemd][systemd.io]. It is recommended to use this tool to configure cgroups, rather than doing it manually at a lower level.
 
@@ -95,7 +95,7 @@ This makes sure that the application will run with proper root privileges.
 Running as unit: run-rf31d22d4d34d4fdfbe0e87edf82e7621.scope; invocation ID: 91facec7c7a24c089a29d7a0080b4f1b
 ```
 
-Confirm that your application is running on CPU 11 by checking with [ps][ps_manpage] command:
+Confirm that your application is running on CPU 11 by checking with {manpage}`ps(1)` command:
 
 ```{terminal}
    :input: ps -eLo psr,comm,args,pid, | grep my-app
@@ -249,27 +249,17 @@ In the service report, you can verify that the service is running inside the des
 
 % Links
 
-[ps_manpage]: https://manpages.ubuntu.com/manpages/noble/man1/ps.1.html
-
 [systemd.io]: https://systemd.io/
 
 [lfdocs_cset]: https://wiki.linuxfoundation.org/realtime/documentation/howto/tools/cpu-partitioning/cset
 
 [cset_src]: https://github.com/SUSE/cpuset
 
-[cset_manpage]: https://manpages.ubuntu.com/manpages/noble/man1/cset.1.html
-
 [kdocs_cpusets_v1]: https://docs.kernel.org/admin-guide/cgroup-v1/cpusets.html
 
 [kdocs_cpusets_v2]: https://docs.kernel.org/admin-guide/cgroup-v2.html#cpuset
 
 [manpage_cpuset]: https://man7.org/linux/man-pages/man7/cpuset.7.html
-
-[manpage_cgcreate]: https://manpages.ubuntu.com/manpages/noble/man1/cgcreate.1.html
-
-[manpage_cgexec]: https://manpages.ubuntu.com/manpages/noble/man1/cgexec.1.html
-
-[manpage_cgclassify]: https://manpages.ubuntu.com/manpages/noble/man1/cgclassify.1.html
 
 [archwiki_cgroups]: https://wiki.archlinux.org/title/Cgroups
 
