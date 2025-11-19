@@ -33,7 +33,7 @@ Filter results with `grep`. For example, here are the stable real-time kernels c
 
 Each row shows a snap channel, version, date, revision, and size. In reverse order:
 * `24-rt/stable` channel contains the real-time kernel for Ubuntu 24.04 LTS. The release is stable. The snap version `6.8.1-1023.24` indicates that the kernel version is 6.8.1.
-* `24-rt-hwe/stable` contains the real-time [Hardware Enablement (HWE)][HWE] kernel for Ubuntu 24.04 LTS. The kernel version is 6.11.0.
+* `24-rt-hwe/stable` contains the real-time [Hardware Enablement (HWE)][HWE] kernel for Ubuntu 24.04 LTS. The kernel version is 6.14.0.
 * `24-rt-hwe-edge/stable` provides the most recent kernel version. The `-edge` suffix in the track indicates that this is an [edge kernel][edge-kernel] published for early access to the 6.14 kernel.
 
 ```{seealso}
