@@ -1,7 +1,11 @@
+.. _kernel-boot-parameters:
+
 Kernel boot parameters
 ======================
 
 This document lists several kernel boot parameters that are useful for tuning Real-time Ubuntu.
+
+.. _reference-irqaffinity:
 
 irqaffinity
 -----------
@@ -15,6 +19,8 @@ The current default IRQ affinity mask can be checked in the ``/proc/irq/default_
 The information in this file is presented in a hexadecimal representation of the binary CPU mask.
 
 Note that ``irqaffinity`` is a `symmetric multiprocessing`_ (SMP) parameter, and therefore it does not apply to systems with only one CPU.
+
+.. _reference-isolcpus:
 
 isolcpus
 --------
@@ -32,12 +38,16 @@ For example, ``isolcpus=1,2,10-20`` isolates CPUs 1, 2, and 10 through 20.
 
 For further details, please refer to `kernel's command-line parameters`_ documentation.
 
+.. _reference-kthread_cpus:
+
 kthread_cpus
 ------------
 
 The ``kthread_cpus`` parameter refers to the list of CPUs specifically allocated for kernel usage.
 
 For instance, specifying ``kthread_cpus=0-3`` means that the kernel is allowed to run kernel threads on CPUs 0 through 3.
+
+.. _reference-nohz:
 
 nohz
 ----
