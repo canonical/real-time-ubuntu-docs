@@ -266,6 +266,4 @@ In the service report, you can verify that the service is running inside the des
 % This commit introduced the 'isolated' option for cpusets v2
 [kcommit_cpuset]: https://github.com/torvalds/linux/commit/f28e22441f353aa2c954a1b1e29144f8841f1e8a
 
-[systemd.special]: https://manpages.ubuntu.com/manpages/noble/man7/systemd.special.7.html
-
 [systemd_slice]: https://www.freedesktop.org/software/systemd/man/latest/systemd.slice.html

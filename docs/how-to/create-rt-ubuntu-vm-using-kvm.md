@@ -431,5 +431,3 @@ Check isolated CPUs (`1-7`):
 ## Benchmark the VM
 
 Refer to [How to measure maximum latency in a real-time system](measure-maximum-latency).
-
-<!-- Links -->
