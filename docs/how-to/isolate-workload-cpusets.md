@@ -23,10 +23,11 @@ Isolation settings primarily depend on the number of available CPU cores.
 Before doing the isolation, check the number of online CPUs for further comparison by running `nproc`.
 For example, the output below shows the system has 12 CPU cores.
 ```{terminal}
-   :input: nproc
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~
+:user: ubuntu
+:host: ubuntu
+:dir: ~
+
+nproc
 
 12
 ```
@@ -52,24 +53,38 @@ sudo systemctl set-property --runtime user.slice AllowedCPUs=0-10
 
 Check that the properties are correctly set by fetching their values with `systemctl show`, providing the unit and the desired property (with parameter `-p`).
 
-```{terminal}
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~
+For the `custom-workload.slice`:
 
-:input: systemctl show custom-workload.slice -p AllowedCPUs
+```{terminal}
+:user: ubuntu
+:host: ubuntu
+:dir: ~
+
+systemctl show custom-workload.slice -p AllowedCPUs
+
 AllowedCPUs=11
-:input: systemctl show init.scope -p AllowedCPUs
+```
+
+And the `init.scope` properties:
+
+```{terminal}
+:user: ubuntu
+:host: ubuntu
+:dir: ~
+
+systemctl show init.scope -p AllowedCPUs
+
 AllowedCPUs=0-10
 ```
 
 After setting up the CPU isolation, check with `nproc` that the total online CPUs have changed based on your settings (e.g. from 12 to 11):
 
 ```{terminal}
-   :input: nproc
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~
+:user: ubuntu
+:host: ubuntu
+:dir: ~
+
+nproc
 
 11
 ```
@@ -87,10 +102,11 @@ This makes sure that the application will run with proper root privileges.
 ```
 
 ```{terminal}
-   :input: systemd-run --scope -p Slice=custom-workload.slice /home/ubuntu/my-app
-   :user: root
-   :host: ubuntu
-   :dir: /home/ubuntu
+:user: root
+:host: ubuntu
+:dir: /home/ubuntu
+
+systemd-run --scope -p Slice=custom-workload.slice /home/ubuntu/my-app
 
 Running as unit: run-rf31d22d4d34d4fdfbe0e87edf82e7621.scope; invocation ID: 91facec7c7a24c089a29d7a0080b4f1b
 ```
@@ -98,10 +114,11 @@ Running as unit: run-rf31d22d4d34d4fdfbe0e87edf82e7621.scope; invocation ID: 91f
 Confirm that your application is running on CPU 11 by checking with [ps][ps_manpage] command:
 
 ```{terminal}
-   :input: ps -eLo psr,comm,args,pid, | grep my-app
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~
+:user: ubuntu
+:host: ubuntu
+:dir: ~
+
+ps -eLo psr,comm,args,pid, | grep my-app
 
 11  my-app    /bin/bash /home/ubuntu/my-a    1590
 ```
@@ -109,10 +126,11 @@ Confirm that your application is running on CPU 11 by checking with [ps][ps_manp
 It's also possible to confirm using `ps` that your application is running isolated on CPU 11:
 
 ```{terminal}
-   :input: ps -eLo psr,comm,args,ppid,pid, | grep '^ 11'
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~
+:user: ubuntu
+:host: ubuntu
+:dir: ~
+
+ps -eLo psr,comm,args,ppid,pid, | grep '^ 11'
 
 11 cpuhp/11        [cpuhp/11]                        2      81
 11 idle_inject/11  [idle_inject/11]                  2      82
@@ -223,21 +241,23 @@ sudo systemctl enable my-app.service
 Then it's possible to check that our application is running on CPU 11:
 
 ```{terminal}
-   :input: ps -eLo psr,comm,args,pid, | grep my-app
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~
+:user: ubuntu
+:host: ubuntu
+:dir: ~
 
- 11 my-app     /bin/bash /home/ubuntu/my-a       1    2417
+ps -eLo psr,comm,args,pid, | grep my-app
+
+11 my-app     /bin/bash /home/ubuntu/my-a       1    2417
 ```
 
 In the service report, you can verify that the service is running inside the designated cgroup created by the `custom-workload` slice.
 
 ```{terminal}
-   :input: systemctl status my-app.service
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~
+:user: ubuntu
+:host: ubuntu
+:dir: ~
+
+systemctl status my-app.service
 
 ● my-app.service - app demo service
    ...
