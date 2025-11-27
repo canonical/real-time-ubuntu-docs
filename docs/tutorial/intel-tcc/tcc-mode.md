@@ -7,6 +7,7 @@ With the Intel® reference BIOS, you can enable *Intel® TCC Mode* by navigating
 If *Intel® TCC Mode* is not visible, consult your board vendor or follow the steps listed in the *Firmware Configuration* section of [TCC User Guide](https://www.intel.com/content/www/us/en/content-details/851159/public-intel-time-coordinated-compute-tcc-user-guide.html?wapkw=831067) to set the options manually.
 
 Intel® TCC Mode includes a wide range of real-time optimizations including the following:
+
 - Power Management, for example:
   - Handling of power states 
   - Optimization of frequency transitions 
@@ -23,6 +24,7 @@ Now, let's take a concrete example and see how the Intel® TCC Mode optimizes po
 To do this, we will compare the statistics of the test application with the default settings of the Intel® reference BIOS, which includes Intel® TCC Mode disabled, and with Intel® TCC Mode enabled.
 
 The block diagram below illustrates the setup used for the *Intel® TCC Mode* analysis.
+
 ```{figure} images/tcc_setup_basic.svg
    :width: 100%
    :alt: Basic system setup

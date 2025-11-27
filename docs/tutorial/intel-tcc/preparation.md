@@ -25,6 +25,7 @@ It explains which software components are required and how to set it up.
 ## Other required software
 
 Install required tools:
+
 ```bash
 sudo apt install msr-tools stress-ng mosquitto-clients
 ```

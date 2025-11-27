@@ -79,7 +79,6 @@ More information about HWP and the MSR can be found in the [Intel® 64 and IA-32
 
 For more information on directly accessing the HWP MSR instead of using the `sysfs` entries of the `intel_pstate driver`, please refer to the [TCC User Guide](https://www.intel.com/content/www/us/en/content-details/851159/public-intel-time-coordinated-compute-tcc-user-guide.html?wapkw=831067) and in the [Intel® 64 and IA-32 Architectures Software Developer's Manual Vol3 - RDC #671200](https://www.intel.com/content/www/us/en/content-details/851038/intel-64-and-ia-32-architectures-software-developer-s-manual-combined-volumes-1-2a-2b-2c-2d-3a-3b-3c-3d-and-4.html?wapkw=671200), section *Power and Thermal Management-Hardware Controlled Performance States*.
 
-
 ## Results
 
 ```{figure} images/result_CAT_isol_boost.png

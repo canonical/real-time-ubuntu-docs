@@ -22,11 +22,13 @@ On Ubuntu, cgroups are managed at a higher level by [systemd][systemd.io]. It is
 Isolation settings primarily depend on the number of available CPU cores.
 Before doing the isolation, check the number of online CPUs for further comparison by running `nproc`.
 For example, the output below shows the system has 12 CPU cores.
+
 ```{terminal}
-   :input: nproc
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~
+:user: ubuntu
+:host: ubuntu
+:dir: ~
+
+nproc
 
 12
 ```
@@ -35,11 +37,13 @@ First, define a [slice][systemd_slice] and the CPUs that should be isolated from
 Internally, `systemd` will translate this slice to a cgroup node on the unified hierarchy of cgroup-v2.
 
 For example, to define a `systemd` slice named `custom-workload.slice` that is restricted to run only on CPU 11, run:
+
 ```bash
 sudo systemctl set-property --runtime custom-workload.slice AllowedCPUs=11
 ```
 
 Then restrict the system units and the init scope (created by default on `systemd`), to use the remaining CPUs:
+
 ```bash
 sudo systemctl set-property --runtime init.scope AllowedCPUs=0-10
 sudo systemctl set-property --runtime system.slice AllowedCPUs=0-10
@@ -52,24 +56,38 @@ sudo systemctl set-property --runtime user.slice AllowedCPUs=0-10
 
 Check that the properties are correctly set by fetching their values with `systemctl show`, providing the unit and the desired property (with parameter `-p`).
 
-```{terminal}
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~
+For the `custom-workload.slice`:
 
-:input: systemctl show custom-workload.slice -p AllowedCPUs
+```{terminal}
+:user: ubuntu
+:host: ubuntu
+:dir: ~
+
+systemctl show custom-workload.slice -p AllowedCPUs
+
 AllowedCPUs=11
-:input: systemctl show init.scope -p AllowedCPUs
+```
+
+And the `init.scope` properties:
+
+```{terminal}
+:user: ubuntu
+:host: ubuntu
+:dir: ~
+
+systemctl show init.scope -p AllowedCPUs
+
 AllowedCPUs=0-10
 ```
 
 After setting up the CPU isolation, check with `nproc` that the total online CPUs have changed based on your settings (e.g. from 12 to 11):
 
 ```{terminal}
-   :input: nproc
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~
+:user: ubuntu
+:host: ubuntu
+:dir: ~
+
+nproc
 
 11
 ```
@@ -87,10 +105,11 @@ This makes sure that the application will run with proper root privileges.
 ```
 
 ```{terminal}
-   :input: systemd-run --scope -p Slice=custom-workload.slice /home/ubuntu/my-app
-   :user: root
-   :host: ubuntu
-   :dir: /home/ubuntu
+:user: root
+:host: ubuntu
+:dir: /home/ubuntu
+
+systemd-run --scope -p Slice=custom-workload.slice /home/ubuntu/my-app
 
 Running as unit: run-rf31d22d4d34d4fdfbe0e87edf82e7621.scope; invocation ID: 91facec7c7a24c089a29d7a0080b4f1b
 ```
@@ -98,10 +117,11 @@ Running as unit: run-rf31d22d4d34d4fdfbe0e87edf82e7621.scope; invocation ID: 91f
 Confirm that your application is running on CPU 11 by checking with {manpage}`ps(1)` command:
 
 ```{terminal}
-   :input: ps -eLo psr,comm,args,pid, | grep my-app
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~
+:user: ubuntu
+:host: ubuntu
+:dir: ~
+
+ps -eLo psr,comm,args,pid, | grep my-app
 
 11  my-app    /bin/bash /home/ubuntu/my-a    1590
 ```
@@ -109,10 +129,11 @@ Confirm that your application is running on CPU 11 by checking with {manpage}`ps
 It's also possible to confirm using `ps` that your application is running isolated on CPU 11:
 
 ```{terminal}
-   :input: ps -eLo psr,comm,args,ppid,pid, | grep '^ 11'
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~
+:user: ubuntu
+:host: ubuntu
+:dir: ~
+
+ps -eLo psr,comm,args,ppid,pid, | grep '^ 11'
 
 11 cpuhp/11        [cpuhp/11]                        2      81
 11 idle_inject/11  [idle_inject/11]                  2      82
@@ -157,6 +178,7 @@ sudo mkdir -p /etc/systemd/system/init.scope.d/
 sudo mkdir -p /etc/systemd/system/system.slice.d/
 sudo mkdir -p /etc/systemd/system/user.slice.d/
 ```
+
 Then create the files for the `init.scope`, `system.slice` and `user.slice`:
 
 ```{note}
@@ -167,12 +189,14 @@ This way, a file like `50-cpu-isolation.conf` will override settings from `10-de
 
 Now that the directories are available, create the following three configuration files:
 - `/etc/systemd/system/init.scope.d/50-cpu-isolation.conf` for the init scope with the following content:
+
   ```
   [Scope]
   AllowedCPUs=0-10
   ```
 
 - `/etc/systemd/system/system.slice.d/50-cpu-isolation.conf` and `/etc/systemd/system/user.slice.d/50-cpu-isolation.conf` with the following:
+
   ```
   [Slice]
   AllowedCPUs=0-10
@@ -187,6 +211,7 @@ AllowedCPUs=11
 ```
 
 After reloading the systemd daemon, the changes will take effect:
+
 ```bash
 sudo systemctl daemon-reload
 ```
@@ -199,6 +224,7 @@ A reliable and reproducible way to apply CPU isolation is by creating a systemd 
 This allows you to assign the cpuset to the service, ensuring the application runs inside the isolated `custom-workload.slice` automatically on every reboot, without any manual intervention.
 
 Here is a simple example of how this service could look like:
+
 ```
 [Unit]
 Description=app demo service
@@ -206,8 +232,8 @@ Description=app demo service
 [Service]
 Slice=custom-workload.slice
 ExecStart=/home/ubuntu/my-app
-
 ```
+
 The important part here is the `Slice=custom-workload.slice` which points your service to the `custom-workload.slice` that you created which has access to the isolated CPUs.
 
 The service file should be created inside the `/etc/systemd/system` directory, for example at `/etc/systemd/system/my-app.service`.
@@ -223,21 +249,23 @@ sudo systemctl enable my-app.service
 Then it's possible to check that our application is running on CPU 11:
 
 ```{terminal}
-   :input: ps -eLo psr,comm,args,pid, | grep my-app
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~
+:user: ubuntu
+:host: ubuntu
+:dir: ~
 
- 11 my-app     /bin/bash /home/ubuntu/my-a       1    2417
+ps -eLo psr,comm,args,pid, | grep my-app
+
+11 my-app     /bin/bash /home/ubuntu/my-a       1    2417
 ```
 
 In the service report, you can verify that the service is running inside the designated cgroup created by the `custom-workload` slice.
 
 ```{terminal}
-   :input: systemctl status my-app.service
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~
+:user: ubuntu
+:host: ubuntu
+:dir: ~
+
+systemctl status my-app.service
 
 ● my-app.service - app demo service
    ...

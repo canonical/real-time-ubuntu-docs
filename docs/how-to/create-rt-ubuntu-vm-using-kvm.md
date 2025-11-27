@@ -40,9 +40,11 @@ VMs should be assigned CPUs that share the same memory and cache hierarchy to en
 Check the number of online CPUs for further comparison by running `nproc`: 
 
 ```{terminal}
-    :input: nproc
-    :user: ubuntu
-    :host: ubuntu
+:user: ubuntu
+:host: ubuntu
+
+nproc
+
 16
 ```
 
@@ -51,9 +53,11 @@ For example, the output below shows the system has 16 CPU cores.
 Ensure the online CPU list contains `0-15` (or the value corresponding to your configuration):
 
 ```{terminal}
-    :input: lscpu
-    :user: ubuntu
-    :host: ubuntu
+:user: ubuntu
+:host: ubuntu
+
+lscpu
+
 Architecture:                x86_64
   CPU op-mode(s):            32-bit, 64-bit
   Address sizes:             39 bits physical, 48 bits virtual
@@ -118,18 +122,22 @@ sudo reboot
 Verify the kernel boot command line:
 
 ```{terminal}
-    :input: cat /proc/cmdline
-    :user: ubuntu
-    :host: ubuntu
+:user: ubuntu
+:host: ubuntu
+
+cat /proc/cmdline
+
 BOOT_IMAGE=/vmlinuz-6.14.0-28-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro quiet splash clocksource=tsc tsc=reliable nmi_watchdog=0 nosoftlockup kthread_cpus=0-7 isolcpus=domain,managed_irq,8-15 rcu_nocb_poll rcu_nocbs=8-15 nohz=on nohz_full=8-15 irqaffinity=0-7 idle=poll
 ```
 
 Check which CPUs the kernel considers isolated (`8-15`):
 
 ```{terminal}
-    :input: cat /sys/devices/system/cpu/isolated
-    :user: ubuntu
-    :host: ubuntu
+:user: ubuntu
+:host: ubuntu
+
+cat /sys/devices/system/cpu/isolated
+
 8-15
 ```
 
@@ -180,10 +188,12 @@ Other Ubuntu versions may require adjustments due to differences in `cloud-init`
 ```
 
 ```{terminal}
-    :input: sudo wget -q --show-progress -O ubuntu-cloud.img https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img
-    :user: ubuntu
-    :host: ubuntu
-    :dir: /var/lib/libvirt/images/ubuntu-rt-vm
+:user: ubuntu
+:host: ubuntu
+:dir: /var/lib/libvirt/images/ubuntu-rt-vm
+
+sudo wget -q --show-progress -O ubuntu-cloud.img https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img
+
 ubuntu-cloud.img          100%[====================================================================>] 590.25M  30.4MB/s    in 20s     
 ```
 
@@ -194,10 +204,12 @@ Using cloud images makes it straightforward to automate the initial configuratio
 Create a `20GB` size `qcow2` disk based on the downloaded base image:
 
 ```{terminal}
-    :input: sudo qemu-img create -f qcow2 -F qcow2 -o backing_file=ubuntu-cloud.img ubuntu-rt-vm.qcow2 20G
-    :user: ubuntu
-    :host: ubuntu
-    :dir: /var/lib/libvirt/images/ubuntu-rt-vm
+:user: ubuntu
+:host: ubuntu
+:dir: /var/lib/libvirt/images/ubuntu-rt-vm
+
+sudo qemu-img create -f qcow2 -F qcow2 -o backing_file=ubuntu-cloud.img ubuntu-rt-vm.qcow2 20G
+
 Formatting 'ubuntu-rt-vm.qcow2', fmt=qcow2 cluster_size=65536 extended_l2=off compression_type=zlib size=3758096384 backing_file=ubuntu-cloud.img backing_fmt=qcow2 lazy_refcounts=off refcount_bits=16
 ```
 
@@ -220,10 +232,12 @@ Open `/var/lib/libvirt/images/ubuntu-rt-vm/meta-data` in a text editor and inser
 Generate `seed.iso` with {file}`user-data` and {file}`meta-data` files:
 
 ```{terminal}
-    :input: sudo genisoimage -input-charset "utf-8" -volid cidata -joliet -rock -output seed.iso user-data meta-data
-    :user: ubuntu
-    :host: ubuntu
-    :dir: /var/lib/libvirt/images/ubuntu-rt-vm
+:user: ubuntu
+:host: ubuntu
+:dir: /var/lib/libvirt/images/ubuntu-rt-vm
+
+sudo genisoimage -input-charset "utf-8" -volid cidata -joliet -rock -output seed.iso user-data meta-data
+
 Total translation table size: 0
 Total rockridge attributes bytes: 331
 Total directory bytes: 0
@@ -232,11 +246,15 @@ Max brk space used 0
 183 extents written (0 MB)
 ```
 
+Verify that {file}`seed.iso` was generated successfully:
+
 ```{terminal}
-    :input: ls -l
-    :user: ubuntu
-    :host: ubuntu
-    :dir: /var/lib/libvirt/images/ubuntu-rt-vm
+:user: ubuntu
+:host: ubuntu
+:dir: /var/lib/libvirt/images/ubuntu-rt-vm
+
+ls -l
+
 total 605000
 -rw-r--r-- 1 root root        55 Aug 28 13:32 meta-data
 -rw-r--r-- 1 root root    374784 Aug 28 13:32 seed.iso
@@ -247,13 +265,17 @@ total 605000
 
 ## Install and define VM image
 
-Run the following commands to define the VM image:
+Run the following commands to define the VM image.
+First, create and start the virtual machine through `libvirt`:
 
 ```{terminal}
-    :input: sudo virt-install --connect qemu:///system --virt-type kvm --name ubuntu-rt-vm --vcpus 8 --ram 8192 --os-variant ubuntu24.04 --disk path=ubuntu-rt-vm.qcow2,format=qcow2 --disk path=seed.iso,device=cdrom --import --network network=default --noautoconsole --nographics --print-xml | sudo tee /etc/libvirt/qemu/ubuntu-rt-vm.xml
-    :user: ubuntu
-    :host: ubuntu
-    :dir: /var/lib/libvirt/images/ubuntu-rt-vm
+:user: ubuntu
+:host: ubuntu
+:dir: /var/lib/libvirt/images/ubuntu-rt-vm
+:scroll:
+
+sudo virt-install --connect qemu:///system --virt-type kvm --name ubuntu-rt-vm --vcpus 8 --ram 8192 --os-variant ubuntu24.04 --disk path=ubuntu-rt-vm.qcow2,format=qcow2 --disk path=seed.iso,device=cdrom --import --network network=default --noautoconsole --nographics --print-xml | sudo tee /etc/libvirt/qemu/ubuntu-rt-vm.xml
+
 <domain type="kvm">
   <name>ubuntu-rt-vm</name>
   <uuid>af8bd2eb-7151-4aec-92a7-ffc61f2df203</uuid>
@@ -264,11 +286,15 @@ Run the following commands to define the VM image:
 </domain>
 ```
 
+Then register {file}`ubuntu-rt-vm.xml` as the defined virtual machine:
+
 ```{terminal}
-    :input: sudo virsh define /etc/libvirt/qemu/ubuntu-rt-vm.xml
-    :user: ubuntu
-    :host: ubuntu
-    :dir: /var/lib/libvirt/images/ubuntu-rt-vm
+:user: ubuntu
+:host: ubuntu
+:dir: /var/lib/libvirt/images/ubuntu-rt-vm
+
+sudo virsh define /etc/libvirt/qemu/ubuntu-rt-vm.xml
+
 Domain 'ubuntu-rt-vm' defined from /etc/libvirt/qemu/ubuntu-rt-vm.xml
 ```
 
@@ -371,21 +397,27 @@ sudo virsh define /etc/libvirt/qemu/ubuntu-rt-vm.xml
 
 ### Start and connect to the VM
 
-Start `ubuntu-rt-vm` VM and ensure it is running:
+Start `ubuntu-rt-vm` VM:
 
 ```{terminal}
-    :input: sudo virsh start ubuntu-rt-vm
-    :user: ubuntu
-    :host: ubuntu
-    :dir: /var/lib/libvirt/images/ubuntu-rt-vm
+:user: ubuntu
+:host: ubuntu
+:dir: /var/lib/libvirt/images/ubuntu-rt-vm
+
+sudo virsh start ubuntu-rt-vm
+
 Domain 'ubuntu-rt-vm' started
 ```
 
+And confirm that is is running:
+
 ```{terminal}
-    :input: virsh list
-    :user: ubuntu
-    :host: ubuntu
-    :dir: /var/lib/libvirt/images/ubuntu-rt-vm
+:user: ubuntu
+:host: ubuntu
+:dir: /var/lib/libvirt/images/ubuntu-rt-vm
+
+virsh list
+
  Id   Name            State
 -------------------------------
  1    ubuntu-rt-vm    running
@@ -404,27 +436,33 @@ sudo virsh console ubuntu-rt-vm
 Ensure real-time kernel version is running:
 
 ```{terminal}
-    :input: uname -a
-    :user: ubuntu
-    :host: ubuntu-rt-vm
+:user: ubuntu
+:host: ubuntu-rt-vm
+
+uname -a
+
 Linux ubuntu-rt-vm 6.8.1-1015-realtime #16-Ubuntu SMP PREEMPT_RT Wed Jan 15 21:03:54 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
 ```
 
 Check kernel boot line includes `isolcpus=1-7`:
 
 ```{terminal}
-    :input: cat /proc/cmdline
-    :user: ubuntu
-    :host: ubuntu-rt-vm
+:user: ubuntu
+:host: ubuntu-rt-vm
+
+cat /proc/cmdline
+
 BOOT_IMAGE=/vmlinuz-6.8.1-1015-realtime root=UUID=d36f7414-beb7-45e0-900e-9ab79cdbcb2d ro console=tty1 console=ttyS0 kthread_cpus=0 irqaffinity=0 isolcpus=domain,managed_irq,1-7 rcu_nocb_poll rcu_nocbs=1-7 nohz=on nohz_full=1-7
 ```
 
 Check isolated CPUs (`1-7`):
 
 ```{terminal}
-    :input: cat /sys/devices/system/cpu/isolated
-    :user: ubuntu
-    :host: ubuntu-rt-vm
+:user: ubuntu
+:host: ubuntu-rt-vm
+
+cat /sys/devices/system/cpu/isolated
+
 1-7
 ```
 

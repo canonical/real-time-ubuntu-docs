@@ -22,4 +22,3 @@ jobs:
     with:
       working-directory: "docs"
       fetch-depth: 0
-      makefile: Makefile
