@@ -36,8 +36,8 @@ Priority inversion
 ------------------
 
 A note on priority inversion is in order. (Demonstrating it, and Real-time
-Ubuntu's solutions to it, are out of scope here. See Canonical's `Technical
-deep-dive`_ for more detail.)
+Ubuntu's solutions to it, are out of scope here.
+See :spellexception:`Canonical\'s` `Technical deep-dive`_ for more detail.)
 
 Suppose a lock is held on a section of critical kernel code, by a low-priority
 task that's then pre-empted by a high-priority one. If this second task needs

@@ -22,9 +22,11 @@ List the installed kernels:
 ````{group-tab} GRUB system
 
 ```{terminal}
-    :input: apt list linux-generic* --installed
-    :user: ubuntu
-    :host: ubuntu
+:user: ubuntu
+:host: ubuntu
+
+apt list linux-generic* --installed
+
 linux-generic-6.11/noble-updates,noble-security,now 6.11.0-29.29~24.04.1 amd64 [installed]
 linux-generic-6.14/noble-updates,noble-security,now 6.14.0-24.24~24.04.3 amd64 [installed]
 linux-generic-hwe-24.04/noble-updates,noble-security,now 6.14.0-24.24~24.04.3 amd64 [installed]
@@ -34,9 +36,11 @@ linux-generic-hwe-24.04/noble-updates,noble-security,now 6.14.0-24.24~24.04.3 am
 ````{group-tab} Raspberry Pi
 
 ```{terminal}
-    :input: apt list linux-raspi* --installed
-    :user: ubuntu
-    :host: ubuntu
+:user: ubuntu
+:host: ubuntu
+
+apt list linux-raspi* --installed
+
 Listing... Done
 linux-image-6.8.0-1030-raspi/noble-updates,noble-security,now 6.8.0-1030.34 arm64 [installed,automatic]
 linux-image-raspi/noble-updates,noble-security,now 6.8.0-1030.34 arm64 [installed,automatic]
@@ -82,9 +86,10 @@ sudo apt install linux-raspi
 Disable the `realtime-kernel` Pro service:
 
 ```{terminal}
-   :input: sudo pro disable realtime-kernel
-   :user: ubuntu
-   :host: ubuntu
+:user: ubuntu
+:host: ubuntu
+
+sudo pro disable realtime-kernel
 
 This will remove the boot order preference for the real-time kernel and
 disable updates to the real-time kernel.
@@ -106,9 +111,10 @@ Updating package lists
 Check the kernel version using the `uname -r` command:
 
 ```{terminal}
-    :input: uname -r
-    :user: ubuntu
-    :host: ubuntu
+:user: ubuntu
+:host: ubuntu
+
+uname -r
 
 6.8.1-1024-realtime
 ```
@@ -141,9 +147,9 @@ It should start with the generic kernel.
 Verify that by running `uname -r`:
 
 ```{terminal}
-    :input: uname -r
-    :user: ubuntu
-    :host: ubuntu
+:user: ubuntu
+:host: ubuntu
 
+uname -r
 6.14.0-24-generic
 ```

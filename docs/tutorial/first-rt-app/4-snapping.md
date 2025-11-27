@@ -22,16 +22,17 @@ It is easier to create the snap by starting from a template.
 Run the following command from the same directory where the source `.c` files reside:
 
 ```{terminal}
-   :input: snapcraft init
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~/tutorial
+:user: ubuntu
+:host: ubuntu
+:dir: ~/tutorial
+
+snapcraft init
 
 Go to https://docs.snapcraft.io/the-snapcraft-format/8337 for more information about the snapcraft.yaml format.
 Successfully initialised project.
 ```
-This command creates a `snap` directory containing the {file}`snapcraft.yaml` file.
 
+This command creates a `snap` directory containing the {file}`snapcraft.yaml` file.
 
 Let's examine the {file}`snapcraft.yaml` file:
 
@@ -59,10 +60,11 @@ You may also want to review the [snapcraft.yaml schema][snapcraft_yaml], which i
 Your working directory should now look like this:
 
 ```{terminal}
-   :input: tree
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~/tutorial
+:user: ubuntu
+:host: ubuntu
+:dir: ~/tutorial
+
+tree
 
 .
 ├── cfs.c
@@ -117,10 +119,11 @@ parts:
 With this part defined, you can now build the snap:
 
 ```{terminal}
-   :input: snapcraft -v
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~/tutorial
+:user: ubuntu
+:host: ubuntu
+:dir: ~/tutorial
+
+snapcraft -v
 
 Starting snapcraft, version 8.7.3
 Logging execution to '/home/ubuntu/.local/state/snapcraft/log/snapcraft-20250326-122052.993463.log'
@@ -174,10 +177,11 @@ Now you can verify that the real-time applications are packed into the snap by i
 Since a snap is a [{spellexception}`SquashFS` file][snap_format] file, you can unsquash it:
 
 ```{terminal}
-   :input: unsquashfs rt-app_0.1_amd64.snap
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~/tutorial
+:user: ubuntu
+:host: ubuntu
+:dir: ~/tutorial
+
+unsquashfs rt-app_0.1_amd64.snap
 
 Parallel unsquashfs: Using 12 processors
 6 inodes (6 blocks) to write
@@ -196,10 +200,11 @@ created 0 hardlinks
 This creates the `squashfs-root` directory with the following contents:
 
 ```{terminal}
-   :input: tree squashfs-root/
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~/tutorial
+:user: ubuntu
+:host: ubuntu
+:dir: ~/tutorial
+
+tree squashfs-root/
 
 squashfs-root/
 ├── bin
@@ -257,10 +262,11 @@ After defining the apps, you can rebuild the snap by running `snapcraft -v` agai
 You can then install the snap using:
 
 ```{terminal}
-   :input: sudo snap install rt-app_0.1_amd64.snap --devmode
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~/tutorial
+:user: ubuntu
+:host: ubuntu
+:dir: ~/tutorial
+
+sudo snap install rt-app_0.1_amd64.snap --devmode
 
 rt-app 0.1 installed
 ```
@@ -274,10 +280,11 @@ This mode not only skips signature checks, but also allows installing snaps that
 Now, the snap appears in the list of installed snaps:
 
 ```{terminal}
-   :input: snap info rt-app
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~/tutorial
+:user: ubuntu
+:host: ubuntu
+:dir: ~/tutorial
+
+snap info rt-app
 
 name:      rt-app
 summary:   Demo real time apps
@@ -300,10 +307,11 @@ Within a snap, the defined applications become [application commands][applicatio
 Type the name of the installed snap and press the {kbd}`Tab` key twice to list the available commands:
 
 ```{terminal}
-   :input: rt-app.
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~/tutorial
+:user: ubuntu
+:host: ubuntu
+:dir: ~/tutorial
+
+rt-app.
 
 rt-app.cfs              rt-app.edf              rt-app.fifo             rt-app.lock             rt-app.thread-affinity
 ```
@@ -311,10 +319,11 @@ rt-app.cfs              rt-app.edf              rt-app.fifo             rt-app.l
 Running the `cfs` program:
 
 ```{terminal}
-   :input: rt-app.cfs
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~/tutorial
+:user: ubuntu
+:host: ubuntu
+:dir: ~/tutorial
+
+rt-app.cfs
 
 Calls made on thread1: 100000
 Calls made on thread2: 1
@@ -334,10 +343,12 @@ While there are a variety of resources and tools that exist for [debugging snaps
 To install it:
 
 ```{terminal}
-   :input: sudo snap install snappy-debug
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~/tutorial
+:user: ubuntu
+:host: ubuntu
+:dir: ~/tutorial
+
+sudo snap install snappy-debug
+
 snappy-debug 0.36-snapd2.59.4 from Canonical✓ installed
 ```
 
@@ -345,10 +356,11 @@ Now, you need two terminals: one to run `snappy-debug` and another to execute th
 Running `snappy-debug` presents the following message:
 
 ```{terminal}
-   :input: snappy-debug
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~/tutorial
+:user: ubuntu
+:host: ubuntu
+:dir: ~/tutorial
+
+snappy-debug
 
 INFO: Following '/var/log/syslog'. If have dropped messages, use:
 INFO: $ sudo journalctl --output=short --follow --all | sudo snappy-debug
@@ -367,10 +379,11 @@ sudo journalctl --output=short --follow --all | sudo snappy-debug
 
 - Application output:
 ```{terminal}
-   :input: rt-app.cfs
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~/tutorial
+:user: ubuntu
+:host: ubuntu
+:dir: ~/tutorial
+
+rt-app.cfs
 
 Calls made on thread1: 100000
 Calls made on thread2: 1
@@ -386,10 +399,11 @@ No output from snappy-debug indicates that the `cfs` application does not requir
 
 - Application output:
 ```{terminal}
-   :input: rt-app.edf
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~/tutorial
+:user: ubuntu
+:host: ubuntu
+:dir: ~/tutorial
+
+rt-app.edf
 
 thread1:   period =  2 s
           runtime = 10 ms
@@ -439,10 +453,11 @@ sudo snap connect rt-app:process-control
 Listing snap connections confirms the manual connection:
 
 ```{terminal}
-   :input: snap connections rt-app
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~/tutorial
+:user: ubuntu
+:host: ubuntu
+:dir: ~/tutorial
+
+snap connections rt-app
 
 Interface        Plug                    Slot              Notes
 process-control  rt-app:process-control  :process-control  manual
@@ -460,10 +475,11 @@ Repeating the process for `thread-affinity` something different happens on the l
 
 - Application output:
 ```{terminal}
-   :input: rt-app.thread-affinity
-   :user: ubuntu
-   :host: ubuntu
-   :dir: ~/tutorial
+:user: ubuntu
+:host: ubuntu
+:dir: ~/tutorial
+
+rt-app.thread-affinity
 
 thread1 priority: 0
 thread2 priority: 0
@@ -513,10 +529,11 @@ Then:
     So you run our install command with the `--dangerous` flag.
 
     ```{terminal}
-      :input: sudo snap install ./rt-app_0.1_amd64.snap --dangerous
-      :user: ubuntu
-      :host: ubuntu
-      :dir: ~/tutorial
+    :user: ubuntu
+    :host: ubuntu
+    :dir: ~/tutorial
+
+    sudo snap install ./rt-app_0.1_amd64.snap --dangerous
 
     rt-app 0.1 installed
     ```

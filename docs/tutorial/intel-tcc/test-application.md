@@ -33,7 +33,9 @@ Then compile the application using the provided Makefile:
 :user: ubuntu
 :host: ubuntu
 :dir: ~/tutorial-intel-tcc-code
-:input: make
+
+make
+
 gcc -Wall -Wextra -O2 -I/usr/local/include   -c -o rt_linux_tutorial.o rt_linux_tutorial.c
 gcc -Wall -Wextra -O2 -I/usr/local/include -c pointer_chasing.c
 gcc -Wall -Wextra -O2 -I/usr/local/include -o rt_linux_tutorial rt_linux_tutorial.o pointer_chasing.o -L/usr/local/lib -lpaho-mqtt3c -lcjson
@@ -45,7 +47,9 @@ Run the resulting binary with the `-h` flag to see a summary of options:
 :user: ubuntu
 :host: ubuntu
 :dir: ~/tutorial-intel-tcc-code
-:input: ./rt_linux_tutorial -h
+
+./rt_linux_tutorial -h
+
 Usage: rt_linux_tutorial [OPTIONS]
 Options:
   -h        Display this help message
