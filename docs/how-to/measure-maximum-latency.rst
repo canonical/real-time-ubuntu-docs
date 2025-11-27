@@ -166,7 +166,7 @@ The x-axis was adjusted for better visualization.
 .. note:: 
     To get more accurate results on latency measurements, it is recommended to
     run the test on a system with the same or very similar load that is expected in production.
-    This could be done by using `stress-ng`_, so first, install it:
+    This could be done by using :manpage:`stress-ng(1)`, so first, install it:
 
     .. code-block:: shell
 
@@ -192,7 +192,6 @@ The x-axis was adjusted for better visualization.
 .. _rt-tests: https://wiki.linuxfoundation.org/realtime/documentation/howto/tools/rt-tests
 .. _OSAL: https://www.osadl.org/Create-a-latency-plot-from-cyclictest-hi.bash-script-for-latency-plot.0.html
 .. _gnuplot: http://www.gnuplot.info/
-.. _stress-ng: https://manpages.ubuntu.com/manpages/jammy/man1/stress-ng.1.html
 
 .. Tests performed in testflinger machine: 
 .. queue 202008-28173
