@@ -108,8 +108,8 @@ contribution then reappear at higher priority on the run queue.
 RT affords useful control for real-time performance, but there's a trade-off.
 Without due care, threads can be starved: always at a lower priority than at
 least one thread, which therefore never lets them run. A particular risk is
-priority inversion, described in Canonical's `Technical deep-dive`_ (with a
-famous example).
+priority inversion, described in :spellexception:`Canonical\'s`
+`Technical deep-dive`_ (with a famous example).
 
 SCHED_FIFO vs SCHED_RR
 ~~~~~~~~~~~~~~~~~~~~~~

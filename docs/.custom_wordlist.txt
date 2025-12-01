@@ -40,6 +40,7 @@ KVMs
 LLC
 LTS
 Livepatch
+Makefile
 MQTT
 MSR
 MSRs
@@ -66,6 +67,7 @@ Pe
 Permalink
 QEMU
 QoS
+Quokka
 RDC
 RDT
 RPi
@@ -148,6 +150,7 @@ emptible
 emption
 emptive
 empts
+enablement
 ffffff
 fifo
 filesystem
