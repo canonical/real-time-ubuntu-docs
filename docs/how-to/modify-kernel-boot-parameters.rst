@@ -1,3 +1,6 @@
+.. meta::
+   :description: Learn how to modify Real-time Ubuntu kernel boot parameters, including on Raspberry Pi and Ubuntu Core, to test, debug and deploy real-time applications.
+
 How to modify kernel boot parameters
 ====================================
 

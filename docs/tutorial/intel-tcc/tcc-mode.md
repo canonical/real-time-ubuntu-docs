@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    description: Learn how to enable and configure Intel TCC mode on Real-time Ubuntu to achieve deterministic scheduling, low latency, and predictable system behavior.
+---
+
 # Time Coordinated Computing mode
 
 Let's take a look at the *Intel® TCC Mode* and how this single UEFI BIOS/Slim Bootloader (SBL) knob can help to quickly optimize firmware settings for low latency.

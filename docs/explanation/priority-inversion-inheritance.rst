@@ -1,3 +1,6 @@
+.. meta::
+   :description: Understand how priority inversion affects determinism, and how the Real-time Ubuntu kernel prevents this issue.
+
 Priority inversion and inheritance
 ==================================
 

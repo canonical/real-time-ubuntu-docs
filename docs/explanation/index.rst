@@ -1,3 +1,6 @@
+.. meta::
+   :description: Conceptual information on real-time systems, including Linux kernel schedulers, locks, and priority inversion and inheritance for Real-time Ubuntu.
+
 Explanation
 ===========
 

@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    description: Learn how to package your real-time application as a snap, control confinement and interfaces, and deploy to devices to ensure repeatable RT behavior.
+---
+
 # Snap your real-time app
 
 Now that you have your real-time app working, it's time to package it.

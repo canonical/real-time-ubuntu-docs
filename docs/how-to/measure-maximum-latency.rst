@@ -1,3 +1,6 @@
+.. meta::
+   :description: Discover how to stress-test your system and measure the maximum latency using standard tools like cyclictest on Real-time Ubuntu.
+
 How to measure maximum latency in a real-time system 
 ====================================================
 

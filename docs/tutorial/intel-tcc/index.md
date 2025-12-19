@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    description: Optimize Real-time Ubuntu for optimal performance on Intel platforms. Includes configuring TCC, CAT, and Speed Shift for edge computing.
+---
+
 # Optimizing real-time performance on Intel CPUs
 
 ```{toctree}

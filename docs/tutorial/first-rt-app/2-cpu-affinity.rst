@@ -1,3 +1,6 @@
+.. meta::
+   :description: Use CPU affinity to dedicate specific CPU cores for high-priority Real-time Ubuntu applications, eliminating interference and maximizing determinism.
+
 CPU affinity
 ============
 

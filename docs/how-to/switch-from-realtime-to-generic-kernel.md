@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    description: Revert from real-time to generic kernel on Ubuntu - steps to install, boot, and verify the generic kernel, revert boot settings, and test system behavior.
+---
+
 # Switch from real-time to generic kernel
 
 Switching from the real-time kernel back to the generic kernel requires manual configuration.

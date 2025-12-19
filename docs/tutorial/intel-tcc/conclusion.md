@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    description: Review the key steps for optimizing Real-time Ubuntu on Intel CPUs, ensuring your system delivers predictable, low-latency performance.
+---
+
 # Conclusion
 
 In this tutorial, three easy-to-use features of the Intel TCC toolbox, along with some kernel command line parameters, were introduced to optimize real-time performance. These features and techniques help system integrators quickly tune the system for specific real-time use cases:

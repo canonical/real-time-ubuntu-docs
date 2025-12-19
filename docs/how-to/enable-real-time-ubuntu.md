@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    description: Enable and install the real-time kernel on your system, with guidance for different Ubuntu editions.
+---
+
 # How to enable Real-time Ubuntu
 
 The approach to enable and install Real-time Ubuntu differs according to your Ubuntu edition.
