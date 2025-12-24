@@ -47,7 +47,7 @@ services:
     cpuset: "1"
 
   influxdb:
-    image: influxdb:1.11-alpine
+    image: influxdb:1.12-alpine
     logging:
       options:
         max-size: "10m"
