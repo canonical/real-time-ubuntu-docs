@@ -29,16 +29,16 @@ Filter results with `grep`. For example, here are the stable real-time kernels c
 
 snap info pc-kernel | grep 24-rt | grep stable
 
-24-rt-hwe-edge/stable:    6.14.0-1010.10~24.04.1      2025-08-14 (2736) 377MB -
-24-rt-hwe/stable:         6.14.0-1010.10~24.04.1      2025-08-14 (2736) 377MB -
-24-rt/stable:             6.8.1-1030.31               2025-08-18 (2760) 360MB -
+  24-rt-hwe-edge/stable:    6.17.0-1004.5~24.04.2       2025-12-16 (3092) 385MB -
+  24-rt-hwe/stable:         6.14.0-1016.16~24.04.1      2025-11-20 (2968) 377MB -
+  24-rt/stable:             6.8.1-1038.39               2025-11-20 (2948) 360MB -
 ```
 
 Each row shows a snap channel, version, date, revision, and size. In reverse order:
 
 * `24-rt/stable` channel contains the real-time kernel for Ubuntu 24.04 LTS. The release is stable. The snap version `6.8.1-1023.24` indicates that the kernel version is 6.8.1.
 * `24-rt-hwe/stable` contains the real-time [Hardware Enablement (HWE)][HWE] kernel for Ubuntu 24.04 LTS. The kernel version is 6.14.0.
-* `24-rt-hwe-edge/stable` provides the most recent kernel version. The `-edge` suffix in the track indicates that this is an [edge kernel][edge-kernel] published for early access to the 6.14 kernel.
+* `24-rt-hwe-edge/stable` provides the most recent kernel version. The `-edge` suffix in the track indicates that this is an [edge kernel][edge-kernel] published for early access to the 6.17 kernel.
 
 ```{seealso}
 Read more about the [Ubuntu kernel lifecycle][kernel-lifecycle] and [HWE kernels][hwe-kernels].

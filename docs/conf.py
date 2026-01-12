@@ -253,6 +253,7 @@ linkcheck_ignore = [
     "https://www.intel.com/content/www/us/en/content-details/*",
     "https://www.intel.com/PerformanceIndex",
     "https://elinux.org/Kernel_Timer_Systems#Dynamic_ticks",
+    "https://www.freedesktop.org/",
     ]
 
 
