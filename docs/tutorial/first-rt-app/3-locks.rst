@@ -1,3 +1,6 @@
+.. meta::
+   :description: Discover how to effectively use locks in Real-time Ubuntu to manage resource contention and account for priority inversion.
+
 Locks
 =====
 

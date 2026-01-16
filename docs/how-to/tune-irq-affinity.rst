@@ -1,3 +1,6 @@
+.. meta::
+   :description: Guide on kernel parameters for tuning IRQ affinity in Real-time Ubuntu to dedicate CPU cores for critical device interrupts, improving deterministic behavior.
+
 How to tune IRQ affinity
 =========================
 

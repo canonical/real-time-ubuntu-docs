@@ -1,3 +1,6 @@
+.. meta::
+   :description: Configuration options for tuning CPU behavior in Real-time Ubuntu, including isolation, NO_HZ settings, RCU offloading, and IRQ affinity.
+
 How to configure CPUs for real-time processing
 ==============================================
 

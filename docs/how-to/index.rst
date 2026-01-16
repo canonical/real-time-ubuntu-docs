@@ -1,3 +1,6 @@
+.. meta::
+   :description: Step-by-step guides for key operations in Real-time Ubuntu. Learn to install the kernel, configure CPUs, measure latency, and create Ubuntu Core images.
+
 How-to guides
 =============
 

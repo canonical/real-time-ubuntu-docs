@@ -1,3 +1,6 @@
+.. meta::
+   :description: Conceptual information on Linux kernel locks and how the Real-time Ubuntu modifies lock mechanisms for determinism.
+
 Linux kernel locks
 ==================
 

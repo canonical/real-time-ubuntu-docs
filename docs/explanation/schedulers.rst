@@ -1,3 +1,6 @@
+.. meta::
+   :description: Understand the different Linux kernel schedulers, including the priority-based scheduler designed for real-time applications.
+
 Linux kernel schedulers
 =======================
 

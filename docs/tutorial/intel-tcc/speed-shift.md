@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    description: Configure Intel Speed Shift on Real-time Ubuntu to maximize CPU performance while maintaining deterministic, low-latency execution.
+---
+
 # Speed Shift for edge computing
 
 In the third and final step of this tutorial, let's examine another aspect of power management: *Performance states, or P-States*.

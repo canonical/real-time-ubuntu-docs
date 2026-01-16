@@ -1,3 +1,6 @@
+.. meta::
+   :description: Technical references for Real-time Ubuntu, including kernel boot parameters, configuration options, real-time metric tools, and supported releases.
+
 Reference
 =========
 

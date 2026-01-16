@@ -1,3 +1,6 @@
+.. meta::
+   :description: Consult the list of supported Real-time Ubuntu releases and supported kernel variants for Ubuntu Server, Desktop, and Core.
+
 Real-time Ubuntu releases
 =========================
 

@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    description: Discover Real-time Ubuntu, an operating system featuring the PREEMPT_RT kernel patch for deterministic performance and latency in mission-critical applications.
+---
+
 # Real-time Ubuntu
 
 <!--

@@ -1,3 +1,6 @@
+.. meta::
+   :description: Discover the various tools (along with example commands) for measuring real-time metrics on your Ubuntu system.
+
 Tools for measuring real-time metrics
 =====================================
 

@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    description: Enable and install the real-time kernel on your system, with guidance for different Ubuntu editions.
+---
+
 # How to install the real-time kernel on Ubuntu Core
 
 The Linux kernel on Ubuntu Core is a snap. Because of that, switching to another compatible kernel is fairly straightforward.
