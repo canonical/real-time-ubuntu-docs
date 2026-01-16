@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    description: Create a dedicated Real-time Ubuntu virtual machine using KVM. Test and develop real-time applications in an isolated, deterministic environment.
+---
+
 # How to create a Real-time Ubuntu VM using KVM
 
 This guide outlines the process and considerations for setting up a virtual machine (VM) to handle real-time (RT) workloads, drawing upon various resources to ensure optimal performance and minimal latency.

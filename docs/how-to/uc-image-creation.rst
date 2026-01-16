@@ -1,3 +1,6 @@
+.. meta::
+   :description: Learn to create an Ubuntu Core image with a real-time kernel for deployment in secure, air-gapped environments.
+
 How to create a Real-time Ubuntu Core image
 ===========================================
 

@@ -1,3 +1,6 @@
+.. meta::
+   :description: Learn how to download the source code for the real-time kernel installed on your Ubuntu system.
+
 How to download Real-time Ubuntu kernel source code
 ===================================================
 

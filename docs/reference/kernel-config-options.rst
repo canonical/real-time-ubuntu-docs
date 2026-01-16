@@ -1,3 +1,6 @@
+.. meta::
+   :description: Discover the essential Real-time Ubuntu kernel configuration options and flags that enable high performance, low latency, and determinism.
+
 Kernel configuration options
 =============================================
 

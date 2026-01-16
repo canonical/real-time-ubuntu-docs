@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    description: Discover the critical real-time kernel command-line parameters required to enable and optimize Intel Time Coordinated Computing (TCC) mode.
+---
+
 # Kernel command-line parameters
 
 For this tutorial we add a couple of Linux Kernel command line parameters for real-time optimization:

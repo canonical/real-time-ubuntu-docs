@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    description: Familiarize yourself with Real-time Ubuntu by using real-time programming concepts and Real-time Linux to optimize an example application for deterministic latency.
+---
+
 # Your first Real-time Ubuntu application
 
 In this tutorial we will build a simple C program for a real-time workload.

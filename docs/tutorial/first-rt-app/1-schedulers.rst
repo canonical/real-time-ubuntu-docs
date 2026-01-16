@@ -1,3 +1,6 @@
+.. meta::
+   :description: Real-time Ubuntu schedulers explained, covering CFS, RT, and EDF task handling, priority control, deadline management, and guidance for tuning the schedulers.
+
 Task schedulers
 ===============
 

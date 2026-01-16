@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    description: Follow the setup steps to prepare your Real-time Ubuntu system for enabling and optimizing Intel Time Coordinated Computing (TCC) mode.
+---
+
 # Preparation
 
 This sections outlines the preparation steps for following this tutorial.

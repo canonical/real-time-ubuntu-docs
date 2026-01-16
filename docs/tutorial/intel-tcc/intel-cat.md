@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    description: Configure Intel CAT on Real-time Ubuntu to control cache allocation and improve determinism for latency-sensitive workloads.
+---
+
 # Cache Allocation Technology
 
 In the second step, assume a system architecture where workloads with varying Quality of Service (QoS) requirements are consolidated on a single processor.

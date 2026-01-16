@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    description: Isolate CPUs using cpusets in Real-time Ubuntu to reserve dedicated cores strictly for your real-time workload, removing OS noise and interference.
+---
+
 # How to isolate CPUs from general execution with cpusets
 
 [Cpusets][kdocs_cpusets_v2] is a kernel feature that allows users to assign specific CPUs and memory nodes to a set of tasks, enabling fine-grained control over resource allocation.

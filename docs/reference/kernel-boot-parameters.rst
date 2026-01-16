@@ -1,3 +1,6 @@
+.. meta::
+   :description: Reference information for important kernel boot parameters that are relevant to tuning Real-time Ubuntu.
+
 Kernel boot parameters
 ======================
 

@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    description: Use the Intel TCC test application to generate synthetic real-time workloads on Real-time Ubuntu and verify deterministic performance after TCC configuration.
+---
+
 # The test application
 
 The test application is named `rt_linux_tutorial`.
