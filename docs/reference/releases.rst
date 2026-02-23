@@ -23,14 +23,14 @@ Ubuntu Server / Desktop
      - Noble Numbat
      - 6.8
      - generic, raspi
-   * - Ubuntu 25.04
-     - Plucky Puffin
-     - 6.14
-     - generic
    * - Ubuntu 25.10
      - Questing Quokka
      - 6.17
      - generic
+   * - Ubuntu 26.04 LTS
+     - Resolute Raccoon
+     - 7.0
+     - generic, raspi
 
 .. note::
 
@@ -51,6 +51,8 @@ Ubuntu Core
      - 5.15; 6.8 (HWE)
    * - Ubuntu Core 24
      - 6.8; 6.14 (HWE)
+   * - Ubuntu Core 26
+     - 7.0
 
 .. note::
 
