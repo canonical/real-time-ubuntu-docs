@@ -50,13 +50,13 @@ Ubuntu Core
    * - Ubuntu Core 22
      - 5.15; 6.8 (HWE)
    * - Ubuntu Core 24
-     - 6.8; 6.14 (HWE)
+     - 6.8; 6.17 (HWE)
    * - Ubuntu Core 26
      - 7.0
 
 .. note::
 
-  Newer kernels (6.8, 6.14, etc) can be installed on Ubuntu Core via Hardware Enablement (HWE) kernel snaps.
+  Newer kernels (6.8, 6.17, etc) can be installed on Ubuntu Core via Hardware Enablement (HWE) kernel snaps.
   The list of publicly available kernel snaps can be found in the `pc-kernel`_ Snap Store page.
 
 To install the real-time kernel on an instance of Ubuntu Core, refer to :doc:`../how-to/uc-install-real-time-kernel`.

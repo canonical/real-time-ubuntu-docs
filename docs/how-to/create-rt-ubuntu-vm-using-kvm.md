@@ -133,7 +133,7 @@ Verify the kernel boot command line:
 
 cat /proc/cmdline
 
-BOOT_IMAGE=/vmlinuz-6.14.0-28-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro quiet splash clocksource=tsc tsc=reliable nmi_watchdog=0 nosoftlockup kthread_cpus=0-7 isolcpus=domain,managed_irq,8-15 rcu_nocb_poll rcu_nocbs=8-15 nohz=on nohz_full=8-15 irqaffinity=0-7 idle=poll
+BOOT_IMAGE=/vmlinuz-6.17.0-16-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro quiet splash clocksource=tsc tsc=reliable nmi_watchdog=0 nosoftlockup kthread_cpus=0-7 isolcpus=domain,managed_irq,8-15 rcu_nocb_poll rcu_nocbs=8-15 nohz=on nohz_full=8-15 irqaffinity=0-7 idle=poll
 ```
 
 Check which CPUs the kernel considers isolated (`8-15`):

@@ -36,7 +36,7 @@ apt list linux-generic* --installed
 
 linux-generic-6.11/noble-updates,noble-security,now 6.11.0-29.29~24.04.1 amd64 [installed]
 linux-generic-6.14/noble-updates,noble-security,now 6.14.0-24.24~24.04.3 amd64 [installed]
-linux-generic-hwe-24.04/noble-updates,noble-security,now 6.14.0-24.24~24.04.3 amd64 [installed]
+linux-generic-hwe-24.04/noble-updates,noble-security,now 6.17.0-14.14~24.04.1 amd64 [installed]
 ```
 
 ````
