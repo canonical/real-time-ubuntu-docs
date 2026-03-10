@@ -29,6 +29,9 @@ sudo apt install ubuntu-realtime
 
 ````{group-tab} Ubuntu 26.04 LTS (Resolute Raccoon)
 
+```{note}
+This will be available in upcoming Ubuntu 26.04 LTS (Resolute Raccoon) release.
+```
 Real-time Ubuntu can instead be installed from the universe apt repository:
 
 ```shell
