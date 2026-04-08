@@ -390,6 +390,7 @@ if os.path.exists('./reuse/substitutions.yaml'):
 
 intersphinx_mapping = {
     "ubu-pro-client": ("https://documentation.ubuntu.com/pro-client/en/latest/", None),
+    "kernel-docs": ("https://canonical-kernel-docs.readthedocs-hosted.com/", None),
 }
 
 myst_substitutions = {
