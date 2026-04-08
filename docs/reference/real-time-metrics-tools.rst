@@ -285,5 +285,5 @@ This could be used to monitor real-time observation of system activities such as
 .. _/dev/zero: https://en.wikipedia.org/wiki//dev/zero
 .. _/dev/null: https://en.wikipedia.org/wiki/Null_device
 
-.. _channel: https://snapcraft.io/docs/channels
+.. _channel: https://snapcraft.io/docs/explanation/how-snaps-work/channels-and-tracks/
 .. _rt-tests snap: https://snapcraft.io/rt-tests
