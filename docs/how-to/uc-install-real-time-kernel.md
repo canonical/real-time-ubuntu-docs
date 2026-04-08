@@ -43,11 +43,11 @@ snap info pc-kernel | grep 24-rt | grep stable
 Each row shows a snap channel, version, date, revision, and size. In reverse order:
 
 * `24-rt/stable` channel contains the real-time kernel for Ubuntu 24.04 LTS. The release is stable. The snap version `6.8.1-1041.42` indicates that the kernel version is 6.8.1.
-* `24-rt-hwe/stable` contains the real-time [Hardware Enablement (HWE)][HWE] kernel for Ubuntu 24.04 LTS. The kernel version is 6.17.
-% * `24-rt-hwe-edge/stable` provides the most recent kernel version. The `-edge` suffix in the track indicates that this is an [edge kernel][edge-kernel] published for early access to the 6.17 kernel.
+* `24-rt-hwe/stable` contains the real-time {term}`Hardware Enablement (HWE) <kernel-docs:HWE>` kernel for Ubuntu 24.04 LTS. The kernel version is 6.17.
+* `24-rt-hwe-edge/stable` provides the most recent kernel version. The `-edge` suffix in the track indicates that this is an {term}`edge kernel <kernel-docs:edge kernel>` published for early access to the 6.17 kernel.
 
 ```{seealso}
-Read more about the [Ubuntu kernel lifecycle][kernel-lifecycle] and [HWE kernels][hwe-kernels].
+Read more about the [Ubuntu kernel lifecycle][kernel-lifecycle] and {doc}`HWE kernels <kernel-docs:reference/hwe-kernels>`.
 ```
 
 ## Switch to another kernel
@@ -96,6 +96,3 @@ Refer to {doc}`../reference/real-time-metrics-tools` for more.
 [pre-built-uc]: https://documentation.ubuntu.com/core/tutorials/try-pre-built-images/index.html
 [channels]: https://snapcraft.io/docs/explanation/how-snaps-work/channels-and-tracks/
 [kernel-lifecycle]: https://ubuntu.com/kernel/lifecycle
-[hwe-kernels]: https://canonical-kernel-docs.readthedocs-hosted.com/latest/reference/hwe-kernels/
-[edge-kernel]: https://canonical-kernel-docs.readthedocs-hosted.com/latest/reference/glossary/#term-edge-kernel
-[HWE]: https://canonical-kernel-docs.readthedocs-hosted.com/latest/reference/glossary/#term-HWE
