@@ -11,15 +11,37 @@ Follow the instructions that match your edition to ensure a correct installation
 
 ## Ubuntu Server / Desktop
 
-To enable Real-time Ubuntu on a supported LTS release, follow the instructions in the {doc}`Ubuntu Pro Client - How to enable Real-time Ubuntu <ubu-pro-client:howtoguides/enable_realtime_kernel>` guide.
+`````{tabs}
 
-If you are running an interim release, Real-time Ubuntu can instead be installed from the universe apt repository:
+````{group-tab} Ubuntu 24.04 LTS (Noble Numbat) or earlier
+Follow the instructions in the {doc}`Ubuntu Pro Client - How to enable Real-time Ubuntu <ubu-pro-client:howtoguides/enable_realtime_kernel>` guide.
+````
+
+````{group-tab} Ubuntu 25.10 (Questing Quokka)
+Real-time Ubuntu can instead be installed from the universe apt repository:
 
 ```shell
 sudo add-apt-repository universe
 sudo apt update
 sudo apt install ubuntu-realtime
 ```
+````
+
+````{group-tab} Ubuntu 26.04 LTS (Resolute Raccoon)
+
+```{note}
+This will be available in upcoming Ubuntu 26.04 LTS (Resolute Raccoon) release.
+```
+Real-time Ubuntu can instead be installed from the universe apt repository:
+
+```shell
+sudo add-apt-repository universe
+sudo apt update
+sudo apt install ubuntu-realtime
+```
+````
+
+`````
 
 Refer to {doc}`/reference/releases` and [Ubuntu release](https://ubuntu.com/about/release-cycle) documentation for more information about Ubuntu releases and which support real-time.
 
