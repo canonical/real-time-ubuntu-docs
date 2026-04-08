@@ -17,7 +17,7 @@ Some dependencies are required when building snap packages:
   If you're using Ubuntu, it should come pre-installed. 
   Otherwise, refer to the [snapd installation docs][install_snapd].
 
-- Install the [snapcraft snap][snapcraft_docs]:
+- Install the [snapcraft snap](https://snapcraft.io/snapcraft):
   ```shell
     sudo snap install --classic snapcraft
   ```
@@ -341,7 +341,7 @@ Calls made on thread2: 1
 ### Strictly confine the snap
 
 In the previous section, you created a snap that works in Developer Mode.
-However, one of the key benefits of snap packages is their [security policies][security_policies] can be enabled for software to run a in secure and strictly-confined sandboxed environment.
+However, one of the key benefits of snap packages is their [security policies] can be enabled for software to run a in secure and strictly-confined sandboxed environment.
 To take advantage of these security policies, you must [confine the snap][snap_confinement].
 
 The first step in confinement is understanding which system resources the applications need access to.
@@ -566,7 +566,7 @@ Then:
 You have now finished the development of your snap.
 You can change the `grade` field to `stable` if you consider it so.
 Snaps with the `devel` grade cannot be promoted to a lower risk level.
-This is related to the concept of [snap channels](https://snapcraft.io/docs/channels), important when publishing a snap.
+This is related to the concept of [snap channels](https://snapcraft.io/docs/explanation/how-snaps-work/channels-and-tracks/), important when publishing a snap.
 
 ## Conclusion
 
@@ -583,34 +583,31 @@ A good next step is to distribute this snap via a store:
 % links
 [snapcraft.io]: https://snapcraft.io/docs
 [snapd]: https://snapcraft.io/snapd
-[install_snapd]: https://snapcraft.io/docs/installing-snapd
-[snapcraft_docs]: https://snapcraft.io/docs/snapcraft
-[snapcraft_build_cfg]: https://snapcraft.io/docs/build-configuration
-[snapcraft_yaml]: https://snapcraft.io/docs/snapcraft-yaml-schema
-[snap_plugins]: https://snapcraft.io/docs/snapcraft-plugins
-[snap_base]: https://snapcraft.io/docs/base-snaps
-[make_plugin]: https://snapcraft.io/docs/make-plugin
-[content_interface]: https://snapcraft.io/docs/content-interface
-[build_provider]: https://snapcraft.io/docs/build-providers
-[lxd_container]: https://documentation.ubuntu.com/server/how-to/containers/lxd-containers/
-[using_craftctl_tool]: https://documentation.ubuntu.com/snapcraft/stable/how-to/crafting/customize-lifecycle-steps-and-part-variables/#override-project-variables
-[cross_compile_autotools]: https://snapcraft.io/docs/cross-compile-an-autotools-project
-[snap_format]: https://snapcraft.io/docs/the-snap-format
-<!-- NOTE: Use this once this doc set is stable enough:  -->
-<!-- [snapcraft_parts]: https://canonical-snapcraft.readthedocs-hosted.com/en/stable/explanation/parts/ -->
-[snapcraft_parts]: https://snapcraft.io/docs/adding-parts
-[snap_install_modes]: https://snapcraft.io/docs/install-modes
-[application_cmds]: https://snapcraft.io/docs/commands-and-aliases#p-19557-application-commands
-[security_policies]: https://snapcraft.io/docs/security-policies
-[snap_confinement]: https://snapcraft.io/docs/snap-confinement
-[snap_interfaces]: https://snapcraft.io/docs/supported-interfaces
+[install_snapd]: https://snapcraft.io/docs/tutorials/install-the-daemon/
+[snapcraft_build_cfg]: https://documentation.ubuntu.com/snapcraft/stable/reference/processes/snap-build-process/
+[snapcraft_yaml]: https://documentation.ubuntu.com/snapcraft/stable/reference/project-file/snapcraft-yaml/
+[snap_plugins]: https://documentation.ubuntu.com/snapcraft/stable/reference/plugins/
+[snap_base]: https://documentation.ubuntu.com/snapcraft/stable/how-to/crafting/specify-a-base/
+[make_plugin]: https://documentation.ubuntu.com/snapcraft/stable/common/craft-parts/reference/plugins/make_plugin/
+[content_interface]: https://snapcraft.io/docs/reference/interfaces/content-interface/
+[build_provider]: https://documentation.ubuntu.com/snapcraft/stable/how-to/select-a-build-provider/
+[lxd_container]: https://ubuntu.com/server/docs/how-to/virtualisation/lxd/
+[using_craftctl_tool]: https://documentation.ubuntu.com/snapcraft/stable/how-to/crafting/customize-lifecycle-steps-and-part-variables/
+[cross_compile_autotools]: https://documentation.ubuntu.com/snapcraft/stable/how-to/integrations/craft-a-cross-compiled-app/
+[snap_format]: https://snapcraft.io/docs/reference/development/yaml-schemas/the-snap-format/
+[snapcraft_parts]: https://documentation.ubuntu.com/snapcraft/stable/reference/parts/parts-and-steps/
+[snap_install_modes]: https://snapcraft.io/docs/explanation/snap-development/install-modes/
+[application_cmds]: https://snapcraft.io/docs/how-to-guides/manage-snaps/apps-and-aliases/#application-commands
+[security_policies]: https://snapcraft.io/docs/explanation/security/security-policies/
+[snap_confinement]: https://snapcraft.io/docs/explanation/security/snap-confinement/
+[snap_interfaces]: https://snapcraft.io/docs/reference/interfaces/
 [configfs]: https://docs.kernel.org/filesystems/configfs.html
-[debug_snaps]: https://snapcraft.io/docs/debug-snaps
+[debug_snaps]: https://snapcraft.io/docs/how-to-guides/snap-development/debug-snaps/
 [snappy-debug]: https://snapcraft.io/snappy-debug
-[iface_mgmt]: https://snapcraft.io/docs/interface-management
+[iface_mgmt]: https://snapcraft.io/docs/explanation/interfaces/all-about-interfaces/
 [apparmor]: https://apparmor.net/
-[snap_sys_arch]: https://snapcraft.io/docs/system-architecture
-[publish_snap]: https://snapcraft.io/docs/releasing-to-the-snap-store
-[brandstore]: https://ubuntu.com/core/docs/dedicated-snap-stores
-[proc_ctr_iface]: https://snapcraft.io/docs/process-control-interface
-[remote_build]: https://snapcraft.io/docs/remote-build
+[snap_sys_arch]: https://snapcraft.io/docs/reference/system-architecture/
+[publish_snap]: https://snapcraft.io/docs/explanation/security/snapd-release-process/
+[brandstore]: https://documentation.ubuntu.com/core/explanation/stores/dedicated-snap-store/
+[proc_ctr_iface]: https://snapcraft.io/docs/reference/interfaces/process-control-interface/
+[remote_build]: https://documentation.ubuntu.com/snapcraft/stable/reference/commands/remote-build/

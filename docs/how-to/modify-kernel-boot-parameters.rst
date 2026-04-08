@@ -209,18 +209,18 @@ Read more on :doc:`../how-to/uc-image-creation`.
 .. _/boot/firmware/cmdline.txt: https://www.raspberrypi.com/documentation/computers/configuration.html#kernel-command-line-cmdline-txt
 .. _Ubuntu Core: https://ubuntu.com/core
 .. _snap set: https://ubuntu.com/core/docs/modify-kernel-options
-.. _system.kernel.cmdline-append: https://snapcraft.io/docs/system-options#heading--kernel-cmdline-append
-.. _system.kernel.dangerous-cmdline-append: https://snapcraft.io/docs/system-options#heading--kernel-dangerous-cmdline-append
-.. _gadget snap: https://snapcraft.io/docs/the-gadget-snap
-.. _allow list: https://snapcraft.io/docs/the-gadget-snap#heading--dynamic
+.. _system.kernel.cmdline-append: https://snapcraft.io/docs/reference/administration/system-options/#system-system-kernel-cmdline-append
+.. _system.kernel.dangerous-cmdline-append: https://snapcraft.io/docs/reference/administration/system-options/#system-system-kernel-dangerous-cmdline-append
+.. _gadget snap: https://snapcraft.io/docs/reference/development/yaml-schemas/the-gadget-snap/
+.. _allow list: https://snapcraft.io/docs/reference/development/yaml-schemas/the-gadget-snap/
 .. _nohz: https://docs.kernel.org/timers/no_hz.html
 .. _nohz_full: https://docs.kernel.org/timers/no_hz.html#omit-scheduling-clock-ticks-for-cpus-with-only-one-runnable-task
 .. _kernel parameters: https://docs.kernel.org/admin-guide/kernel-parameters.html
 .. _cpu list: https://docs.kernel.org/admin-guide/kernel-parameters.html#cpu-lists
 .. _irqaffinity: https://docs.kernel.org/core-api/irq/irq-affinity.html
-.. _snap unset: https://snapcraft.io/docs/set-system-options
+.. _snap unset: https://snapcraft.io/docs/reference/administration/system-options/
 .. _building a gadget snap: https://ubuntu.com/core/docs/gadget-building
 .. _pc-gadget: https://github.com/snapcore/pc-gadget
 .. _pi-gadget: https://github.com/snapcore/pi-gadget
-.. _snap options: https://snapcraft.io/docs/system-options
-.. _dedicated Snap Store: https://ubuntu.com/core/docs/dedicated-snap-stores
+.. _snap options: https://snapcraft.io/docs/reference/administration/system-options/
+.. _dedicated Snap Store: https://documentation.ubuntu.com/core/dedicated-snap-stores/

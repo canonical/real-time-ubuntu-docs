@@ -254,6 +254,7 @@ linkcheck_ignore = [
     "https://www.intel.com/PerformanceIndex",
     "https://elinux.org/Kernel_Timer_Systems#Dynamic_ticks",
     "https://www.freedesktop.org/",
+    r"https://wiki\.linuxfoundation\.org/realtime/.*",
     ]
 
 
@@ -261,7 +262,6 @@ linkcheck_ignore = [
 
 linkcheck_anchors_ignore_for_url = [
     r"https://github\.com/.*",
-    r"https://snapcraft\.io/docs/.*",
     r"https://git\.kernel\.org/*",
     ]
 
