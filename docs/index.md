@@ -6,15 +6,6 @@ myst:
 
 # Real-time Ubuntu
 
-<!--
-TODO: The product docs' home-page must be based on a template. The template
-requires the four-par intro below, which must be drawn from the Alignment
-doc's *Common understanding* column. That column is arrived at by consensus
-among several stakeholders. Until that content's available, the intro's been
-drawn from the PM's contribution alone. It should be updated once a *Common
-understanding* has been reached.
--->
-
 [Real-time Ubuntu] is Ubuntu with a real-time kernel.
 
 Ubuntu's real-time kernel includes the [PREEMPT_RT] patchset.
@@ -38,44 +29,40 @@ continuous production, the most exacting applications run on Real-time Ubuntu.
 
 ## In this documentation
 
-````{grid} 1 1 2 2
+```{list-table}
+:widths: 30 70
+:header-rows: 0
 
-```{grid-item-card} [Tutorials](/tutorial/index)
+* - **Tutorial**
+  - {doc}`/tutorial/first-rt-app/index`
+    • {doc}`/tutorial/intel-tcc/index`
 
-**Start here**: a hands-on introduction to Real-time Ubuntu for new users.
+* - **Enabling and installing**
+  - {doc}`Enable Real-time Ubuntu </how-to/enable-real-time-ubuntu>`
+    • {doc}`/reference/releases`
+    • {doc}`Switch from real-time to generic kernel </how-to/switch-from-realtime-to-generic-kernel>`
+    • {doc}`Create a Real-time Ubuntu VM using KVM </how-to/create-rt-ubuntu-vm-using-kvm>`
+    • {doc}`Install the real-time kernel on Ubuntu Core </how-to/uc-install-real-time-kernel>`
+    • {doc}`Create a Real-time Ubuntu Core image </how-to/uc-image-creation>`
+    • {doc}`Download Real-time Ubuntu kernel source code </how-to/download-real-time-sources>`
 
-- {doc}`/tutorial/first-rt-app/index`
-- {doc}`/tutorial/intel-tcc/index`
+* - **Tuning for real-time performance**
+  - {doc}`Modify kernel boot parameters </how-to/modify-kernel-boot-parameters>`
+    • {doc}`Configure CPUs for real-time processing </how-to/cpu-boot-configs>`
+    • {doc}`Tune IRQ affinity </how-to/tune-irq-affinity>`
+    • {doc}`Isolate CPUs from general execution with cpusets </how-to/isolate-workload-cpusets>`
+    • {doc}`/reference/kernel-boot-parameters`
+    • {doc}`/reference/kernel-config-options`
+
+* - **Measuring and validating**
+  - {doc}`Measure maximum latency in a real-time system </how-to/measure-maximum-latency>`
+    • {doc}`/reference/real-time-metrics-tools`
+
+* - **Real-time concepts**
+  - {doc}`/explanation/schedulers`
+    • {doc}`/explanation/locks`
+    • {doc}`/explanation/priority-inversion-inheritance`
 ```
-
-```{grid-item-card} [How-to guides](/how-to/index)
-
-**Step-by-step guides** covering key operations and common tasks, such as
-{doc}`installing the real-time kernel </how-to/enable-real-time-ubuntu>`,
-{doc}`configuring the CPUs </how-to/cpu-boot-configs>` and
-{doc}`creating Ubuntu Core images </how-to/uc-image-creation>`.   
-```
-
-````
-
-````{grid} 1 1 2 2
-:reverse:
-
-```{grid-item-card} [Reference](/reference/index)
-
-**Technical information** about
-{doc}`metric tools </reference/real-time-metrics-tools>`,
-{doc}`boot parameters </reference/kernel-boot-parameters>` and
-{doc}`supported releases </reference/releases>`.
-```
-
-```{grid-item-card} [Explanation](/explanation/index)
-
-**Conceptual information** about real-time systems, such as {doc}`/explanation/schedulers` and {doc}`/explanation/priority-inversion-inheritance`.
-
-```
-
-````
 
 ---------
 

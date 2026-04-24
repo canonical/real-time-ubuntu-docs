@@ -4,6 +4,8 @@
 Reference
 =========
 
+This section provides technical details you will need when installing, configuring, and tuning Real-time Ubuntu.
+
 .. toctree::
    :maxdepth: 1
 
