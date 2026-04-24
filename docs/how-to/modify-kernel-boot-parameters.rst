@@ -206,7 +206,7 @@ Read more on :doc:`../how-to/uc-image-creation`.
 
 
 .. LINKS
-.. _/boot/firmware/cmdline.txt: https://www.raspberrypi.com/documentation/computers/configuration.html#kernel-command-line-cmdline-txt
+.. _/boot/firmware/cmdline.txt: https://www.raspberrypi.com/documentation/computers/configuration.html#kms
 .. _Ubuntu Core: https://ubuntu.com/core
 .. _snap set: https://ubuntu.com/core/docs/modify-kernel-options
 .. _system.kernel.cmdline-append: https://snapcraft.io/docs/reference/administration/system-options/#system-system-kernel-cmdline-append
