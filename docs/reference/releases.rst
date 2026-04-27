@@ -19,10 +19,18 @@ Ubuntu Server / Desktop
      - Jammy Jellyfish 
      - 5.15
      - generic, intel-iotg
+   * - Ubuntu 22.04 LTS Hardware Enablement (HWE)
+     - Jammy Jellyfish 
+     - 6.8
+     - generic
    * - Ubuntu 24.04 LTS
      - Noble Numbat
      - 6.8
      - generic, raspi
+   * - Ubuntu 24.04 LTS Hardware Enablement (HWE)
+     - Noble Numbat
+     - 6.17
+     - generic
    * - Ubuntu 25.10
      - Questing Quokka
      - 6.17
