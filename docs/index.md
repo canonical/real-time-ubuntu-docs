@@ -92,6 +92,7 @@ If you decide to raise a pull request, make sure you have signed the
 :hidden:
 :maxdepth: 1
 
+Home <self>
 /tutorial/index
 /how-to/index
 /reference/index

@@ -60,7 +60,7 @@ html_title = project + " documentation"
 #         -H 'Accept: application/vnd.github.v3.raw' \
 #         https://api.github.com/repos/canonical/<REPO> | jq '.created_at'
 
-copyright = "%s CC-BY-SA, %s" % (datetime.date.today().year, author)
+copyright = f"{datetime.date.today().year}"
 
 
 # Documentation website URL
@@ -93,6 +93,13 @@ ogp_image = "https://assets.ubuntu.com/v1/cc828679-docs_illustration.svg"
 
 # html_favicon = '.sphinx/_static/favicon.png'
 
+# Repository and source defaults used by fallback view/edit links.
+github_repo = "https://github.com/canonical/real-time-ubuntu-docs"
+default_source_extension = ".md"
+
+# Product page URL; can be different from docs URL.
+product_page = "ubuntu.com/real-time"
+
 
 # Dictionary of values to pass into the Sphinx context for all pages:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_context
@@ -106,7 +113,8 @@ html_context = {
     # TODO: If there's no such website,
     #       remove the {{ product_page }} link from the page header template
     #       (usually .sphinx/_templates/header.html; also, see README.rst).
-    "product_page": "ubuntu.com/real-time",
+    "product_page": product_page,
+    "project": project,
     # Product tag image; the orange part of your logo, shown in the page header
     #
     # TODO: To add a tag image, uncomment and update as needed.
@@ -132,7 +140,7 @@ html_context = {
     #
     # NOTE: If set, links for viewing the documentation source files
     #       and creating GitHub issues are added at the bottom of each page.
-    "github_url": "https://github.com/canonical/real-time-ubuntu-docs",
+    "github_url": github_repo,
     # Docs branch in the repo; used in links for viewing the source files
     #
     # TODO: To customise the branch, uncomment and update as needed.
@@ -149,8 +157,34 @@ html_context = {
     # TODO: To enable listing contributors on individual pages, set to True
     "display_contributors": False,
 
-    # Required for feedback button    
-    'github_issues': 'enabled',
+    # Required for feedback button
+    "feedback": True,
+    "github_issues": "enabled",
+    "default_source_extension": default_source_extension,
+    "default_edit_url": github_repo + "/edit/main/docs/index" + default_source_extension,
+    "default_view_url": github_repo + "/blob/main/docs/index" + default_source_extension,
+
+    # Horizontal Nav Menu
+    "company": "Canonical",
+    "logo_link_URL": "https://canonical.com",
+    "logo_img_URL": "https://assets.ubuntu.com/v1/82818827-CoF_white.svg",
+    "logo_title": "Canonical",
+
+    # Inherit the author value
+    "author": author,
+
+    "license": {
+        "name": "CC-BY-SA-3.0",
+        "url": github_repo + "/blob/main/LICENSE",
+    },
+
+    "footer": {
+        "product": True,
+        "license": True,
+        "entries": [
+            '<a class="js-revoke-cookie-manager" href="#tracker-settings">Manage your tracker settings</a>',
+        ],
+    },
 }
 
 html_extra_path = []
@@ -214,8 +248,9 @@ sitemap_excludes = [
 # Template and asset locations
 #######################
 
-html_static_path = [".sphinx/_static"]
-templates_path = [".sphinx/_templates"]
+html_theme = "ulwazi"
+
+templates_path = ["_templates"]
 
 
 #############
@@ -279,7 +314,10 @@ linkcheck_retries = 3
 # NOTE: By default, the following MyST extensions are enabled:
 #       substitution, deflist, linkify
 
-# myst_enable_extensions = set()
+myst_enable_extensions = {
+    'substitution',
+}
+
 
 
 # Custom Sphinx extensions; see
@@ -288,7 +326,9 @@ linkcheck_retries = 3
 # NOTE: The canonical_sphinx extension is required for the starter pack.
 
 extensions = [
-    "canonical_sphinx",
+    "ulwazi",
+    "canonical_sphinx_config",
+    "myst_parser",
     "notfound.extension",
     "sphinx_design",
     "sphinx_reredirects",
@@ -307,7 +347,7 @@ extensions = [
     "sphinx_last_updated_by_git",
     "sphinx.ext.intersphinx",
     "sphinx_sitemap",
-    "myst_parser",
+    "sphinx_modern_pdf_style",
 ]
 
 # Excludes files or directories from processing
@@ -319,15 +359,19 @@ exclude_patterns = [
 # Adds custom CSS files, located under 'html_static_path'
 
 html_css_files = [
-    "cookie-banner.css",
+    "https://assets.ubuntu.com/v1/d86746ef-cookie_banner.css",
 ]
 
 
 # Adds custom JavaScript files, located under 'html_static_path'
 
 html_js_files = [
-    "bundle.js",
+    "https://assets.ubuntu.com/v1/287a5e8f-bundle.js",
 ]
+
+# Syntax highlighting settings
+highlight_language = "none"
+pygments_style = "autumn"
 
 
 # Specifies a reST snippet to be appended to each .rst file
@@ -398,3 +442,5 @@ myst_substitutions = {
   "C_CLA": "[Canonical contributor license agreement](https://ubuntu.com/legal/contributors)",
   "PROJNAME_FULL": "Real-time Ubuntu documentation",
 }
+
+set_modern_pdf_config = True
