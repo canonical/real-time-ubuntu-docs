@@ -47,8 +47,7 @@ Enable access to the real-time Ubuntu kernel
         :sync: interim
         
         The real-time kernel source is freely available in the main archive starting with 26.04.
-No actions are required for this step.
-
+        No actions are required for this step.
 
 Enable downloading source packages with apt
 --------------------------------------------
