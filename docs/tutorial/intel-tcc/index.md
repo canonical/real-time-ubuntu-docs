@@ -43,6 +43,7 @@ See [the list in the Real-time at the Edge Gold Deck](https://cdrdv2.intel.com/v
 Ideally your system BIOS should have the *Intel® TCC Mode* setting, but this is not a hard requirement for following this tutorial.
 
 The following system was used to develop and validate the results obtained in this tutorial:
+
 - CPU: Intel® Core™ i5-1350PE processors
 - RAM: 16GB
 - DISK: 128GB

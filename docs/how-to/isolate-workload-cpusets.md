@@ -194,6 +194,7 @@ This way, a file like `50-cpu-isolation.conf` will override settings from `10-de
 ```
 
 Now that the directories are available, create the following three configuration files:
+
 - `/etc/systemd/system/init.scope.d/50-cpu-isolation.conf` for the init scope with the following content:
 
   ```
