@@ -47,8 +47,8 @@ Enable access to the real-time Ubuntu kernel
         :sync: interim
         
         The real-time kernel source is freely available in the main archive starting with 26.04.
-        No actions are required for this step!
-    
+No actions are required for this step.
+
 
 Enable downloading source packages with apt
 --------------------------------------------
@@ -88,7 +88,7 @@ APT is used to download the real-time kernel source. We need to enable the sourc
             sudo sed -i '2s/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu-realtime-kernel.sources
 
 
-    .. tab-item:: Interim Release 25.10 and 26.04 LTS
+    .. tab-item:: Interim release 25.10 and 26.04 LTS
         :sync: interim
 
         Use the following command to add ``deb-src`` to the :file:`ubuntu.sources` file:
