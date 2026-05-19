@@ -595,7 +595,7 @@ A good next step is to distribute this snap via a store:
 [using_craftctl_tool]: https://documentation.ubuntu.com/snapcraft/stable/how-to/crafting/customize-lifecycle-steps-and-part-variables/
 [cross_compile_autotools]: https://documentation.ubuntu.com/snapcraft/stable/how-to/integrations/craft-a-cross-compiled-app/
 [snap_format]: https://snapcraft.io/docs/reference/development/yaml-schemas/the-snap-format/
-[snapcraft_parts]: https://documentation.ubuntu.com/snapcraft/stable/reference/parts/parts-and-steps/
+[snapcraft_parts]: https://documentation.ubuntu.com/snapcraft/stable/reference/parts-steps/
 [snap_install_modes]: https://snapcraft.io/docs/explanation/snap-development/install-modes/
 [application_cmds]: https://snapcraft.io/docs/how-to-guides/manage-snaps/apps-and-aliases/#application-commands
 [security_policies]: https://snapcraft.io/docs/explanation/security/security-policies/
