@@ -90,8 +90,8 @@ If you decide to raise a pull request, make sure you have signed the
 
 ```{toctree}
 :hidden:
-:maxdepth: 1
 
+Home <self>
 /tutorial/index
 /how-to/index
 /reference/index
