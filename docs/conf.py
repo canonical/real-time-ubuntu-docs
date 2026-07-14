@@ -35,7 +35,7 @@ copyright = f"{datetime.date.today().year}"
 html_title = project + " documentation"
 
 # Documentation website URL
-ogp_site_url = "https://canonical-real-time-ubuntu-docs-migration.readthedocs-hosted.com"
+ogp_site_url = "https://ubuntu.com/real-time/docs/"
 
 # Preview name of the documentation website
 # TODO: To use a different name for the project in previews, update the next line.
@@ -119,10 +119,11 @@ slug = 'real-time/docs'
 #######################
 
 # Use RTD canonical URL to ensure duplicate pages have a specific canonical URL
-html_baseurl = "https://canonical-real-time-ubuntu-docs-migration.readthedocs-hosted.com"
+html_baseurl = "https://ubuntu.com/real-time/docs/"
 
 # sphinx-sitemap uses html_baseurl to generate the full URL for each page:
 sitemap_url_scheme = "{link}"
+sitemap_filename = "doc-sitemap.xml"
 
 # Include `lastmod` dates in the sitemap:
 sitemap_show_lastmod = True
