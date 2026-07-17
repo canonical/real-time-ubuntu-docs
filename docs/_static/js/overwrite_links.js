@@ -1,6 +1,6 @@
 // Replaces rtd-address with new-address in links
 
-const rtd_address = 'canonical-real-time-ubuntu-docs-migration.readthedocs-hosted.com';
+const rtd_address = 'documentation.ubuntu.com/real-time';
 const new_address = 'ubuntu.com/real-time/docs';
 
 function escapeRegExp(value) {
