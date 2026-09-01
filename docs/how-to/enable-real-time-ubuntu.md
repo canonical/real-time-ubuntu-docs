@@ -17,16 +17,6 @@ Follow the instructions that match your edition to ensure a correct installation
 Follow the instructions in the {doc}`Ubuntu Pro Client - How to enable Real-time Ubuntu <ubu-pro-client:howtoguides/enable_realtime_kernel>` guide.
 ````
 
-````{group-tab} Ubuntu 25.10 (Questing Quokka)
-Real-time Ubuntu can instead be installed from the universe apt repository:
-
-```shell
-sudo add-apt-repository universe
-sudo apt update
-sudo apt install ubuntu-realtime
-```
-````
-
 ````{group-tab} Ubuntu 26.04 LTS (Resolute Raccoon)
 
 Real-time Ubuntu can instead be installed from the main archive:
