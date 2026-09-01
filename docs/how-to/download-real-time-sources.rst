@@ -32,17 +32,6 @@ Enable access to the real-time Ubuntu kernel
 
             sudo pro enable realtime-kernel --access-only
 
-
-    .. tab-item:: Interim release 25.10
-        :sync: interim
-        
-        The real-time kernel source is freely available in the 
-        `universe repository <https://packages.ubuntu.com/questing/linux-realtime>`_ for interim release 25.10. 
-        
-        .. code-block:: shell
-
-            sudo add-apt-repository universe
-
     .. tab-item:: LTS and interim releases 26.04 and later
         :sync: interim
         
@@ -87,7 +76,7 @@ APT is used to download the real-time kernel source. We need to enable the sourc
             sudo sed -i '2s/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu-realtime-kernel.sources
 
 
-    .. tab-item:: Interim release 25.10 and 26.04 LTS
+    .. tab-item:: LTS and interim releases 26.04 and later
         :sync: interim
 
         Use the following command to add ``deb-src`` to the :file:`ubuntu.sources` file:

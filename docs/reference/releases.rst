@@ -29,11 +29,7 @@ Ubuntu Server / Desktop
      - generic, raspi
    * - Ubuntu 24.04 LTS Hardware Enablement (HWE)
      - Noble Numbat
-     - 6.17
-     - generic
-   * - Ubuntu 25.10
-     - Questing Quokka
-     - 6.17
+     - 7.0
      - generic
    * - Ubuntu 26.04 LTS
      - Resolute Raccoon
@@ -58,13 +54,13 @@ Ubuntu Core
    * - Ubuntu Core 22
      - 5.15; 6.8 (HWE)
    * - Ubuntu Core 24
-     - 6.8; 6.17 (HWE)
+     - 6.8; 7.0 (HWE)
    * - Ubuntu Core 26
      - 7.0
 
 .. note::
 
-  Newer kernels (6.8, 6.17, etc) can be installed on Ubuntu Core via Hardware Enablement (HWE) kernel snaps.
+  Newer kernels (6.8, 7.0, etc) can be installed on Ubuntu Core via Hardware Enablement (HWE) kernel snaps.
   The list of publicly available kernel snaps can be found in the `pc-kernel`_ Snap Store page.
 
 To install the real-time kernel on an instance of Ubuntu Core, refer to :doc:`../how-to/uc-install-real-time-kernel`.
