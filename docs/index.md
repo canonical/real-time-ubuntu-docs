@@ -49,6 +49,7 @@ continuous production, the most exacting applications run on Real-time Ubuntu.
 * - **Tuning for real-time performance**
   - {doc}`Modify kernel boot parameters </how-to/modify-kernel-boot-parameters>`
     • {doc}`Configure CPUs for real-time processing </how-to/cpu-boot-configs>`
+    • {doc}`Reduce latency on Real-time Ubuntu </how-to/reduce-latency>`
     • {doc}`Tune IRQ affinity </how-to/tune-irq-affinity>`
     • {doc}`Isolate CPUs from general execution with cpusets </how-to/isolate-workload-cpusets>`
     • {doc}`/reference/kernel-boot-parameters`
