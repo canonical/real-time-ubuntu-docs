@@ -40,6 +40,7 @@ More details of tunable parameters are available in :doc:`/reference/kernel-boot
 
    Modify kernel boot parameters <modify-kernel-boot-parameters>
    Configure CPUs for real-time processing <cpu-boot-configs>
+   Reduce latency on Real-time Ubuntu <reduce-latency>
    Tune IRQ affinity <tune-irq-affinity>
    Isolate CPUs from general execution with cpusets <isolate-workload-cpusets>
 
