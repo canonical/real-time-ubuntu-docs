@@ -21,7 +21,7 @@ Enable access to the real-time Ubuntu kernel
 
         .. note::
             Ubuntu 22.04 and 24.04 LTS releases require Ubuntu Pro to download their respective real-time kernel source code.
-            See the `Ubuntu Pro documentation <https://documentation.ubuntu.com/real-time/en/latest/how-to/enable-real-time-ubuntu/>`_ for more information.
+            See the :doc:`/how-to/enable-real-time-ubuntu` for more information.
 
         If you've already enabled the real-time kernel, you don't need to do anything in this step.
         You can verify the ``realtime-kernel`` service is activated with ``sudo pro status``.
