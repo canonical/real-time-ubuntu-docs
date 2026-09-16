@@ -38,7 +38,13 @@ This test application creates a synthetic real-time load, and captures statistic
 ## Required hardware
 
 Any 13th and 14th generation Intel CPUs that support *Intel Time Coordinated Computing* (TCC) should work.
-See [the list in the Real-time at the Edge Gold Deck](https://cdrdv2.intel.com/v1/dl/getContent/831868?explicitVersion=true) (slide 41), or check on [Intel ARK](https://www.intel.com/content/www/us/en/ark/featurefilter.html?productType=873&0_TimeCoordinatedComputing=True).
+
+```{eval-rst}
+..
+   The ARK link is written in reST because MyST double-escapes '&' in link URLs.
+
+See `the list in the Real-time at the Edge Gold Deck <https://www.intel.com/content/www/us/en/content-details/854694/public-real-time-gold-deck.html>`_ (slide 35), or check on `Intel ARK <https://www.intel.com/content/www/us/en/ark/featurefilter.html?productType=873&0_TimeCoordinatedComputing=True>`_.
+```
 
 Ideally your system BIOS should have the *Intel® TCC Mode* setting, but this is not a hard requirement for following this tutorial.
 
