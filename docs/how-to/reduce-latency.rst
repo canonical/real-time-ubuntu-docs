@@ -16,7 +16,7 @@ describes how to evaluate and tune:
 The examples use CPUs 0 and 1 for housekeeping and CPUs 2 through 7 for the
 real-time workload. Adjust every CPU list for your system.
 
-.. warning::
+.. note::
 
    These settings trade power efficiency, thermal headroom, observability, or
    general-purpose performance for lower latency. Change one setting at a time
@@ -36,6 +36,8 @@ The ``rtla`` tool is available by default on Ubuntu 24.04 LTS and later.
 On custom kernels, install the matching ``linux-tools`` package for the
 running kernel; otherwise ``rtla`` and ``cpupower`` can report
 "not found for kernel ...".
+See :doc:`/reference/real-time-metrics-tools` for a broader installation and
+usage reference for latency-measurement tools.
 
 Establish a baseline
 --------------------
@@ -45,14 +47,19 @@ the system:
 
 .. code-block:: shell
 
-   sudo rtla timerlat top -q -u \
-     -c 2-7 -H 0,1 \
-     -d 1m \
-     -p 200 -P f:99 \
-     -T 30 -s 20 \
+   sudo rtla timerlat top \
+     --quiet \
+     --user-threads \
+     --cpus 2-7 \
+     --house-keeping 0,1 \
+     --duration 1m \
+     --period 200 \
+     --priority f:99 \
+     --thread 30 \
+     --stack 20 \
      --dma-latency 0 \
      --dump-tasks \
-     -t=rtla.2-7.trace
+     --trace rtla.2-7.trace
 
 This command:
 
@@ -64,8 +71,9 @@ This command:
 * requests a zero-microsecond DMA latency to constrain CPU idle states
 
 Repeat the same command after each tuning change. Compare distributions and
-maximum values across multiple runs rather than relying on one outlier. You
-also can narrow the '-T'/'-s' parameter to shorten latency trigger catching.
+maximum values across multiple runs rather than relying on one outlier.
+The ``--thread`` and ``--stack`` values shown above are example thresholds;
+adjust them to match your workload and target latency budget.
 
 Disable timer migration
 -----------------------
@@ -174,6 +182,10 @@ the hardware supports. The driver, firmware, or platform can limit whether the
 requested governor fixes the clock at its maximum frequency.
 If you booted with ``cpufreq.off=1``, CPU frequency scaling is disabled and
 ``cpupower frequency-set`` will fail by design.
+For finer control, tune idle states per CPU at runtime via
+``/sys/devices/system/cpu/cpu*/cpuidle/state*/disable`` and apply CPU
+frequency governor changes on selected CPUs instead of disabling the full
+subsystem.
 
 For a measurement-only change, ``rtla timerlat --dma-latency 0`` requests a
 latency constraint while the tool runs. ``cyclictest`` makes the same request
@@ -196,7 +208,8 @@ Reboot, then verify the setting:
 
 .. code-block:: shell
 
-   cat /proc/pressure/cpu
+   grep -o 'psi=0' /proc/cmdline || echo "psi=0 not set"
+   test -f /proc/pressure/cpu && echo "PSI enabled" || echo "PSI disabled"
 
 If PSI is disabled, files under ``/proc/pressure`` can be unavailable.
 Disabling PSI removes pressure metrics used by monitoring and
@@ -213,6 +226,8 @@ Trace the architecture timer path
 Use the function graph tracer when a timerlat trace points to architecture
 timer or hrtimer processing but doesn't identify the expensive function.
 The following example traces CPU 2; its hexadecimal CPU mask is ``4``.
+Use this as an advanced debugging step when timerlat and trace-cmd output do
+not sufficiently explain wakeup latency spikes.
 
 .. warning::
 
@@ -345,7 +360,7 @@ threads. If the main thread runs on an isolated real-time CPU, its background
 work can interfere with measurements and add scheduler latency.
 
 Pin the main thread to a housekeeping CPU independently of the measurement
-threads:
+threads running on isolated real-time CPUs:
 
 .. code-block:: shell
 
