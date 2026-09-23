@@ -1,0 +1,6 @@
+######################################
+# Default reviewers for merge requests
+######################################
+
+# Default reviewer for any pull requests in the canonical/kernel-docs repository
+* @bjdean-canonical
