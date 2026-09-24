@@ -11,23 +11,32 @@ Follow the instructions that match your edition to ensure a correct installation
 
 ## Ubuntu Server / Desktop
 
-`````{tabs}
+``````{tabs}
 
-````{group-tab} Ubuntu 24.04 LTS (Noble Numbat) or earlier
-Follow the instructions in the {doc}`Ubuntu Pro Client - How to enable Real-time Ubuntu <ubu-pro-client:howtoguides/enable_realtime_kernel>` guide.
-````
+`````{tab} Ubuntu 26.04 LTS (Resolute Raccoon) or newer
 
-````{group-tab} Ubuntu 26.04 LTS (Resolute Raccoon)
-
-Real-time Ubuntu can instead be installed from the main archive:
+Real-time Ubuntu can be installed from the main archive:
 
 ```shell
 sudo apt update
 sudo apt install ubuntu-realtime
 ```
-````
 
+````{note}
+On Raspberry Pi, install `linux-raspi-realtime` instead:
+
+```shell
+sudo apt update
+sudo apt install linux-raspi-realtime
+```
+````
 `````
+
+`````{tab} Ubuntu 24.04 LTS (Noble Numbat) or earlier
+Follow the instructions in the {doc}`Ubuntu Pro Client - How to enable Real-time Ubuntu <ubu-pro-client:howtoguides/enable_realtime_kernel>` guide.
+`````
+
+``````
 
 Refer to {doc}`/reference/releases` and [Ubuntu release](https://ubuntu.com/about/release-cycle) documentation for more information about Ubuntu releases and which support real-time.
 
