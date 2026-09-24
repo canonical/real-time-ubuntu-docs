@@ -224,14 +224,14 @@ Trace the architecture timer path
 ---------------------------------
 
 Use the function graph tracer when a timerlat trace points to architecture
-timer or hrtimer processing but doesn't identify the expensive function.
-The following example traces CPU 2; its hexadecimal CPU mask is ``4``.
+timer or :spellexception:`hrtimer` processing but doesn't identify the expensive
+function. The following example traces CPU 2; its hexadecimal CPU mask is ``4``.
 Use this as an advanced debugging step when timerlat and trace-cmd output do
 not sufficiently explain wakeup latency spikes.
 
 .. warning::
 
-   Ftrace configuration is global. Don't run this procedure while another
+   ``Ftrace`` configuration is global. Don't run this procedure while another
    process is using ftrace.
 
 Run these commands as root:

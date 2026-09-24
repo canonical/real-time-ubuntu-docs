@@ -28,6 +28,7 @@ HPC
 HWE
 HWP
 IOLATENCY
+IPIs
 IRQs
 ISR
 ISRs
@@ -156,6 +157,7 @@ fifo
 filesystem
 fonts
 freefont
+ftrace
 futex
 futexes
 gcc
@@ -273,6 +275,7 @@ tid
 timerlat
 toolchain
 topologies
+tracepoints
 tuning's
 txt
 typedef
@@ -285,6 +288,7 @@ vCPU
 vCPUs
 virsh
 virtualized
+wakeup
 wordlist
 ww
 xetex
