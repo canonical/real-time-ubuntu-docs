@@ -1,0 +1,212 @@
+name: Update releases information in docs/reference/releases.rst from ubuntu.com chart-data 
+
+on:
+  schedule:
+    - cron: '0 3 * * 1'   # Weekly; Scheduled every Monday
+  workflow_dispatch:
+
+jobs:
+  update-releases:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Fetch chart-data.js
+        run: |
+          curl -sS -o /tmp/chart-data.js \
+            https://raw.githubusercontent.com/canonical/ubuntu.com/main/static/js/src/chart-data.js
+
+      - name: Extract latest release and kernel info (shell)
+        id: extract
+        run: |
+          set -e
+
+          FILE=/tmp/chart-data.js
+
+          # 1) Get first desktopServerReleaseNames entry, e.g. "25.10 (Questing Quokka)"
+          latest_entry=$(
+            grep -m1 'desktopServerReleaseNames' -A1 "$FILE" \
+            | sed -n '2s/^[^"]*"\([^"]*\)".*/\1/p'
+          )
+
+          if [ -z "$latest_entry" ]; then
+            echo "desktopServerReleaseNames[0] not found" >&2
+            exit 1
+          fi
+
+          echo "latest_entry=$latest_entry"
+
+          # Split "25.10 (Questing Quokka)" into version and codename
+          # Use sed to capture groups before and inside parentheses
+          ver=$(printf '%s\n' "$latest_entry" | sed -E 's/^([0-9.]+( LTS)?) \(.+\)$/\1/')
+          codename=$(printf '%s\n' "$latest_entry" | sed -E 's/^[0-9.]+( LTS)? \((.+)\)$/\2/')
+
+          if [ -z "$ver" ] || [ -z "$codename" ]; then
+            echo "Failed to parse version/codename from: $latest_entry" >&2
+            exit 1
+          fi
+
+          version="Ubuntu $ver"
+
+          echo "version=$version"
+          echo "codename=$codename"
+
+          # 2) Get first kernelReleases taskVersion, e.g. "6.17 kernel" -> "6.17"
+          kernel_task_version=$(
+            awk '
+              /kernelReleases *= *\[/ { in_array=1 }
+              in_array && /taskVersion:/ {
+                match($0, /taskVersion:[[:space:]]*"[^"]*"/, m)
+                if (m[0] != "") {
+                  gsub(/taskVersion:[[:space:]]*"/, "", m[0])
+                  gsub(/"$/, "", m[0])
+                  print m[0]
+                  exit
+                }
+              }
+            ' "$FILE"
+          )
+
+          if [ -z "$kernel_task_version" ]; then
+            echo "kernelReleases[0].taskVersion not found" >&2
+            exit 1
+          fi
+
+          kernel_version=$(printf '%s\n' "$kernel_task_version" | awk '{print $1}')
+
+          echo "kernel_version=$kernel_version"
+
+          {
+            echo "version=$version"
+            echo "codename=$codename"
+            echo "kernel_version=$kernel_version"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Update docs/reference/releases.rst (shell)
+        id: update_file
+        run: |
+          set -e
+
+          VERSION="${{ steps.extract.outputs.version }}"
+          CODENAME="${{ steps.extract.outputs.codename }}"
+          KERNEL="${{ steps.extract.outputs.kernel_version }}"
+
+          target="docs/reference/releases.rst"
+          tmpfile=$(mktemp)
+
+          # We will:
+          #  - Locate the table that has "Version | Code name | Real-time Kernel Version"
+          #  - Identify its last data row
+          #  - Replace that row's Version, Code name, and Real-time Kernel Version
+          #    with $VERSION, $CODENAME, and $KERNEL
+          #  - Only modify if something is different
+
+          # Copy file for editing
+          cp "$target" "$tmpfile"
+
+          # Find the line number of the header row
+          header_line=$(grep -n '     - Variants' "$tmpfile"| awk -F':' '{print $1}')
+          
+          if [ -z "$header_line" ]; then
+            echo "Table header not found" >&2
+            echo "no_change=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Data starts two lines after header (skip header + separator)
+          data_start=$((header_line + 1))
+
+          # Find the end of the table: first empty line after data_start
+          end_line=$(
+            awk -v start="$data_start" '
+              NR > start && NF == 0 { print NR; exit }
+              END { if (NR > start && NF != 0) print NR + 1 }
+            ' "$tmpfile"
+          )
+
+          if [ -z "$end_line" ]; then
+            end_line=$(wc -l < "$tmpfile")
+          fi
+
+          # Last data row is the last non-empty line before end_line
+          last_row_line=$(
+            awk -v s="$data_start" -v e="$end_line" '
+              NR >= s && NR < e && NF > 0 { last=NR }
+              END { if (last) print last }
+            ' "$tmpfile"
+          )
+          #Tara:last_row_line=$(( last_row_line + 1 ))
+
+          if [ -z "$last_row_line" ]; then
+            echo "No data rows found in table" >&2
+            echo "no_change=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Extract the last row
+          last_version_row_line=$(( last_row_line - 3 ))
+          last_codename_row_line=$(( last_row_line - 2  ))
+          last_kernel_row_line=$(( last_row_line - 1 ))
+        
+          last_version_row=$(sed -n "${last_version_row_line}p" "$tmpfile")
+          last_codename_row=$(sed -n "${last_codename_row_line}p" "$tmpfile")
+          last_kernel_row=$(sed -n "${last_kernel_row_line}p" "$tmpfile")
+
+          echo "last_version_row is $last_version_row"
+          echo "last_codename_row is $last_codename_row"
+          echo "last_kernel_row is $last_kernel_row"
+          
+          # Break row into fields between pipes, trimming spaces
+          # Expect something like: | Ubuntu 25.10 | Questing Quokka | 6.17 |
+          current_version=$(printf '%s\n' "$last_version_row" | sed 's/^[[:space:]]*\* -[[:space:]]*//' | sed 's/[[:space:]]*$//')
+          current_codename=$(printf '%s\n' "$last_codename_row" | sed 's/^[[:space:]]*-[[:space:]]*//' | sed 's/[[:space:]]*$//')
+          current_kernel=$(printf '%s\n' "$last_kernel_row" | sed 's/^[[:space:]]*-[[:space:]]*//' | sed 's/[[:space:]]*$//')
+
+          echo "current_version is :$current_version, VERSION is: $VERSION"
+          echo "current_codename is :$current_codename, CODENAME is: $CODENAME"
+          echo "current_kernel is :$current_kernel, KERNEL is: $KERNEL"
+          
+          if [ "$current_version" = "$VERSION" ] && [ "$current_codename" = "$CODENAME" ] && [ "$current_kernel" = "$KERNEL" ]; then
+            echo "Releases table already up to date"
+            echo "no_change=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Build new row string, preserving the number of columns and a simple spacing style
+          new_row=$(printf '   * - %s \n     - %s \n     - %s \n     - %s \n \n' "$VERSION" "$CODENAME" "$KERNEL" "generic")
+          
+          # Replace next line in file 
+          last_row_line=$(( last_row_line + 1 ))
+
+          awk -v line="$last_row_line" -v repl="$new_row" '
+            NR == line { print repl; next }
+            { print }
+          ' "$tmpfile" > "${tmpfile}.new"
+
+          mv "${tmpfile}.new" "$target"
+
+          echo "no_change=false" >> "$GITHUB_OUTPUT"
+
+      - name: Show diff
+        if: steps.update_file.outputs.no_change == 'false'
+        run: |
+          git diff -- docs/reference/releases.rst
+
+      - name: Commit and push changes
+        if: steps.update_file.outputs.no_change == 'false'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          # Use the GitHub Actions bot identity for commits
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/reference/releases.rst
+          git commit -m "docs: update releases table from ubuntu.com chart-data.js"
+          # Use token-based auth for pushing
+          git remote set-url --push origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
+          git push origin HEAD:main
