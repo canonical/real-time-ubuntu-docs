@@ -35,6 +35,10 @@ Ubuntu Server / Desktop
      - Resolute Raccoon
      - 7.0
      - generic, raspi
+   * - Ubuntu 26.10
+     - Stonking Stingray
+     - 7.3
+     - generic, raspi
 
 .. note::
 
