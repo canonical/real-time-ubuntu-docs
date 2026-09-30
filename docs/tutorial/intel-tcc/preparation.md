@@ -36,7 +36,7 @@ Install required tools:
 sudo apt install msr-tools stress-ng mosquitto-clients
 ```
 
-Download the example code archive {download}`here <tutorial-intel-tcc-code.tar.gz>` and extract it.
+Download the example code archive {download}`here <assets/tutorial-intel-tcc-code.tar.gz>` and extract it.
 
 ```bash
 tar -xvf tutorial-intel-tcc-code.tar.gz --one-top-level
