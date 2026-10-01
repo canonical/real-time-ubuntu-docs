@@ -41,6 +41,10 @@ help:
 	@echo "* check style guide compliance:              make vale"
 	@echo "* check style guide compliance on target:    make vale CHECK_PATH=*"
 	@echo "* other possible targets:                    make <TAB twice>"
+	@echo ""
+	@echo "Real-time Ubuntu docs local targets:"
+	@echo "* build code sample directory tarballs:      make code-archives"
+	@echo "* clean code sample directory tarballs:      make clean-code-archives"
 	@echo "-------------------------------------------------------------"
 	@echo
 
@@ -188,7 +192,7 @@ update: install
 
 # For each code sample directory, create a tar.gz. The archive name should end in *-code.tar.gz.
 code-archives:
-	tar -czvf tutorial/intel-tcc/tutorial-intel-tcc-code.tar.gz -C tutorial/intel-tcc/code .
+	tar -czvf tutorial/intel-tcc/assets/tutorial-intel-tcc-code.tar.gz -C tutorial/intel-tcc/code .
 
 clean-code-archives:
 	find . -type f -name '*-code.tar.gz' -exec rm {} +

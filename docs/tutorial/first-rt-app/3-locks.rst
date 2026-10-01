@@ -14,7 +14,7 @@ one, a single thread-function ran on two threads and included this operation:
 where ``calls-remaining`` was a global variable.
 
 In those examples, clarity mattered more and so locks were left out. Generally
-though, they're essential --- thread-safety is paramount. Download :download:`lock.c` to
+though, they're essential --- thread-safety is paramount. Download :download:`lock.c <assets/lock.c>` to
 see one way of making the :file:`fifo.c` example thread-safe:
 
 .. code-block:: C
