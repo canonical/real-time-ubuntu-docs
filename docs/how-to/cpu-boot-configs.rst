@@ -134,7 +134,7 @@ threads to housekeeping CPU 0:
 
 .. code-block:: shell
 
-   sudo tuna -t rcu* -c 0 -m
+   sudo tuna move -t 'rcu*' -c 0
 
 Each offloaded callback thread must be woken up somehow, which introduces
 jitter if it's done by a candidate CPU. If you've assigned a housekeeping CPU,
